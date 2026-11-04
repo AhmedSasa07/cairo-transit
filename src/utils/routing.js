@@ -473,7 +473,7 @@ function processPath(result, originId, destinationId, type) {
 
       currentLegKm = hopKm;
       const direction = getLineDirection(lineId, prevPoint.stationId, currPoint.stationId, destinationId);
-      const lineInfo = METRO_LINES[lineId] || { nameEn: lineId, nameAr: lineId, color: '#2563EB', shortNameEn: lineId, shortNameAr: lineId };
+      const lineInfo = METRO_LINES[lineId] || { nameEn: lineId, nameAr: lineId, color: '#00518e', shortNameEn: lineId, shortNameAr: lineId };
       currentLeg = {
         lineId,
         lineInfo,

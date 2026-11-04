@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Navigation, Sparkles } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Navigation, Sparkles, Shuffle } from 'lucide-react';
 import { haptics } from '../utils/haptics.js';
+import TransitModeIcon from './TransitModeIcon.jsx';
 
 export default function NearMeModeModal({
   lang = 'ar',
@@ -156,9 +157,13 @@ export default function NearMeModeModal({
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div
-                    className={`w-11 h-11 rounded-2xl ${mode.iconBg} border flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-105 transition-transform`}
+                    className={`w-11 h-11 rounded-2xl ${mode.iconBg} border flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform p-1.5`}
                   >
-                    <span>{mode.icon}</span>
+                    {mode.id === 'all' ? (
+                      <Shuffle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 stroke-[2.2]" />
+                    ) : (
+                      <TransitModeIcon mode={mode.id} size="md" className="w-6 h-6 object-contain" />
+                    )}
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">

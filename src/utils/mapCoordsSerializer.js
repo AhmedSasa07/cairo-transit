@@ -133,8 +133,8 @@ const COORDS_SCHEMA = [
   { type: 'empty' },
 
   // ================= Monorail East =================
-  { type: 'comment', text: '  // ================= Monorail East (Orange #EA580C) =================' },
-  { type: 'comment', text: '  // stadium starts at (675, 480)' },
+  { type: 'comment', text: '  // ================= Monorail East (Teal #009ca6: Stadium to Justice City) =================' },
+  { type: 'comment', text: '  // stadium starts at (746, 494)' },
   { id: 'monorail_hesham_barakat', labelPos: 'bottom' },
   { id: 'monorail_nouri_khattab', labelPos: 'bottom' },
   { id: 'monorail_seventh_district', labelPos: 'bottom' },
@@ -154,8 +154,8 @@ const COORDS_SCHEMA = [
   { id: 'monorail_bin_zayed', labelPos: 'right' },
   { id: 'monorail_regional_ring', labelPos: 'right' },
   { id: 'monorail_massa', labelPos: 'right' },
-  { id: 'monorail_ministries', labelPos: 'right' },
-  { type: 'comment', text: '  // terminates at city_of_arts (1415, 465)' },
+  { id: 'monorail_ministries', labelPos: 'top' },
+  { id: 'justice_city', labelPos: 'right', comment: '// Eastern Terminus Monorail East' },
   { type: 'empty' },
 
   // ================= Monorail West =================

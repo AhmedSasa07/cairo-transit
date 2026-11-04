@@ -24,6 +24,7 @@ import { METRO_LINES, SCHEDULE_INFO, STATIONS } from '../data/metroData.js';
 import { getDistanceKm } from '../utils/geo.js';
 import { isStationAccessible } from '../utils/a11y.js';
 import PressableScale from './PressableScale.jsx';
+import TransitModeIcon from './TransitModeIcon.jsx';
 import { haptics } from '../utils/haptics.js';
 
 // Crisp Google Maps Official Pin Logo
@@ -226,10 +227,11 @@ export default function StationDetailModal({
               {station.lines.map(l => (
                 <span
                   key={l}
-                  className="text-xs px-2.5 py-1 rounded-xl font-bold font-space text-white shadow-sm"
-                  style={{ backgroundColor: METRO_LINES[l]?.color || '#2563EB' }}
+                  className="text-xs px-2.5 py-1 rounded-xl font-bold font-space text-white shadow-sm inline-flex items-center gap-1.5"
+                  style={{ backgroundColor: METRO_LINES[l]?.color || '#00518e' }}
                 >
-                  {isAr ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}
+                  <TransitModeIcon mode={METRO_LINES[l]?.mode} lineId={l} size="xs" withBackdrop />
+                  <span>{isAr ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}</span>
                 </span>
               ))}
             </div>
@@ -389,10 +391,11 @@ export default function StationDetailModal({
                               {s.lines.map(l => (
                                 <span
                                   key={l}
-                                  className="text-[9px] px-1.5 py-0.2 rounded font-bold text-white uppercase"
-                                  style={{ backgroundColor: METRO_LINES[l]?.color || '#E11D48' }}
+                                  className="text-[9px] px-1.5 py-0.5 rounded font-bold text-white uppercase inline-flex items-center gap-1"
+                                  style={{ backgroundColor: METRO_LINES[l]?.color || '#00518e' }}
                                 >
-                                  {isAr ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}
+                                  <TransitModeIcon mode={METRO_LINES[l]?.mode} lineId={l} size="xs" withBackdrop />
+                                  <span>{isAr ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}</span>
                                 </span>
                               ))}
                             </div>

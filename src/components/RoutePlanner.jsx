@@ -43,6 +43,8 @@ import ShareTripModal from './ShareTripModal.jsx';
 import MetroStatTile from './MetroStatTile.jsx';
 import SaveTripModal from './SaveTripModal.jsx';
 import NearMeModeModal from './NearMeModeModal.jsx';
+import AppleCollapsibleHeader from './AppleCollapsibleHeader.jsx';
+import TransitModeIcon from './TransitModeIcon.jsx';
 import { AppleAccordion, StationSwapButton } from './MotionComponents.jsx';
 import AppleCard from './AppleCard.jsx';
 import { haptics } from '../utils/haptics.js';
@@ -88,37 +90,38 @@ function getPriceTheme(route, lang) {
     };
   }
 
-  // Pure Monorail (#8B5CF6)
+  // Pure Monorail (Teal #009ca6 for East / Dark Crimson #9b2521 for West)
   if (hasMonorail) {
+    const isWest = legs.some(l => l.lineId === 'monorail_west');
     return {
-      border: 'border-[#8B5CF6] dark:border-[#8B5CF6]/80',
-      bg: 'bg-[#8B5CF6]/10 dark:bg-[#8B5CF6]/15',
-      text: 'text-[#8B5CF6] dark:text-[#A78BFA]',
-      badgeBg: 'bg-[#8B5CF6]/20 text-[#7C3AED] dark:text-[#C4B5FD] border border-[#8B5CF6]/30',
-      badgeLabel: isAr ? 'مونوريل' : 'Monorail',
+      border: isWest ? 'border-[#9b2521] dark:border-[#9b2521]/80' : 'border-[#009ca6] dark:border-[#009ca6]/80',
+      bg: isWest ? 'bg-[#9b2521]/10 dark:bg-[#9b2521]/15' : 'bg-[#009ca6]/10 dark:bg-[#009ca6]/15',
+      text: isWest ? 'text-[#9b2521] dark:text-[#f87171]' : 'text-[#009ca6] dark:text-[#2dd4bf]',
+      badgeBg: isWest ? 'bg-[#9b2521]/20 text-[#9b2521] dark:text-[#fca5a5] border border-[#9b2521]/30' : 'bg-[#009ca6]/20 text-[#0f766e] dark:text-[#5eead4] border border-[#009ca6]/30',
+      badgeLabel: isAr ? (isWest ? 'مونوريل غرب' : 'مونوريل شرق') : (isWest ? 'West Monorail' : 'East Monorail'),
       ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
-  // Pure LRT (#06B6D4)
+  // Pure LRT (Crimson #9e1b33)
   if (hasLrt) {
     return {
-      border: 'border-[#06B6D4] dark:border-[#06B6D4]/80',
-      bg: 'bg-[#06B6D4]/10 dark:bg-[#06B6D4]/15',
-      text: 'text-[#06B6D4] dark:text-[#22D3EE]',
-      badgeBg: 'bg-[#06B6D4]/20 text-[#0891B2] dark:text-[#67E8F9] border border-[#06B6D4]/30',
+      border: 'border-[#9e1b33] dark:border-[#9e1b33]/80',
+      bg: 'bg-[#9e1b33]/10 dark:bg-[#9e1b33]/15',
+      text: 'text-[#9e1b33] dark:text-[#f87171]',
+      badgeBg: 'bg-[#9e1b33]/20 text-[#9e1b33] dark:text-[#fca5a5] border border-[#9e1b33]/30',
       badgeLabel: isAr ? 'قطار LRT' : 'LRT Train',
       ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
-  // Pure BRT (#F59E0B)
+  // Pure BRT (Purple #8B5CF6)
   if (hasBrt) {
     return {
-      border: 'border-[#F59E0B] dark:border-[#F59E0B]/80',
-      bg: 'bg-[#F59E0B]/10 dark:bg-[#F59E0B]/15',
-      text: 'text-[#F59E0B] dark:text-[#FBBF24]',
-      badgeBg: 'bg-[#F59E0B]/20 text-[#D97706] dark:text-[#FDE68A] border border-[#F59E0B]/30',
+      border: 'border-[#8B5CF6] dark:border-[#8B5CF6]/80',
+      bg: 'bg-[#8B5CF6]/10 dark:bg-[#8B5CF6]/15',
+      text: 'text-[#8B5CF6] dark:text-[#A78BFA]',
+      badgeBg: 'bg-[#8B5CF6]/20 text-[#7C3AED] dark:text-[#C4B5FD] border border-[#8B5CF6]/30',
       badgeLabel: isAr ? 'ترددي BRT' : 'BRT Bus',
       ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
@@ -532,7 +535,20 @@ export default function RoutePlanner({
 
   return (
     <div className="space-y-3 sm:space-y-3.5 pb-[calc(5rem+env(safe-area-inset-bottom,16px))]">
-      {/* Primary Inset Grouped Journey Selector Card */}
+      {/* 1. Sleek Compact Header (Matches Screenshot 1 - Plan Your Journey + Near Me + Star + Share with NO subtitle) */}
+      <AppleCollapsibleHeader
+        lang={lang}
+        t={t}
+        title={t.routePlanner?.title || (lang === 'ar' ? 'تخطيط الرحلات' : 'Plan Your Journey')}
+        isLocatingOrigin={isLocatingOrigin}
+        onQuickGps={handleQuickGpsOrigin}
+        hasActiveRoute={Boolean(activeRoute)}
+        isSaved={isCurrentTripSaved}
+        onToggleSave={handleToggleSaveTrip}
+        onShare={handleShare}
+      />
+
+      {/* 2. Primary Inset Grouped Journey Selector Card */}
       <AppleCard variant="primary" className="p-4 sm:p-5 space-y-3.5">
         {savedTripToast && (
           <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-[#2DD881] text-xs font-mono font-bold text-center animate-fade-in select-none">
@@ -540,15 +556,15 @@ export default function RoutePlanner({
           </div>
         )}
 
-        {/* 2x2 Transit Mode Selection Grid (Secondary Inset Layers with Apple Physics) */}
+        {/* 2x2 Transit Mode Selection Grid (Official Vector/PNG Logos) */}
         <div className="grid grid-cols-2 gap-2 select-none">
           {[
-            { id: 'metro', icon: '🚇', labelAr: 'مترو', labelEn: 'Metro', mode: 'metro' },
-            { id: 'monorail', icon: '🚝', labelAr: 'مونوريل', labelEn: 'Monorail', mode: 'mixed' },
-            { id: 'lrt', icon: '🚋', labelAr: 'قطار LRT', labelEn: 'LRT Train', mode: 'mixed' },
-            { id: 'brt', icon: '🚌', labelAr: 'ترددي BRT', labelEn: 'BRT Bus', mode: 'mixed' },
+            { id: 'metro', labelAr: 'مترو', labelEn: 'Metro', mode: 'metro' },
+            { id: 'monorail', labelAr: 'مونوريل', labelEn: 'Monorail', mode: 'mixed' },
+            { id: 'lrt', labelAr: 'قطار LRT', labelEn: 'LRT Train', mode: 'mixed' },
+            { id: 'brt', labelAr: 'ترددي BRT', labelEn: 'BRT Bus', mode: 'mixed' },
           ].map((item) => {
-            const isSelected = transitMode === item.mode && (item.id === 'metro' ? transitMode === 'metro' : transitMode === 'mixed');
+            const isSelected = (item.id === 'metro' && transitMode === 'metro') || (item.id !== 'metro' && transitMode === 'mixed');
             return (
               <button
                 key={item.id}
@@ -558,18 +574,20 @@ export default function RoutePlanner({
                   setTransitMode(item.mode);
                 }}
                 className={`py-2.5 px-3 rounded-[20px] border font-bold text-xs sm:text-sm flex items-center justify-between select-none touch-manipulation tap-transparent active:scale-95 transition-all duration-120 ${
-                  (item.id === 'metro' && transitMode === 'metro') || (item.id !== 'metro' && transitMode === 'mixed')
+                  isSelected
                     ? 'bg-blue-600 text-white border-blue-500 shadow-[0_4px_16px_rgba(37,99,235,0.3),inset_0_1px_0_0_rgba(255,255,255,0.3)]'
                     : 'bg-black/[0.03] dark:bg-white/[0.04] border-black/[0.04] dark:border-white/[0.06] text-slate-700 dark:text-zinc-300 hover:bg-black/[0.05] dark:hover:bg-white/[0.07]'
                 }`}
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="text-base leading-none">{item.icon}</span>
+                  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                    <TransitModeIcon mode={item.id} size="sm" className="w-4 h-4 object-contain" />
+                  </span>
                   <span className={`truncate ${lang === 'ar' ? 'font-cairo' : 'font-space'}`}>
                     {lang === 'ar' ? item.labelAr : item.labelEn}
                   </span>
                 </div>
-                {((item.id === 'metro' && transitMode === 'metro') || (item.id !== 'metro' && transitMode === 'mixed')) && (
+                {isSelected && (
                   <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />
                 )}
               </button>
@@ -593,29 +611,9 @@ export default function RoutePlanner({
         <div className="relative space-y-2 select-none">
           {/* FROM Station Button (Secondary Inset Layer) */}
           <div className="relative">
-            <div className="flex items-center justify-between mb-1 px-1">
-              <label className={`block text-[10px] uppercase text-slate-400 dark:text-[#5B5B63] ${lang === 'ar' ? 'font-cairo tracking-normal' : 'font-mono tracking-wider'}`}>
-                {t.routePlanner.fromLabel}
-              </label>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  haptics.light();
-                  handleQuickGpsOrigin();
-                }}
-                disabled={isLocatingOrigin}
-                className="py-0.5 px-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 transition-all flex items-center gap-1 text-[11px] font-bold active:scale-95 touch-manipulation tap-transparent"
-                title={lang === 'ar' ? 'تحديد أقرب محطة لموقعي بالـ GPS' : 'Detect Nearest Station to Me via GPS'}
-              >
-                <Navigation className={`w-3 h-3 text-emerald-600 dark:text-emerald-400 ${isLocatingOrigin ? 'animate-spin' : ''}`} />
-                <span className={lang === 'ar' ? 'font-cairo' : 'font-mono'}>
-                  {isLocatingOrigin
-                    ? (lang === 'ar' ? 'جاري التحديد...' : 'Locating...')
-                    : (lang === 'ar' ? 'أقرب محطة ليا' : 'Near Me')}
-                </span>
-              </button>
-            </div>
+            <label className={`block text-[10px] uppercase text-slate-400 dark:text-[#5B5B63] mb-1 px-1 ${lang === 'ar' ? 'font-cairo tracking-normal' : 'font-mono tracking-wider'}`}>
+              {t.routePlanner.fromLabel}
+            </label>
             <button
               onClick={() => {
                 haptics.impact('LIGHT');
@@ -1808,7 +1806,7 @@ function StationSearchPickerModal({
     { id: 'monorail_east', labelEn: 'East Monorail', labelAr: 'مونوريل شرق', color: '#009ca6' },
     { id: 'monorail_west', labelEn: 'West Monorail', labelAr: 'مونوريل غرب', color: '#9b2521' },
     { id: 'lrt', labelEn: 'LRT', labelAr: 'القطار LRT', color: '#9e1b33' },
-    { id: 'brt', labelEn: 'BRT', labelAr: 'حافلات BRT', color: '#F59E0B' }
+    { id: 'brt', labelEn: 'BRT', labelAr: 'حافلات BRT', color: '#8B5CF6' }
   ];
 
   // Egypt Top Places Categories Filter Tabs

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { STATIONS, METRO_LINES, SCHEDULE_INFO } from '../data/metroData.js';
 import PressableScale from './PressableScale.jsx';
+import TransitModeIcon from './TransitModeIcon.jsx';
 import { haptics } from '../utils/haptics.js';
 
 export default function StationExplorer({
@@ -135,10 +136,11 @@ export default function StationExplorer({
                   {st.lines.map(l => (
                     <span
                       key={l}
-                      className="text-[9px] px-2 py-0.5 rounded font-space font-bold text-white uppercase"
+                      className="text-[9px] px-2 py-0.5 rounded font-space font-bold text-white uppercase inline-flex items-center gap-1"
                       style={{ backgroundColor: METRO_LINES[l].color }}
                     >
-                      {isAr ? METRO_LINES[l].shortNameAr : METRO_LINES[l].shortNameEn}
+                      <TransitModeIcon mode={METRO_LINES[l]?.mode} lineId={l} size="xs" withBackdrop />
+                      <span>{isAr ? METRO_LINES[l].shortNameAr : METRO_LINES[l].shortNameEn}</span>
                     </span>
                   ))}
                   <span className="text-xs text-slate-300 dark:text-[#26262C]">•</span>

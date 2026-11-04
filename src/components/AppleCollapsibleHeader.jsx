@@ -70,7 +70,7 @@ export default function AppleCollapsibleHeader({
             </button>
           )}
 
-          {hasActiveRoute && onToggleSave && (
+          {onToggleSave && (
             <button
               type="button"
               onClick={() => {
@@ -93,7 +93,7 @@ export default function AppleCollapsibleHeader({
             </button>
           )}
 
-          {hasActiveRoute && onShare && (
+          {onShare && (
             <button
               type="button"
               onClick={() => {
@@ -101,8 +101,8 @@ export default function AppleCollapsibleHeader({
                 onShare();
               }}
               className="p-1.5 sm:p-2 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.05] dark:border-white/[0.08] text-rose-600 dark:text-[#FF4A1C] hover:bg-rose-500/10 transition-colors active:scale-90 touch-manipulation tap-transparent"
-              title={t?.routePlanner?.shareRoute || (isAr ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
-              aria-label={t?.routePlanner?.shareRoute || (isAr ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
+              title={t?.routePlanner?.shareRoute || (isAr ? 'مشاركة' : 'Share')}
+              aria-label={t?.routePlanner?.shareRoute || (isAr ? 'مشاركة' : 'Share')}
             >
               <Share2 className="w-4 h-4" />
             </button>

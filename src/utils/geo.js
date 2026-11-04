@@ -1,5 +1,6 @@
 import { STATIONS, METRO_LINES, CAIRO_LANDMARKS } from '../data/metroData.js';
 import { TOP_EGYPT_PLACES, CATEGORY_METADATA } from '../data/egyptPlaces.js';
+import { MICROBUS_TERMINALS } from '../data/microbusTerminals.js';
 
 export { TOP_EGYPT_PLACES, CATEGORY_METADATA };
 
@@ -115,7 +116,31 @@ for (const cl of (CAIRO_LANDMARKS || [])) {
   }
 }
 
-// Prefix-first Search Algorithm matching stations, top 1000 places & aliases
+// Include 21 Regional Microbus Terminals (مواقف الأقاليم)
+for (const term of (MICROBUS_TERMINALS || [])) {
+  if (!ALL_EGYPT_PLACES.some(p => p.id === term.id)) {
+    const nearestSt = findNearestStations(term.lat, term.lng, 1)[0];
+    const routeWords = (term.routesSummaryAr || '')
+      .split(/[|()،,]/)
+      .map(w => w.trim())
+      .filter(w => w.length > 2);
+
+    ALL_EGYPT_PLACES.push({
+      id: term.id,
+      nameAr: term.nameAr,
+      nameEn: term.nameEn,
+      category: 'transport',
+      categoryAr: 'موقف ومحطة أقاليم',
+      categoryEn: 'Regional Terminal',
+      nearestStationId: nearestSt ? nearestSt.id : null,
+      lat: term.lat,
+      lng: term.lng,
+      aliases: [...new Set([term.nameAr, term.nameEn, ...(term.routesSummaryAr ? [term.routesSummaryAr] : []), ...routeWords])],
+      descriptionAr: term.routesSummaryAr ? `يخدم: ${term.routesSummaryAr}` : '',
+      descriptionEn: term.nearestTransit || ''
+    });
+  }
+}
 export function searchStationsAndPlaces(query, lang = 'en', categoryFilter = 'all') {
   const isFilterActive = categoryFilter && categoryFilter !== 'all';
 

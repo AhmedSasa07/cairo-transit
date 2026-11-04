@@ -29,6 +29,7 @@ import { STATIONS, METRO_LINES, OPERATING_HOURS, SCHEDULE_INFO } from '../data/m
 import { MAP_STATION_COORDS, MAP_LINES_PATHS } from '../data/mapCoordinates.js';
 import { findNearestStations, formatDistance, estimateWalkMinutes, getDistanceKm, normalizeArabic } from '../utils/geo.js';
 import PressableScale from './PressableScale.jsx';
+import TransitModeIcon from './TransitModeIcon.jsx';
 import { haptics } from '../utils/haptics.js';
 import { serializeMapStationCoords, copyMapCoordsToClipboard } from '../utils/mapCoordsSerializer.js';
 
@@ -323,16 +324,16 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {/* LRT Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
           <>
-            <g transform="translate(1500, 48)">
+            <g transform="translate(1420, 110)">
               <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#9e1b33" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'LRT • العاشر من رمضان' : 'LRT • 10th of Ramadan'}
+                {isAr ? 'LRT • مدينة المعرفة' : 'LRT • Knowledge City'}
               </text>
             </g>
-            <g transform="translate(1415, 430)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#9e1b33" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'LRT • مدينة الفنون' : 'LRT • City of Arts'}
+            <g transform="translate(1463, 655)">
+              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#ecc15f" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#1E293B" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'تبادل • مدينة الفنون' : 'Hub • City of Arts'}
               </text>
             </g>
           </>
@@ -340,12 +341,20 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
 
         {/* Monorail East Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
-          <g transform="translate(715, 480)">
-            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
-            <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-              {isAr ? 'مونوريل شرق • الاستاد' : 'Mono East • Stadium'}
-            </text>
-          </g>
+          <>
+            <g transform="translate(715, 480)">
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'مونوريل شرق • الاستاد' : 'Mono East • Stadium'}
+              </text>
+            </g>
+            <g transform="translate(1520, 580)">
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'مونوريل • مدينة العدالة' : 'Mono • Justice City'}
+              </text>
+            </g>
+          </>
         )}
 
         {/* Monorail West Badges */}
@@ -1437,91 +1446,98 @@ export default function InteractiveMap({
                     haptics.selection();
                     setActiveLineFilter('line1');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'line1'
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#00518e] text-white shadow-sm'
+                      : 'text-[#00518e] hover:bg-blue-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? '1 أزرق' : 'L1'}
+                  <TransitModeIcon mode="metro" lineId="line1" size="xs" withBackdrop={activeLineFilter === 'line1'} />
+                  <span>{isAr ? 'الخط الأول' : 'M1'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('line2');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'line2'
-                      ? 'bg-red-600 text-white shadow-sm'
-                      : 'text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#c13038] text-white shadow-sm'
+                      : 'text-[#c13038] hover:bg-red-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? '2 أحمر' : 'L2'}
+                  <TransitModeIcon mode="metro" lineId="line2" size="xs" withBackdrop={activeLineFilter === 'line2'} />
+                  <span>{isAr ? 'الخط الثانى' : 'M2'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('line3');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'line3'
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#009f87] text-white shadow-sm'
+                      : 'text-[#009f87] hover:bg-emerald-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? '3 أخضر' : 'L3'}
+                  <TransitModeIcon mode="metro" lineId="line3" size="xs" withBackdrop={activeLineFilter === 'line3'} />
+                  <span>{isAr ? 'الخط الثالث' : 'M3'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('lrt');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'lrt'
-                      ? 'bg-[#06B6D4] text-white shadow-sm'
-                      : 'text-[#06B6D4] hover:bg-cyan-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#9e1b33] text-white shadow-sm'
+                      : 'text-[#9e1b33] hover:bg-rose-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? 'LRT العاصمة' : 'LRT'}
+                  <TransitModeIcon mode="lrt" lineId="lrt" size="xs" withBackdrop={activeLineFilter === 'lrt'} />
+                  <span>{isAr ? 'القطار الخفيف LRT' : 'LRT'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('monorail_east');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'monorail_east'
-                      ? 'bg-[#EA580C] text-white shadow-sm'
-                      : 'text-[#EA580C] hover:bg-orange-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#009ca6] text-white shadow-sm'
+                      : 'text-[#009ca6] hover:bg-teal-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? 'مونوريل شرق' : 'Mono East'}
+                  <TransitModeIcon mode="monorail_east" size="xs" withBackdrop={activeLineFilter === 'monorail_east'} />
+                  <span>{isAr ? 'مونوريل شرق' : 'East Monorail'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('monorail_west');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'monorail_west'
-                      ? 'bg-[#D97706] text-white shadow-sm'
-                      : 'text-[#D97706] hover:bg-amber-50 dark:hover:bg-[#1E1E24]'
+                      ? 'bg-[#9b2521] text-white shadow-sm'
+                      : 'text-[#9b2521] hover:bg-rose-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? 'مونوريل غرب' : 'Mono West'}
+                  <TransitModeIcon mode="monorail_west" size="xs" withBackdrop={activeLineFilter === 'monorail_west'} />
+                  <span>{isAr ? 'مونوريل غرب' : 'West Monorail'}</span>
                 </PressableScale>
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('brt');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5 ${
                     activeLineFilter === 'brt'
                       ? 'bg-[#8B5CF6] text-white shadow-sm'
                       : 'text-[#8B5CF6] hover:bg-purple-50 dark:hover:bg-[#1E1E24]'
                   }`}
                 >
-                  {isAr ? 'BRT الترددي' : 'BRT'}
+                  <TransitModeIcon mode="brt" size="xs" withBackdrop={activeLineFilter === 'brt'} />
+                  <span>{isAr ? 'ترددي BRT' : 'BRT'}</span>
                 </PressableScale>
               </div>
 

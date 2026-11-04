@@ -28,6 +28,7 @@ import { calculateTicketPrice } from '../utils/routing.js';
 import SubscriptionCalculator from './SubscriptionCalculator.jsx';
 import SmartSavingsCalculator from './SmartSavingsCalculator.jsx';
 import PressableScale from './PressableScale.jsx';
+import TransitModeIcon from './TransitModeIcon.jsx';
 import { haptics } from '../utils/haptics.js';
 
 export default function TicketGuide({ lang, t }) {
@@ -184,11 +185,11 @@ export default function TicketGuide({ lang, t }) {
                 isAr ? 'font-cairo tracking-normal' : 'font-space'
               } ${
                 selectedTransitMode === 'metro'
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-[#00518e] text-white shadow-sm'
                   : 'text-slate-600 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Train className="w-3.5 h-3.5 flex-shrink-0" />
+              <TransitModeIcon mode="metro" size="xs" withBackdrop={selectedTransitMode === 'metro'} />
               <span>{isAr ? 'المترو' : 'Metro'}</span>
             </PressableScale>
 
@@ -202,11 +203,11 @@ export default function TicketGuide({ lang, t }) {
                 isAr ? 'font-cairo tracking-normal' : 'font-space'
               } ${
                 selectedTransitMode === 'lrt'
-                  ? 'bg-cyan-600 text-white shadow-sm'
+                  ? 'bg-[#9e1b33] text-white shadow-sm'
                   : 'text-slate-600 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Zap className="w-3.5 h-3.5 flex-shrink-0" />
+              <TransitModeIcon mode="lrt" size="xs" withBackdrop={selectedTransitMode === 'lrt'} />
               <span>{isAr ? 'قطار LRT' : 'LRT Train'}</span>
             </PressableScale>
 
@@ -220,11 +221,11 @@ export default function TicketGuide({ lang, t }) {
                 isAr ? 'font-cairo tracking-normal' : 'font-space'
               } ${
                 selectedTransitMode === 'monorail'
-                  ? 'bg-purple-600 text-white shadow-sm'
+                  ? 'bg-[#009ca6] text-white shadow-sm'
                   : 'text-slate-600 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Layers className="w-3.5 h-3.5 flex-shrink-0" />
+              <TransitModeIcon mode="monorail" size="xs" withBackdrop={selectedTransitMode === 'monorail'} />
               <span>{isAr ? 'المونوريل' : 'Monorail'}</span>
             </PressableScale>
 
@@ -238,11 +239,11 @@ export default function TicketGuide({ lang, t }) {
                 isAr ? 'font-cairo tracking-normal' : 'font-space'
               } ${
                 selectedTransitMode === 'brt'
-                  ? 'bg-amber-600 text-white shadow-sm'
+                  ? 'bg-[#8B5CF6] text-white shadow-sm'
                   : 'text-slate-600 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Bus className="w-3.5 h-3.5 flex-shrink-0" />
+              <TransitModeIcon mode="brt" size="xs" withBackdrop={selectedTransitMode === 'brt'} />
               <span>{isAr ? 'ترددي BRT' : 'BRT Bus'}</span>
             </PressableScale>
 
