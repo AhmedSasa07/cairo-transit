@@ -46,9 +46,9 @@ export default function NearMeModeModal({
       descEn: 'East Nile Monorail (Stadium - New Cairo - Capital)',
       badgeAr: 'المونوريل',
       badgeEn: 'Monorail',
-      badgeColor: 'bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800/60',
-      iconBg: 'bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800/60',
-      activeBorder: 'hover:border-purple-500/60 focus:border-purple-500'
+      badgeColor: 'bg-orange-100 text-orange-700 dark:bg-orange-950/80 dark:text-orange-300 border-orange-200 dark:border-orange-800/60',
+      iconBg: 'bg-orange-50 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800/60',
+      activeBorder: 'hover:border-orange-500/60 focus:border-orange-500'
     },
     {
       id: 'lrt',
@@ -72,9 +72,9 @@ export default function NearMeModeModal({
       descEn: 'Ring Road Bus Rapid Transit',
       badgeAr: 'ترددي BRT',
       badgeEn: 'BRT Express',
-      badgeColor: 'bg-amber-100 text-amber-700 dark:bg-amber-950/80 dark:text-amber-300 border-amber-200 dark:border-amber-800/60',
-      iconBg: 'bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800/60',
-      activeBorder: 'hover:border-amber-500/60 focus:border-amber-500'
+      badgeColor: 'bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800/60',
+      iconBg: 'bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800/60',
+      activeBorder: 'hover:border-purple-500/60 focus:border-purple-500'
     },
     {
       id: 'all',

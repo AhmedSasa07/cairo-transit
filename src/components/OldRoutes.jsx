@@ -36,7 +36,7 @@ import {
 } from 'lucide-react';
 import { STATIONS, METRO_LINES, POPULAR_TRIPS } from '../data/metroData.js';
 import { TOP_EGYPT_PLACES, CATEGORY_METADATA } from '../data/egyptPlaces.js';
-import { findMultipleRoutes } from '../utils/routing.js';
+import { findMultipleRoutes, getTripDescription } from '../utils/routing.js';
 import { searchStationsAndPlaces, parseCoordinates, formatDistance, findNearestStations } from '../utils/geo.js';
 import ShareTripModal from './ShareTripModal.jsx';
 import MetroStatTile from './MetroStatTile.jsx';
@@ -166,59 +166,8 @@ function getTransferDisplay(transfersCount, lang) {
   return `${transfersCount} Transfers`;
 }
 
-// Plain-language trip description (First item directly under From-To card)
-function getTripDescription(route, lang) {
-  if (!route || !route.legs || route.legs.length === 0) return '';
-  const isAr = lang === 'ar';
-
-  if (route.legs.length === 1) {
-    const leg = route.legs[0];
-    const lineName = isAr ? leg.lineInfo.nameAr : leg.lineInfo.nameEn;
-    const dir = isAr
-      ? (leg.direction?.nameAr || leg.directionAr || leg.toStation?.nameAr || '')
-      : (leg.direction?.nameEn || leg.directionEn || leg.toStation?.nameEn || '');
-    return isAr
-      ? `هتركب ${lineName} اتجاه ${dir} لحد وجهتك مباشرةً بدون أي تبديل.`
-      : `Take ${lineName} towards ${dir} directly to your destination without transfers.`;
-  }
-
-  if (route.legs.length === 2) {
-    const leg0 = route.legs[0];
-    const leg1 = route.legs[1];
-    const line0 = isAr ? leg0.lineInfo.shortNameAr : leg0.lineInfo.shortNameEn;
-    const dir0 = isAr
-      ? (leg0.direction?.nameAr || leg0.directionAr || leg0.toStation?.nameAr || '')
-      : (leg0.direction?.nameEn || leg0.directionEn || leg0.toStation?.nameEn || '');
-    const xfer = isAr ? leg0.toStation?.nameAr : leg0.toStation?.nameEn;
-    const line1 = isAr ? leg1.lineInfo.shortNameAr : leg1.lineInfo.shortNameEn;
-    const dir1 = isAr
-      ? (leg1.direction?.nameAr || leg1.directionAr || leg1.toStation?.nameAr || '')
-      : (leg1.direction?.nameEn || leg1.directionEn || leg1.toStation?.nameEn || '');
-    return isAr
-      ? `هتركب ${line0} اتجاه ${dir0} وهتحوّل من ${xfer} للـ${line1} اتجاه ${dir1}.`
-      : `Take ${line0} towards ${dir0} and change at ${xfer} to ${line1} towards ${dir1}.`;
-  }
-
-  // 3 or more legs (2+ transfers)
-  const leg0 = route.legs[0];
-  const line0 = isAr ? leg0.lineInfo.shortNameAr : leg0.lineInfo.shortNameEn;
-  const dir0 = isAr
-    ? (leg0.direction?.nameAr || leg0.directionAr || leg0.toStation?.nameAr || '')
-    : (leg0.direction?.nameEn || leg0.directionEn || leg0.toStation?.nameEn || '');
-  const xfer1 = isAr ? leg0.toStation?.nameAr : leg0.toStation?.nameEn;
-  const leg1 = route.legs[1];
-  const line1 = isAr ? leg1.lineInfo.shortNameAr : leg1.lineInfo.shortNameEn;
-  const xfer2 = isAr ? leg1.toStation?.nameAr : leg1.toStation?.nameEn;
-  const lastLeg = route.legs[route.legs.length - 1];
-  const lastLine = isAr ? lastLeg.lineInfo.shortNameAr : lastLeg.lineInfo.shortNameEn;
-  const lastDir = isAr
-    ? (lastLeg.direction?.nameAr || lastLeg.directionAr || lastLeg.toStation?.nameAr || '')
-    : (lastLeg.direction?.nameEn || lastLeg.directionEn || lastLeg.toStation?.nameEn || '');
-
-  return isAr
-    ? `هتركب ${line0} اتجاه ${dir0}، هتحوّل في ${xfer1} للـ${line1}، ثم في ${xfer2} للـ${lastLine} اتجاه ${lastDir}.`
-    : `Take ${line0} towards ${dir0}, transfer at ${xfer1} to ${line1}, then at ${xfer2} to ${lastLine} towards ${lastDir}.`;
-}
+// Plain-language trip description (First item directly under From-To card) - imported from routing.js
+export { getTripDescription };
 
 export default function OldRoutes({
   lang,

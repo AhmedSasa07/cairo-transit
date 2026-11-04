@@ -627,3 +627,120 @@ export function findRoute(originId, destinationId, options = {}) {
   const routes = findMultipleRoutes(originId, destinationId, options);
   return routes[0] || null;
 }
+
+// Clean Line Names for Natural-Language Trip Descriptions (No bracketed terminal ranges)
+export const CLEAN_LINE_NAMES = {
+  line1: { ar: 'الخط الأول', en: 'Line 1' },
+  line2: { ar: 'الخط الثاني', en: 'Line 2' },
+  line3: { ar: 'الخط الثالث', en: 'Line 3' },
+  monorail_east: { ar: 'مونوريل شرق النيل', en: 'East Nile Monorail' },
+  monorail_west: { ar: 'مونوريل غرب النيل', en: 'West Nile Monorail' },
+  lrt: { ar: 'القطار الكهربائي الخفيف (LRT)', en: 'LRT' },
+  brt: { ar: 'أتوبيس الترددي (BRT)', en: 'BRT' }
+};
+
+export function getCleanLineName(legOrLine, lang = 'ar') {
+  if (!legOrLine) return '';
+  const isAr = lang === 'ar';
+
+  if (typeof legOrLine === 'string') {
+    const trimmed = legOrLine.trim();
+    if (CLEAN_LINE_NAMES[trimmed]) {
+      return isAr ? CLEAN_LINE_NAMES[trimmed].ar : CLEAN_LINE_NAMES[trimmed].en;
+    }
+  }
+
+  const lineId = legOrLine.lineId || legOrLine.id || legOrLine.lineInfo?.id || '';
+  if (lineId && CLEAN_LINE_NAMES[lineId]) {
+    return isAr ? CLEAN_LINE_NAMES[lineId].ar : CLEAN_LINE_NAMES[lineId].en;
+  }
+
+  const raw = isAr
+    ? (legOrLine.nameAr || legOrLine.lineNameAr || legOrLine.lineInfo?.nameAr || legOrLine.shortNameAr || legOrLine.lineInfo?.shortNameAr || (typeof legOrLine === 'string' ? legOrLine : ''))
+    : (legOrLine.nameEn || legOrLine.lineNameEn || legOrLine.lineInfo?.nameEn || legOrLine.shortNameEn || legOrLine.lineInfo?.shortNameEn || (typeof legOrLine === 'string' ? legOrLine : ''));
+
+  if (!raw) return '';
+
+  if (/line\s*1|الخط الأول/i.test(raw)) return isAr ? 'الخط الأول' : 'Line 1';
+  if (/line\s*2|الخط الثاني/i.test(raw)) return isAr ? 'الخط الثاني' : 'Line 2';
+  if (/line\s*3|الخط الثالث/i.test(raw)) return isAr ? 'الخط الثالث' : 'Line 3';
+  if (/monorail.*east|شرق النيل/i.test(raw)) return isAr ? 'مونوريل شرق النيل' : 'East Nile Monorail';
+  if (/monorail.*west|غرب النيل/i.test(raw)) return isAr ? 'مونوريل غرب النيل' : 'West Nile Monorail';
+  if (/lrt|القطار.*الخفيف/i.test(raw)) return isAr ? 'القطار الكهربائي الخفيف (LRT)' : 'LRT';
+  if (/brt|الترددي/i.test(raw)) return isAr ? 'أتوبيس الترددي (BRT)' : 'BRT';
+
+  return raw
+    .replace(/\s*\([^)]*[-–:][^)]*\)/g, '')
+    .replace(/\s*\((Blue|Red|Green|الأزرق|الأحمر|الأخضر)\)/gi, '')
+    .trim();
+}
+
+export function formatLineArWithL(line) {
+  if (!line) return '';
+  if (line.startsWith('ال')) {
+    return 'لل' + line.slice(2);
+  }
+  if (line.startsWith('أتوبيس')) {
+    return 'للأتوبيس' + line.slice(6);
+  }
+  return 'لـ' + line;
+}
+
+export function getCleanDirectionName(leg, lang = 'ar') {
+  if (!leg) return '';
+  const isAr = lang === 'ar';
+  const rawDir = isAr
+    ? (leg.direction?.nameAr || leg.directionAr || leg.toStation?.nameAr || '')
+    : (leg.direction?.nameEn || leg.directionEn || leg.toStation?.nameEn || '');
+  if (!rawDir) return '';
+  return rawDir.replace(/\s*\((?:Line\s*\d+|الخط\s*[\d\wء-ي]+)\)/gi, '').trim();
+}
+
+export function getTripDescription(route, lang = 'ar') {
+  if (!route || !route.legs || route.legs.length === 0) return '';
+  const isAr = lang === 'ar';
+
+  if (route.legs.length === 1) {
+    const leg = route.legs[0];
+    const lineName = getCleanLineName(leg, lang);
+    const dir = getCleanDirectionName(leg, lang);
+    return isAr
+      ? `هتركب ${lineName} اتجاه ${dir} لحد وجهتك مباشرةً بدون أي تبديل.`
+      : `Take ${lineName} towards ${dir} directly to your destination without transfers.`;
+  }
+
+  if (route.legs.length === 2) {
+    const leg0 = route.legs[0];
+    const leg1 = route.legs[1];
+    const line0 = getCleanLineName(leg0, lang);
+    const dir0 = getCleanDirectionName(leg0, lang);
+    const xfer = isAr ? leg0.toStation?.nameAr : leg0.toStation?.nameEn;
+    const line1 = getCleanLineName(leg1, lang);
+    const dir1 = getCleanDirectionName(leg1, lang);
+    const line1TargetAr = formatLineArWithL(line1);
+
+    return isAr
+      ? `هتركب ${line0} اتجاه ${dir0} وهتحوّل من ${xfer} ${line1TargetAr} اتجاه ${dir1}.`
+      : `Take ${line0} towards ${dir0} and change at ${xfer} to ${line1} towards ${dir1}.`;
+  }
+
+  // 3 or more legs (2+ transfers)
+  const leg0 = route.legs[0];
+  const line0 = getCleanLineName(leg0, lang);
+  const dir0 = getCleanDirectionName(leg0, lang);
+
+  const transferParts = route.legs.slice(0, -1).map((leg, i) => {
+    const xferStation = isAr ? leg.toStation?.nameAr : leg.toStation?.nameEn;
+    const nextLeg = route.legs[i + 1];
+    const nextLine = getCleanLineName(nextLeg, lang);
+    const nextLineTargetAr = formatLineArWithL(nextLine);
+    return isAr ? `${xferStation} (${nextLineTargetAr})` : `${xferStation} (to ${nextLine})`;
+  });
+
+  const lastLeg = route.legs[route.legs.length - 1];
+  const lastDir = getCleanDirectionName(lastLeg, lang);
+
+  return isAr
+    ? `هتركب ${line0} اتجاه ${dir0}، وهتحوّل في: ${transferParts.join(' ثم ')}، وصولاً إلى محطتك اتجاه ${lastDir}.`
+    : `Take ${line0} towards ${dir0}, then transfer at: ${transferParts.join(', then ')}, reaching your destination towards ${lastDir}.`;
+}

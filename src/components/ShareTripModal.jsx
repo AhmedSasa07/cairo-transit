@@ -12,6 +12,7 @@ import { Share } from '@capacitor/share';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
+import { getTripDescription, getCleanLineName, getCleanDirectionName } from '../utils/routing.js';
 
 export default function ShareTripModal({ route, lang, t, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -24,45 +25,9 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
   const originName = isAr ? route.origin.nameAr : route.origin.nameEn;
   const destName = isAr ? route.destination.nameAr : route.destination.nameEn;
 
-  // Natural-language Trip Description matching RoutePlanner ("تفاصيل مشوارك: هتركب...")
-  const getTripDescription = () => {
-    if (!route.legs || route.legs.length === 0) return '';
-    if (route.legs.length === 1) {
-      const leg = route.legs[0];
-      const lineName = isAr ? leg.lineInfo.nameAr : leg.lineInfo.nameEn;
-      const dir = isAr ? (leg.direction?.nameAr || leg.toStation?.nameAr) : (leg.direction?.nameEn || leg.toStation?.nameEn);
-      return isAr
-        ? `هتركب ${lineName} اتجاه ${dir} لحد وجهتك مباشرةً بدون أي تبديل.`
-        : `Take ${lineName} towards ${dir} directly to your destination without transfers.`;
-    }
-    if (route.legs.length === 2) {
-      const leg0 = route.legs[0];
-      const leg1 = route.legs[1];
-      const line0 = isAr ? leg0.lineInfo.shortNameAr : leg0.lineInfo.shortNameEn;
-      const dir0 = isAr ? (leg0.direction?.nameAr || leg0.toStation?.nameAr) : (leg0.direction?.nameEn || leg0.toStation?.nameEn);
-      const xfer = isAr ? leg0.toStation?.nameAr : leg0.toStation?.nameEn;
-      const line1 = isAr ? leg1.lineInfo.shortNameAr : leg1.lineInfo.shortNameEn;
-      const dir1 = isAr ? (leg1.direction?.nameAr || leg1.toStation?.nameAr) : (leg1.direction?.nameEn || leg1.toStation?.nameEn);
-      return isAr
-        ? `هتركب ${line0} اتجاه ${dir0} وهتحوّل من ${xfer} للـ${line1} اتجاه ${dir1}.`
-        : `Take ${line0} towards ${dir0} and change at ${xfer} to ${line1} towards ${dir1}.`;
-    }
-    // 3 or more legs
-    const parts = route.legs.map((leg, idx) => {
-      const line = isAr ? leg.lineInfo.shortNameAr : leg.lineInfo.shortNameEn;
-      const dir = isAr ? (leg.direction?.nameAr || leg.toStation?.nameAr) : (leg.direction?.nameEn || leg.toStation?.nameEn);
-      if (idx === 0) {
-        return isAr ? `هتركب ${line} اتجاه ${dir}` : `Take ${line} towards ${dir}`;
-      }
-      const prevXfer = isAr ? route.legs[idx - 1].toStation?.nameAr : route.legs[idx - 1].toStation?.nameEn;
-      return isAr ? `وهتحوّل من ${prevXfer} للـ${line} اتجاه ${dir}` : `and change at ${prevXfer} to ${line} towards ${dir}`;
-    });
-    return isAr ? `${parts.join(' ')}.` : `${parts.join(', ')}.`;
-  };
-
   // Build the complete formatted WhatsApp / Text message (NO ASTERISKS)
   const buildTextMessage = () => {
-    const desc = getTripDescription();
+    const desc = getTripDescription(route, lang);
     const lines = [];
 
     lines.push(isAr
@@ -295,12 +260,8 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
 
     let curY = timelineY + 86;
     route.legs.forEach((leg, lIdx) => {
-      const legLineName = isAr
-        ? (leg.lineInfo?.shortNameAr || leg.lineInfo?.nameAr || leg.lineNameAr || '')
-        : (leg.lineInfo?.shortNameEn || leg.lineInfo?.nameEn || leg.lineNameEn || '');
-      const legDir = isAr
-        ? (leg.direction?.nameAr || leg.directionAr || leg.toStation?.nameAr || '')
-        : (leg.direction?.nameEn || leg.directionEn || leg.toStation?.nameEn || '');
+      const legLineName = getCleanLineName(leg, lang);
+      const legDir = getCleanDirectionName(leg, lang);
       const startSt = isAr ? leg.stations[0]?.nameAr : leg.stations[0]?.nameEn;
       const endSt = isAr ? leg.stations[leg.stations.length - 1]?.nameAr : leg.stations[leg.stations.length - 1]?.nameEn;
       const legCount = leg.stationCount || (leg.stations.length - 1);
