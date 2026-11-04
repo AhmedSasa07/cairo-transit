@@ -700,9 +700,9 @@ export function findRoute(originId, destinationId, options = {}) {
 
 // Clean Line Names for Natural-Language Trip Descriptions (No bracketed terminal ranges)
 export const CLEAN_LINE_NAMES = {
-  line1: { ar: 'الخط الأول', en: 'Line 1' },
-  line2: { ar: 'الخط الثاني', en: 'Line 2' },
-  line3: { ar: 'الخط الثالث', en: 'Line 3' },
+  line1: { ar: 'الخط الأول', en: 'M1' },
+  line2: { ar: 'الخط الثانى', en: 'M2' },
+  line3: { ar: 'الخط الثالث', en: 'M3' },
   monorail_east: { ar: 'مونوريل شرق النيل', en: 'East Nile Monorail' },
   monorail_west: { ar: 'مونوريل غرب النيل', en: 'West Nile Monorail' },
   lrt: { ar: 'القطار الكهربائي الخفيف (LRT)', en: 'LRT' },
@@ -731,9 +731,9 @@ export function getCleanLineName(legOrLine, lang = 'ar') {
 
   if (!raw) return '';
 
-  if (/line\s*1|الخط الأول/i.test(raw)) return isAr ? 'الخط الأول' : 'Line 1';
-  if (/line\s*2|الخط الثاني/i.test(raw)) return isAr ? 'الخط الثاني' : 'Line 2';
-  if (/line\s*3|الخط الثالث/i.test(raw)) return isAr ? 'الخط الثالث' : 'Line 3';
+  if (/line\s*1|m1|الخط الأول/i.test(raw)) return isAr ? 'الخط الأول' : 'M1';
+  if (/line\s*2|m2|الخط الثان/i.test(raw)) return isAr ? 'الخط الثانى' : 'M2';
+  if (/line\s*3|m3|الخط الثالث/i.test(raw)) return isAr ? 'الخط الثالث' : 'M3';
   if (/monorail.*east|شرق النيل/i.test(raw)) return isAr ? 'مونوريل شرق النيل' : 'East Nile Monorail';
   if (/monorail.*west|غرب النيل/i.test(raw)) return isAr ? 'مونوريل غرب النيل' : 'West Nile Monorail';
   if (/lrt|القطار.*الخفيف/i.test(raw)) return isAr ? 'القطار الكهربائي الخفيف (LRT)' : 'LRT';

@@ -30,6 +30,32 @@ import { findNearestStations, formatDistance, estimateWalkMinutes, getDistanceKm
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
 
+/**
+ * ============================================================================
+ * 🗺️ BACKGROUND TRANSIT MAP OVERLAY MANUAL CALIBRATION CONFIG
+ * ============================================================================
+ * Edit these values to manually calibrate and align the background transit map:
+ * - href: Path to the high-resolution map image
+ * - x: Horizontal offset in SVG units (increase to shift right, decrease to shift left)
+ * - y: Vertical offset in SVG units (increase to shift down, decrease to shift up)
+ * - width: Width of the background map bounding box in SVG units
+ * - height: Height of the background map bounding box in SVG units
+ * - opacity: Transparency level (e.g. 0.85 for crisp clarity)
+ * - preserveAspectRatio: 'none' (stretches to fill bounds 1:1) or 'xMidYMid meet'
+ * - filter: CSS filter string (e.g. 'none' or 'contrast(1.04) brightness(1.02)')
+ * ============================================================================
+ */
+export const MAP_OVERLAY_CONFIG = {
+  href: '/maps/cairo-network-map-2025-eon.png',
+  x: 0,
+  y: 0,
+  width: 1560,
+  height: 1040,
+  opacity: 0.85,
+  preserveAspectRatio: 'none',
+  filter: 'contrast(1.05) brightness(1.02)'
+};
+
 // Precomputed SVG polyline points string for high-speed zero-overhead rendering
 const PRECOMPUTED_POINTS = {
   line1: (MAP_LINES_PATHS.line1 || [])
@@ -119,37 +145,37 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         RIVER NILE • نهر النيل
       </text>
 
-      {/* Line 1 Polyline (Blue) */}
+      {/* Line 1 Polyline (#00518e Royal Blue) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
         <polyline
           points={PRECOMPUTED_POINTS.line1}
           fill="none"
-          stroke="#2563EB"
+          stroke="#00518e"
           strokeWidth="8.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       )}
 
-      {/* Line 2 Polyline (Red) */}
+      {/* Line 2 Polyline (#c13038 Red) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'line2') && (
         <polyline
           points={PRECOMPUTED_POINTS.line2}
           fill="none"
-          stroke="#DC2626"
+          stroke="#c13038"
           strokeWidth="8.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       )}
 
-      {/* Line 3 Polylines (Green) */}
+      {/* Line 3 Polylines (#009f87 Emerald Green) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'line3') && (
         <g>
           <polyline
             points={PRECOMPUTED_POINTS.line3_trunk}
             fill="none"
-            stroke="#10B981"
+            stroke="#009f87"
             strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -157,7 +183,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           <polyline
             points={PRECOMPUTED_POINTS.line3_branch_rod}
             fill="none"
-            stroke="#10B981"
+            stroke="#009f87"
             strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -165,7 +191,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           <polyline
             points={PRECOMPUTED_POINTS.line3_branch_cairo_univ}
             fill="none"
-            stroke="#10B981"
+            stroke="#009f87"
             strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -173,13 +199,13 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         </g>
       )}
 
-      {/* LRT Capital Train Polylines (Cyan #06B6D4) */}
+      {/* LRT Capital Train Polylines (#9e1b33 Crimson) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
         <g>
           <polyline
             points={PRECOMPUTED_POINTS.lrt_trunk}
             fill="none"
-            stroke="#06B6D4"
+            stroke="#9e1b33"
             strokeWidth="8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -187,7 +213,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           <polyline
             points={PRECOMPUTED_POINTS.lrt_branch_ramadan}
             fill="none"
-            stroke="#06B6D4"
+            stroke="#9e1b33"
             strokeWidth="8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -195,24 +221,24 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         </g>
       )}
 
-      {/* Monorail East Polyline (Orange #EA580C) */}
+      {/* Monorail East Polyline (#009ca6 Teal) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
         <polyline
           points={PRECOMPUTED_POINTS.monorail_east}
           fill="none"
-          stroke="#EA580C"
+          stroke="#009ca6"
           strokeWidth="8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       )}
 
-      {/* Monorail West Polyline (Amber #D97706) */}
+      {/* Monorail West Polyline (#9b2521 Dark Crimson) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
         <polyline
           points={PRECOMPUTED_POINTS.monorail_west}
           fill="none"
-          stroke="#D97706"
+          stroke="#9b2521"
           strokeWidth="8"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -238,15 +264,15 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
           <>
             <g transform="translate(880, 36)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#2563EB" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#00518e" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 1 • المرج الجديدة' : 'Line 1 • New El-Marg'}
+                {isAr ? 'الخط الأول • المرج الجديدة' : 'M1 • New El-Marg'}
               </text>
             </g>
             <g transform="translate(505, 1008)">
-              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#2563EB" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#00518e" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 1 • حلوان' : 'Line 1 • Helwan'}
+                {isAr ? 'الخط الأول • حلوان' : 'M1 • Helwan'}
               </text>
             </g>
           </>
@@ -256,15 +282,15 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {(activeLineFilter === 'all' || activeLineFilter === 'line2') && (
           <>
             <g transform="translate(440, 76)">
-              <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#DC2626" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#c13038" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 2 • شبرا الخيمة' : 'Line 2 • Shubra'}
+                {isAr ? 'الخط الثانى • شبرا الخيمة' : 'M2 • Shubra'}
               </text>
             </g>
             <g transform="translate(280, 892)">
-              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#DC2626" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#c13038" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 2 • المنيب' : 'Line 2 • El-Mounib'}
+                {isAr ? 'الخط الثانى • المنيب' : 'M2 • El-Mounib'}
               </text>
             </g>
           </>
@@ -274,15 +300,15 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {(activeLineFilter === 'all' || activeLineFilter === 'line3') && (
           <>
             <g transform="translate(1125, 304)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#10B981" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009f87" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 3 • عدلي منصور' : 'Line 3 • Adly Mansour'}
+                {isAr ? 'الخط الثالث • عدلي منصور' : 'M3 • Adly Mansour'}
               </text>
             </g>
             <g transform="translate(205, 166)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#10B981" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009f87" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط 3 • روض الفرج' : 'Line 3 • Rod El-Farag'}
+                {isAr ? 'الخط الثالث • روض الفرج' : 'M3 • Rod El-Farag'}
               </text>
             </g>
           </>
@@ -292,13 +318,13 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
           <>
             <g transform="translate(1500, 48)">
-              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#06B6D4" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#9e1b33" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
                 {isAr ? 'LRT • العاشر من رمضان' : 'LRT • 10th of Ramadan'}
               </text>
             </g>
             <g transform="translate(1415, 430)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#06B6D4" stroke="#FFFFFF" strokeWidth="2" />
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#9e1b33" stroke="#FFFFFF" strokeWidth="2" />
               <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
                 {isAr ? 'LRT • مدينة الفنون' : 'LRT • City of Arts'}
               </text>
@@ -309,7 +335,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {/* Monorail East Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
           <g transform="translate(715, 480)">
-            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#EA580C" stroke="#FFFFFF" strokeWidth="2" />
+            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
             <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
               {isAr ? 'مونوريل شرق • الاستاد' : 'Mono East • Stadium'}
             </text>
@@ -319,7 +345,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         {/* Monorail West Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
           <g transform="translate(80, 875)">
-            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#D97706" stroke="#FFFFFF" strokeWidth="2" />
+            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#9b2521" stroke="#FFFFFF" strokeWidth="2" />
             <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
               {isAr ? 'مونوريل غرب • 6 أكتوبر' : 'Mono West • 6th Oct'}
             </text>
@@ -364,7 +390,7 @@ const StationNode = React.memo(function StationNode({
 }) {
   const isInterchange = st.isInterchange;
   const primaryLine = st.lines[0];
-  const color = isInterchange ? '#C8102E' : METRO_LINES[primaryLine]?.color || '#E11D48';
+  const color = isInterchange ? '#ecc15f' : METRO_LINES[primaryLine]?.color || '#00518e';
 
   // Responsive inverse font & stroke scaling on zoom
   const z = Math.max(0.65, Math.min(4, zoomLevel || 1));
@@ -390,7 +416,7 @@ const StationNode = React.memo(function StationNode({
       }}
       className="cursor-pointer group"
     >
-      {/* Interchange Node */}
+      {/* Interchange Hub Node (#ecc15f Gold / Amber) */}
       {isInterchange ? (
         <g className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]'}>
           <circle
@@ -398,14 +424,14 @@ const StationNode = React.memo(function StationNode({
             cy={coord.y}
             r="12.5"
             fill="#FFFFFF"
-            stroke="#0F172A"
+            stroke="#ecc15f"
             strokeWidth="3.5"
           />
           <circle
             cx={coord.x}
             cy={coord.y}
             r="6"
-            fill="#C8102E"
+            fill="#ecc15f"
           />
         </g>
       ) : (
@@ -1452,16 +1478,17 @@ export default function InteractiveMap({
               WebkitBackfaceVisibility: 'hidden'
             }}
           >
-            {/* Optional Integrated Transit Map Background Overlay */}
+            {/* Optional Integrated Transit Map Background Overlay with Clean Calibration Config */}
             {showIntegratedOverlay && (
               <image
-                href="/maps/cairo-network-map-2025-eon.png"
-                x="0"
-                y="0"
-                width="1560"
-                height="1040"
-                preserveAspectRatio="xMidYMid slice"
-                opacity="0.65"
+                href={MAP_OVERLAY_CONFIG.href}
+                x={MAP_OVERLAY_CONFIG.x}
+                y={MAP_OVERLAY_CONFIG.y}
+                width={MAP_OVERLAY_CONFIG.width}
+                height={MAP_OVERLAY_CONFIG.height}
+                preserveAspectRatio={MAP_OVERLAY_CONFIG.preserveAspectRatio}
+                opacity={MAP_OVERLAY_CONFIG.opacity}
+                style={{ filter: MAP_OVERLAY_CONFIG.filter }}
                 className="pointer-events-none select-none transition-opacity duration-300"
               />
             )}

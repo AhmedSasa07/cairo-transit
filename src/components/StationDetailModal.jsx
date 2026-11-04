@@ -15,7 +15,10 @@ import {
   Copy,
   Check,
   AlertTriangle,
-  ArrowRightLeft
+  ArrowRightLeft,
+  Map,
+  Maximize2,
+  ExternalLink
 } from 'lucide-react';
 import { METRO_LINES, SCHEDULE_INFO, STATIONS } from '../data/metroData.js';
 import { getDistanceKm } from '../utils/geo.js';
@@ -95,6 +98,15 @@ const FACILITY_TRANSLATIONS_AR = {
   'Pedestrian Crossing': 'معبر مشاة آمن'
 };
 
+// Mobility Cairo 500m local neighborhood maps available for Line 3 stations
+const LOCAL_MAP_STATION_IDS = new Set([
+  'adly_mansour', 'el_haykestep', 'omar_ibn_el_khattab', 'qubaa', 'hesham_barakat',
+  'el_nozha', 'el_shams_club', 'alf_maskan', 'heliopolis', 'haroun',
+  'al_ahram', 'koleyet_el_banat', 'stadium', 'ard_el_maared', 'abbassiya',
+  'abdou_pasha', 'el_geish', 'bab_el_shaariya', 'attaba', 'nasser',
+  'maspero', 'safaa_hegazy', 'kit_kat'
+]);
+
 export default function StationDetailModal({
   station,
   lang,
@@ -104,8 +116,11 @@ export default function StationDetailModal({
   onSetDestination
 }) {
   const [copiedCoords, setCopiedCoords] = useState(false);
+  const [showFullLocalMap, setShowFullLocalMap] = useState(false);
 
   if (!station) return null;
+
+  const hasLocalMap = Boolean(station.id && LOCAL_MAP_STATION_IDS.has(station.id));
 
   const isAr = lang === 'ar';
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
@@ -270,6 +285,48 @@ export default function StationDetailModal({
               </button>
             </div>
           </div>
+
+          {/* Official Mobility Cairo 500m Local Neighborhood Map */}
+          {hasLocalMap && (
+            <div className="bg-slate-50 dark:bg-[#17171A] p-3.5 rounded-2xl border border-slate-200/60 dark:border-[#26262C] space-y-2.5">
+              <div className="flex items-center justify-between">
+                <h4 className={`text-[10px] ${isAr ? 'font-cairo tracking-normal' : 'font-mono uppercase tracking-[0.14em]'} text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 font-bold`}>
+                  <Map className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span>{isAr ? 'خريطة النطاق الجغرافي 500 م (Mobility Cairo)' : '500m Neighborhood Map (Mobility Cairo)'}</span>
+                </h4>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-500/20">
+                  {isAr ? 'الخط الثالث M3' : 'Line 3 M3'}
+                </span>
+              </div>
+
+              {/* Clickable Map Thumbnail Preview */}
+              <div
+                onClick={() => {
+                  haptics.light();
+                  setShowFullLocalMap(true);
+                }}
+                className="relative rounded-xl overflow-hidden border border-slate-200/80 dark:border-[#26262C] cursor-pointer group bg-slate-900 aspect-video flex items-center justify-center shadow-xs"
+              >
+                <img
+                  src={`/assets/local_maps/${station.id}.png`}
+                  alt={`${station.nameEn} 500m area map`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-95 group-hover:opacity-100"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2.5">
+                  <div className="flex items-center justify-between text-white">
+                    <span className="text-xs font-cairo font-bold flex items-center gap-1.5">
+                      <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
+                      {isAr ? 'اضغط لتكبير الخريطة بالتفصيل' : 'Tap to expand 500m map'}
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-md">
+                      HD 500m
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Transfer Physical Proximity & Interchange Intelligence (Addresses User Request) */}
           {(station.isInterchange || station.transferNotice || counterpartStations.length > 0) && (
@@ -483,6 +540,68 @@ export default function StationDetailModal({
           </PressableScale>
         </div>
       </div>
+
+      {/* Full-Screen 500m Local Map Lightbox Viewer */}
+      {showFullLocalMap && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex flex-col p-2 sm:p-4 animate-fade-in"
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowFullLocalMap(false);
+          }}
+        >
+          {/* Lightbox Top Header */}
+          <div className="flex items-center justify-between p-2 text-white flex-shrink-0" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center gap-2">
+              <Map className="w-5 h-5 text-emerald-400" />
+              <div>
+                <h4 className="text-sm sm:text-base font-bold font-space text-white">
+                  {isAr ? station.nameAr : station.nameEn}
+                </h4>
+                <p className="text-[11px] text-emerald-300 font-cairo">
+                  {isAr ? 'خريطة النطاق الجغرافي 500 م الرسمية • Mobility Cairo' : 'Official 500m Neighborhood Map • Mobility Cairo'}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={`/assets/local_maps/${station.id}.png`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => haptics.light()}
+                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all text-xs font-mono flex items-center gap-1 active:scale-95"
+                title={isAr ? 'فتح الصورة بحجمها الأصلي' : 'Open Full Image'}
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span className="hidden sm:inline">{isAr ? 'الأصل' : 'Full HD'}</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  haptics.light();
+                  setShowFullLocalMap(false);
+                }}
+                className="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white transition-all active:scale-95"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Lightbox Image Container with Touch Pan / Zoom */}
+          <div
+            className="flex-1 flex items-center justify-center overflow-auto p-2 touch-pinch-zoom"
+            onClick={e => e.stopPropagation()}
+          >
+            <img
+              src={`/assets/local_maps/${station.id}.png`}
+              alt={`${station.nameEn} 500m Local Area Map`}
+              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10 select-none"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

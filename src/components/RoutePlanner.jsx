@@ -227,6 +227,8 @@ export default function RoutePlanner({
   const [showToPicker, setShowToPicker] = useState(false);
   const [searchFrom, setSearchFrom] = useState('');
   const [searchTo, setSearchTo] = useState('');
+  const [selectedFromLandmark, setSelectedFromLandmark] = useState(null);
+  const [selectedToLandmark, setSelectedToLandmark] = useState(null);
 
   const [expandedLegs, setExpandedLegs] = useState({});
   const [copied, setCopied] = useState(false);
@@ -342,6 +344,10 @@ export default function RoutePlanner({
     const temp = fromStationId;
     setFromStationId(toStationId);
     setToStationId(temp);
+
+    const tempLm = selectedFromLandmark;
+    setSelectedFromLandmark(selectedToLandmark);
+    setSelectedToLandmark(tempLm);
   };
 
   // Check if current active route is saved in favorites
@@ -617,11 +623,17 @@ export default function RoutePlanner({
                 <div className="min-w-0 flex-1">
                   <p
                     className={`text-sm font-bold text-slate-900 dark:text-[#F4F4F5] truncate ${lang === 'ar' ? 'font-cairo' : 'font-space'}`}
-                    title={fromStation ? (lang === 'ar' ? fromStation.nameAr : fromStation.nameEn) : ''}
+                    title={selectedFromLandmark ? (lang === 'ar' ? selectedFromLandmark.nameAr : selectedFromLandmark.nameEn) : (fromStation ? (lang === 'ar' ? fromStation.nameAr : fromStation.nameEn) : '')}
                   >
-                    {fromStation ? (lang === 'ar' ? fromStation.nameAr : fromStation.nameEn) : t.routePlanner.selectStation}
+                    {selectedFromLandmark
+                      ? (lang === 'ar' ? selectedFromLandmark.nameAr : selectedFromLandmark.nameEn)
+                      : (fromStation ? (lang === 'ar' ? fromStation.nameAr : fromStation.nameEn) : t.routePlanner.selectStation)}
                   </p>
-                  {fromStation && (
+                  {selectedFromLandmark && fromStation ? (
+                    <p className="text-[10.5px] font-bold text-emerald-600 dark:text-[#2DD881] font-cairo truncate mt-0.5">
+                      📍 {lang === 'ar' ? `الانطلاق عبر محطة: ${fromStation.nameAr}` : `Boarding via: ${fromStation.nameEn}`}
+                    </p>
+                  ) : fromStation ? (
                     <div className="flex items-center gap-1 mt-0.5 flex-wrap">
                       {fromStation.lines.map(l => (
                         <span
@@ -633,7 +645,7 @@ export default function RoutePlanner({
                         </span>
                       ))}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -685,11 +697,17 @@ export default function RoutePlanner({
                 <div className="min-w-0 flex-1">
                   <p
                     className={`text-sm font-bold text-slate-900 dark:text-[#F4F4F5] truncate ${lang === 'ar' ? 'font-cairo' : 'font-space'}`}
-                    title={toStation ? (lang === 'ar' ? toStation.nameAr : toStation.nameEn) : ''}
+                    title={selectedToLandmark ? (lang === 'ar' ? selectedToLandmark.nameAr : selectedToLandmark.nameEn) : (toStation ? (lang === 'ar' ? toStation.nameAr : toStation.nameEn) : '')}
                   >
-                    {toStation ? (lang === 'ar' ? toStation.nameAr : toStation.nameEn) : t.routePlanner.selectStation}
+                    {selectedToLandmark
+                      ? (lang === 'ar' ? selectedToLandmark.nameAr : selectedToLandmark.nameEn)
+                      : (toStation ? (lang === 'ar' ? toStation.nameAr : toStation.nameEn) : t.routePlanner.selectStation)}
                   </p>
-                  {toStation && (
+                  {selectedToLandmark && toStation ? (
+                    <p className="text-[10.5px] font-bold text-rose-600 dark:text-[#FF4A1C] font-cairo truncate mt-0.5">
+                      📍 {lang === 'ar' ? `المحطة المستهدفة: ${toStation.nameAr}` : `Alighting at: ${toStation.nameEn}`}
+                    </p>
+                  ) : toStation ? (
                     <div className="flex items-center gap-1 mt-0.5 flex-wrap">
                       {toStation.lines.map(l => (
                         <span
@@ -701,7 +719,7 @@ export default function RoutePlanner({
                         </span>
                       ))}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -1207,6 +1225,28 @@ export default function RoutePlanner({
               })}
             </div>
           </AppleCard>
+
+          {/* Origin First-Mile Landmark Access (if origin is a landmark) */}
+          {selectedFromLandmark && fromStation && (
+            <LandmarkNavigationCard
+              type="origin"
+              landmark={selectedFromLandmark}
+              station={fromStation}
+              lang={lang}
+              t={t}
+            />
+          )}
+
+          {/* Destination Last-Mile Landmark Navigation (if destination is a landmark) */}
+          {selectedToLandmark && toStation && (
+            <LandmarkNavigationCard
+              type="destination"
+              landmark={selectedToLandmark}
+              station={toStation}
+              lang={lang}
+              t={t}
+            />
+          )}
         </div>
       )}
 
@@ -1218,8 +1258,9 @@ export default function RoutePlanner({
           searchQuery={searchFrom}
           setSearchQuery={setSearchFrom}
           selectedId={fromStationId}
-          onSelect={(st) => {
+          onSelect={(st, lm) => {
             setFromStationId(st.id);
+            setSelectedFromLandmark(lm || null);
             setShowFromPicker(false);
           }}
           onClose={() => setShowFromPicker(false)}
@@ -1236,8 +1277,9 @@ export default function RoutePlanner({
           searchQuery={searchTo}
           setSearchQuery={setSearchTo}
           selectedId={toStationId}
-          onSelect={(st) => {
+          onSelect={(st, lm) => {
             setToStationId(st.id);
+            setSelectedToLandmark(lm || null);
             setShowToPicker(false);
           }}
           onClose={() => setShowToPicker(false)}
@@ -1690,7 +1732,7 @@ function StationSearchPickerModal({
     return list;
   }, [searchResults.stations, activeLineFilter]);
 
-  const handleStationClick = (st) => {
+  const handleStationClick = (st, lm = null) => {
     if (!st) return;
     if (st.underConstruction && !st.allowSimulation) {
       haptics.warning();
@@ -1703,7 +1745,7 @@ function StationSearchPickerModal({
       return;
     }
     haptics.select();
-    onSelect(st);
+    onSelect(st, lm);
   };
 
   // Fast 1-tap popular hubs (Cairo font, no monospace)
@@ -1718,17 +1760,17 @@ function StationSearchPickerModal({
     { id: 'giza', nameEn: 'Giza Station', nameAr: 'محطة الجيزة', line: 'line2' }
   ];
 
-  // Clean, non-clipped filter tabs with crisp labels
+  // Clean, non-clipped filter tabs with exact user-specified transit colors and line names
   const filterTabs = [
     { id: 'all', labelEn: 'All', labelAr: 'الكل' },
-    { id: 'line1', labelEn: 'Line 1', labelAr: 'الخط 1', color: '#2563EB' },
-    { id: 'line2', labelEn: 'Line 2', labelAr: 'الخط 2', color: '#DC2626' },
-    { id: 'line3', labelEn: 'Line 3', labelAr: 'الخط 3', color: '#10B981' },
-    { id: 'interchange', labelEn: 'Hubs', labelAr: 'محطات تبادلية', color: '#F59E0B' },
-    { id: 'monorail_east', labelEn: 'East Monorail', labelAr: 'مونوريل شرق', color: '#EA580C' },
-    { id: 'monorail_west', labelEn: 'West Monorail', labelAr: 'مونوريل غرب', color: '#D97706' },
-    { id: 'lrt', labelEn: 'LRT', labelAr: 'القطار LRT', color: '#06B6D4' },
-    { id: 'brt', labelEn: 'BRT', labelAr: 'حافلات BRT', color: '#EAB308' }
+    { id: 'line1', labelEn: 'M1', labelAr: 'الخط الأول', color: '#00518e' },
+    { id: 'line2', labelEn: 'M2', labelAr: 'الخط الثانى', color: '#c13038' },
+    { id: 'line3', labelEn: 'M3', labelAr: 'الخط الثالث', color: '#009f87' },
+    { id: 'interchange', labelEn: 'Hubs', labelAr: 'محطات تبادلية', color: '#ecc15f' },
+    { id: 'monorail_east', labelEn: 'East Monorail', labelAr: 'مونوريل شرق', color: '#009ca6' },
+    { id: 'monorail_west', labelEn: 'West Monorail', labelAr: 'مونوريل غرب', color: '#9b2521' },
+    { id: 'lrt', labelEn: 'LRT', labelAr: 'القطار LRT', color: '#9e1b33' },
+    { id: 'brt', labelEn: 'BRT', labelAr: 'حافلات BRT', color: '#F59E0B' }
   ];
 
   // Egypt Top Places Categories Filter Tabs
@@ -1799,7 +1841,7 @@ function StationSearchPickerModal({
                   if (displayedStations.length > 0) {
                     handleStationClick(displayedStations[0]);
                   } else if (searchResults.landmarks.length > 0 && searchResults.landmarks[0].station) {
-                    handleStationClick(searchResults.landmarks[0].station);
+                    handleStationClick(searchResults.landmarks[0].station, searchResults.landmarks[0]);
                   }
                 } else if (e.key === 'Escape') {
                   e.preventDefault();
@@ -2053,7 +2095,7 @@ function StationSearchPickerModal({
                   return (
                     <button
                       key={lm.id || idx}
-                      onClick={() => handleStationClick(lm.station)}
+                      onClick={() => handleStationClick(lm.station, lm)}
                       className="w-full text-start p-2.5 rounded-xl hover:bg-white dark:hover:bg-[#1E1E23] flex items-center justify-between select-none touch-manipulation tap-transparent active:scale-[0.98] transition-colors group shadow-2xs border border-transparent hover:border-slate-200/60 dark:hover:border-[#2B2B32]"
                     >
                       <div className="min-w-0 flex-1 pe-2">
