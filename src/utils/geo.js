@@ -1,4 +1,4 @@
-import { STATIONS, CAIRO_LANDMARKS } from '../data/metroData.js';
+import { STATIONS, METRO_LINES, CAIRO_LANDMARKS } from '../data/metroData.js';
 import { TOP_EGYPT_PLACES, CATEGORY_METADATA } from '../data/egyptPlaces.js';
 
 export { TOP_EGYPT_PLACES, CATEGORY_METADATA };
@@ -170,6 +170,16 @@ export function searchStationsAndPlaces(query, lang = 'en', categoryFilter = 'al
     else if (st.aliasesAr?.some(a => normalizeArabic(a).includes(qNormAr))) score = 12;
     // Landmark association match
     else if (st.landmarks?.some(l => l.toLowerCase().includes(q)) || st.landmarksAr?.some(l => normalizeArabic(l).includes(qNormAr))) score = 20;
+    // Transit mode / network name match (e.g. LRT, Monorail, BRT, Metro)
+    else if (st.lines?.some(l => {
+      const lineData = METRO_LINES[l];
+      if (!lineData) return false;
+      const mode = (lineData.mode || '').toLowerCase();
+      const lNameEn = (lineData.nameEn || '').toLowerCase();
+      const lNameAr = lineData.nameAr ? normalizeArabic(lineData.nameAr) : '';
+      const sNameAr = lineData.shortNameAr ? normalizeArabic(lineData.shortNameAr) : '';
+      return l.toLowerCase() === q || mode === q || lNameEn.includes(q) || lNameAr.includes(qNormAr) || sNameAr.includes(qNormAr);
+    })) score = 25;
 
     return { station: st, score };
   }).filter(item => item.score < 999);

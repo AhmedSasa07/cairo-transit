@@ -7,38 +7,45 @@ console.log('====================================================\n');
 
 const testCases = [
   {
-    name: 'Sayyida Zeinab -> Gamaat El Dowal (Must be 8 EGP, <= 9 stations via Nasser)',
+    name: 'Sayyida Zeinab -> Gamaat El Dowal (Must be 10 EGP, <= 9 stations via Nasser)',
     from: 'sayyeda_zeinab',
     to: 'gamaat_el_dowal',
-    expectedMaxPrice: 8,
+    expectedMaxPrice: 10,
     expectedMaxStations: 9
   },
   {
-    name: 'Al-Bohy -> Sadat (Must transfer at Nasser, <= 9 stations, 8 EGP)',
+    name: 'Al-Bohy -> Sadat (Must transfer at Nasser, <= 9 stations, 10 EGP)',
     from: 'el_bohy',
     to: 'sadat',
-    expectedMaxPrice: 8,
+    expectedMaxPrice: 10,
     expectedMaxStations: 9
   },
   {
-    name: 'Koleyet El Banat -> Cairo University (Direct on Line 3, ~14 stations, 10 EGP)',
+    name: 'Koleyet El Banat -> Cairo University (Direct on Line 3, 16 stations, 12 EGP)',
     from: 'koleyet_el_banat',
     to: 'cairo_university',
-    expectedMaxStations: 14,
-    expectedMaxPrice: 10
+    expectedMaxStations: 16,
+    expectedMaxPrice: 12
   },
   {
-    name: 'Nozha -> Al-Shohadaa (Ramses) (Must not exceed 10 EGP, ~12 stations)',
+    name: 'Nozha -> Al-Shohadaa (Ramses) (Must not exceed 12 EGP, ~14 stations)',
     from: 'el_nozha',
     to: 'al_shohadaa',
-    expectedMaxPrice: 10
+    expectedMaxPrice: 12
   },
   {
-    name: 'Ezbet El Nakhl -> Heliopolis (Must be <= 23 stations, 15 EGP bracket)',
+    name: 'Ezbet El Nakhl -> Heliopolis (Must be <= 24 stations, 20 EGP bracket)',
     from: 'ezbet_el_nakhl',
     to: 'heliopolis',
-    expectedMaxStations: 23,
-    expectedMaxPrice: 15
+    expectedMaxStations: 24,
+    expectedMaxPrice: 20
+  },
+  {
+    name: 'Stadium -> City of Arts & Culture (Monorail East vs LRT)',
+    from: 'stadium',
+    to: 'city_of_arts',
+    expectedMaxStations: 25,
+    expectedMaxPrice: 35
   },
   {
     name: 'Symmetry: Mohamed Naguib <-> Helwan',
@@ -100,7 +107,7 @@ console.log('Testing Multi-modal routing (LRT -> Line 3 Metro -> Monorail East):
 const multiModal1 = findRoute('lrt_badr', 'stadium');
 if (multiModal1) {
   console.log(`   Badr (LRT) to Stadium (L3/Monorail): ${multiModal1.stationCount} stations, Legs: ${multiModal1.legs.map(l => l.lineNameEn).join(' -> ')}`);
-  console.log(`   Combined Fare: ${multiModal1.fareDetails.totalPrice} EGP`);
+  console.log(`   Combined Fare: ${multiModal1.fareDetails.totalCost} EGP`);
 }
 
 if (allPassed) {

@@ -25,10 +25,10 @@ export default function SmartSavingsCalculator({ lang, t }) {
 
   const isAr = lang === 'ar';
 
-  // Map zone to ticket price
+  // Map zone to ticket price (Official Mobility Cairo Tariffs 2026)
   const zonePricing = {
-    zone1: { single: 8, nameEn: 'Zone 1 (1 - 9 St)', nameAr: 'منطقة 1 (1 - 9 محطات)' },
-    zone2: { single: 10, nameEn: 'Zone 2 (10 - 16 St)', nameAr: 'منطقة 2 (10 - 16 محطة)' },
+    zone1: { single: 10, nameEn: 'Zone 1 (1 - 9 St)', nameAr: 'منطقة 1 (1 - 9 محطات)' },
+    zone2: { single: 12, nameEn: 'Zone 2 (10 - 16 St)', nameAr: 'منطقة 2 (10 - 16 محطة)' },
     zone3: { single: 15, nameEn: 'Zone 3 (17 - 23 St)', nameAr: 'منطقة 3 (17 - 23 محطة)' },
     zone4: { single: 20, nameEn: 'Zone 4 (24+ St / All)', nameAr: 'منطقة 4 (كافة الخطوط)' }
   };

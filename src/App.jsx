@@ -24,8 +24,8 @@ export default function App() {
   });
 
   const [activeTab, setActiveTab] = useState('route'); // 'route', 'network', 'map', 'nearest', 'tickets'
-  const [preselectedOrigin, setPreselectedOrigin] = useState('al_shohadaa');
-  const [preselectedDestination, setPreselectedDestination] = useState('opera');
+  const [preselectedOrigin, setPreselectedOrigin] = useState(null);
+  const [preselectedDestination, setPreselectedDestination] = useState(null);
   const [modalStation, setModalStation] = useState(null);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [showPdfModal, setShowPdfModal] = useState(false);
@@ -79,23 +79,21 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className={`flex-1 ${activeTab === 'map' ? 'w-full max-w-none p-0 overflow-hidden relative flex flex-col' : 'max-w-xl mx-auto w-full px-3 sm:px-4 pt-3 sm:pt-4'}`}>
-        {activeTab === 'route' && (
-          <div className="animate-fade-in">
-            <RoutePlanner
-              lang={lang}
-              t={t}
-              preselectedOrigin={preselectedOrigin}
-              preselectedDestination={preselectedDestination}
-              onClearPreselected={() => {
-                setPreselectedOrigin(null);
-                setPreselectedDestination(null);
-              }}
-              onSelectStationForModal={setModalStation}
-              onOpenPdfMap={() => setShowPdfModal(true)}
-              nearestGpsStation={nearestGpsStation}
-            />
-          </div>
-        )}
+        <div className={activeTab === 'route' ? 'block animate-fade-in' : 'hidden'}>
+          <RoutePlanner
+            lang={lang}
+            t={t}
+            preselectedOrigin={preselectedOrigin}
+            preselectedDestination={preselectedDestination}
+            onClearPreselected={() => {
+              setPreselectedOrigin(null);
+              setPreselectedDestination(null);
+            }}
+            onSelectStationForModal={setModalStation}
+            onOpenPdfMap={() => setShowPdfModal(true)}
+            nearestGpsStation={nearestGpsStation}
+          />
+        </div>
 
         {activeTab === 'network' && (
           <div className="animate-fade-in">

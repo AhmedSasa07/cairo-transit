@@ -1,4 +1,4 @@
-// Clean schematic coordinates for interactive SVG Cairo Metro Map (1200 x 950 viewBox)
+// Clean schematic coordinates for interactive SVG Cairo Metro & Multi-Modal Transit Map (1560 x 1040 viewBox)
 
 export const MAP_STATION_COORDS = {
   // ================= Line 1 (Red: Helwan to New El-Marg) =================
@@ -38,7 +38,7 @@ export const MAP_STATION_COORDS = {
   ain_helwan: { x: 505, y: 955, labelPos: 'right' },
   helwan: { x: 505, y: 975, labelPos: 'right' },
 
-  // ================= Line 2 (Orange: Shubra to El-Mounib) =================
+  // ================= Line 2 (Orange/Red: Shubra to El-Mounib) =================
   shubra_el_kheima: { x: 440, y: 110, labelPos: 'left' },
   kolleyyet_el_zeraa: { x: 450, y: 155, labelPos: 'left' },
   el_mazallat: { x: 460, y: 200, labelPos: 'left' },
@@ -61,7 +61,7 @@ export const MAP_STATION_COORDS = {
   el_mounib: { x: 280, y: 855, labelPos: 'left' },
 
   // ================= Line 3 Trunk (Green: Adly Mansour to Kit Kat) =================
-  adly_mansour: { x: 1130, y: 340, labelPos: 'top' },
+  adly_mansour: { x: 1130, y: 340, labelPos: 'top' }, // INTERCHANGE L3 + LRT + BRT
   el_haykestep: { x: 1080, y: 340, labelPos: 'top' },
   omar_ibn_el_khattab: { x: 1030, y: 340, labelPos: 'top' },
   qobaa: { x: 980, y: 340, labelPos: 'top' },
@@ -73,7 +73,7 @@ export const MAP_STATION_COORDS = {
   haroun: { x: 765, y: 420, labelPos: 'bottom' },
   al_ahram: { x: 735, y: 440, labelPos: 'top' },
   koleyet_el_banat: { x: 705, y: 460, labelPos: 'bottom' },
-  stadium: { x: 675, y: 480, labelPos: 'top' },
+  stadium: { x: 675, y: 480, labelPos: 'top' }, // INTERCHANGE L3 + Monorail East
   fair_zone: { x: 650, y: 470, labelPos: 'top' },
   abbassiya: { x: 635, y: 445, labelPos: 'top' },
   abdou_pasha: { x: 620, y: 450, labelPos: 'top' },
@@ -95,10 +95,83 @@ export const MAP_STATION_COORDS = {
 
   // ================= Line 3 Southern Branch (to Cairo University) =================
   el_tawfikeya: { x: 335, y: 505, labelPos: 'right' },
-  wadi_el_nile: { x: 315, y: 535, labelPos: 'right' },
+  wadi_el_nile: { x: 315, y: 535, labelPos: 'right' }, // INTERCHANGE L3 + Monorail West
   gamaat_el_dowal: { x: 295, y: 565, labelPos: 'right' },
-  bulaq_el_dakrour: { x: 285, y: 595, labelPos: 'right' }
+  bulaq_el_dakrour: { x: 285, y: 595, labelPos: 'right' },
   // cairo_university terminal at (280, 620)
+
+  // ================= LRT (Capital Train - Cyan #06B6D4) =================
+  // adly_mansour starts at (1130, 340)
+  lrt_obour: { x: 1190, y: 315, labelPos: 'top' },
+  lrt_mostakbal: { x: 1245, y: 290, labelPos: 'top' },
+  lrt_shorouk: { x: 1300, y: 265, labelPos: 'top' },
+  lrt_new_heliopolis: { x: 1355, y: 240, labelPos: 'top' },
+  lrt_badr: { x: 1410, y: 220, labelPos: 'top' },
+  // LRT Capital Branch
+  lrt_capital_gardens: { x: 1420, y: 300, labelPos: 'right' },
+  lrt_capital_airport: { x: 1420, y: 380, labelPos: 'right' },
+  city_of_arts: { x: 1415, y: 465, labelPos: 'right' }, // INTERCHANGE LRT + Monorail East
+  // LRT 10th of Ramadan Branch
+  lrt_al_roubaiki: { x: 1445, y: 170, labelPos: 'right' },
+  lrt_industrial_zone: { x: 1475, y: 125, labelPos: 'right' },
+  lrt_10th_of_ramadan: { x: 1500, y: 80, labelPos: 'right' },
+
+  // ================= Monorail East (Orange #EA580C) =================
+  // stadium starts at (675, 480)
+  monorail_hesham_barakat: { x: 715, y: 515, labelPos: 'bottom' },
+  monorail_nouri_khattab: { x: 755, y: 540, labelPos: 'bottom' },
+  monorail_seventh_district: { x: 795, y: 565, labelPos: 'bottom' },
+  monorail_zaker_hussein: { x: 835, y: 590, labelPos: 'bottom' },
+  monorail_free_zone: { x: 875, y: 615, labelPos: 'bottom' },
+  monorail_moshir: { x: 920, y: 640, labelPos: 'bottom' }, // INTERCHANGE Monorail East + BRT
+  monorail_cfc: { x: 965, y: 652, labelPos: 'bottom' },
+  monorail_choueifat: { x: 1010, y: 660, labelPos: 'bottom' },
+  monorail_air_hospital: { x: 1055, y: 665, labelPos: 'bottom' },
+  monorail_narges: { x: 1100, y: 670, labelPos: 'bottom' },
+  monorail_mohamed_naguib: { x: 1145, y: 670, labelPos: 'bottom' },
+  monorail_auc: { x: 1190, y: 665, labelPos: 'bottom' },
+  monorail_emaar: { x: 1230, y: 655, labelPos: 'bottom' },
+  monorail_fountain_sq: { x: 1270, y: 640, labelPos: 'bottom' },
+  monorail_barwa: { x: 1305, y: 620, labelPos: 'bottom' },
+  monorail_middle_ring: { x: 1340, y: 595, labelPos: 'bottom' },
+  monorail_bin_zayed: { x: 1370, y: 565, labelPos: 'right' },
+  monorail_regional_ring: { x: 1390, y: 535, labelPos: 'right' },
+  monorail_massa: { x: 1405, y: 510, labelPos: 'right' },
+  monorail_ministries: { x: 1412, y: 488, labelPos: 'right' },
+  // terminates at city_of_arts (1415, 465)
+
+  // ================= Monorail West (Amber #D97706) =================
+  monorail_wadi_el_nile: { x: 315, y: 515, labelPos: 'top' }, // INTERCHANGE L3 wadi_el_nile
+  monorail_bashtil: { x: 270, y: 505, labelPos: 'top' },
+  monorail_ring_road_west: { x: 230, y: 480, labelPos: 'top' },
+  monorail_marioutia: { x: 190, y: 470, labelPos: 'top' },
+  monorail_mansouria: { x: 150, y: 470, labelPos: 'top' },
+  monorail_alex_desert_road: { x: 115, y: 495, labelPos: 'left' },
+  monorail_sheikh_zayed: { x: 90, y: 540, labelPos: 'left' },
+  monorail_mall_of_egypt: { x: 80, y: 590, labelPos: 'left' },
+  monorail_engineers_club: { x: 80, y: 640, labelPos: 'left' },
+  monorail_october_univ: { x: 80, y: 690, labelPos: 'left' },
+  monorail_sadat_oct: { x: 80, y: 740, labelPos: 'left' },
+  monorail_acu: { x: 80, y: 790, labelPos: 'left' },
+  monorail_new_october: { x: 80, y: 840, labelPos: 'left' },
+
+  // ================= BRT Phase 1 (Purple #8B5CF6) =================
+  brt_1_alex_agri: { x: 410, y: 50, labelPos: 'top' },
+  brt_2_ahmed_abdelrahim: { x: 480, y: 40, labelPos: 'top' },
+  brt_3_shubra_banha: { x: 550, y: 35, labelPos: 'top' },
+  brt_4_bahteem: { x: 630, y: 35, labelPos: 'top' },
+  brt_5_mostorod: { x: 710, y: 38, labelPos: 'top' },
+  brt_6_khosous: { x: 790, y: 45, labelPos: 'top' },
+  brt_7_el_marg: { x: 860, y: 75, labelPos: 'top' }, // INTERCHANGE L1 el_marg
+  brt_8_mohamed_naguib: { x: 915, y: 140, labelPos: 'right' },
+  brt_9_zakah: { x: 965, y: 185, labelPos: 'right' },
+  brt_10_orabi: { x: 1015, y: 230, labelPos: 'right' },
+  brt_11_salam: { x: 1065, y: 280, labelPos: 'right' },
+  brt_12_adly_mansour: { x: 1145, y: 325, labelPos: 'top' }, // INTERCHANGE L3 + LRT adly_mansour
+  brt_13_suez_road: { x: 1100, y: 430, labelPos: 'right' },
+  brt_14_academy: { x: 1025, y: 530, labelPos: 'right' },
+  brt_15_moshir: { x: 920, y: 615, labelPos: 'top' }, // INTERCHANGE Monorail East monorail_moshir
+  brt_16_golf: { x: 860, y: 720, labelPos: 'bottom' }
 };
 
 // Polyline paths for SVG rendering
@@ -130,5 +203,32 @@ export const MAP_LINES_PATHS = {
   ],
   line3_branch_cairo_univ: [
     'kit_kat', 'el_tawfikeya', 'wadi_el_nile', 'gamaat_el_dowal', 'bulaq_el_dakrour', 'cairo_university'
+  ],
+  lrt_trunk: [
+    'adly_mansour', 'lrt_obour', 'lrt_mostakbal', 'lrt_shorouk', 'lrt_new_heliopolis',
+    'lrt_badr', 'lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'
+  ],
+  lrt_branch_ramadan: [
+    'lrt_badr', 'lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'
+  ],
+  monorail_east: [
+    'stadium', 'monorail_hesham_barakat', 'monorail_nouri_khattab', 'monorail_seventh_district',
+    'monorail_zaker_hussein', 'monorail_free_zone', 'monorail_moshir', 'monorail_cfc',
+    'monorail_choueifat', 'monorail_air_hospital', 'monorail_narges', 'monorail_mohamed_naguib',
+    'monorail_auc', 'monorail_emaar', 'monorail_fountain_sq', 'monorail_barwa',
+    'monorail_middle_ring', 'monorail_bin_zayed', 'monorail_regional_ring', 'monorail_massa',
+    'monorail_ministries', 'city_of_arts'
+  ],
+  monorail_west: [
+    'monorail_wadi_el_nile', 'monorail_bashtil', 'monorail_ring_road_west', 'monorail_marioutia',
+    'monorail_mansouria', 'monorail_alex_desert_road', 'monorail_sheikh_zayed', 'monorail_mall_of_egypt',
+    'monorail_engineers_club', 'monorail_october_univ', 'monorail_sadat_oct', 'monorail_acu',
+    'monorail_new_october'
+  ],
+  brt: [
+    'brt_1_alex_agri', 'brt_2_ahmed_abdelrahim', 'brt_3_shubra_banha', 'brt_4_bahteem',
+    'brt_5_mostorod', 'brt_6_khosous', 'brt_7_el_marg', 'brt_8_mohamed_naguib',
+    'brt_9_zakah', 'brt_10_orabi', 'brt_11_salam', 'brt_12_adly_mansour',
+    'brt_13_suez_road', 'brt_14_academy', 'brt_15_moshir', 'brt_16_golf'
   ]
 };

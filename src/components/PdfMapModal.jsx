@@ -6,42 +6,23 @@ import {
   Sparkles,
   ZoomIn,
   ZoomOut,
-  RotateCcw,
-  Info
+  RotateCcw
 } from 'lucide-react';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
 
 export const MAP_GALLERY = [
   {
-    id: 'official-schematic',
-    titleEn: 'Official Cairo Metro Schematic Map',
-    titleAr: 'خريطة شبكة مترو القاهرة التخطيطية الرسمية',
-    sourceEn: 'Ministry of Transport • RATP Dev Cairo Mobility & NAT',
-    sourceAr: 'وزارة النقل • الهيئة القومية للأنفاق و RATP Dev القاهرة',
-    year: '2024–2026',
-    category: 'official',
-    badgeEn: 'OFFICIAL SCHEMATIC',
-    badgeAr: 'المخطط الرسمي المعتمد',
-    badgeColor: 'bg-[#FF4A1C]/15 text-[#FF4A1C] border-[#FF4A1C]/30',
-    coverImage: '/cairo-metro-schematic-map.png',
-    pdfUrl: '/cairo-metro-schematic-map.pdf',
-    downloadFilename: 'Cairo_Metro_Official_Schematic_Map.pdf',
-    descriptionEn: 'The official Ministry of Transport schematic diagram showing Cairo Metro Lines 1, 2, 3, Capital Train LRT, and Monorail interchanges.',
-    descriptionAr: 'المخطط التخطيطي الرسمي لوزارة النقل الذي يوضح خطوط مترو القاهرة 1 و2 و3 والقطار الكهربائي الخفيف ومحطات تبادل المونوريل.',
-    lines: ['Line 1 (Helwan - El-Marg)', 'Line 2 (Shubra - El-Mounib)', 'Line 3 (Rod El-Farag / Cairo Univ - Adly Mansour)', 'Capital LRT', 'Monorail Interchanges'],
-    linesAr: ['الخط 1 (حلوان - المرج)', 'الخط 2 (شبرا - المنيب)', 'الخط 3 (روض الفرج / جامعة القاهرة - عدلي منصور)', 'قطار العاصمة LRT', 'تبادليات المونوريل']
-  },
-  {
-    id: 'tfc-integrated-2025',
+    id: 'greater_cairo_integrated',
+    altId: 'tfc-integrated-2025',
     titleEn: 'Greater Cairo Integrated Transit Map (2025/2026)',
     titleAr: 'خريطة النقل الإقليمي الشامل لإقليم القاهرة الكبرى (2025/2026)',
     sourceEn: 'Transport for Cairo (TfC) • EON Project Network Map',
     sourceAr: 'ترانسبورت فور كايرو (TfC) • شبكة النقل الإقليمية المتكاملة EON',
     year: '2025–2026',
     category: 'regional',
-    badgeEn: '2025/2026 INTEGRATED NETWORK',
-    badgeAr: 'شبكة 2025/2026 المتكاملة',
+    badgeEn: 'INTEGRATED TRANSIT NETWORK',
+    badgeAr: 'شبكة النقل المتكاملة',
     badgeColor: 'bg-[#2DD881]/15 text-[#2DD881] border-[#2DD881]/30',
     coverImage: '/maps/cairo-network-map-2025-eon.png',
     pdfUrl: '/cairo-network-map-2025-eon.pdf',
@@ -50,98 +31,23 @@ export const MAP_GALLERY = [
     descriptionAr: 'الخريطة الإقليمية الشاملة والمعتمدة الصادرة عن Transport for Cairo. تعرض كافة شبكات النقل الجماعي الحالية والجارية: خطوط المترو 1 إلى 4، مونوريل شرق وغرب النيل، قطار العاصمة LRT، الأتوبيس الترددي BRT على الطريق الدائري، وشبكة قطارات الضواحي.',
     lines: ['Metro 1, 2, 3, 4', 'Monorail East & West Nile', 'Capital LRT', 'Ring Road BRT', 'ENR Suburban Rail'],
     linesAr: ['مترو 1، 2، 3، 4', 'مونوريل شرق وغرب النيل', 'قطار العاصمة LRT', 'الأتوبيس الترددي BRT الدائري', 'قطارات السكك الحديدية']
-  },
-  {
-    id: 'tfc-workshop-team1',
-    titleEn: 'Experimental Transit Map (TfC Workshop — Team 1)',
-    titleAr: 'خريطة تجريبية لشبكة القاهرة (ورشة TfC — فريق 1)',
-    sourceEn: 'Transport for Cairo Transit Map Design Workshop',
-    sourceAr: 'ورشة عمل تصميم خرائط النقل العام — ترانسبورت فور كايرو',
-    year: 'Design Workshop',
-    category: 'workshop',
-    badgeEn: 'TFC WORKSHOP #1',
-    badgeAr: 'ورشة ترانسبورت #1',
-    badgeColor: 'bg-[#38BDF8]/15 text-[#38BDF8] border-[#38BDF8]/30',
-    coverImage: '/maps/team-1-transit-map.jpg',
-    pdfUrl: '/maps/team-1-transit-map.pdf',
-    downloadFilename: 'Cairo_Transit_Workshop_Team_1.pdf',
-    descriptionEn: 'Experimental schematic emphasizing primary interchange hubs, geometric clarity, and unified passenger navigation routes across Greater Cairo.',
-    descriptionAr: 'تصميم تخطيطي تجريبي يركز على المحطات التبادلية الكبرى والوضوح الهندسي والربط بين وسائل الانتقال المتعددة.',
-    lines: ['Multi-modal Hubs', 'Metro Network', 'Regional Rail Connections'],
-    linesAr: ['المحطات التبادلية', 'شبكة المترو', 'خطوط الأقاليم']
-  },
-  {
-    id: 'tfc-workshop-team2',
-    titleEn: 'Experimental Transit Map (TfC Workshop — Team 2)',
-    titleAr: 'خريطة تجريبية لشبكة القاهرة (ورشة TfC — فريق 2)',
-    sourceEn: 'Transport for Cairo Transit Map Design Workshop',
-    sourceAr: 'ورشة عمل تصميم خرائط النقل العام — ترانسبورت فور كايرو',
-    year: 'Design Workshop',
-    category: 'workshop',
-    badgeEn: 'TFC WORKSHOP #2',
-    badgeAr: 'ورشة ترانسبورت #2',
-    badgeColor: 'bg-[#A855F7]/15 text-[#A855F7] border-[#A855F7]/30',
-    coverImage: '/maps/team-2-transit-map.jpg',
-    pdfUrl: '/maps/team-2-transit-map.pdf',
-    downloadFilename: 'Cairo_Transit_Workshop_Team_2.pdf',
-    descriptionEn: 'Experimental geographic-schematic hybrid accentuating Nile crossing corridors, downtown loops, and transfer points.',
-    descriptionAr: 'تصميم هجين بين الجغرافيا والمخطط التخطيطي يبرز محاور عبور النيل ومناطق وسط البلد ونقاط الانتقال الحيوية.',
-    lines: ['Nile River Crossings', 'Metro 1, 2, 3', 'Central Corridors'],
-    linesAr: ['معابر النيل', 'مترو 1 و 2 و 3', 'المحاور المركزية']
-  },
-  {
-    id: 'tfc-workshop-team3',
-    titleEn: 'Experimental Transit Map (TfC Workshop — Team 3)',
-    titleAr: 'خريطة تجريبية لشبكة القاهرة (ورشة TfC — فريق 3)',
-    sourceEn: 'Transport for Cairo Transit Map Design Workshop',
-    sourceAr: 'ورشة عمل تصميم خرائط النقل العام — ترانسبورت فور كايرو',
-    year: 'Design Workshop',
-    category: 'workshop',
-    badgeEn: 'TFC WORKSHOP #3',
-    badgeAr: 'ورشة ترانسبورت #3',
-    badgeColor: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
-    coverImage: '/maps/team-3-transit-map.jpg',
-    pdfUrl: '/maps/team-3-transit-map.pdf',
-    downloadFilename: 'Cairo_Transit_Workshop_Team_3.pdf',
-    descriptionEn: 'Experimental schematic utilizing high-contrast typography and color hierarchies to depict suburban commuter corridors alongside the urban metro.',
-    descriptionAr: 'تصميم تخطيطي عالي التباين بطبوغرافيا واضحة لربط خطوط الضواحي والقطارات الإقليمية مع شبكة المترو الحضرية.',
-    lines: ['Metro Lines', 'Commuter Rail', 'Suburban Transit'],
-    linesAr: ['خطوط المترو', 'قطارات الضواحي', 'النقل الإقليمي']
-  },
-  {
-    id: 'railsmaps-light-rail',
-    titleEn: 'Cairo Monorail & Light Rail Corridors (RailsMaps)',
-    titleAr: 'خريطة مسارات مونوريل وقطار القاهرة الخفيف (RailsMaps)',
-    sourceEn: 'RailsMaps Transit Network & Corridors',
-    sourceAr: 'ريلز مابس — شبكة القطارات والمسارات الكهربائية',
-    year: '2025–2026',
-    category: 'lightrail',
-    badgeEn: 'RAILSMAPS LRT',
-    badgeAr: 'ريلز مابس',
-    badgeColor: 'bg-[#EC4899]/15 text-[#EC4899] border-[#EC4899]/30',
-    coverImage: '/maps/cairo-light-rail-network-map.png',
-    pdfUrl: null,
-    downloadFilename: 'Cairo_Light_Rail_RailsMaps.png',
-    descriptionEn: 'Transit network overview showcasing the Capital LRT corridor, New Administrative Capital extensions, and East Nile monorail connections.',
-    descriptionAr: 'نظرة عامة على شبكة النقل تبرز مسار القطار الكهربائي الخفيف LRT وامتدادات العاصمة الإدارية ومونوريل شرق النيل.',
-    lines: ['Capital LRT Corridors', 'East Nile Monorail', 'Adly Mansour Interchange'],
-    linesAr: ['مسارات قطار العاصمة LRT', 'مونوريل شرق النيل', 'محطة عدلي منصور التبادلية']
   }
 ];
 
-export default function PdfMapModal({ lang, t, onClose, initialMapId = 'tfc-integrated-2025' }) {
+export const MAP_PRESETS = MAP_GALLERY;
+
+export default function PdfMapModal({ lang, t, onClose, initialMapId = 'greater_cairo_integrated' }) {
   const isAr = lang === 'ar';
 
-  // Active selected map (defaults to 2025/2026 EON Integrated Transit Map)
+  // Active selected map (Greater Cairo Integrated Transit Map)
   const [selectedMapId, setSelectedMapId] = useState(initialMapId);
-  const activeMap = MAP_GALLERY.find((m) => m.id === selectedMapId) || MAP_GALLERY[1] || MAP_GALLERY[0];
+  const activeMap = MAP_GALLERY.find((m) => m.id === selectedMapId || m.altId === selectedMapId) || MAP_GALLERY[0];
 
   // Interactive zoom & pan state
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
 
   // References for gesture tracking
   const containerRef = useRef(null);
@@ -328,26 +234,8 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'tfc-inte
           </div>
         </div>
 
-        {/* Action Controls: Info & Close */}
+        {/* Action Controls: Close */}
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-          <PressableScale
-            onClick={() => {
-              haptics.selection();
-              setShowInfo((prev) => !prev);
-            }}
-            className={`p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-space font-bold border transition-colors shadow-sm flex items-center gap-1.5 ${
-              showInfo
-                ? 'bg-[#FF4A1C]/20 border-[#FF4A1C]/40 text-[#FF4A1C]'
-                : 'bg-white/10 text-slate-200 hover:bg-white/15 border-white/10'
-            }`}
-            title={isAr ? 'تفاصيل ومصادر الخريطة' : 'Map Information'}
-          >
-            <Info className="w-4 h-4" />
-            <span className="hidden sm:inline">
-              {isAr ? 'تفاصيل الخريطة' : 'Map Details'}
-            </span>
-          </PressableScale>
-
           <PressableScale
             onClick={() => {
               haptics.light();
@@ -364,37 +252,20 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'tfc-inte
         </div>
       </div>
 
-      {/* Horizontal Map Gallery Picker Bar */}
-      <div className="px-3 sm:px-6 py-2 bg-slate-900/80 border-b border-white/10 overflow-x-auto no-scrollbar flex items-center gap-1.5 flex-shrink-0">
-        <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 me-1 hidden sm:inline flex-shrink-0">
-          {isAr ? 'الخرائط الرسمية:' : 'Official Maps:'}
-        </span>
-        {MAP_GALLERY.map((map) => {
-          const isSelected = map.id === selectedMapId;
-          return (
-            <button
-              key={map.id}
-              onClick={() => selectMap(map.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0 ${
-                isSelected
-                  ? 'bg-white text-slate-950 shadow-md border border-white'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10 border border-white/5'
-              }`}
-            >
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  isSelected ? 'bg-[#FF4A1C] animate-pulse' : 'bg-slate-500'
-                }`}
-              />
-              <span className="truncate max-w-[170px] sm:max-w-none">
-                {isAr ? map.titleAr : map.titleEn}
-              </span>
-              <span className="text-[10px] font-mono opacity-70">
-                ({map.year})
-              </span>
-            </button>
-          );
-        })}
+      {/* Active Integrated Network Bar */}
+      <div className="px-3 sm:px-6 py-2 bg-slate-900/80 border-b border-white/10 flex items-center justify-between gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="w-2 h-2 rounded-full bg-[#2DD881] animate-pulse flex-shrink-0" />
+          <span className="text-xs font-space font-bold text-white truncate">
+            {isAr ? activeMap.titleAr : activeMap.titleEn}
+          </span>
+          <span className="text-[10px] font-mono text-slate-400 flex-shrink-0">
+            ({activeMap.year})
+          </span>
+        </div>
+        <div className="text-[11px] font-mono text-slate-400 hidden md:block flex-shrink-0">
+          {isAr ? 'شبكة النقل الشاملة المعتمدة' : 'Official Regional Network'}
+        </div>
       </div>
 
       {/* Zoom Indicator & Quality Sub-bar */}
@@ -420,38 +291,6 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'tfc-inte
           </span>
         </div>
       </div>
-
-      {/* Collapsible Info Drawer */}
-      {showInfo && (
-        <div className="px-4 py-3 sm:px-6 bg-slate-900 text-slate-200 border-b border-white/10 animate-fade-in text-xs font-mono flex-shrink-0">
-          <div className="max-w-4xl mx-auto space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-space font-bold text-white text-sm">
-                {isAr ? activeMap.titleAr : activeMap.titleEn}
-              </span>
-              <span className="text-[11px] px-2 py-0.5 rounded bg-white/10 text-white font-mono">
-                {activeMap.year}
-              </span>
-            </div>
-            <p className="text-slate-300 leading-relaxed">
-              {isAr ? activeMap.descriptionAr : activeMap.descriptionEn}
-            </p>
-            <div className="pt-1 flex items-center gap-1.5 flex-wrap">
-              <span className="text-slate-400 font-bold me-1">
-                {isAr ? 'الخطوط والمسارات المشمولة:' : 'Covered Corridors:'}
-              </span>
-              {(isAr ? activeMap.linesAr : activeMap.lines).map((line, idx) => (
-                <span
-                  key={idx}
-                  className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300 text-[10px]"
-                >
-                  {line}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Main Fullscreen Viewer Body */}
       <div className="flex-1 min-h-0 w-full h-full bg-[#060608] relative overflow-hidden flex flex-col">

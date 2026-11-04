@@ -1,0 +1,447 @@
+{
+  "choose_your_ticket": {
+    "sections": [
+      {
+        "level": "h1",
+        "title": "Choose your ticket",
+        "text": "Filter transport tickets Lines - Any - Capital Train Green Line 3 Category - Any - Special needs Children (under 4 years old) Public (from 4 to 60 years old) Students (from 11 to 26 years old) Elderly (from 60 to 70 years old) Elderly (over 70) Apply",
+        "full_text": "Filter transport tickets Lines - Any - Capital Train Green Line 3 Category - Any - Special needs Children (under 4 years old) Public (from 4 to 60 years old) Students (from 11 to 26 years old) Elderly (from 60 to 70 years old) Elderly (over 70) Apply",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "9 station ticket",
+        "text": "Gives access to : Valid for 1 trip 10 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 10 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "16 station ticket",
+        "text": "Gives access to : Valid for 1 trip 12 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 12 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "23 station ticket",
+        "text": "Gives access to : Valid for 1 trip 15 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 15 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "39 station ticket",
+        "text": "Gives access to : Valid for 1 trip 20 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 20 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "9 station ticket - Elderly",
+        "text": "Gives access to : Valid for 1 trip 5 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 5 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "16 station ticket - Elderly",
+        "text": "Gives access to : Valid for 1 trip 6 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 6 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "23 stations ticket - Elderly",
+        "text": "Gives access to : Valid for 1 trip 8 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 8 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "39 stations ticket - Elderly",
+        "text": "Gives access to : Valid for 1 trip 10 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 10 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk",
+            "alt": "Special"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Special Needs ticket",
+        "text": "Gives access to : Valid for 1 trip 5 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip 5 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - 3 stations ticket",
+        "text": "Gives access to : Valid for 1 trip on Capital Train 10 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip on Capital Train 10 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - 7 stations ticket",
+        "text": "Gives access to : Valid for 1 trip on Capital Train 15 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip on Capital Train 15 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - More than 7 stations ticket",
+        "text": "Gives access to : Valid for 1 trip on Capital Train 20 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 1 trip on Capital Train 20 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Children (under 4 years old)",
+        "text": "Gives access to : Children under 4 years old travel for free 0 LE Discover this transport ticket",
+        "full_text": "Gives access to : Children under 4 years old travel for free 0 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Monthly 3 Stations - Students",
+        "text": "Gives access to : A monthly subscription for students&nbsp; Valid for 1 Month &nbsp; 240 LE Discover this transport ticket",
+        "full_text": "Gives access to : A monthly subscription for students&nbsp; Valid for 1 Month &nbsp; 240 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Monthly More than 7 Stations - Students",
+        "text": "Gives access to : Monthly subscription for students -more than 7 stations&nbsp; Valid for 1 month 480 LE Discover this transport ticket",
+        "full_text": "Gives access to : Monthly subscription for students -more than 7 stations&nbsp; Valid for 1 month 480 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك شهري -حتي 3 محطات-طلاب",
+        "text": "Gives access to : اشتراك شهري للطلاب حتي 3 محطات - قطار العاصمه &nbsp; صالح لمده شهر&nbsp; ٢٤٠ جنيه Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك شهري للطلاب حتي 3 محطات - قطار العاصمه &nbsp; صالح لمده شهر&nbsp; ٢٤٠ جنيه Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك شهري للطلاب-حتي 7 محطات",
+        "text": "Gives access to : اشتراك شهري للطلاب حتي 7 محطات - قطار العاصمه صالح لمده شهر ٣٦٠ جنيه Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك شهري للطلاب حتي 7 محطات - قطار العاصمه صالح لمده شهر ٣٦٠ جنيه Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك شهري للطلاب-لاكثر من 7 محطات",
+        "text": "Gives access to : اشتراك شهري للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده شهر ٤٨٠ جنيه Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك شهري للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده شهر ٤٨٠ جنيه Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Monthly 7 Stations - Students",
+        "text": "Gives access to : A Monthly Subscription for students - 7 Stations Valid for 1 month 360 LE Discover this transport ticket",
+        "full_text": "Gives access to : A Monthly Subscription for students - 7 Stations Valid for 1 month 360 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Monthly pass - Public",
+        "text": "Gives access to : Everyone - Valid for 60 trips Starting at 390 LE Discover this transport ticket",
+        "full_text": "Gives access to : Everyone - Valid for 60 trips Starting at 390 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Quarterly 3 Stations - Students",
+        "text": "Gives access to : &nbsp;3-month subscription for students -3 stations Valid for 3 months &nbsp; &nbsp; 720 LE Discover this transport ticket",
+        "full_text": "Gives access to : &nbsp;3-month subscription for students -3 stations Valid for 3 months &nbsp; &nbsp; 720 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Quarterly 7 Stations - Students",
+        "text": "Gives access to : &nbsp;3-months subscription for students -7 stations 1080 LE Discover this transport ticket",
+        "full_text": "Gives access to : &nbsp;3-months subscription for students -7 stations 1080 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Capital Train - Quarterly more than 7 Stations - Students",
+        "text": "Gives access to : 1440 LE Discover this transport ticket",
+        "full_text": "Gives access to : 1440 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك ربع سنوي للطلاب-حتي 3 محطات",
+        "text": "Gives access to : اشتراك ربع سنوي للطلاب حتي 3 محطات - قطار العاصمه صالح لمده 3 شهور ٧٢٠ جنيه Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك ربع سنوي للطلاب حتي 3 محطات - قطار العاصمه صالح لمده 3 شهور ٧٢٠ جنيه Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك ربع سنوي للطلاب-حتي 7 محطات",
+        "text": "Gives access to : اشتراك ربع سنوي للطلاب حتي 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٠٨٠ جنيه Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك ربع سنوي للطلاب حتي 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٠٨٠ جنيه Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "قطار العاصمه-اشتراك ربع سنوي للطلاب-لاكثر من 7 محطات",
+        "text": "Gives access to : اشتراك ربع سنوي للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٤٤٠ جنيها Discover this transport ticket",
+        "full_text": "Gives access to : اشتراك ربع سنوي للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٤٤٠ جنيها Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Quarterly pass - Public",
+        "text": "Gives access to : Everyone - Valid for 180 trips Starting at 1045 LE Discover this transport ticket",
+        "full_text": "Gives access to : Everyone - Valid for 180 trips Starting at 1045 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Quarterly pass - Elderly (60-70 years old)",
+        "text": "Gives access to : Elderly (from 60 to 70 years old) - Valid for 180 trips Starting at 825 LE Discover this transport ticket",
+        "full_text": "Gives access to : Elderly (from 60 to 70 years old) - Valid for 180 trips Starting at 825 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq",
+            "alt": "Elder"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Elderly (over 70 years old)",
+        "text": "Gives access to : Elderly (over 70 years old) - Valid for 180 trips 0 LE Discover this transport ticket",
+        "full_text": "Gives access to : Elderly (over 70 years old) - Valid for 180 trips 0 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk",
+            "alt": "Special"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Quarterly pass - Special Needs",
+        "text": "Gives access to : Special Needs - Valid for 180 trips Starting at 150 LE Discover this transport ticket",
+        "full_text": "Gives access to : Special Needs - Valid for 180 trips Starting at 150 LE Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%204.png?VersionId=nOPG0eMJ9fQQ5iS7jTNcMAFrsX_8GmeB&amp;itok=iTiIRGA9",
+            "alt": "Student"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "Quarterly pass - Students",
+        "text": "Gives access to : Students (from 11 to 26 years old) - Valid for 180 trips Starting at 150 LE Discover this transport ticket",
+        "full_text": "Gives access to : Students (from 11 to 26 years old) - Valid for 180 trips Starting at 150 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "2 lines Annual pass",
+        "text": "Gives access to : Valid for 730&nbsp;trips&nbsp; 5100 EGP Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 730&nbsp;trips&nbsp; 5100 EGP Discover this transport ticket",
+        "images": [
+          {
+            "src": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa",
+            "alt": "Regular"
+          }
+        ]
+      },
+      {
+        "level": "h3",
+        "title": "3 lines Annual pass",
+        "text": "Gives access to : Valid for 730 trips 6400 LE Discover this transport ticket",
+        "full_text": "Gives access to : Valid for 730 trips 6400 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Wallet card",
+        "text": "Gives access to : Cash wallet to tap in and out 65 LE Discover this transport ticket",
+        "full_text": "Gives access to : Cash wallet to tap in and out 65 LE Discover this transport ticket",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Subscribe to our quarterly newsletter",
+        "text": "Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe",
+        "full_text": "Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Do you have a question?",
+        "text": "Please reach out to our&nbsp; Facebook Page \"Mobility Cairo\" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form",
+        "full_text": "Please reach out to our&nbsp; Facebook Page \"Mobility Cairo\" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form",
+        "images": [
+          {
+            "src": "https://files2-explore-mobilitycairo-pprd.ratpdev.com/s3fs-public/inline-images/Logo-Mobility-Cairo.png?VersionId=MHULo26B7iuWQn6e4VWxivgsPswo7evI",
+            "alt": "mobilitycairo"
+          }
+        ]
+      },
+      {
+        "level": "h2",
+        "title": "Mobility Cairo, network operated by RATPDev Mobility Cairo since 2021",
+        "text": "Email : [email&#160;protected]",
+        "full_text": "Email : [email&#160;protected]",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Opening Hours",
+        "text": "Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية",
+        "full_text": "Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية",
+        "images": []
+      }
+    ],
+    "tables": []
+  },
+  "purchase_top": {
+    "sections": [
+      {
+        "level": "h1",
+        "title": "Purchase &amp; top-up",
+        "text": "",
+        "full_text": "",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "",
+        "text": "",
+        "full_text": "",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "Find where to buy tickets, recharge your wallet card or subscribe to a monthly, quarterly or annual Seasonal card",
+        "text": "&nbsp; &nbsp;",
+        "full_text": "&nbsp; &nbsp;",
+        "images": []
+      },
+      {
+        "level": "h4",
+        "title": "Tickets",
+        "text": "All tickets (Public, Elderly and Special Needs) are available&nbsp;at all ticket offices. Public tickets are also available on ticket&nbsp;vending machines that are located in&nbsp;stations between Haroun and Adly Mansour. &nbsp;",
+        "full_text": "All tickets (Public, Elderly and Special Needs) are available&nbsp;at all ticket offices. Public tickets are also available on ticket&nbsp;vending machines that are located in&nbsp;stations between Haroun and Adly Mansour. &nbsp;",
+        "images": []
+      },
+      {
+        "level": "h4",
+        "title": "Wallet card",
+        "text": "Wallets are available&nbsp;at all ticket offices and on ticket&nbsp;vending machines in the stations between Haroun and Adly Mansour. Card cost is 80 LE with&nbsp;a minimum top-up of 40 LE&nbsp;on the first purchase. You can charge from 20 pounds to 400 pounds. Anyone can use the card. You can charge the card many times if it is not damaged. Buying a Wallet card saves you time! &nbsp;",
+        "full_text": "Wallets are available&nbsp;at all ticket offices and on ticket&nbsp;vending machines in the stations between Haroun and Adly Mansour. Card cost is 80 LE with&nbsp;a minimum top-up of 40 LE&nbsp;on the first purchase. You can charge from 20 pounds to 400 pounds. Anyone can use the card. You can charge the card many times if it is not damaged. Buying a Wallet card saves you time! &nbsp;",
+        "images": []
+      },
+      {
+        "level": "h4",
+        "title": "Seasonal card",
+        "text": "The Seasonal card is made for General Public, Students, Elderly (over 60 years olds) or Special Needs. To subscribe you need: Go to the nearest office that offers Seasonal subscriptions on&nbsp; Green Line 3 &nbsp;(Attaba, Abbasia, Heliopolis or Adly Mansour). Provide 2 photographs (format: 4x6). If you are a Student: You need to get the form stamped by your school. A copy of ID or the student's birth certificate should be delivered with the form. A copy of the expenses receipt or a copy of a cu",
+        "full_text": "The Seasonal card is made for General Public, Students, Elderly (over 60 years olds) or Special Needs. To subscribe you need: Go to the nearest office that offers Seasonal subscriptions on&nbsp; Green Line 3 &nbsp;(Attaba, Abbasia, Heliopolis or Adly Mansour). Provide 2 photographs (format: 4x6). If you are a Student: You need to get the form stamped by your school. A copy of ID or the student's birth certificate should be delivered with the form. A copy of the expenses receipt or a copy of a current or previous school identity card. If you are an Elderly: You need a copy of a valid ID as a proof of age. If you are a Special Need: You need a copy of a valid ID delivered by Governmental Authorities to prove your status.",
+        "images": []
+      },
+      {
+        "level": "h3",
+        "title": "You can buy all kinds of tickets and wallet cards from the ticket vending machines available at all Green Line 3 stations.",
+        "text": "",
+        "full_text": "",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Subscribe to our quarterly newsletter",
+        "text": "Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe",
+        "full_text": "Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Do you have a question?",
+        "text": "Please reach out to our&nbsp; Facebook Page \"Mobility Cairo\" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form",
+        "full_text": "Please reach out to our&nbsp; Facebook Page \"Mobility Cairo\" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form",
+        "images": [
+          {
+            "src": "https://files2-explore-mobilitycairo-pprd.ratpdev.com/s3fs-public/inline-images/Logo-Mobility-Cairo.png?VersionId=MHULo26B7iuWQn6e4VWxivgsPswo7evI",
+            "alt": "mobilitycairo"
+          }
+        ]
+      },
+      {
+        "level": "h2",
+        "title": "Mobility Cairo, network operated by RATPDev Mobility Cairo since 2021",
+        "text": "Email : [email&#160;protected]",
+        "full_text": "Email : [email&#160;protected]",
+        "images": []
+      },
+      {
+        "level": "h2",
+        "title": "Opening Hours",
+        "text": "Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية",
+        "full_text": "Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية",
+        "images": []
+      }
+    ],
+    "tables": []
+  }
+}

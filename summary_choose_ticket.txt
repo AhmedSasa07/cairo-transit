@@ -1,0 +1,206 @@
+=== CHOOSE YOUR TICKET SECTIONS ===
+
+[1] H1 - Choose your ticket
+Images: []
+Text: Filter transport tickets Lines - Any - Capital Train Green Line 3 Category - Any - Special needs Children (under 4 years old) Public (from 4 to 60 years old) Students (from 11 to 26 years old) Elderly (from 60 to 70 years old) Elderly (over 70) Apply
+------------------------------------------------------------
+[2] H3 - 9 station ticket
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : Valid for 1 trip 10 LE Discover this transport ticket
+------------------------------------------------------------
+[3] H3 - 16 station ticket
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : Valid for 1 trip 12 LE Discover this transport ticket
+------------------------------------------------------------
+[4] H3 - 23 station ticket
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : Valid for 1 trip 15 LE Discover this transport ticket
+------------------------------------------------------------
+[5] H3 - 39 station ticket
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Valid for 1 trip 20 LE Discover this transport ticket
+------------------------------------------------------------
+[6] H3 - 9 station ticket - Elderly
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Valid for 1 trip 5 LE Discover this transport ticket
+------------------------------------------------------------
+[7] H3 - 16 station ticket - Elderly
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Valid for 1 trip 6 LE Discover this transport ticket
+------------------------------------------------------------
+[8] H3 - 23 stations ticket - Elderly
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Valid for 1 trip 8 LE Discover this transport ticket
+------------------------------------------------------------
+[9] H3 - 39 stations ticket - Elderly
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk', 'alt': 'Special'}]
+Text: Gives access to : Valid for 1 trip 10 LE Discover this transport ticket
+------------------------------------------------------------
+[10] H3 - Special Needs ticket
+Images: []
+Text: Gives access to : Valid for 1 trip 5 LE Discover this transport ticket
+------------------------------------------------------------
+[11] H3 - Capital Train - 3 stations ticket
+Images: []
+Text: Gives access to : Valid for 1 trip on Capital Train 10 LE Discover this transport ticket
+------------------------------------------------------------
+[12] H3 - Capital Train - 7 stations ticket
+Images: []
+Text: Gives access to : Valid for 1 trip on Capital Train 15 LE Discover this transport ticket
+------------------------------------------------------------
+[13] H3 - Capital Train - More than 7 stations ticket
+Images: []
+Text: Gives access to : Valid for 1 trip on Capital Train 20 LE Discover this transport ticket
+------------------------------------------------------------
+[14] H3 - Children (under 4 years old)
+Images: []
+Text: Gives access to : Children under 4 years old travel for free 0 LE Discover this transport ticket
+------------------------------------------------------------
+[15] H3 - Capital Train - Monthly 3 Stations - Students
+Images: []
+Text: Gives access to : A monthly subscription for students&nbsp; Valid for 1 Month &nbsp; 240 LE Discover this transport ticket
+------------------------------------------------------------
+[16] H3 - Capital Train - Monthly More than 7 Stations - Students
+Images: []
+Text: Gives access to : Monthly subscription for students -more than 7 stations&nbsp; Valid for 1 month 480 LE Discover this transport ticket
+------------------------------------------------------------
+[17] H3 - قطار العاصمه-اشتراك شهري -حتي 3 محطات-طلاب
+Images: []
+Text: Gives access to : اشتراك شهري للطلاب حتي 3 محطات - قطار العاصمه &nbsp; صالح لمده شهر&nbsp; ٢٤٠ جنيه Discover this transport ticket
+------------------------------------------------------------
+[18] H3 - قطار العاصمه-اشتراك شهري للطلاب-حتي 7 محطات
+Images: []
+Text: Gives access to : اشتراك شهري للطلاب حتي 7 محطات - قطار العاصمه صالح لمده شهر ٣٦٠ جنيه Discover this transport ticket
+------------------------------------------------------------
+[19] H3 - قطار العاصمه-اشتراك شهري للطلاب-لاكثر من 7 محطات
+Images: []
+Text: Gives access to : اشتراك شهري للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده شهر ٤٨٠ جنيه Discover this transport ticket
+------------------------------------------------------------
+[20] H3 - Capital Train - Monthly 7 Stations - Students
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : A Monthly Subscription for students - 7 Stations Valid for 1 month 360 LE Discover this transport ticket
+------------------------------------------------------------
+[21] H3 - Monthly pass - Public
+Images: []
+Text: Gives access to : Everyone - Valid for 60 trips Starting at 390 LE Discover this transport ticket
+------------------------------------------------------------
+[22] H3 - Capital Train - Quarterly 3 Stations - Students
+Images: []
+Text: Gives access to : &nbsp;3-month subscription for students -3 stations Valid for 3 months &nbsp; &nbsp; 720 LE Discover this transport ticket
+------------------------------------------------------------
+[23] H3 - Capital Train - Quarterly 7 Stations - Students
+Images: []
+Text: Gives access to : &nbsp;3-months subscription for students -7 stations 1080 LE Discover this transport ticket
+------------------------------------------------------------
+[24] H3 - Capital Train - Quarterly more than 7 Stations - Students
+Images: []
+Text: Gives access to : 1440 LE Discover this transport ticket
+------------------------------------------------------------
+[25] H3 - قطار العاصمه-اشتراك ربع سنوي للطلاب-حتي 3 محطات
+Images: []
+Text: Gives access to : اشتراك ربع سنوي للطلاب حتي 3 محطات - قطار العاصمه صالح لمده 3 شهور ٧٢٠ جنيه Discover this transport ticket
+------------------------------------------------------------
+[26] H3 - قطار العاصمه-اشتراك ربع سنوي للطلاب-حتي 7 محطات
+Images: []
+Text: Gives access to : اشتراك ربع سنوي للطلاب حتي 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٠٨٠ جنيه Discover this transport ticket
+------------------------------------------------------------
+[27] H3 - قطار العاصمه-اشتراك ربع سنوي للطلاب-لاكثر من 7 محطات
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : اشتراك ربع سنوي للطلاب لاكثر من 7 محطات - قطار العاصمه صالح لمده 3 شهور ١٤٤٠ جنيها Discover this transport ticket
+------------------------------------------------------------
+[28] H3 - Quarterly pass - Public
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Everyone - Valid for 180 trips Starting at 1045 LE Discover this transport ticket
+------------------------------------------------------------
+[29] H3 - Quarterly pass - Elderly (60-70 years old)
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq', 'alt': 'Elder'}]
+Text: Gives access to : Elderly (from 60 to 70 years old) - Valid for 180 trips Starting at 825 LE Discover this transport ticket
+------------------------------------------------------------
+[30] H3 - Elderly (over 70 years old)
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk', 'alt': 'Special'}]
+Text: Gives access to : Elderly (over 70 years old) - Valid for 180 trips 0 LE Discover this transport ticket
+------------------------------------------------------------
+[31] H3 - Quarterly pass - Special Needs
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%204.png?VersionId=nOPG0eMJ9fQQ5iS7jTNcMAFrsX_8GmeB&amp;itok=iTiIRGA9', 'alt': 'Student'}]
+Text: Gives access to : Special Needs - Valid for 180 trips Starting at 150 LE Discover this transport ticket
+------------------------------------------------------------
+[32] H3 - Quarterly pass - Students
+Images: []
+Text: Gives access to : Students (from 11 to 26 years old) - Valid for 180 trips Starting at 150 LE Discover this transport ticket
+------------------------------------------------------------
+[33] H3 - 2 lines Annual pass
+Images: [{'src': 'https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa', 'alt': 'Regular'}]
+Text: Gives access to : Valid for 730&nbsp;trips&nbsp; 5100 EGP Discover this transport ticket
+------------------------------------------------------------
+[34] H3 - 3 lines Annual pass
+Images: []
+Text: Gives access to : Valid for 730 trips 6400 LE Discover this transport ticket
+------------------------------------------------------------
+[35] H3 - Wallet card
+Images: []
+Text: Gives access to : Cash wallet to tap in and out 65 LE Discover this transport ticket
+------------------------------------------------------------
+[36] H2 - Subscribe to our quarterly newsletter
+Images: []
+Text: Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe
+------------------------------------------------------------
+[37] H2 - Do you have a question?
+Images: [{'src': 'https://files2-explore-mobilitycairo-pprd.ratpdev.com/s3fs-public/inline-images/Logo-Mobility-Cairo.png?VersionId=MHULo26B7iuWQn6e4VWxivgsPswo7evI', 'alt': 'mobilitycairo'}]
+Text: Please reach out to our&nbsp; Facebook Page "Mobility Cairo" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form
+------------------------------------------------------------
+[38] H2 - Mobility Cairo, network operated by RATPDev Mobility Cairo since 2021
+Images: []
+Text: Email : [email&#160;protected]
+------------------------------------------------------------
+[39] H2 - Opening Hours
+Images: []
+Text: Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية
+------------------------------------------------------------
+
+
+=== PURCHASE TOP SECTIONS ===
+
+[1] H1 - Purchase &amp; top-up
+Images: []
+Text: 
+------------------------------------------------------------
+[2] H3 - 
+Images: []
+Text: 
+------------------------------------------------------------
+[3] H3 - Find where to buy tickets, recharge your wallet card or subscribe to a monthly, quarterly or annual Seasonal card
+Images: []
+Text: &nbsp; &nbsp;
+------------------------------------------------------------
+[4] H4 - Tickets
+Images: []
+Text: All tickets (Public, Elderly and Special Needs) are available&nbsp;at all ticket offices. Public tickets are also available on ticket&nbsp;vending machines that are located in&nbsp;stations between Haroun and Adly Mansour. &nbsp;
+------------------------------------------------------------
+[5] H4 - Wallet card
+Images: []
+Text: Wallets are available&nbsp;at all ticket offices and on ticket&nbsp;vending machines in the stations between Haroun and Adly Mansour. Card cost is 80 LE with&nbsp;a minimum top-up of 40 LE&nbsp;on the first purchase. You can charge from 20 pounds to 400 pounds. Anyone can use the card. You can charge the card many times if it is not damaged. Buying a Wallet card saves you time! &nbsp;
+------------------------------------------------------------
+[6] H4 - Seasonal card
+Images: []
+Text: The Seasonal card is made for General Public, Students, Elderly (over 60 years olds) or Special Needs. To subscribe you need: Go to the nearest office that offers Seasonal subscriptions on&nbsp; Green Line 3 &nbsp;(Attaba, Abbasia, Heliopolis or Adly Mansour). Provide 2 photographs (format: 4x6). If you are a Student: You need to get the form stamped by your school. A copy of ID or the student's birth certificate should be delivered with the form. A copy of the expenses receipt or a copy of a current or previous school identity card. If you are an Elderly: You need a copy of a valid ID as a proof of age. If you are a Special Need: You need a copy of a valid ID delivered by Governmental Authorities to prove your status.
+------------------------------------------------------------
+[7] H3 - You can buy all kinds of tickets and wallet cards from the ticket vending machines available at all Green Line 3 stations.
+Images: []
+Text: 
+------------------------------------------------------------
+[8] H2 - Subscribe to our quarterly newsletter
+Images: []
+Text: Fields marked with an asterisk (*) are mandatory Your email address * I agree to Mobility Cairo using my email address to send me the quarterly RATP newsletter.&nbsp; Subscribe
+------------------------------------------------------------
+[9] H2 - Do you have a question?
+Images: [{'src': 'https://files2-explore-mobilitycairo-pprd.ratpdev.com/s3fs-public/inline-images/Logo-Mobility-Cairo.png?VersionId=MHULo26B7iuWQn6e4VWxivgsPswo7evI', 'alt': 'mobilitycairo'}]
+Text: Please reach out to our&nbsp; Facebook Page "Mobility Cairo" or contact us&nbsp;through the links below: Send email Call us on 19549 Chat through WhatsApp 01114444988 for GL3 Chat through WhatsApp 01103776770 for LRT Fill Electronic Form
+------------------------------------------------------------
+[10] H2 - Mobility Cairo, network operated by RATPDev Mobility Cairo since 2021
+Images: []
+Text: Email : [email&#160;protected]
+------------------------------------------------------------
+[11] H2 - Opening Hours
+Images: []
+Text: Our working hours are from 10:00 AM to 10:00 PM #block-explore-rddsuseraccountblock span, .site-header__ctas span{display: none;} .language-switcher-language-url{ margin-left: 10px; margin-right: 10px; } .language-switcher-language-url h2{ display: none; } .header-wrapper .hero{ min-height: 50vh; } English عربية
+------------------------------------------------------------

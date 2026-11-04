@@ -32,23 +32,43 @@ import { haptics } from '../utils/haptics.js';
 
 // Precomputed SVG polyline points string for high-speed zero-overhead rendering
 const PRECOMPUTED_POINTS = {
-  line1: MAP_LINES_PATHS.line1
+  line1: (MAP_LINES_PATHS.line1 || [])
     .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
     .filter(Boolean)
     .join(' '),
-  line2: MAP_LINES_PATHS.line2
+  line2: (MAP_LINES_PATHS.line2 || [])
     .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
     .filter(Boolean)
     .join(' '),
-  line3_trunk: MAP_LINES_PATHS.line3_trunk
+  line3_trunk: (MAP_LINES_PATHS.line3_trunk || [])
     .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
     .filter(Boolean)
     .join(' '),
-  line3_branch_rod: MAP_LINES_PATHS.line3_branch_rod
+  line3_branch_rod: (MAP_LINES_PATHS.line3_branch_rod || [])
     .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
     .filter(Boolean)
     .join(' '),
-  line3_branch_cairo_univ: MAP_LINES_PATHS.line3_branch_cairo_univ
+  line3_branch_cairo_univ: (MAP_LINES_PATHS.line3_branch_cairo_univ || [])
+    .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
+    .filter(Boolean)
+    .join(' '),
+  lrt_trunk: (MAP_LINES_PATHS.lrt_trunk || [])
+    .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
+    .filter(Boolean)
+    .join(' '),
+  lrt_branch_ramadan: (MAP_LINES_PATHS.lrt_branch_ramadan || [])
+    .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
+    .filter(Boolean)
+    .join(' '),
+  monorail_east: (MAP_LINES_PATHS.monorail_east || [])
+    .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
+    .filter(Boolean)
+    .join(' '),
+  monorail_west: (MAP_LINES_PATHS.monorail_west || [])
+    .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
+    .filter(Boolean)
+    .join(' '),
+  brt: (MAP_LINES_PATHS.brt || [])
     .map((id) => (MAP_STATION_COORDS[id] ? `${MAP_STATION_COORDS[id].x},${MAP_STATION_COORDS[id].y}` : null))
     .filter(Boolean)
     .join(' ')
@@ -79,7 +99,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
 
       {/* River Nile stylized representation */}
       <path
-        d="M 480 0 Q 460 200, 470 400 T 450 600 T 420 800 T 400 1020"
+        d="M 480 0 Q 460 200, 470 400 T 450 600 T 420 800 T 400 1040"
         fill="none"
         stroke="#38BDF8"
         strokeWidth="32"
@@ -105,7 +125,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           points={PRECOMPUTED_POINTS.line1}
           fill="none"
           stroke="#2563EB"
-          strokeWidth="9"
+          strokeWidth="8.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -117,7 +137,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           points={PRECOMPUTED_POINTS.line2}
           fill="none"
           stroke="#DC2626"
-          strokeWidth="9"
+          strokeWidth="8.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -130,7 +150,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             points={PRECOMPUTED_POINTS.line3_trunk}
             fill="none"
             stroke="#10B981"
-            strokeWidth="9"
+            strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -138,7 +158,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             points={PRECOMPUTED_POINTS.line3_branch_rod}
             fill="none"
             stroke="#10B981"
-            strokeWidth="9"
+            strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -146,15 +166,75 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             points={PRECOMPUTED_POINTS.line3_branch_cairo_univ}
             fill="none"
             stroke="#10B981"
-            strokeWidth="9"
+            strokeWidth="8.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
         </g>
       )}
 
+      {/* LRT Capital Train Polylines (Cyan #06B6D4) */}
+      {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
+        <g>
+          <polyline
+            points={PRECOMPUTED_POINTS.lrt_trunk}
+            fill="none"
+            stroke="#06B6D4"
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <polyline
+            points={PRECOMPUTED_POINTS.lrt_branch_ramadan}
+            fill="none"
+            stroke="#06B6D4"
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+      )}
+
+      {/* Monorail East Polyline (Orange #EA580C) */}
+      {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
+        <polyline
+          points={PRECOMPUTED_POINTS.monorail_east}
+          fill="none"
+          stroke="#EA580C"
+          strokeWidth="8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+
+      {/* Monorail West Polyline (Amber #D97706) */}
+      {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
+        <polyline
+          points={PRECOMPUTED_POINTS.monorail_west}
+          fill="none"
+          stroke="#D97706"
+          strokeWidth="8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+
+      {/* BRT Ring Road Polyline (Purple #8B5CF6) */}
+      {(activeLineFilter === 'all' || activeLineFilter === 'brt') && (
+        <polyline
+          points={PRECOMPUTED_POINTS.brt}
+          fill="none"
+          stroke="#8B5CF6"
+          strokeWidth="7"
+          strokeDasharray="12 5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+
       {/* Line Terminal Badges */}
       <g className="select-none pointer-events-none font-bold">
+        {/* Line 1 Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
           <>
             <g transform="translate(880, 36)">
@@ -172,6 +252,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           </>
         )}
 
+        {/* Line 2 Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'line2') && (
           <>
             <g transform="translate(440, 76)">
@@ -189,6 +270,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           </>
         )}
 
+        {/* Line 3 Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'line3') && (
           <>
             <g transform="translate(1125, 304)">
@@ -205,6 +287,62 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             </g>
           </>
         )}
+
+        {/* LRT Badges */}
+        {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
+          <>
+            <g transform="translate(1500, 48)">
+              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#06B6D4" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'LRT • العاشر من رمضان' : 'LRT • 10th of Ramadan'}
+              </text>
+            </g>
+            <g transform="translate(1415, 430)">
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#06B6D4" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'LRT • مدينة الفنون' : 'LRT • City of Arts'}
+              </text>
+            </g>
+          </>
+        )}
+
+        {/* Monorail East Badges */}
+        {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
+          <g transform="translate(715, 480)">
+            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#EA580C" stroke="#FFFFFF" strokeWidth="2" />
+            <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+              {isAr ? 'مونوريل شرق • الاستاد' : 'Mono East • Stadium'}
+            </text>
+          </g>
+        )}
+
+        {/* Monorail West Badges */}
+        {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
+          <g transform="translate(80, 875)">
+            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#D97706" stroke="#FFFFFF" strokeWidth="2" />
+            <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+              {isAr ? 'مونوريل غرب • 6 أكتوبر' : 'Mono West • 6th Oct'}
+            </text>
+          </g>
+        )}
+
+        {/* BRT Badges */}
+        {(activeLineFilter === 'all' || activeLineFilter === 'brt') && (
+          <>
+            <g transform="translate(410, 18)">
+              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#8B5CF6" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'BRT • الإسكندرية الزراعي' : 'BRT • Alex Agri'}
+              </text>
+            </g>
+            <g transform="translate(860, 755)">
+              <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#8B5CF6" stroke="#FFFFFF" strokeWidth="2" />
+              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
+                {isAr ? 'BRT • الجولف' : 'BRT • The Golf'}
+              </text>
+            </g>
+          </>
+        )}
       </g>
     </>
   );
@@ -213,6 +351,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
 /**
  * Individual Station Node Component.
  * Memoized so only the selected/unselected stations re-render when tapping!
+ * Inversely rescales fonts on zoom so station labels stay crisp and never crowd or overlap each other!
  */
 const StationNode = React.memo(function StationNode({
   st,
@@ -220,11 +359,28 @@ const StationNode = React.memo(function StationNode({
   isSelected,
   isBatterySaver,
   isAr,
+  zoomLevel = 1,
   onSelectStation
 }) {
   const isInterchange = st.isInterchange;
   const primaryLine = st.lines[0];
   const color = isInterchange ? '#C8102E' : METRO_LINES[primaryLine]?.color || '#E11D48';
+
+  // Responsive inverse font & stroke scaling on zoom
+  const z = Math.max(0.65, Math.min(4, zoomLevel || 1));
+  const baseSize = isInterchange ? 11.5 : 9.5;
+  // Inverse scale: dynamic font size decreases slightly inside SVG as zoom increases
+  // so rendered text on screen remains comfortably between 9px and 14px instead of ballooning to 30px+
+  const dynamicFontSize = Math.max(5.5, Math.min(13.5, Number((baseSize / Math.pow(z, 0.58)).toFixed(1))));
+  const dynamicStrokeWidth = Math.max(1.5, Number((3.2 / Math.sqrt(z)).toFixed(1)));
+
+  // Decluttering: when zoomed far out (z < 0.85), hide non-interchange labels to keep the canvas clean
+  const shouldRenderLabel = z >= 0.85 || isInterchange || isSelected;
+
+  const labelOffsetX = coord.labelPos === 'right' ? Math.max(8, 14 / Math.sqrt(z)) :
+                       coord.labelPos === 'left' ? -Math.max(8, 14 / Math.sqrt(z)) : 0;
+  const labelOffsetY = coord.labelPos === 'top' ? -Math.max(8, 12 / Math.sqrt(z)) :
+                       coord.labelPos === 'bottom' ? Math.max(10, 16 / Math.sqrt(z)) : 4;
 
   return (
     <g
@@ -344,36 +500,30 @@ const StationNode = React.memo(function StationNode({
         )
       )}
 
-      {/* Station Label */}
-      <text
-        x={
-          coord.labelPos === 'right' ? coord.x + 14 :
-          coord.labelPos === 'left' ? coord.x - 14 :
-          coord.x
-        }
-        y={
-          coord.labelPos === 'top' ? coord.y - 12 :
-          coord.labelPos === 'bottom' ? coord.y + 18 :
-          coord.y + 4
-        }
-        textAnchor={
-          coord.labelPos === 'left' ? 'end' :
-          coord.labelPos === 'right' ? 'start' :
-          'middle'
-        }
-        fill="#F4F4F5"
-        stroke="#0A0A0B"
-        strokeWidth="3.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        paintOrder="stroke fill"
-        className="select-none pointer-events-none station-map-label"
-        fontSize={isInterchange ? '12' : '9.5'}
-        fontWeight={isInterchange ? '900' : '700'}
-        fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}
-      >
-        {isAr ? st.nameAr : st.nameEn}
-      </text>
+      {/* Dynamic Zoom-Rescaled Station Label */}
+      {shouldRenderLabel && (
+        <text
+          x={coord.x + labelOffsetX}
+          y={coord.y + labelOffsetY}
+          textAnchor={
+            coord.labelPos === 'left' ? 'end' :
+            coord.labelPos === 'right' ? 'start' :
+            'middle'
+          }
+          fill={isSelected ? '#38BDF8' : '#F4F4F5'}
+          stroke="#0A0A0B"
+          strokeWidth={dynamicStrokeWidth}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          paintOrder="stroke fill"
+          className="select-none pointer-events-none station-map-label"
+          fontSize={dynamicFontSize}
+          fontWeight={isInterchange || isSelected ? '900' : '700'}
+          fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}
+        >
+          {isAr ? st.nameAr : st.nameEn}
+        </text>
+      )}
     </g>
   );
 });
@@ -406,6 +556,24 @@ export default function InteractiveMap({
 
   // Performance Options Modal state
   const [showPerfModal, setShowPerfModal] = useState(false);
+
+  // Framerate limiter mode: '120' (8.33ms unthrottled) vs '60' (16.67ms throttled)
+  const [fpsMode, setFpsMode] = useState(() => {
+    try {
+      return localStorage.getItem('metro_map_fps_mode') || '120';
+    } catch {
+      return '120';
+    }
+  });
+
+  // Greater Cairo Integrated Transit Map Overlay background toggle
+  const [showIntegratedOverlay, setShowIntegratedOverlay] = useState(() => {
+    try {
+      return localStorage.getItem('metro_map_integrated_overlay') === 'true';
+    } catch {
+      return false;
+    }
+  });
 
   // Zoom & Pan transformation state
   const [zoom, setZoom] = useState(1);
@@ -442,6 +610,7 @@ export default function InteractiveMap({
   const pinchStartZoomRef = useRef(1);
   const lastTapRef = useRef(0);
   const rafRef = useRef(null);
+  const lastFrameTimeRef = useRef(0);
 
   // Apply GPU hardware transform directly to DOM surface
   const applyTransform = useCallback((p, z, animate = false) => {
@@ -453,11 +622,29 @@ export default function InteractiveMap({
     }
   }, []);
 
-  // RAF loop for buttery smooth 60-120fps tracking
+  // RAF loop with 120 FPS / 60 FPS support for ultra-smooth 120Hz display tracking
   const scheduleRaf = useCallback(() => {
     if (rafRef.current) return;
-    rafRef.current = requestAnimationFrame(() => {
+    rafRef.current = requestAnimationFrame((timestamp) => {
       rafRef.current = null;
+      if (fpsMode === '60') {
+        const elapsed = timestamp - lastFrameTimeRef.current;
+        if (elapsed < 14.5) {
+          rafRef.current = requestAnimationFrame((ts) => {
+            rafRef.current = null;
+            lastFrameTimeRef.current = ts;
+            panRef.current = pendingPanRef.current;
+            zoomRef.current = pendingZoomRef.current;
+            if (mapSurfaceRef.current) {
+              mapSurfaceRef.current.style.transform = `translate3d(${panRef.current.x}px, ${panRef.current.y}px, 0) scale(${zoomRef.current})`;
+              mapSurfaceRef.current.style.transition = 'none';
+            }
+          });
+          return;
+        }
+      }
+      // 120 FPS: Direct execution with 8.33ms budget for ProMotion & 120Hz gaming screens
+      lastFrameTimeRef.current = timestamp;
       panRef.current = pendingPanRef.current;
       zoomRef.current = pendingZoomRef.current;
       if (mapSurfaceRef.current) {
@@ -465,7 +652,7 @@ export default function InteractiveMap({
         mapSurfaceRef.current.style.transition = 'none';
       }
     });
-  }, []);
+  }, [fpsMode]);
 
   // Sync transform when pan/zoom state or mode changes
   useEffect(() => {
@@ -558,15 +745,15 @@ export default function InteractiveMap({
       const h = rect.height || 540;
 
       if (isVector) {
-        // SVG viewBox is 0 0 1200 1020, center is (600, 510)
-        const scaleFactor = Math.min(w / 1200, h / 1020);
-        targetX = -(coord ? coord.x - 600 : 0) * scaleFactor * targetZoom;
-        targetY = -(coord ? coord.y - 510 : 0) * scaleFactor * targetZoom - 35;
+        // SVG viewBox is 0 0 1560 1040, center is (780, 520)
+        const scaleFactor = Math.min(w / 1560, h / 1040);
+        targetX = -(coord ? coord.x - 780 : 0) * scaleFactor * targetZoom;
+        targetY = -(coord ? coord.y - 520 : 0) * scaleFactor * targetZoom - 35;
       } else {
         // Official Schematic raster image (2363 x 2363 square)
         if (coord) {
-          const normX = (coord.x - 600) / 600;
-          const normY = (coord.y - 510) / 510;
+          const normX = (coord.x - 780) / 780;
+          const normY = (coord.y - 520) / 520;
           targetX = -normX * (w * 0.42) * targetZoom;
           targetY = -normY * (h * 0.42) * targetZoom - 35;
         }
@@ -1018,13 +1205,13 @@ export default function InteractiveMap({
 
             {/* Vector Mode Line Filters */}
             {isVector && (
-              <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0">
+              <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0 overflow-x-auto no-scrollbar">
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
                     setActiveLineFilter('all');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
                     activeLineFilter === 'all'
                       ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
                       : 'text-slate-600 dark:text-[#A1A1AA] hover:bg-slate-100 dark:hover:bg-[#1E1E24]'
@@ -1037,7 +1224,7 @@ export default function InteractiveMap({
                     haptics.selection();
                     setActiveLineFilter('line1');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
                     activeLineFilter === 'line1'
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-[#1E1E24]'
@@ -1050,7 +1237,7 @@ export default function InteractiveMap({
                     haptics.selection();
                     setActiveLineFilter('line2');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
                     activeLineFilter === 'line2'
                       ? 'bg-red-600 text-white shadow-sm'
                       : 'text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-[#1E1E24]'
@@ -1063,7 +1250,7 @@ export default function InteractiveMap({
                     haptics.selection();
                     setActiveLineFilter('line3');
                   }}
-                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all ${
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
                     activeLineFilter === 'line3'
                       ? 'bg-emerald-600 text-white shadow-sm'
                       : 'text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-[#1E1E24]'
@@ -1071,11 +1258,112 @@ export default function InteractiveMap({
                 >
                   {isAr ? '3 أخضر' : 'L3'}
                 </PressableScale>
+                <PressableScale
+                  onClick={() => {
+                    haptics.selection();
+                    setActiveLineFilter('lrt');
+                  }}
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                    activeLineFilter === 'lrt'
+                      ? 'bg-[#06B6D4] text-white shadow-sm'
+                      : 'text-[#06B6D4] hover:bg-cyan-50 dark:hover:bg-[#1E1E24]'
+                  }`}
+                >
+                  {isAr ? 'LRT العاصمة' : 'LRT'}
+                </PressableScale>
+                <PressableScale
+                  onClick={() => {
+                    haptics.selection();
+                    setActiveLineFilter('monorail_east');
+                  }}
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                    activeLineFilter === 'monorail_east'
+                      ? 'bg-[#EA580C] text-white shadow-sm'
+                      : 'text-[#EA580C] hover:bg-orange-50 dark:hover:bg-[#1E1E24]'
+                  }`}
+                >
+                  {isAr ? 'مونوريل شرق' : 'Mono East'}
+                </PressableScale>
+                <PressableScale
+                  onClick={() => {
+                    haptics.selection();
+                    setActiveLineFilter('monorail_west');
+                  }}
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                    activeLineFilter === 'monorail_west'
+                      ? 'bg-[#D97706] text-white shadow-sm'
+                      : 'text-[#D97706] hover:bg-amber-50 dark:hover:bg-[#1E1E24]'
+                  }`}
+                >
+                  {isAr ? 'مونوريل غرب' : 'Mono West'}
+                </PressableScale>
+                <PressableScale
+                  onClick={() => {
+                    haptics.selection();
+                    setActiveLineFilter('brt');
+                  }}
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-space font-bold transition-all whitespace-nowrap ${
+                    activeLineFilter === 'brt'
+                      ? 'bg-[#8B5CF6] text-white shadow-sm'
+                      : 'text-[#8B5CF6] hover:bg-purple-50 dark:hover:bg-[#1E1E24]'
+                  }`}
+                >
+                  {isAr ? 'BRT الترددي' : 'BRT'}
+                </PressableScale>
               </div>
             )}
 
-            {/* Action Controls: Performance Modal + Official PDF Map */}
+            {/* Action Controls: Integrated Overlay + FPS Switcher + Performance Modal + Official PDF Map */}
             <div className="flex items-center gap-1.5 ms-auto flex-shrink-0">
+              {/* Integrated Transit Map Overlay Toggle */}
+              {isVector && (
+                <PressableScale
+                  onClick={() => {
+                    haptics.selection();
+                    setShowIntegratedOverlay((prev) => {
+                      const next = !prev;
+                      try {
+                        localStorage.setItem('metro_map_integrated_overlay', String(next));
+                      } catch {}
+                      return next;
+                    });
+                  }}
+                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-2xl text-xs font-space font-bold border shadow-lg backdrop-blur-xl transition-all ${
+                    showIntegratedOverlay
+                      ? 'bg-[#2DD881]/20 text-[#2DD881] border-[#2DD881]/40 shadow-[#2DD881]/15'
+                      : 'bg-white/95 dark:bg-[#111113]/95 text-slate-700 dark:text-[#A1A1AA] border-slate-200/90 dark:border-[#26262C]'
+                  }`}
+                  title={isAr ? 'خريطة النقل الشامل المتكاملة كخلفية تفاعلية' : 'Toggle Integrated Transit Map Overlay'}
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  <span className="hidden lg:inline">{isAr ? 'خلفية النقل الشامل' : 'Overlay Map'}</span>
+                  <span className={`text-[10px] font-mono px-1 py-0.2 rounded ${showIntegratedOverlay ? 'bg-[#2DD881] text-slate-950 font-bold' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                    {showIntegratedOverlay ? 'ON' : 'OFF'}
+                  </span>
+                </PressableScale>
+              )}
+
+              {/* 120 FPS / 60 FPS Toggle Button */}
+              <PressableScale
+                onClick={() => {
+                  haptics.selection();
+                  const nextFps = fpsMode === '120' ? '60' : '120';
+                  setFpsMode(nextFps);
+                  try {
+                    localStorage.setItem('metro_map_fps_mode', nextFps);
+                  } catch {}
+                }}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-2xl text-xs font-space font-bold border shadow-lg backdrop-blur-xl transition-colors ${
+                  fpsMode === '120'
+                    ? 'bg-cyan-500/15 text-cyan-500 border-cyan-500/35'
+                    : 'bg-white/95 dark:bg-[#111113]/95 text-emerald-600 dark:text-emerald-400 border-slate-200/90 dark:border-[#26262C]'
+                }`}
+                title={isAr ? `تبديل معدل الإطارات (الحالي: ${fpsMode} FPS) - انقر لتغيير الوضع` : `Toggle frame rate mode (Current: ${fpsMode} FPS)`}
+              >
+                <Activity className={`w-3.5 h-3.5 ${fpsMode === '120' ? 'text-cyan-400 animate-pulse' : 'text-emerald-500'}`} />
+                <span className="font-mono">{fpsMode} FPS</span>
+              </PressableScale>
+
               <PressableScale
                 onClick={() => {
                   haptics.selection();
@@ -1084,8 +1372,8 @@ export default function InteractiveMap({
                 className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-2xl text-xs font-space font-bold bg-white/95 dark:bg-[#111113]/95 text-blue-600 dark:text-blue-400 border border-slate-200/90 dark:border-[#26262C] shadow-lg backdrop-blur-xl transition-colors"
                 title={isAr ? 'خيارات تحسين أداء وسلاسة الخريطة' : 'Map Performance Settings & Options'}
               >
-                <Activity className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />
-                <span className="hidden md:inline">{isAr ? 'خيارات الأداء 60 FPS' : '60 FPS'}</span>
+                <Sliders className="w-3.5 h-3.5 text-blue-500" />
+                <span className="hidden md:inline">{isAr ? 'الضبط' : 'Settings'}</span>
               </PressableScale>
 
               <PressableScale
@@ -1153,7 +1441,7 @@ export default function InteractiveMap({
         {isVector && (
           <svg
             ref={mapSurfaceRef}
-            viewBox="0 0 1200 1020"
+            viewBox="0 0 1560 1040"
             className="w-full h-full"
             style={{
               transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
@@ -1164,6 +1452,20 @@ export default function InteractiveMap({
               WebkitBackfaceVisibility: 'hidden'
             }}
           >
+            {/* Optional Integrated Transit Map Background Overlay */}
+            {showIntegratedOverlay && (
+              <image
+                href="/maps/cairo-network-map-2025-eon.png"
+                x="0"
+                y="0"
+                width="1560"
+                height="1040"
+                preserveAspectRatio="xMidYMid slice"
+                opacity="0.65"
+                className="pointer-events-none select-none transition-opacity duration-300"
+              />
+            )}
+
             {/* Memoized Static SVG Layers (River Nile, Polylines, Badges) */}
             <StaticMapSvgLayers
               activeLineFilter={activeLineFilter}
@@ -1171,7 +1473,7 @@ export default function InteractiveMap({
               isBatterySaver={isBatterySaver}
             />
 
-            {/* Memoized Station Nodes */}
+            {/* Memoized Station Nodes with zoom-rescaling labels */}
             {STATIONS.map((st) => {
               const coord = MAP_STATION_COORDS[st.id];
               if (!coord) return null;
@@ -1188,6 +1490,7 @@ export default function InteractiveMap({
                   isSelected={selectedStation?.id === st.id}
                   isBatterySaver={isBatterySaver}
                   isAr={isAr}
+                  zoomLevel={zoom}
                   onSelectStation={handleSelectStation}
                 />
               );
@@ -1202,8 +1505,8 @@ export default function InteractiveMap({
             {renderMode === 'official'
               ? (isAr ? 'المخطط الرسمي HD • باعد بأصابعك للتكبير' : 'Official HD Map • Pinch to zoom & pan')
               : isBatterySaver
-              ? (isAr ? 'وضع توفير الطاقة مفعل • انقر على أي محطة' : 'Battery Saver Mode Active • Tap station')
-              : (t.mapTab?.tapToSelect || (isAr ? 'المتجهة السلسة 60 FPS • انقر لاختيار محطة' : 'Smooth 60 FPS • Tap station'))}
+              ? (isAr ? `وضع توفير الطاقة مفعل (${fpsMode} FPS) • انقر على أي محطة` : `Battery Saver Mode Active (${fpsMode} FPS) • Tap station`)
+              : (t.mapTab?.tapToSelect || (isAr ? `المتجهة السلسة ${fpsMode} FPS • انقر لاختيار محطة` : `Smooth ${fpsMode} FPS • Tap station`))}
           </span>
         </div>
 
@@ -1530,7 +1833,117 @@ export default function InteractiveMap({
             {/* Live Performance Diagnostic Pill */}
             <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center gap-2.5 text-xs text-emerald-700 dark:text-emerald-400 font-mono font-bold">
               <Zap className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-              <span>{isAr ? 'حالة العرض: 60+ FPS سلس ومستقر • تسريع GPU مفعل' : 'Engine: 60+ FPS Smooth • GPU Hardware Acceleration Active'}</span>
+              <span>
+                {isAr
+                  ? `حالة العرض: ${fpsMode} FPS فائق السلاسة • تسريع GPU العتادي مفعل`
+                  : `Engine: ${fpsMode} FPS Ultra Smooth • GPU Hardware Acceleration Active`}
+              </span>
+            </div>
+
+            {/* Display Framerate Selection: 120 FPS vs 60 FPS */}
+            <div className="space-y-2">
+              <p className="text-xs font-cairo font-bold text-slate-700 dark:text-[#A1A1AA]">
+                {isAr ? 'معدل تحديث الشاشة وسلاسة الحركة (Frame Rate):' : 'Display Refresh Rate & Motion Budget:'}
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <div
+                  onClick={() => {
+                    haptics.selection();
+                    setFpsMode('120');
+                    try { localStorage.setItem('metro_map_fps_mode', '120'); } catch {}
+                  }}
+                  className={`p-3 rounded-2xl border cursor-pointer transition-all ${
+                    fpsMode === '120'
+                      ? 'bg-cyan-500/10 border-cyan-500/50 shadow-md ring-1 ring-cyan-500/30'
+                      : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C] hover:border-cyan-400/40'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-space font-extrabold text-sm text-cyan-600 dark:text-cyan-400">120 FPS</span>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-space font-bold bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">
+                        {isAr ? 'فائق' : 'Ultra'}
+                      </span>
+                    </div>
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center border ${
+                      fpsMode === '120' ? 'bg-cyan-500 border-cyan-500 text-white' : 'border-slate-300 dark:border-slate-600'
+                    }`}>
+                      {fpsMode === '120' && <Check className="w-3 h-3 stroke-[3]" />}
+                    </div>
+                  </div>
+                  <p className="text-[10px] font-cairo text-slate-500 dark:text-[#8E8E93] mt-1.5 leading-snug">
+                    {isAr ? 'معدل 8.33ms بدون أي تقطيع لشاشات 120Hz و Apple ProMotion' : '8.33ms unthrottled for 120Hz & Apple ProMotion'}
+                  </p>
+                </div>
+
+                <div
+                  onClick={() => {
+                    haptics.selection();
+                    setFpsMode('60');
+                    try { localStorage.setItem('metro_map_fps_mode', '60'); } catch {}
+                  }}
+                  className={`p-3 rounded-2xl border cursor-pointer transition-all ${
+                    fpsMode === '60'
+                      ? 'bg-emerald-500/10 border-emerald-500/50 shadow-md ring-1 ring-emerald-500/30'
+                      : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C] hover:border-emerald-400/40'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-space font-extrabold text-sm text-emerald-600 dark:text-emerald-400">60 FPS</span>
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center border ${
+                      fpsMode === '60' ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 dark:border-slate-600'
+                    }`}>
+                      {fpsMode === '60' && <Check className="w-3 h-3 stroke-[3]" />}
+                    </div>
+                  </div>
+                  <p className="text-[10px] font-cairo text-slate-500 dark:text-[#8E8E93] mt-1.5 leading-snug">
+                    {isAr ? 'معدل 16.67ms قياسي متوازن وموفر لاستهلاك البطارية' : '16.67ms standard power-efficient for 60Hz'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Background Map Overlay Option */}
+            <div className="space-y-2">
+              <p className="text-xs font-cairo font-bold text-slate-700 dark:text-[#A1A1AA]">
+                {isAr ? 'خلفية خريطة النقل الشامل المتكاملة:' : 'Integrated Transit Map Background Overlay:'}
+              </p>
+              <div
+                onClick={() => {
+                  haptics.selection();
+                  setShowIntegratedOverlay((prev) => {
+                    const next = !prev;
+                    try { localStorage.setItem('metro_map_integrated_overlay', String(next)); } catch {}
+                    return next;
+                  });
+                }}
+                className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
+                  showIntegratedOverlay
+                    ? 'bg-[#2DD881]/10 border-[#2DD881]/40 shadow-sm'
+                    : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C]'
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <Layers className={`w-5 h-5 ${showIntegratedOverlay ? 'text-[#2DD881]' : 'text-slate-400'}`} />
+                  <div>
+                    <span className="font-cairo font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                      {isAr ? 'عرض خريطة TfC الشاملة كخلفية تفاعلية' : 'Show TfC Integrated Map as Background'}
+                    </span>
+                    <p className="text-[10px] font-cairo text-slate-500 dark:text-[#8E8E93]">
+                      {isAr
+                        ? 'عرض خريطة النقل الإقليمية المعتمدة عالية الدقة تحت مسارات المترو المتجهة'
+                        : 'Overlays official high-res network map behind the interactive vector stations'}
+                    </p>
+                  </div>
+                </div>
+                <div className={`px-2.5 py-1 rounded-xl text-xs font-mono font-bold ${
+                  showIntegratedOverlay
+                    ? 'bg-[#2DD881] text-slate-950 shadow-sm'
+                    : 'bg-slate-200 dark:bg-[#2A2A32] text-slate-600 dark:text-slate-400'
+                }`}>
+                  {showIntegratedOverlay ? (isAr ? 'مفعل' : 'ON') : (isAr ? 'معطل' : 'OFF')}
+                </div>
+              </div>
             </div>
 
             {/* Selectable Options Section */}

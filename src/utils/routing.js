@@ -17,7 +17,8 @@ export function buildGraph(includeOtherModes = true) {
   const graph = new Map();
   STATIONS.forEach(st => graph.set(st.id, []));
 
-  NETWORK_EDGES.forEach(([u, v, line, minutes]) => {
+  NETWORK_EDGES.forEach(edge => {
+    const [u, v, line, val1, val2] = edge;
     const lineMode = METRO_LINES[line]?.mode || 'metro';
     if (!includeOtherModes && lineMode !== 'metro') {
       return;
@@ -28,9 +29,33 @@ export function buildGraph(includeOtherModes = true) {
     if ((stU?.underConstruction && !stU?.allowSimulation) || (stV?.underConstruction && !stV?.allowSimulation)) {
       return;
     }
+
+    let minutes = 2.0;
+    let distanceKm = 1.2;
+
+    if (line === 'lrt') {
+      // LRT format in NETWORK_EDGES: [stationA, stationB, 'lrt', distanceKm, travelMinutes]
+      distanceKm = typeof val1 === 'number' ? val1 : 6.0;
+      minutes = typeof val2 === 'number' ? val2 : (distanceKm <= 5 ? 3.5 : (distanceKm <= 7 ? 4.0 : (distanceKm <= 8.5 ? 4.5 : 5.0)));
+    } else if (line === 'monorail_east') {
+      // Monorail East format in NETWORK_EDGES: [stationA, stationB, 'monorail_east', travelMinutes, distanceKm]
+      minutes = typeof val1 === 'number' ? val1 : 2.5;
+      distanceKm = typeof val2 === 'number' ? val2 : 2.5;
+    } else if (typeof val2 === 'number') {
+      minutes = val1;
+      distanceKm = val2;
+    } else {
+      minutes = typeof val1 === 'number' ? val1 : 2.0;
+      if (stU?.lat && stU?.lng && stV?.lat && stV?.lng) {
+        distanceKm = Number(getDistanceKm(stU.lat, stU.lng, stV.lat, stV.lng).toFixed(2));
+      } else {
+        distanceKm = 1.2;
+      }
+    }
+
     if (graph.has(u) && graph.has(v)) {
-      graph.get(u).push({ to: v, line, minutes, mode: lineMode });
-      graph.get(v).push({ to: u, line, minutes, mode: lineMode });
+      graph.get(u).push({ to: v, line, minutes, distanceKm, mode: lineMode });
+      graph.get(v).push({ to: u, line, minutes, distanceKm, mode: lineMode });
     }
   });
 
@@ -107,7 +132,10 @@ const LINE_SEQUENCES = {
     'monorail_new_october'
   ],
   lrt: [
-    'adly_mansour', 'lrt_obour', 'lrt_mostakbal', 'lrt_shorouk', 'lrt_badr', 'lrt_capital_gardens', 'city_of_arts'
+    'adly_mansour', 'lrt_obour', 'lrt_mostakbal', 'lrt_shorouk', 'lrt_new_heliopolis', 'lrt_badr', 'lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'
+  ],
+  lrt_ramadan: [
+    'lrt_badr', 'lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'
   ]
 };
 
@@ -210,12 +238,31 @@ export function getLineDirection(line, fromId, toId, targetStationId = null) {
   }
 
   if (line === 'lrt') {
-    const seq = LINE_SEQUENCES.lrt;
-    const i1 = seq.indexOf(fromId);
-    const i2 = seq.indexOf(toId);
-    return i2 > i1
-      ? { stationId: 'city_of_arts', nameEn: 'New Administrative Capital', nameAr: 'العاصمة الإدارية الجديدة' }
-      : { stationId: 'adly_mansour', nameEn: 'Adly Mansour', nameAr: 'عدلي منصور' };
+    const ramadanBranch = ['lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'];
+    const capitalBranch = ['lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'];
+    const spine = ['adly_mansour', 'lrt_obour', 'lrt_mostakbal', 'lrt_shorouk', 'lrt_new_heliopolis', 'lrt_badr'];
+
+    if (ramadanBranch.includes(toId)) {
+      return { stationId: 'lrt_10th_of_ramadan', nameEn: '10th of Ramadan', nameAr: 'العاشر من رمضان' };
+    }
+    if (capitalBranch.includes(toId)) {
+      return { stationId: 'city_of_arts', nameEn: 'City of Arts & Culture (New Capital)', nameAr: 'مدينة الفنون والثقافة (العاصمة الإدارية)' };
+    }
+    const idxFrom = spine.indexOf(fromId);
+    const idxTo = spine.indexOf(toId);
+    if (idxFrom !== -1 && idxTo !== -1) {
+      if (idxTo < idxFrom) {
+        return { stationId: 'adly_mansour', nameEn: 'Adly Mansour', nameAr: 'عدلي منصور' };
+      }
+      if (targetStationId && ramadanBranch.includes(targetStationId)) {
+        return { stationId: 'lrt_10th_of_ramadan', nameEn: '10th of Ramadan', nameAr: 'العاشر من رمضان' };
+      }
+      return { stationId: 'city_of_arts', nameEn: 'City of Arts & Culture (New Capital)', nameAr: 'مدينة الفنون والثقافة (العاصمة الإدارية)' };
+    }
+    if (spine.includes(toId)) {
+      return { stationId: 'adly_mansour', nameEn: 'Adly Mansour', nameAr: 'عدلي منصور' };
+    }
+    return { stationId: 'city_of_arts', nameEn: 'City of Arts & Culture (New Capital)', nameAr: 'مدينة الفنون والثقافة (العاصمة الإدارية)' };
   }
 
   if (line === 'brt') {
@@ -283,6 +330,8 @@ export function calculateCombinedFare(legs) {
 
   return {
     totalCost,
+    price: totalCost,
+    totalFare: totalCost,
     metroTier,
     metroHops,
     monorailPrice,
@@ -596,23 +645,44 @@ export function findMultipleRoutes(originId, destinationId, options = {}) {
     }
   });
 
-  // Assign user-facing labels
+  // Sort unique routes so the truly best route is first (combines travel time and transfer penalties)
+  uniqueRoutes.sort((a, b) => {
+    const scoreA = a.travelTimeMins + a.transfersCount * 8;
+    const scoreB = b.travelTimeMins + b.transfersCount * 8;
+    return scoreA - scoreB;
+  });
+
+  // Calculate minimums across candidates for accurate comparative labeling
+  const minTime = Math.min(...uniqueRoutes.map(r => r.travelTimeMins));
+  const minTransfers = Math.min(...uniqueRoutes.map(r => r.transfersCount));
+  const minDistance = Math.min(...uniqueRoutes.map(r => r.distanceKm));
+  const minCost = Math.min(...uniqueRoutes.map(r => r.fareDetails?.totalCost || 999));
+
+  // Assign user-facing labels reflecting actual performance
   return uniqueRoutes.map((route, idx) => {
     route.autoSwitched = isAutoSwitched;
     const isPureMetro = route.legs.every(l => (l.lineInfo?.mode || 'metro') === 'metro');
 
-    if (idx === 0) {
+    if (route.travelTimeMins === minTime) {
       route.labelEn = isPureMetro ? 'Shortest Metro Route' : 'Fastest Route';
       route.labelAr = isPureMetro ? 'أقصر وأرخص مسار بالمترو' : 'أسرع مسار';
+      route.badge = 'fastest';
+    } else if (route.transfersCount === minTransfers && minTransfers < uniqueRoutes[0].transfersCount) {
+      route.labelEn = 'Fewest Transfers';
+      route.labelAr = 'أقل تحويلات';
+      route.badge = 'least_transfers';
+    } else if (route.distanceKm === minDistance) {
+      route.labelEn = 'Shortest Distance';
+      route.labelAr = 'أقصر مسافة';
+      route.badge = 'shortest';
+    } else if (route.fareDetails?.totalCost === minCost) {
+      route.labelEn = 'Lowest Fare';
+      route.labelAr = 'أوفر تذكرة';
       route.badge = 'best_fare';
     } else if (isPureMetro && !uniqueRoutes[0].legs.every(l => (l.lineInfo?.mode || 'metro') === 'metro')) {
       route.labelEn = 'Pure Metro (Standard Fare)';
       route.labelAr = 'مترو فقط (تذكرة موحدة)';
       route.badge = 'metro_only';
-    } else if (route.transfersCount < uniqueRoutes[0].transfersCount) {
-      route.labelEn = 'Fewest Transfers';
-      route.labelAr = 'أقل تحويلات';
-      route.badge = 'least_transfers';
     } else {
       route.labelEn = `Route Option ${idx + 1}`;
       route.labelAr = `خيار مسار ${idx + 1}`;

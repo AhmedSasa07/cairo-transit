@@ -485,22 +485,31 @@ export default function TicketGuide({ lang, t }) {
                       style={{ backgroundColor: tier.ticketColorHex }}
                     />
 
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className={`text-xs font-black text-slate-900 dark:text-white ${
-                          isAr ? 'font-cairo' : 'font-space'
-                        }`}>
-                          {isAr ? tier.nameAr : tier.nameEn}
-                        </span>
-                        <span className={`block text-[10px] font-bold mt-0.5 text-slate-500 dark:text-[#A1A1AA] ${
-                          isAr ? 'font-cairo tracking-normal' : 'font-mono uppercase'
-                        }`}>
-                          {isAr ? `تذكرة ${tier.ticketColorAr}` : `${tier.ticketColorEn} Ticket`}
-                        </span>
+                    <div className="flex items-center justify-between gap-2.5">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        {tier.ticketImage && (
+                          <img
+                            src={tier.ticketImage}
+                            alt={isAr ? tier.ticketColorAr : tier.ticketColorEn}
+                            className="w-12 h-9 object-contain rounded-lg border border-slate-200/80 dark:border-white/10 shadow-xs flex-shrink-0 bg-slate-900/5 p-0.5"
+                          />
+                        )}
+                        <div className="min-w-0">
+                          <span className={`text-xs font-black text-slate-900 dark:text-white truncate block ${
+                            isAr ? 'font-cairo' : 'font-space'
+                          }`}>
+                            {isAr ? tier.nameAr : tier.nameEn}
+                          </span>
+                          <span className={`block text-[10px] font-bold mt-0.5 text-slate-500 dark:text-[#A1A1AA] ${
+                            isAr ? 'font-cairo tracking-normal' : 'font-mono uppercase'
+                          }`}>
+                            {isAr ? `تذكرة ${tier.ticketColorAr}` : `${tier.ticketColorEn} Ticket`}
+                          </span>
+                        </div>
                       </div>
 
                       <span
-                        className="text-xs font-mono tabular-nums font-black px-2.5 py-1 rounded-full text-white inline-flex items-baseline gap-1"
+                        className="text-xs font-mono tabular-nums font-black px-2.5 py-1 rounded-full text-white inline-flex items-baseline gap-1 flex-shrink-0"
                         style={{ backgroundColor: tier.ticketColorHex }}
                       >
                         <span>{tier.price}</span>
@@ -514,12 +523,17 @@ export default function TicketGuide({ lang, t }) {
                       {isAr ? tier.descriptionAr : tier.descriptionEn}
                     </p>
 
-                    <div className={`flex items-center gap-2 pt-1 text-[11px] text-slate-600 dark:text-[#71717A] border-t border-slate-100 dark:border-[#1D1D22] ${
+                    <div className={`flex items-center justify-between gap-2 pt-2 text-[11px] text-slate-600 dark:text-[#71717A] border-t border-slate-100 dark:border-[#1D1D22] ${
                       isAr ? 'font-cairo' : 'font-mono'
                     }`}>
-                      <span>{isAr ? `كبار السن: ${tier.seniorPrice} ج.م` : `Seniors: ${tier.seniorPrice} EGP`}</span>
-                      <span>•</span>
-                      <span>{isAr ? `ذوو الهمم: ${tier.specialNeedsPrice} ج.م` : `Special: ${tier.specialNeedsPrice} EGP`}</span>
+                      <span className="flex items-center gap-1.5">
+                        <img src="/assets/tickets/Ticket_B_Blue.png" alt="Elderly Blue Ticket" className="w-4 h-3 object-contain" />
+                        <span>{isAr ? `كبار السن: ${tier.seniorPrice} ج.م` : `Seniors: ${tier.seniorPrice} EGP`}</span>
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <img src="/assets/tickets/Ticket_M_Grey.png" alt="Special Needs Mauve Ticket" className="w-4 h-3 object-contain" />
+                        <span>{isAr ? `ذوو الهمم: ${tier.specialNeedsPrice} ج.م` : `Special: ${tier.specialNeedsPrice} EGP`}</span>
+                      </span>
                     </div>
                   </div>
                 ))}

@@ -1,0 +1,96 @@
+{
+  "total_bytes": 68192,
+  "images": [
+    {
+      "name": "Ticket_Y_Yellow.png",
+      "url": "https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20Y.png",
+      "size_bytes": 1559,
+      "size_kb": 1.52,
+      "status": "OK"
+    },
+    {
+      "name": "Ticket_G_Green.png",
+      "url": "https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20G.png",
+      "size_bytes": 1646,
+      "size_kb": 1.61,
+      "status": "OK"
+    },
+    {
+      "name": "Ticket_P_Pink.png",
+      "url": "https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20P.png",
+      "size_bytes": 1632,
+      "size_kb": 1.59,
+      "status": "OK"
+    },
+    {
+      "name": "Ticket_B_Blue.png",
+      "url": "https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20B.png",
+      "size_bytes": 1508,
+      "size_kb": 1.47,
+      "status": "OK"
+    },
+    {
+      "name": "Ticket_M_Grey.png",
+      "url": "https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20M.png",
+      "size_bytes": 1670,
+      "size_kb": 1.63,
+      "status": "OK"
+    },
+    {
+      "name": "Wallet_Card_Full.png",
+      "url": "https://files.mobilitycairo.com/cairo/master/public/inline-images/identification%20copy.png",
+      "size_bytes": 20791,
+      "size_kb": 20.3,
+      "status": "OK"
+    },
+    {
+      "name": "Wallet_Card_Thumb.png",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/identification%20copy.png?VersionId=KuxhrnrY6sqVVjwkGKgvehyL_YD8YUs_&itok=SYphtReS",
+      "size_bytes": 1581,
+      "size_kb": 1.54,
+      "status": "OK"
+    },
+    {
+      "name": "Asset_1_Elderly.png",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&itok=W_HkIgjq",
+      "size_bytes": 1769,
+      "size_kb": 1.73,
+      "status": "OK"
+    },
+    {
+      "name": "Asset_2_Regular.png",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&itok=ZM0_3WBa",
+      "size_bytes": 1291,
+      "size_kb": 1.26,
+      "status": "OK"
+    },
+    {
+      "name": "Asset_3_SpecialNeeds.png",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&itok=prl5iDEk",
+      "size_bytes": 2182,
+      "size_kb": 2.13,
+      "status": "OK"
+    },
+    {
+      "name": "Asset_4_Student.png",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%204.png?VersionId=nOPG0eMJ9fQQ5iS7jTNcMAFrsX_8GmeB&itok=iTiIRGA9",
+      "size_bytes": 2057,
+      "size_kb": 2.01,
+      "status": "OK"
+    },
+    {
+      "name": "RDMC_Logo.jpg",
+      "url": "https://files2.mobilitycairo.com/s3fs-public/default_images/RDMC%20LOGO.jpg?VersionId=ax7A2TMSWfO8Qg5hBUW8MUNTddTaQv9O",
+      "size_bytes": 20696,
+      "size_kb": 20.21,
+      "status": "OK"
+    },
+    {
+      "name": "MobilityCairo_Logo.png",
+      "url": "https://files2-explore-mobilitycairo-pprd.ratpdev.com/s3fs-public/inline-images/Logo-Mobility-Cairo.png?VersionId=MHULo26B7iuWQn6e4VWxivgsPswo7evI",
+      "size_bytes": 9810,
+      "size_kb": 9.58,
+      "status": "OK"
+    }
+  ]
+}

@@ -30,12 +30,13 @@ import {
   Landmark,
   Building2,
   Bus,
-  Trophy
+  Trophy,
+  ExternalLink
 } from 'lucide-react';
 import { STATIONS, METRO_LINES, POPULAR_TRIPS } from '../data/metroData.js';
 import { TOP_EGYPT_PLACES, CATEGORY_METADATA } from '../data/egyptPlaces.js';
 import { findMultipleRoutes, getTripDescription, getCleanLineName } from '../utils/routing.js';
-import { searchStationsAndPlaces, parseCoordinates, formatDistance, findNearestStations, getDistanceKm } from '../utils/geo.js';
+import { searchStationsAndPlaces, parseCoordinates, formatDistance, findNearestStations, getDistanceKm, estimateWalkMinutes } from '../utils/geo.js';
 import ShareTripModal from './ShareTripModal.jsx';
 import MetroStatTile from './MetroStatTile.jsx';
 import SaveTripModal from './SaveTripModal.jsx';
@@ -53,7 +54,7 @@ import {
   EMPTY_SAVED_TRIPS
 } from '../data/breakUiFixtures.js';
 
-// Dynamic Fare Themes based on Tariff Tier & Mode
+// Dynamic Fare Themes based on Tariff Tier & Mode (Official Mobility Cairo Tariffs 2026)
 function getPriceTheme(route, lang) {
   if (!route) {
     return {
@@ -61,7 +62,8 @@ function getPriceTheme(route, lang) {
       bg: 'bg-amber-500/10 dark:bg-amber-500/15',
       text: 'text-amber-500 dark:text-amber-400',
       badgeBg: 'bg-amber-400/20 text-amber-700 dark:text-amber-300 border border-amber-400/40',
-      badgeLabel: lang === 'ar' ? 'صفراء (١-٩ محطات)' : 'Yellow (1-9 Stns)'
+      badgeLabel: lang === 'ar' ? 'صفراء (١-٩ محطات - ١٠ ج.م)' : 'Yellow (1-9 Stns - 10 LE)',
+      ticketImage: '/assets/tickets/Ticket_Y_Yellow.png'
     };
   }
   const isAr = lang === 'ar';
@@ -80,7 +82,8 @@ function getPriceTheme(route, lang) {
       bg: 'bg-indigo-500/10 dark:bg-indigo-500/15',
       text: 'text-indigo-600 dark:text-indigo-400',
       badgeBg: 'bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30',
-      badgeLabel: isAr ? 'متعدد الوسائط' : 'Multi-Modal'
+      badgeLabel: isAr ? 'متعدد الوسائط' : 'Multi-Modal',
+      ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
@@ -91,7 +94,8 @@ function getPriceTheme(route, lang) {
       bg: 'bg-[#8B5CF6]/10 dark:bg-[#8B5CF6]/15',
       text: 'text-[#8B5CF6] dark:text-[#A78BFA]',
       badgeBg: 'bg-[#8B5CF6]/20 text-[#7C3AED] dark:text-[#C4B5FD] border border-[#8B5CF6]/30',
-      badgeLabel: isAr ? 'مونوريل' : 'Monorail'
+      badgeLabel: isAr ? 'مونوريل' : 'Monorail',
+      ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
@@ -102,7 +106,8 @@ function getPriceTheme(route, lang) {
       bg: 'bg-[#06B6D4]/10 dark:bg-[#06B6D4]/15',
       text: 'text-[#06B6D4] dark:text-[#22D3EE]',
       badgeBg: 'bg-[#06B6D4]/20 text-[#0891B2] dark:text-[#67E8F9] border border-[#06B6D4]/30',
-      badgeLabel: isAr ? 'قطار LRT' : 'LRT Train'
+      badgeLabel: isAr ? 'قطار LRT' : 'LRT Train',
+      ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
@@ -113,51 +118,56 @@ function getPriceTheme(route, lang) {
       bg: 'bg-[#F59E0B]/10 dark:bg-[#F59E0B]/15',
       text: 'text-[#F59E0B] dark:text-[#FBBF24]',
       badgeBg: 'bg-[#F59E0B]/20 text-[#D97706] dark:text-[#FDE68A] border border-[#F59E0B]/30',
-      badgeLabel: isAr ? 'ترددي BRT' : 'BRT Bus'
+      badgeLabel: isAr ? 'ترددي BRT' : 'BRT Bus',
+      ticketImage: '/assets/tickets/Wallet_Card_Full.png'
     };
   }
 
-  // Cairo Metro Tiers
-  const cost = route.fareDetails?.totalCost ?? route.ticketTier?.price ?? 8;
-  const tier = route.ticketTier?.tier || (cost <= 8 ? 1 : cost <= 10 ? 2 : cost <= 15 ? 3 : 4);
+  // Cairo Metro Tiers (Official Mobility Cairo Tariffs 2026: 10, 12, 15, 20 LE)
+  const cost = route.fareDetails?.totalCost ?? route.ticketTier?.price ?? 10;
+  const tier = route.ticketTier?.tier || (cost <= 10 ? 1 : cost <= 12 ? 2 : cost <= 15 ? 3 : 4);
 
-  if (cost <= 8 || tier === 1) {
+  if (tier === 1 || cost <= 10) {
     return {
       border: 'border-amber-400 dark:border-amber-400/80',
       bg: 'bg-amber-500/10 dark:bg-amber-500/15',
       text: 'text-amber-500 dark:text-amber-400',
       badgeBg: 'bg-amber-400/20 text-amber-700 dark:text-amber-300 border border-amber-400/40',
-      badgeLabel: isAr ? 'صفراء (١-٩ محطات)' : 'Yellow (1-9 Stns)'
+      badgeLabel: isAr ? 'صفراء (١-٩ محطات - ١٠ ج.م)' : 'Yellow (1-9 Stns - 10 LE)',
+      ticketImage: '/assets/tickets/Ticket_Y_Yellow.png'
     };
   }
 
-  if (cost <= 10 || tier === 2) {
+  if (tier === 2 || cost <= 12) {
     return {
       border: 'border-emerald-500 dark:border-emerald-500/80',
       bg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
       text: 'text-emerald-500 dark:text-emerald-400',
       badgeBg: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40',
-      badgeLabel: isAr ? 'خضراء (١٠-١٦ محطة)' : 'Green (10-16 Stns)'
+      badgeLabel: isAr ? 'خضراء (١٠-١٦ محطة - ١٢ ج.م)' : 'Green (10-16 Stns - 12 LE)',
+      ticketImage: '/assets/tickets/Ticket_G_Green.png'
     };
   }
 
-  if (cost <= 15 || tier === 3) {
+  if (tier === 3 || cost <= 15) {
     return {
       border: 'border-rose-500 dark:border-rose-500/80',
       bg: 'bg-rose-500/10 dark:bg-rose-500/15',
       text: 'text-rose-500 dark:text-rose-400',
       badgeBg: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/40',
-      badgeLabel: isAr ? 'وردية (١٧-٢٣ محطة)' : 'Rose (17-23 Stns)'
+      badgeLabel: isAr ? 'وردية (١٧-٢٣ محطة - ١٥ ج.م)' : 'Pink (17-23 Stns - 15 LE)',
+      ticketImage: '/assets/tickets/Ticket_P_Pink.png'
     };
   }
 
-  // 20 EGP (23+ stations / Tier 4)
+  // 20 EGP (24+ stations / Tier 4)
   return {
-    border: 'border-sky-500 dark:border-sky-500/80',
-    bg: 'bg-sky-500/10 dark:bg-sky-500/15',
-    text: 'text-sky-500 dark:text-sky-400',
-    badgeBg: 'bg-sky-500/20 text-sky-700 dark:text-sky-300 border border-sky-500/40',
-    badgeLabel: isAr ? 'زرقاء (+٢٣ محطة)' : 'Blue (23+ Stns)'
+    border: 'border-rose-600 dark:border-rose-600/80',
+    bg: 'bg-rose-500/10 dark:bg-rose-500/15',
+    text: 'text-rose-600 dark:text-rose-400',
+    badgeBg: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/40',
+    badgeLabel: isAr ? 'وردية (+٢٣ محطة - ٢٠ ج.م)' : 'Pink (24+ Stns - 20 LE)',
+    ticketImage: '/assets/tickets/Ticket_P_Pink.png'
   };
 }
 
@@ -188,9 +198,16 @@ export default function RoutePlanner({
   onOpenPdfMap,
   nearestGpsStation
 }) {
-  const [fromStationId, setFromStationId] = useState(preselectedOrigin || 'al_shohadaa');
-  const [toStationId, setToStationId] = useState(preselectedDestination || 'opera');
-  const [selectedRouteIndex, setSelectedRouteIndex] = useState(0);
+  const [fromStationId, setFromStationId] = useState(() => {
+    return preselectedOrigin || localStorage.getItem('cairo_metro_saved_from') || 'al_shohadaa';
+  });
+  const [toStationId, setToStationId] = useState(() => {
+    return preselectedDestination || localStorage.getItem('cairo_metro_saved_to') || 'opera';
+  });
+  const [selectedRouteIndex, setSelectedRouteIndex] = useState(() => {
+    const saved = localStorage.getItem('cairo_metro_selected_route_idx');
+    return saved !== null ? Number(saved) : 0;
+  });
   const [transitMode, setTransitMode] = useState('metro'); // 'metro' (Single transit mode) vs 'mixed' (Multi-modal)
 
   // Dev Break-UI Resilience Test State (Swaps realistic worst-case values at data boundary)
@@ -225,11 +242,43 @@ export default function RoutePlanner({
     }
   });
 
-  // Sync when parent updates preselected
+  // Sync when parent updates preselected (e.g. from Map or Nearest tab)
   useEffect(() => {
-    if (preselectedOrigin) setFromStationId(preselectedOrigin);
-    if (preselectedDestination) setToStationId(preselectedDestination);
-  }, [preselectedOrigin, preselectedDestination]);
+    if (preselectedOrigin) {
+      setFromStationId(preselectedOrigin);
+      onClearPreselected?.();
+    }
+  }, [preselectedOrigin, onClearPreselected]);
+
+  useEffect(() => {
+    if (preselectedDestination) {
+      setToStationId(preselectedDestination);
+      onClearPreselected?.();
+    }
+  }, [preselectedDestination, onClearPreselected]);
+
+  // Persist station selections across sessions & tab switches
+  useEffect(() => {
+    if (fromStationId) {
+      try {
+        localStorage.setItem('cairo_metro_saved_from', fromStationId);
+      } catch {}
+    }
+  }, [fromStationId]);
+
+  useEffect(() => {
+    if (toStationId) {
+      try {
+        localStorage.setItem('cairo_metro_saved_to', toStationId);
+      } catch {}
+    }
+  }, [toStationId]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('cairo_metro_selected_route_idx', String(selectedRouteIndex));
+    } catch {}
+  }, [selectedRouteIndex]);
 
   // Reset selected route index when origin or destination changes
   useEffect(() => {
@@ -475,13 +524,12 @@ export default function RoutePlanner({
   };
 
   return (
-    <div className="space-y-4 pb-[calc(5rem+env(safe-area-inset-bottom,16px))]">
-      {/* 1. Safe-area aware Apple Collapsible Large Title Navigation Bar */}
+    <div className="space-y-3 sm:space-y-3.5 pb-[calc(5rem+env(safe-area-inset-bottom,16px))]">
+      {/* 1. Single Sleek Apple Header (No duplicate titles or wasted space) */}
       <AppleCollapsibleHeader
         lang={lang}
         t={t}
-        title={t.routePlanner?.title || (lang === 'ar' ? 'تخطيط الرحلات' : 'Route Planner')}
-        subtitle={lang === 'ar' ? 'شبكة مترو ومونوريل وقطار القاهرة الكبرى الذكية' : 'Greater Cairo Rapid Metro, Monorail & LRT Network'}
+        title={t.routePlanner?.title || (lang === 'ar' ? 'تخطيط الرحلات' : 'Plan Your Journey')}
         isLocatingOrigin={isLocatingOrigin}
         onQuickGps={handleQuickGpsOrigin}
         hasActiveRoute={Boolean(activeRoute)}
@@ -906,8 +954,15 @@ export default function RoutePlanner({
                 </span>
               </div>
 
-              {/* Dynamic Ticket Badge */}
-              <div className="mt-0.5 overflow-hidden">
+              {/* Dynamic Ticket Badge with Physical Ticket Image */}
+              <div className="mt-0.5 overflow-hidden flex items-center gap-1.5">
+                {priceTheme.ticketImage && (
+                  <img
+                    src={priceTheme.ticketImage}
+                    alt={priceTheme.badgeLabel}
+                    className="w-5 h-3.5 object-contain rounded-xs shadow-2xs flex-shrink-0"
+                  />
+                )}
                 <span className={`inline-block truncate max-w-full text-[8.5px] sm:text-[9.5px] font-bold px-1.5 py-0.5 rounded-md leading-none shadow-2xs ${priceTheme.badgeBg}`}>
                   {priceTheme.badgeLabel}
                 </span>
@@ -1459,6 +1514,150 @@ function getPlaceCategoryBadgeClass(category) {
   }
 }
 
+// Crisp Official Google Maps Pin Logo SVG
+function GoogleMapsLogo({ className = 'w-5 h-5' }) {
+  return (
+    <svg className={className} viewBox="0 0 92 132" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M46 0C20.596 0 0 20.596 0 46C0 80.5 46 132 46 132C46 132 92 80.5 92 46C92 20.596 71.404 0 46 0Z" fill="#1A73E8"/>
+      <path d="M46 0C20.596 0 0 20.596 0 46C0 57.376 4.078 67.804 10.874 75.892L46 36V0Z" fill="#EA4335"/>
+      <path d="M46 36L81.126 75.892C87.922 67.804 92 57.376 92 46C92 20.596 71.404 0 46 0V36Z" fill="#FBBC04"/>
+      <path d="M10.874 75.892C19.78 86.508 30.934 101.402 46 122.25C61.066 101.402 72.22 86.508 81.126 75.892L46 36L10.874 75.892Z" fill="#34A853"/>
+      <circle cx="46" cy="46" r="18" fill="white"/>
+    </svg>
+  );
+}
+
+// Last-Mile & First-Mile Landmark Navigation Card with Google Maps Deep-Link
+function LandmarkNavigationCard({
+  type = 'destination', // 'destination' (Last-Mile) or 'origin' (First-Mile)
+  landmark,
+  station,
+  lang,
+  t
+}) {
+  if (!landmark || !station || !landmark.lat || !landmark.lng || !station.lat || !station.lng) {
+    return null;
+  }
+
+  const isAr = lang === 'ar';
+  const distKm = getDistanceKm(station.lat, station.lng, landmark.lat, landmark.lng);
+  const distMeters = distKm * 1000;
+  const walkMinutes = estimateWalkMinutes(distKm);
+  const driveMinutes = Math.max(2, Math.round((distKm / 25) * 60));
+  const isWalking = distKm <= 1.2;
+  const travelMode = isWalking ? 'walking' : 'driving';
+
+  // Origin -> Station or Station -> Landmark
+  const originLat = type === 'origin' ? landmark.lat : station.lat;
+  const originLng = type === 'origin' ? landmark.lng : station.lng;
+  const destLat = type === 'origin' ? station.lat : landmark.lat;
+  const destLng = type === 'origin' ? station.lng : landmark.lng;
+
+  const gmapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originLat},${originLng}&destination=${destLat},${destLng}&travelmode=${travelMode}`;
+
+  // Formatted instruction strings strictly adhering to User Requirement Task 6:
+  // <= 1.2 km:
+  // EN: 🚶 Walk ~${Math.round(distMeters)} m (${walkMinutes} min) from ${arrivalStation.nameEn} to ${landmark.nameEn}
+  // AR: 🚶 المشي حوالي ${Math.round(distMeters)} م (${walkMinutes} دقيقة) من محطة ${arrivalStation.nameAr} إلى ${landmark.nameAr}
+  // > 1.2 km:
+  // EN: 🚗 Take a taxi / ride / motorcycle ~${distKm.toFixed(1)} km (${driveMinutes} min) from ${arrivalStation.nameEn} to ${landmark.nameEn}
+  // AR: 🚗 استقل تاكسي أو أوبر أو دراجة نارية لمسافة ${distKm.toFixed(1)} كم (حوالي ${driveMinutes} دقيقة) من محطة ${arrivalStation.nameAr} إلى ${landmark.nameAr}
+  let instructionText = '';
+  if (type === 'destination') {
+    if (isWalking) {
+      instructionText = isAr
+        ? `🚶 المشي حوالي ${Math.round(distMeters)} م (${walkMinutes} دقيقة) من محطة ${station.nameAr} إلى ${landmark.nameAr}`
+        : `🚶 Walk ~${Math.round(distMeters)} m (${walkMinutes} min) from ${station.nameEn} to ${landmark.nameEn}`;
+    } else {
+      instructionText = isAr
+        ? `🚗 استقل تاكسي أو أوبر أو دراجة نارية لمسافة ${distKm.toFixed(1)} كم (حوالي ${driveMinutes} دقيقة) من محطة ${station.nameAr} إلى ${landmark.nameAr}`
+        : `🚗 Take a taxi / ride / motorcycle ~${distKm.toFixed(1)} km (${driveMinutes} min) from ${station.nameEn} to ${landmark.nameEn}`;
+    }
+  } else {
+    // origin
+    if (isWalking) {
+      instructionText = isAr
+        ? `🚶 المشي حوالي ${Math.round(distMeters)} م (${walkMinutes} دقيقة) من ${landmark.nameAr} إلى محطة ${station.nameAr}`
+        : `🚶 Walk ~${Math.round(distMeters)} m (${walkMinutes} min) from ${landmark.nameEn} to ${station.nameEn}`;
+    } else {
+      instructionText = isAr
+        ? `🚗 استقل تاكسي أو أوبر أو دراجة نارية لمسافة ${distKm.toFixed(1)} كم (حوالي ${driveMinutes} دقيقة) من ${landmark.nameAr} إلى محطة ${station.nameAr}`
+        : `🚗 Take a taxi / ride / motorcycle ~${distKm.toFixed(1)} km (${driveMinutes} min) from ${landmark.nameEn} to ${station.nameEn}`;
+    }
+  }
+
+  const CategoryIcon = getPlaceCategoryIcon(landmark.category);
+  const badgeClass = getPlaceCategoryBadgeClass(landmark.category);
+
+  return (
+    <div className={`p-4 rounded-[22px] border transition-all duration-150 select-none shadow-sm ${
+      type === 'destination'
+        ? 'bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-500/15 dark:via-[#16161A] dark:to-[#111113] border-amber-500/30'
+        : 'bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent dark:from-blue-500/15 dark:via-[#16161A] dark:to-[#111113] border-blue-500/30'
+    }`}>
+      {/* Top Header Badge */}
+      <div className="flex items-center justify-between gap-2 mb-2.5">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className={`p-1.5 rounded-xl ${badgeClass} flex-shrink-0`}>
+            <CategoryIcon className="w-4 h-4" />
+          </span>
+          <div className="min-w-0">
+            <span className={`text-[10px] font-black uppercase tracking-wider block ${
+              type === 'destination' ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'
+            }`}>
+              {type === 'destination'
+                ? (isAr ? '📍 الميل الأخير: الملاحة إلى وجهتك' : '📍 LAST-MILE LANDMARK NAVIGATION')
+                : (isAr ? '🚀 الميل الأول: الانتقال إلى المحطة' : '🚀 FIRST-MILE ACCESS')}
+            </span>
+            <p className="text-xs font-black text-slate-900 dark:text-white font-cairo truncate">
+              {isAr ? landmark.nameAr : landmark.nameEn}
+            </p>
+          </div>
+        </div>
+
+        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+          isWalking
+            ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25'
+            : 'bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-500/25'
+        }`}>
+          {isWalking
+            ? (isAr ? '🚶 مشي' : '🚶 Walking')
+            : (isAr ? '🚗 تاكسي / دراجة' : '🚗 Ride / Taxi')}
+        </span>
+      </div>
+
+      {/* Instruction Banner */}
+      <div className="p-3 rounded-2xl bg-white/90 dark:bg-[#1A1A20] border border-black/[0.04] dark:border-white/[0.06] shadow-2xs mb-3 space-y-1.5">
+        <p className="text-xs font-bold text-slate-900 dark:text-slate-100 font-cairo leading-relaxed">
+          {instructionText}
+        </p>
+        <div className="flex items-center gap-3 text-[10.5px] text-slate-500 dark:text-slate-400 font-mono">
+          <span>{isAr ? 'المسافة:' : 'Distance:'} <b className="text-slate-700 dark:text-slate-200">{formatDistance(distKm, lang)}</b></span>
+          <span>•</span>
+          <span>{isAr ? 'الوقت التقديري:' : 'Est. Time:'} <b className="text-slate-700 dark:text-slate-200">~{isWalking ? walkMinutes : driveMinutes} {isAr ? 'دقيقة' : 'mins'}</b></span>
+        </div>
+      </div>
+
+      {/* Prominent Google Maps Button with Official Google Maps Pin Logo */}
+      <a
+        href={gmapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => haptics.impact('MEDIUM')}
+        className="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl bg-white dark:bg-[#1E1E24] hover:bg-slate-50 dark:hover:bg-[#25252D] text-slate-900 dark:text-white border border-slate-200 dark:border-[#2C2C35] hover:border-blue-400 dark:hover:border-blue-500 shadow-sm active:scale-[0.98] transition-all group"
+      >
+        <GoogleMapsLogo className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+        <span className={`text-xs font-extrabold ${isAr ? 'font-cairo' : 'font-space tracking-wide'}`}>
+          {isAr
+            ? `فتح المسار في خرائط Google (${isWalking ? 'مشي' : 'سيارة'})`
+            : `Open in Google Maps (${isWalking ? 'Walk' : 'Drive'})`}
+        </span>
+        <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-500 flex-shrink-0 ms-auto rtl:ms-0 rtl:me-auto" />
+      </a>
+    </div>
+  );
+}
+
 // Enhanced Station Search Picker with Line Filtering & Quick Hubs UI/UX
 function StationSearchPickerModal({
   lang,
@@ -1594,6 +1793,19 @@ function StationSearchPickerModal({
               autoFocus
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (displayedStations.length > 0) {
+                    handleStationClick(displayedStations[0]);
+                  } else if (searchResults.landmarks.length > 0 && searchResults.landmarks[0].station) {
+                    handleStationClick(searchResults.landmarks[0].station);
+                  }
+                } else if (e.key === 'Escape') {
+                  e.preventDefault();
+                  onClose();
+                }
+              }}
               placeholder={lang === 'ar' ? 'ابحث عن محطة أو معلم...' : 'Search station or landmark...'}
               autoCapitalize="none"
               autoCorrect="off"
@@ -1730,9 +1942,97 @@ function StationSearchPickerModal({
             </div>
           )}
 
-          {/* Matched Top Egypt Places & Landmarks (Universities, Hospitals, Malls, etc.) */}
+          {/* 1. Matched Stations (Filtered & Prefix-first sorted) - ALWAYS SHOWN FIRST */}
+          {displayedStations.length > 0 && (
+            <div className="py-1 mb-2 select-none">
+              <div className="px-2 mb-1.5 flex items-center justify-between">
+                <p className="text-[11px] font-bold text-slate-700 dark:text-zinc-300 flex items-center gap-1.5 font-cairo">
+                  <Train className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                  <span>
+                    {activeLineFilter !== 'all'
+                      ? (lang === 'ar' ? `محطات ${filterTabs.find(f => f.id === activeLineFilter)?.labelAr || ''}:` : `${filterTabs.find(f => f.id === activeLineFilter)?.labelEn || ''} Stations:`)
+                      : (lang === 'ar' ? 'المحطات (مترو • قطار خفيف • مونوريل • ترددي):' : 'Transit Stations (Metro • LRT • Monorail • BRT):')}
+                  </span>
+                </p>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-cairo">
+                  {displayedStations.length} {lang === 'ar' ? 'محطة' : 'stations'}
+                </span>
+              </div>
+              <div className="space-y-1">
+                {displayedStations.map((st) => {
+                  const isSelected = st.id === selectedId;
+                  const isUnderConstruction = Boolean(st.underConstruction);
+                  const isBlocked = isUnderConstruction && !st.allowSimulation;
+                  const landmarksList = lang === 'ar' ? st.landmarksAr : st.landmarks;
+                  const landmarksText = landmarksList && landmarksList.length > 0
+                    ? landmarksList.slice(0, 2).join(' • ')
+                    : null;
+
+                  return (
+                    <button
+                      key={st.id}
+                      onClick={() => handleStationClick(st)}
+                      className={`w-full text-start p-3 rounded-2xl flex items-center justify-between select-none touch-manipulation tap-transparent active:scale-[0.98] transition-colors cv-auto ${
+                        isBlocked
+                          ? 'opacity-60 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 cursor-not-allowed'
+                          : isSelected
+                          ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 font-bold'
+                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-800 dark:text-slate-200'
+                      }`}
+                    >
+                      <div className="min-w-0 flex-1 pe-2.5">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <p className="text-xs font-bold text-slate-900 dark:text-[#F4F4F5] truncate font-cairo">
+                            {lang === 'ar' ? st.nameAr : st.nameEn}
+                          </p>
+                          {isUnderConstruction && (
+                            <span className="text-[9.5px] px-1.5 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/30 flex-shrink-0">
+                              {st.allowSimulation
+                                ? (lang === 'ar' ? 'تشغيل تجريبي / محاكاة' : 'Trial / Simulation')
+                                : (lang === 'ar' ? 'تحت الإنشاء' : 'Under Construction')}
+                            </span>
+                          )}
+                          {isSelected && !isBlocked && (
+                            <span className="text-[10px] font-bold text-rose-600 flex-shrink-0">✓</span>
+                          )}
+                        </div>
+                        {landmarksText && (
+                          <p
+                            dir={lang === 'ar' ? 'rtl' : 'ltr'}
+                            className="text-[10.5px] font-cairo text-slate-500 dark:text-slate-400 truncate mt-0.5 text-start pe-1 leading-normal"
+                            title={landmarksText}
+                          >
+                            {landmarksText}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1.5 flex-shrink-0 ms-2">
+                        {st.lines.map(l => (
+                          <span
+                            key={l}
+                            className="text-[10px] px-2 py-0.5 rounded-md font-bold text-white uppercase tracking-tight shadow-xs inline-flex items-center justify-center leading-none"
+                            style={{ backgroundColor: METRO_LINES[l]?.color || '#E11D48' }}
+                          >
+                            {lang === 'ar' ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}
+                          </span>
+                        ))}
+                        {st.isInterchange && (
+                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-500 text-white font-bold tracking-tight shadow-xs inline-flex items-center justify-center leading-none">
+                            {lang === 'ar' ? 'تبادل' : 'Hub'}
+                          </span>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* 2. Matched Top Egypt Places & Landmarks (Universities, Hospitals, Malls, etc.) - ALWAYS SHOWN AFTER STATIONS */}
           {searchResults.landmarks.length > 0 && (
-            <div className="py-2.5 mb-2 bg-slate-50/70 dark:bg-[#151518] rounded-2xl border border-slate-100 dark:border-[#212127] p-1.5 select-none">
+            <div className="py-2.5 mb-2 bg-slate-50/70 dark:bg-[#151518] rounded-2xl border border-slate-100 dark:border-[#212127] p-1.5 select-none mt-2">
               <div className="px-2 mb-2 flex items-center justify-between">
                 <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5 font-cairo">
                   <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
@@ -1784,75 +2084,6 @@ function StationSearchPickerModal({
               </div>
             </div>
           )}
-
-          {/* Matched Stations (Filtered & Prefix-first sorted) */}
-          {displayedStations.map((st) => {
-            const isSelected = st.id === selectedId;
-            const isUnderConstruction = Boolean(st.underConstruction);
-            const isBlocked = isUnderConstruction && !st.allowSimulation;
-            const landmarksList = lang === 'ar' ? st.landmarksAr : st.landmarks;
-            const landmarksText = landmarksList && landmarksList.length > 0
-              ? landmarksList.slice(0, 2).join(' • ')
-              : null;
-
-            return (
-              <button
-                key={st.id}
-                onClick={() => handleStationClick(st)}
-                className={`w-full text-start p-3 rounded-2xl flex items-center justify-between select-none touch-manipulation tap-transparent active:scale-[0.98] transition-colors cv-auto ${
-                  isBlocked
-                    ? 'opacity-60 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 cursor-not-allowed'
-                    : isSelected
-                    ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 font-bold'
-                    : 'hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-800 dark:text-slate-200'
-                }`}
-              >
-                <div className="min-w-0 flex-1 pe-2.5">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <p className="text-xs font-bold text-slate-900 dark:text-[#F4F4F5] truncate font-cairo">
-                      {lang === 'ar' ? st.nameAr : st.nameEn}
-                    </p>
-                    {isUnderConstruction && (
-                      <span className="text-[9.5px] px-1.5 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/30 flex-shrink-0">
-                        {st.allowSimulation
-                          ? (lang === 'ar' ? 'تشغيل تجريبي / محاكاة' : 'Trial / Simulation')
-                          : (lang === 'ar' ? 'تحت الإنشاء' : 'Under Construction')}
-                      </span>
-                    )}
-                    {isSelected && !isBlocked && (
-                      <span className="text-[10px] font-bold text-rose-600 flex-shrink-0">✓</span>
-                    )}
-                  </div>
-                  {landmarksText && (
-                    <p
-                      dir={lang === 'ar' ? 'rtl' : 'ltr'}
-                      className="text-[10.5px] font-cairo text-slate-500 dark:text-slate-400 truncate mt-0.5 text-start pe-1 leading-normal"
-                      title={landmarksText}
-                    >
-                      {landmarksText}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1.5 flex-shrink-0 ms-2">
-                  {st.lines.map(l => (
-                    <span
-                      key={l}
-                      className="text-[10px] px-2 py-0.5 rounded-md font-bold text-white uppercase tracking-tight shadow-xs inline-flex items-center justify-center leading-none"
-                      style={{ backgroundColor: METRO_LINES[l]?.color || '#E11D48' }}
-                    >
-                      {lang === 'ar' ? METRO_LINES[l]?.shortNameAr : METRO_LINES[l]?.shortNameEn}
-                    </span>
-                  ))}
-                  {st.isInterchange && (
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-500 text-white font-bold tracking-tight shadow-xs inline-flex items-center justify-center leading-none">
-                      {lang === 'ar' ? 'تبادل' : 'Hub'}
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
 
           {displayedStations.length === 0 && searchResults.landmarks.length === 0 && (
             <div className="p-8 text-center text-xs font-cairo text-slate-400 flex flex-col items-center justify-center gap-3 my-auto animate-fade-in select-none">

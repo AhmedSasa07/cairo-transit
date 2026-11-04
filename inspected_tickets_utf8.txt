@@ -1,0 +1,295 @@
+﻿Total ticket detail items: 34
+
+==========================================
+TITLE: Capital Train - Monthly 3 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/capital-train-monthly-3-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Monthly 3 Stations - Students Gives access to : 240 LE A monthly subscription for students&nbsp; Valid for 1 Month &nbsp;
+
+==========================================
+TITLE: Capital Train - Monthly 7 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/capital-train-monthly-7-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Monthly 7 Stations - Students Gives access to : 360 LE A Monthly Subscription for students - 7 Stations Valid for 1 month
+
+==========================================
+TITLE: Capital Train - Monthly More than 7 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/capital-train-monthly-more-7-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Monthly More than 7 Stations - Students Gives access to : 480 LE Monthly subscription for students -more than 7 stations&nbsp; Valid for 1 month
+
+==========================================
+TITLE: Monthly pass - Public
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/monthly-pass-public
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+TABLES (1):
+   ['Number of zones', 'Price']
+   ['1 Zone', '390 LE']
+   ['2 Zones', '440 LE']
+   ['3 &amp; 4 Zones', '510 LE']
+   ['5 or 6 Zones', '600 LE']
+TEXT SNIPPET: Monthly pass - Public Gives access to : Starting at 390 LE Monthly pass - Public - starting at 390 LE A monthly suscription for everyone Valid for 1 month By subscribing to a Seasonal Monthly Pass, you can save up to 55% on Single fares. Number of zones Price 1 Zone 390 LE 2 Zones 440 LE 3 &amp; 4 Zones 510 LE 5 or 6 Zones 600 LE &nbsp; The subscri
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è -╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬-╪╖┘ä╪º╪¿
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/qtar-alasmh-ashtrak-shhry-hty-3-mhtat-tlab
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è -╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬-╪╖┘ä╪º╪¿ Gives access to : ┘ó┘ñ┘á ╪¼┘å┘è┘ç ╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿ ╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç &nbsp; ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç ╪┤┘ç╪▒&nbsp;
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/qtar-alasmh-ashtrak-shhry-lltlab-hty-7-mhtat
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬ Gives access to : ┘ú┘ª┘á ╪¼┘å┘è┘ç ╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿ ╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç ╪┤┘ç╪▒
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿-┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/1-month-subscription/qtar-alasmh-ashtrak-shhry-lltlab-lakthr-mn-7-mhtat
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿-┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬ Gives access to : ┘ñ┘¿┘á ╪¼┘å┘è┘ç ╪º╪┤╪¬╪▒╪º┘â ╪┤┘ç╪▒┘è ┘ä┘ä╪╖┘ä╪º╪¿ ┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç ╪┤┘ç╪▒
+
+==========================================
+TITLE: Capital Train - Quarterly 3 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/capital-train-quarterly-3-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Quarterly 3 Stations - Students Gives access to : 720 LE &nbsp;3-month subscription for students -3 stations Valid for 3 months &nbsp; &nbsp;
+
+==========================================
+TITLE: Capital Train - Quarterly 7 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/capital-train-quarterly-7-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Quarterly 7 Stations - Students Gives access to : 1080 LE &nbsp;3-months subscription for students -7 stations Valid for 3 months &nbsp;
+
+==========================================
+TITLE: Capital Train - Quarterly more than 7 Stations - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/capital-train-quarterly-more-7-stations-students
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - Quarterly more than 7 Stations - Students Gives access to : 1440 LE &nbsp;3-months subscription for students -more than 7 stations Valid for 3 months &nbsp;
+
+==========================================
+TITLE: Elderly (over 70 years old)
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/elderly-over-70-years-old
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+TABLES: None
+TEXT SNIPPET: Elderly (over 70 years old) Gives access to : 0 LE Elderly (over 70 years old) - 0&nbsp;LE &nbsp;Elderly (over 70 years old) &nbsp; This subcription is valid for 3 months and you can travel everywhere on the network, there is no zone restriction. The subscription is nominative and can only be used by the card holder.
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/qtar-alasmh-ashtrak-rb-snwy-lltlab-hty-3-mhtat
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬ Gives access to : ┘º┘ó┘á ╪¼┘å┘è┘ç ╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿ ╪¡╪¬┘è 3 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç 3 ╪┤┘ç┘ê╪▒
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/qtar-alasmh-ashtrak-rb-snwy-lltlab-hty-7-mhtat
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬ Gives access to : ┘í┘á┘¿┘á ╪¼┘å┘è┘ç ╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿ ╪¡╪¬┘è 7 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç 3 ╪┤┘ç┘ê╪▒
+
+==========================================
+TITLE: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/qtar-alasmh-ashtrak-rb-snwy-lltlab-lakthr-mn-7
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç-╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿-┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬ Gives access to : ┘í┘ñ┘ñ┘á ╪¼┘å┘è┘ç╪º ╪º╪┤╪¬╪▒╪º┘â ╪▒╪¿╪╣ ╪│┘å┘ê┘è ┘ä┘ä╪╖┘ä╪º╪¿ ┘ä╪º┘â╪½╪▒ ┘à┘å 7 ┘à╪¡╪╖╪º╪¬ - ┘é╪╖╪º╪▒ ╪º┘ä╪╣╪º╪╡┘à┘ç ╪╡╪º┘ä╪¡ ┘ä┘à╪»┘ç 3 ╪┤┘ç┘ê╪▒
+
+==========================================
+TITLE: Quarterly pass - Elderly (60-70 years old)
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/quarterly-pass-elderly-60-70-years-old
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+TABLES (1):
+   ['Number of zones', 'Price']
+   ['1 Zone', '825 LE']
+   ['2 Zones', '1040 LE']
+   ['3 or 4 Zones', '1125 LE']
+   ['5 or 6 Zones', '1270 LE']
+TEXT SNIPPET: Quarterly pass - Elderly (60-70 years old) Gives access to : Starting at 825 LE Quarterly pass - Elderly (60-70 years old) - starting at 825 LE A 3-month subscription for Elderly (from 60 to 70 years old) Valid for 3 months By subscribing to a Seasonal Quarterly Pass, you can save up to 58% on Single fares. Number of zones Price 1 Zone 825 LE 2 Zon
+
+==========================================
+TITLE: Quarterly pass - Public
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/quarterly-pass-public
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+TABLES (1):
+   ['Number of zones', 'Price']
+   ['1 Zone', '1045 LE']
+   ['2 Zones', '1190 LE']
+   ['3 or 4 Zones', '1250 LE']
+   ['5 or 6&nbsp;Zones', '1670 LE']
+TEXT SNIPPET: Quarterly pass - Public Gives access to : Starting at 1045 LE Quarterly pass - Public - starting at 1045 LE A 3-month subscription for everyone Valid for 3 months By subscribing to a Seasonal Quarterly Pass, you can save up to 58% on Single fares. Number of zones Price 1 Zone 1045 LE 2 Zones 1190 LE 3 or 4 Zones 1250 LE 5 or 6&nbsp;Zones 1670 LE &n
+
+==========================================
+TITLE: Quarterly pass - Special Needs
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/quarterly-pass-special-needs
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk | alt=Special
+TABLES (1):
+   ['Number of zones', 'Price']
+   ['1&nbsp;Zones', '150 LE']
+   ['2 Zones', '200 LE']
+   ['3 - 4 Zones', '250 LE']
+   ['5 - 6 Zones', '300 LE']
+TEXT SNIPPET: Quarterly pass - Special Needs Gives access to : Starting at 150 LE Quarterly pass - Special Needs - starting at 150 LE A 3-month subscription for Special Needs Valid for 3 months Number of zones Price 1&nbsp;Zones 150 LE 2 Zones 200 LE 3 - 4 Zones 250 LE 5 - 6 Zones 300 LE The subscription is nominative and can only be used by the card holder. To 
+
+==========================================
+TITLE: Quarterly pass - Students
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/3-months-subscription/quarterly-pass-students
+IMAGES: 1
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%204.png?VersionId=nOPG0eMJ9fQQ5iS7jTNcMAFrsX_8GmeB&amp;itok=iTiIRGA9 | alt=Student
+TABLES (1):
+   ['Number of zones', 'Price']
+   ['1&nbsp;Zone', '150 LE']
+   ['2 Zones', '200 LE']
+   ['3 - 4 Zones', '250 LE']
+   ['5 - 6 Zones', '300 LE']
+TEXT SNIPPET: Quarterly pass - Students Gives access to : Starting at 150 LE Quarterly pass - Students - starting at 150 LE A 3-month subscription for Students (from 11 to 26 years old) Valid for 3 months Number of zones Price 1&nbsp;Zone 150 LE 2 Zones 200 LE 3 - 4 Zones 250 LE 5 - 6 Zones 300 LE The subscription is nominative and can only be used by the card h
+
+==========================================
+TITLE: 2 lines Annual pass
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/annual-tickets/2-lines-annual-pass
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20Y.png | alt=Yellow ticket
+TABLES: None
+TEXT SNIPPET: 2 lines Annual pass Gives access to : 5100 EGP 2 lines Annual pass - 5100 LE An annual subcription for everyone Valid for 1 year This Annual pass allows you to use all Cairo Metro system without any restriction. The subscription is nominative and can only be used by the card holder &nbsp;
+
+==========================================
+TITLE: 3 lines Annual pass
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/annual-tickets/3-lines-annual-pass
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20Y.png | alt=Yellow ticket
+TABLES: None
+TEXT SNIPPET: 3 lines Annual pass Gives access to : 6400 LE 3 lines Annual pass - 6400 LE An annual subcription for everyone Valid for 1 year This Annual pass allows you to use all Cairo Metro system without any restriction. The subscription is nominative and can only be used by the card holder.
+
+==========================================
+TITLE: Capital Train - More than 7 stations ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/capital-train-more-7-stations-ticket
+IMAGES: 1
+  img: src=null | alt=
+TABLES: None
+TEXT SNIPPET: Capital Train - More than 7 stations ticket Gives access to : 20 LE More than 7 stations ticket - 20 LE A single-use ticket for more than 7 stations made for everyone. 20 LE Valid for 1 trip Sold at: All ticket offices on the Capital Train line Ticket vending machines on the Capital Train line&nbsp; Did you know ? If you are a frequent traveller, y
+
+==========================================
+TITLE: 16 station ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/16-station-ticket
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20G.png | alt=Green ticket
+TABLES: None
+TEXT SNIPPET: 16 station ticket Gives access to : 12 LE 16&nbsp;station ticket - 12 LE A single-use ticket for 16 stations made for everyone. 12 LE Valid for 1 trip Sold at: All ticket offices Ticket vending machines Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You can save time at the station by using
+
+==========================================
+TITLE: 16 station ticket - Elderly
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/16-station-ticket-elderly
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20B.png | alt=blue ticket
+TABLES: None
+TEXT SNIPPET: 16 station ticket - Elderly Gives access to : 6 LE 16&nbsp;station ticket - Elderly - 6 LE A single-use ticket for 16 stations made for elderly people (over 60 years old - valid ID requested). 6 LE Valid for 1 trip Sold at: All ticket offices Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card Y
+
+==========================================
+TITLE: 23 station ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/23-station-ticket
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20P.png | alt=Pink ticket
+TABLES: None
+TEXT SNIPPET: 23 station ticket Gives access to : 15 LE 23 stations ticket - 15 LE A single-use ticket for 23 stations made for everyone. 15 LE Valid for 1 trip Sold at: All ticket offices Ticket vending machines Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You can save time at the station by using a W
+
+==========================================
+TITLE: 23 stations ticket - Elderly
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/23-stations-ticket-elderly
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20B.png | alt=blue ticket
+TABLES: None
+TEXT SNIPPET: 23 stations ticket - Elderly Gives access to : 8 LE 23 station ticket - Elderly - 8 LE A single-use ticket for 23 stations made for elderly people (over 60 years old - valid ID requested). 8 LE Valid for 1 trip Sold at: All ticket offices Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You c
+
+==========================================
+TITLE: 39 station ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/39-station-ticket
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20P.png | alt=Pink ticket
+TABLES: None
+TEXT SNIPPET: 39 station ticket Gives access to : 20 LE 39 stations ticket - 20 LE A single-use ticket for 39 stations made for everyone. 20 LE Valid for 1 trip Sold at: All ticket offices Ticket vending machines Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You can save time at the station by using a W
+
+==========================================
+TITLE: 39 stations ticket - Elderly
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/39-stations-ticket-elderly
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20B.png | alt=blue ticket
+TABLES: None
+TEXT SNIPPET: 39 stations ticket - Elderly Gives access to : 10 LE 39 station ticket - Elderly - 10 LE A single-use ticket for 39 stations made for elderly people (over 60 years old - valid ID requested). 10 LE Valid for 1 trip Sold at: All ticket offices Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card Yo
+
+==========================================
+TITLE: 9 station ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/9-station-ticket
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%202.png?VersionId=jbMf8XWiwqcCCu2QzuMNyNUV9V5hALJs&amp;itok=ZM0_3WBa | alt=Regular
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20Y.png | alt=Yellow ticket
+TABLES: None
+TEXT SNIPPET: 9 station ticket Gives access to : 10 LE 9&nbsp;station ticket - 10 LE A single-use ticket for 9 stations made for everyone. 10 LE Valid for 1 trip Sold at: All ticket offices Ticket vending machines&nbsp; Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You can save time at the station by us
+
+==========================================
+TITLE: 9 station ticket - Elderly
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/9-station-ticket-elderly
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%201.png?VersionId=6.jjjMLaWIiepTmOI3UPOPjvFDsawueY&amp;itok=W_HkIgjq | alt=Elder
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20B.png | alt=
+TABLES: None
+TEXT SNIPPET: 9 station ticket - Elderly Gives access to : 5 LE 9&nbsp;station ticket - Elderly - 5 LE A single-use ticket for 9 stations made for elderly people (over 60 years old - valid ID requested). 5 LE Valid for 1 trip Sold at: All ticket offices Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You 
+
+==========================================
+TITLE: Capital Train - 3 stations ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/capital-train-3-stations-ticket
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - 3 stations ticket Gives access to : 10 LE 3 stations ticket - 10 LE A single-use ticket for 3 stations made for everyone. 10 LE Valid for 1 trip Sold at: All ticket offices on the Capital Train line Ticket vending machines on the Capital Train line&nbsp; Did you know ? If you are a frequent traveller, you can save money by subscribi
+
+==========================================
+TITLE: Capital Train - 7 stations ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/capital-train-7-stations-ticket
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Capital Train - 7 stations ticket Gives access to : 15 LE 7 stations ticket - 15 LE A single-use ticket for 7 stations made for everyone. 15 LE Valid for 1 trip Sold at: All ticket offices on the Capital Train line Ticket vending machines on the Capital Train line&nbsp; Did you know ? If you are a frequent traveller, you can save money by subscribi
+
+==========================================
+TITLE: Children (under 4 years old)
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/children-under-4-years-old
+IMAGES: 0
+TABLES: None
+TEXT SNIPPET: Children (under 4 years old) Gives access to : 0 LE Children (under 4 years old) - 0 LE Children under the age of 4 years old travel with an adult and do not need a ticket.
+
+==========================================
+TITLE: Special Needs ticket
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/single-use-ticket/special-needs-ticket
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/Asset%203.png?VersionId=NuaCKmIldDrodTHv.WJcLLbS6wRkDpk8&amp;itok=prl5iDEk | alt=Special
+  img: src=https://edv-su-files.s3.eu-west-1.amazonaws.com/cairo/master/public/images/titres/Ticket%20M.png | alt=grey ticket
+TABLES: None
+TEXT SNIPPET: Special Needs ticket Gives access to : 5 LE Special Needs ticket - 5 LE A single-use ticket with no distance restrictions&nbsp;made for Special Needs (Governemental card holder). 5 LE Valid for 1 trip Sold at: All ticket offices Did you know ? If you are a frequent traveller, you can save money by subscribing to a Seasonal&nbsp;Card You can save ti
+
+==========================================
+TITLE: Wallet card
+URL: https://www.mobilitycairo.com/en/tickets/choose-your-ticket/wallet/wallet-card
+IMAGES: 2
+  img: src=https://files2.mobilitycairo.com/s3fs-public/styles/height_50px/public/images/identification%20copy.png?VersionId=KuxhrnrY6sqVVjwkGKgvehyL_YD8YUs_&amp;itok=SYphtReS | alt=wallet card
+  img: src=https://files.mobilitycairo.com/cairo/master/public/inline-images/identification%20copy.png | alt=wallet
+TABLES: None
+TEXT SNIPPET: Wallet card Gives access to : 65 LE Wallet card - 65 LE Wallet card 25 LE (support) and a minimum top-up of 40 LE on the first purchase. No time limitation Sold at: All ticket offices Ticket vending machines Did you know ? You can charge from 10 pounds to 400 pounds Anyone can use the card You can charge the card many times if it is not damaged Usi

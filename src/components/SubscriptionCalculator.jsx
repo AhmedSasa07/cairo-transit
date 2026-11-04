@@ -33,7 +33,7 @@ import { haptics } from '../utils/haptics.js';
 
 export default function SubscriptionCalculator({ lang, t }) {
   const [subType, setSubType] = useState('metro'); // 'metro' or 'brt'
-  const [category, setCategory] = useState('student'); // 'student', 'publicQuarterly', 'seniors', 'specialNeeds'
+  const [category, setCategory] = useState('student'); // 'student', 'publicQuarterly', 'publicMonthly', 'seniors', 'specialNeeds'
   const [selectedZone, setSelectedZone] = useState('zone1'); // 'zone1', 'zone2', 'zone3', 'zone4'
   const [brtDuration, setBrtDuration] = useState('months3'); // 'months3', 'months6', 'months9'
   const [selectedBrtBracket, setSelectedBrtBracket] = useState(0);
@@ -54,10 +54,18 @@ export default function SubscriptionCalculator({ lang, t }) {
   };
 
   const getPassPrice = () => {
-    if (category === 'specialNeeds') return 22;
-    if (category === 'student') return SUBSCRIPTION_RATES.students[selectedZone];
-    if (category === 'seniors') return SUBSCRIPTION_RATES.seniorsQuarterly[selectedZone];
-    return SUBSCRIPTION_RATES.publicQuarterly[selectedZone];
+    if (category === 'specialNeeds') return SUBSCRIPTION_RATES.specialNeedsQuarterly?.[selectedZone] || 150;
+    if (category === 'student') return SUBSCRIPTION_RATES.students?.[selectedZone] || 150;
+    if (category === 'publicMonthly') return SUBSCRIPTION_RATES.publicMonthly?.[selectedZone] || 390;
+    if (category === 'seniors') return SUBSCRIPTION_RATES.seniorsQuarterly?.[selectedZone] || 825;
+    return SUBSCRIPTION_RATES.publicQuarterly?.[selectedZone] || 1045;
+  };
+
+  const getPassCycleLabel = () => {
+    if (category === 'publicMonthly') {
+      return isAr ? 'ج.م / شهر (٦٠ رحلة)' : 'EGP / 1 mo (60 trips)';
+    }
+    return isAr ? 'ج.م / ٣ شهور (١٨٠ رحلة)' : 'EGP / 3 mo (180 trips)';
   };
 
   return (
@@ -102,10 +110,12 @@ export default function SubscriptionCalculator({ lang, t }) {
           {/* Smart Card / Wallet Balance Tracker */}
           <div className="bg-white dark:bg-[#111113] rounded-3xl p-5 border border-slate-200 dark:border-[#26262C] shadow-sm space-y-3.5">
             <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-500 shadow-sm flex-shrink-0">
-                  <CreditCard className="w-5 h-5" />
-                </div>
+              <div className="flex items-center gap-3 min-w-0">
+                <img
+                  src="/assets/tickets/Wallet_Card_Full.png"
+                  alt="Mobility Cairo Wallet Card"
+                  className="w-14 h-9 object-contain rounded-lg border border-slate-200/60 dark:border-white/10 shadow-xs flex-shrink-0 bg-slate-900/5"
+                />
                 <div className="min-w-0">
                   <h3 className={`text-sm font-black leading-tight text-slate-900 dark:text-white truncate ${
                     isAr ? 'font-cairo tracking-normal' : 'font-space uppercase tracking-wider'
@@ -115,7 +125,7 @@ export default function SubscriptionCalculator({ lang, t }) {
                   <p className={`text-xs text-slate-500 dark:text-[#A1A1AA] mt-0.5 truncate ${
                     isAr ? 'font-cairo tracking-normal' : 'font-mono'
                   }`}>
-                    {isAr ? 'كارت المحفظة الذكية القابل للشحن' : 'Rechargeable Contactless Wallet Card'}
+                    {isAr ? 'كارت المحفظة الذكية (سعر الكارت 65 ج.م)' : 'Contactless Wallet Card (Card cost 65 LE)'}
                   </p>
                 </div>
               </div>
@@ -156,7 +166,7 @@ export default function SubscriptionCalculator({ lang, t }) {
               </PressableScale>
 
               <PressableScale
-                onClick={() => updateCardBalance(-8)}
+                onClick={() => updateCardBalance(-10)}
                 className={`flex-1 py-2.5 px-2.5 sm:px-3 rounded-2xl bg-slate-100 dark:bg-[#17171A] hover:bg-slate-200 dark:hover:bg-[#212127] text-slate-700 dark:text-[#D4D4D8] text-xs font-bold border border-slate-200 dark:border-[#26262C] transition-all flex items-center justify-center gap-1.5 ${
                   isAr ? 'font-cairo tracking-normal' : 'font-space'
                 }`}
@@ -164,7 +174,7 @@ export default function SubscriptionCalculator({ lang, t }) {
                 <Minus className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
                 <span className="truncate">{t.ticketGuide.logTrip}</span>
                 <span className="inline-flex items-center gap-0.5 font-mono text-[11px] font-bold text-rose-500 tabular-nums px-1.5 py-0.5 rounded-md bg-rose-500/10 border border-rose-500/20 flex-shrink-0" dir="ltr">
-                  <span>-8</span>
+                  <span>-10</span>
                   <span className={`text-[10px] ${isAr ? 'font-cairo' : 'font-mono'}`}>{isAr ? 'ج.م' : 'EGP'}</span>
                 </span>
               </PressableScale>
@@ -182,16 +192,17 @@ export default function SubscriptionCalculator({ lang, t }) {
               </h3>
               <span className="font-mono tabular-nums px-3 py-1 rounded-full bg-[#FF4A1C]/15 text-[#FF4A1C] border border-[#FF4A1C]/25 text-xs font-bold inline-flex items-baseline gap-1 flex-shrink-0">
                 <span>{Number(getPassPrice()).toLocaleString('en-US')}</span>
-                <span className={`text-[11px] ${isAr ? 'font-cairo' : 'font-mono'}`}>{isAr ? 'ج.م / 3 شهور' : 'EGP / 3 mo'}</span>
+                <span className={`text-[11px] ${isAr ? 'font-cairo' : 'font-mono'}`}>{getPassCycleLabel()}</span>
               </span>
             </div>
 
             {/* Category Tabs */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
               {[
-                { id: 'student', labelAr: 'الطلاب', labelEn: 'Student' },
-                { id: 'publicQuarterly', labelAr: 'الجمهور', labelEn: 'Public' },
-                { id: 'seniors', labelAr: 'كبار السن', labelEn: 'Seniors' },
+                { id: 'student', labelAr: 'الطلاب (٣ شهور)', labelEn: 'Students' },
+                { id: 'publicQuarterly', labelAr: 'جمهور (٣ شهور)', labelEn: 'Public (3 Mo)' },
+                { id: 'publicMonthly', labelAr: 'جمهور (شهري)', labelEn: 'Public (1 Mo)' },
+                { id: 'seniors', labelAr: 'كبار السن (٦٠-٧٠)', labelEn: 'Seniors' },
                 { id: 'specialNeeds', labelAr: 'ذوو الهمم', labelEn: 'Special Needs' }
               ].map(c => (
                 <PressableScale
