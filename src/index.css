@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Safe area padding for mobile notches and home indicators */
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+  }
+  .pb-safe-screen {
+    padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+  }
+  @media (min-width: 640px) {
+    .pb-safe-screen {
+      padding-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  .sheet-safe-bottom {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-top: max(env(safe-area-inset-top, 0px), 0px);
+  }
+
+  /* Zero tap highlight flash on mobile touch */
+  .tap-transparent {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Horizontal touch pan & scroll containment for gesture carousels & pills */
+  .touch-carousel,
+  .touch-scroll-x {
+    touch-action: pan-x pan-y !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Responsive press feedback (Emil Kowalski Design Eng 120-160ms ease-out) */
+  .active-press {
+    transition: transform 120ms cubic-bezier(0.25, 1, 0.5, 1), opacity 120ms ease;
+    will-change: transform;
+    touch-action: manipulation;
+  }
+  .active-press:active {
+    transform: scale(0.97);
+    opacity: 0.92;
+  }
+
+  /* Content visibility for high-speed list rendering on lower-end devices */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 52px;
+  }
+
+  /* Tabular figures for telemetry data & numbers */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Ensure Arabic typography is never disrupted by tracking/letter-spacing */
+  [dir="rtl"],
+  [dir="rtl"] *,
+  :lang(ar),
+  .font-cairo {
+    letter-spacing: normal !important;
+  }
+}
+
+:root {
+  --ischys-bg: #F4F4F5;
+  --ischys-surface1: #FFFFFF;
+  --ischys-surface2: #F0F0F3;
+  --ischys-surface3: #E4E4E7;
+  --ischys-border: #D4D4D8;
+  --ischys-hair: #E4E4E7;
+  --ischys-text1: #0A0A0B;
+  --ischys-text2: #3F3F46;
+  --ischys-text3: #52525B;
+}
+
+/* Light mode contrast enhancement for budget LCD screens (Realme 3 / TN / budget IPS) */
+html:not(.dark) .border-slate-200,
+html:not(.dark) .border-slate-200\/60,
+html:not(.dark) .border-slate-200\/70,
+html:not(.dark) .border-slate-200\/80 {
+  border-color: #E4E4E7;
+}
+
+html:not(.dark) .bg-white.rounded-3xl,
+html:not(.dark) .bg-white.rounded-2xl {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* Station map SVG crisp typography & contrast */
+.station-map-label {
+  paint-order: stroke fill;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dark {
+  --ischys-bg: #0A0A0B;
+  --ischys-surface1: #111113;
+  --ischys-surface2: #17171A;
+  --ischys-surface3: #212127;
+  --ischys-border: #26262C;
+  --ischys-hair: #1D1D22;
+  --ischys-text1: #F4F4F5;
+  --ischys-text2: #97979E;
+  --ischys-text3: #5B5B63;
+}
+
+/* Apple Fluid Mechanical Touch Physics (WWDC Fluid Interfaces & Emil Kowalski Design Eng) */
+.pressable-scale {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.pressable-scale:active {
+  transform: scale(0.97) translateZ(0);
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1);
+  opacity: 0.95;
+}
+
+/* Global Platform Baseline: Eliminate tap highlight gray/blue flashes on mobile WebKit & Android */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* UI Controls: eliminate 300ms tap lag and accidental long-press text selection callouts */
+button, a, [role="button"], .tab, .pill, .chip, .drag-handle, .tappable {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Inputs & Pickers: minimum 16px font-size to prevent iOS Safari auto-zooming the viewport */
+input, textarea, select {
+  font-size: 16px;
+}
+@media (pointer: coarse) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+html {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", 'Segoe UI', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* English Typography & Modern Functional Transit Font Stack */
+[lang="en"],
+[dir="ltr"],
+html[lang="en"],
+html[dir="ltr"],
+body[lang="en"],
+body[dir="ltr"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[lang="en"] body,
+[dir="ltr"] body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Proportional English typography hierarchy */
+[lang="en"] h1, [lang="en"] h2, [lang="en"] h3,
+[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+
+[lang="en"] h4, [lang="en"] h5, [lang="en"] h6,
+[dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Interactive elements default to clean medium weight without heavy blunt bolding */
+[lang="en"] button, [dir="ltr"] button {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+}
+
+[lang="en"] input, [dir="ltr"] input,
+[lang="en"] select, [dir="ltr"] select,
+[lang="en"] textarea, [dir="ltr"] textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Transit typography utility classes - modern SF / Inter stack */
+.font-sans,
+.font-transit,
+.font-helvetica {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif !important;
+}
+
+[lang="en"] .font-space,
+[dir="ltr"] .font-space {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif !important;
+}
+
+/* In English mode, fallback any stray font-cairo on English text to modern Inter/SF stack */
+[lang="en"] .font-cairo:not([lang="ar"]),
+[dir="ltr"] .font-cairo:not([lang="ar"]) {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+}
+
+/* Arabic Typography & Font Tracking Defect Enforcements */
+[dir="rtl"],
+[dir="rtl"] *:not(.font-mono):not(.font-helvetica):not(.font-transit):not(.font-sans) {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+:lang(ar),
+.font-cairo {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
+}
+
+[dir="rtl"] .font-mono {
+  font-family: '"JetBrains Mono"', ui-monospace, monospace !important;
+}
+
+[dir="rtl"] .font-helvetica,
+[dir="rtl"] .font-transit {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif !important;
+}
+
+/* Tabular figures for transit numerals, line numbers, times, and prices */
+.tabular-nums,
+[lang="en"] .tabular-nums,
+[dir="ltr"] .tabular-nums,
+[dir="rtl"] .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+[dir="rtl"] .tabular-nums {
+  letter-spacing: normal !important;
+}
+
+/* Fix bidirectional text and time ranges (e.g. 11:45 PM - 12:20 AM) in RTL */
+[dir="rtl"] .bidi-ltr,
+[dir="rtl"] [dir="ltr"] {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+  text-align: left;
+}
+
+/* Prevent broken currency text across line wraps and disjointed glyphs */
+.currency-amount {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* GPU Optimization for mobile devices (eliminates lag on Mali-G72 and Helio P60 chipsets) */
+@media (max-width: 768px) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Apple HIG & Emil Kowalski Motion System (Hardware Accelerated, Sub-260ms, Spring Bezier) */
+.ios-spring {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-tap {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.ios-tap:active {
+  transform: scale(0.97) translateZ(0);
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1);
+  opacity: 0.95;
+}
+
+/* Apple Press Utility: Instant pointer-down latency killer */
+.apple-press {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.apple-press:active {
+  transform: scale(0.97) translateZ(0);
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Apple Card Interactive: Routes, Stations, Fare tiles */
+.apple-card-interactive {
+  touch-action: manipulation;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms ease-out, background-color 150ms ease-out, box-shadow 180ms ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.apple-card-interactive:active {
+  transform: scale(0.97) translateZ(0);
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Station Swap Button */
+.apple-swap-btn {
+  touch-action: manipulation;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background-color 150ms ease-out, border-color 150ms ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.apple-swap-btn:active {
+  transform: scale(0.93) translateZ(0);
+  transition: transform 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Accordion Smooth Expand/Collapse under 220ms */
+.apple-accordion-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: grid-template-rows;
+}
+.apple-accordion-wrapper.open {
+  grid-template-rows: 1fr;
+}
+.apple-accordion-inner {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.apple-accordion-wrapper.open .apple-accordion-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fast Apple Modal Keyframes & Classes (Sub-260ms) */
+@keyframes appleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appleSheetEnter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleModalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.apple-fade-enter {
+  animation: appleFadeIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.apple-sheet-enter {
+  animation: appleSheetEnter 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+  transform: translateZ(0);
+}
+@media (min-width: 640px) {
+  .apple-sheet-enter {
+    animation: appleModalPop 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center;
+  }
+}
+
+.animate-ios-sheet {
+  animation: appleSheetEnter 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced Motion Respect: replace vestibular transforms with gentle opacity fades */
+@media (prefers-reduced-motion: reduce) {
+  .pressable-scale,
+  .ios-tap,
+  .apple-press,
+  .apple-card-interactive,
+  .apple-swap-btn {
+    transition: opacity 150ms ease-out !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+  .pressable-scale:active,
+  .ios-tap:active,
+  .apple-press:active,
+  .apple-card-interactive:active,
+  .apple-swap-btn:active {
+    transform: none !important;
+    opacity: 0.8 !important;
+  }
+  .apple-accordion-wrapper {
+    transition: none !important;
+  }
+  .apple-accordion-inner {
+    transform: none !important;
+    transition: opacity 150ms ease-out !important;
+  }
+  .apple-sheet-enter {
+    animation: appleFadeIn 150ms ease-out forwards !important;
+    transform: none !important;
+  }
+}
+
+/* Animated Glowing Station Spotlight Aura (UK / TfL Style) */
+@keyframes spotlightPulse {
+  0% {
+    r: 16;
+    opacity: 0.9;
+    stroke-width: 3.5;
+  }
+  60% {
+    r: 36;
+    opacity: 0.45;
+    stroke-width: 2;
+  }
+  100% {
+    r: 52;
+    opacity: 0;
+    stroke-width: 0.8;
+  }
+}
+
+.spotlight-pulse-fast {
+  animation: spotlightPulse 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.spotlight-pulse-delayed {
+  animation: spotlightPulse 2s cubic-bezier(0.25, 1, 0.5, 1) infinite 0.75s;
+}
+
+@keyframes spotlightGlowBreathe {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+}
+
+.spotlight-glow-breathe {
+  animation: spotlightGlowBreathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Accessibility: Senior Mode (Large touch targets, high-contrast, effortless tapping) */
+.a11y-senior-mode button,
+.a11y-senior-mode [role="button"] {
+  min-height: 48px;
+  font-weight: 800 !important;
+}
+
+.a11y-senior-mode input {
+  min-height: 48px;
+  font-size: 1.05rem;
+}
+
+.a11y-senior-mode .rounded-3xl,
+.a11y-senior-mode .rounded-2xl {
+  border-width: 2px !important;
+}
+
+/* Accessibility: Colorblind Assistance Mode */
+.a11y-colorblind-mode [style*="backgroundColor"] {
+  outline: 2px solid rgba(0, 0, 0, 0.45);
+}
+.dark .a11y-colorblind-mode [style*="backgroundColor"] {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+}

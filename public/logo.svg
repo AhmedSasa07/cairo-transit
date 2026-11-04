@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Background Radiant Crimson Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D" />
+      <stop offset="35%" stop-color="#B91C1C" />
+      <stop offset="70%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+
+    <!-- Metallic Gold Highlight Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+
+    <!-- Speed Track Blue Gradient -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+
+    <!-- Speed Track Green Gradient -->
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- App Icon Base Squircle (iOS / Android 1:1 format) -->
+  <rect width="512" height="512" rx="124" fill="url(#bgGrad)" />
+
+  <!-- Premium Inner Border Ring -->
+  <rect x="8" y="8" width="496" height="496" rx="116" stroke="rgba(255, 255, 255, 0.18)" stroke-width="6" />
+
+  <!-- Intersecting Transit Track Arcs (Line 1 Blue, Line 2 Red, Line 3 Green, BRT Amber) -->
+  <g opacity="0.85">
+    <!-- Outer Track Glow (Line 1 Blue) -->
+    <circle cx="256" cy="256" r="190" stroke="url(#blueGrad)" stroke-width="8" stroke-dasharray="8 14" opacity="0.6" />
+    
+    <!-- Transit Speed Arc (Line 3 Green) -->
+    <path d="M106 376 A 190 190 0 0 0 406 376" stroke="url(#greenGrad)" stroke-width="14" stroke-linecap="round" fill="none" />
+
+    <!-- BRT Amber Speed Arc -->
+    <path d="M140 406 A 190 190 0 0 0 372 406" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.9" />
+  </g>
+
+  <!-- Central High-Impact Metro Train Front & "M" Monogram Shield -->
+  <g filter="url(#shadow)">
+    <!-- Shield / Nose Plate Background -->
+    <circle cx="256" cy="240" r="132" fill="#0A0A0C" stroke="#27272A" stroke-width="4" />
+    
+    <!-- Golden Speed Ring Orbit -->
+    <circle cx="256" cy="240" r="126" stroke="url(#goldGrad)" stroke-width="5" fill="none" opacity="0.95" />
+
+    <!-- Aerodynamic Metro Train Silhouette -->
+    <!-- Train Roof -->
+    <path d="M196 172 C196 142, 222 134, 256 134 C290 134, 316 142, 316 172 L324 246 C324 286, 298 306, 256 306 C214 306, 188 286, 188 246 Z" fill="#FFFFFF" />
+
+    <!-- Windshield Cab (Panoramic Glass) -->
+    <path d="M208 178 C208 160, 226 152, 256 152 C286 152, 304 160, 304 178 L304 208 C304 214, 298 220, 290 220 L222 220 C214 220, 208 214, 208 208 Z" fill="#09090B" />
+
+    <!-- Windshield Reflection Highlights -->
+    <path d="M216 168 L240 168 L224 214 L216 208 Z" fill="rgba(255, 255, 255, 0.3)" />
+
+    <!-- Iconic Metro "M" Crest Badge on Train Nose -->
+    <circle cx="256" cy="248" r="22" fill="#DC2626" stroke="#F59E0B" stroke-width="2.5" />
+    <path d="M245 258 L245 238 L256 249 L267 238 L267 258" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- Dual Modern LED Headlights -->
+    <circle cx="218" cy="272" r="10" fill="#FACC15" />
+    <circle cx="218" cy="272" r="5" fill="#FFFFFF" />
+    <circle cx="294" cy="272" r="10" fill="#FACC15" />
+    <circle cx="294" cy="272" r="5" fill="#FFFFFF" />
+
+    <!-- Cowcatcher Rail Bumper -->
+    <rect x="228" y="292" width="56" height="8" rx="4" fill="#3F3F46" />
+  </g>
+
+  <!-- Bottom Brand Text: EGY METRO -->
+  <g filter="url(#shadow)">
+    <text x="256" y="440" font-family="'Space Grotesk', 'Cairo', sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">EGY METRO</text>
+    <text x="256" y="468" font-family="'Cairo', sans-serif" font-size="16" font-weight="700" fill="#FDE68A" text-anchor="middle" letter-spacing="2">دليل مترو مصر</text>
+  </g>
+</svg>
