@@ -38,3 +38,4 @@ pdf_extracted_images/
 pdf_images_meta.json
 pdf_text.txt
 analyze_pdf*.py
+*_page*.png
