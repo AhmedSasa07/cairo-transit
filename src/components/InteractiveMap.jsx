@@ -29,6 +29,7 @@ import { MAP_STATION_COORDS, MAP_LINES_PATHS } from '../data/mapCoordinates.js';
 import { findNearestStations, formatDistance, estimateWalkMinutes, getDistanceKm, normalizeArabic } from '../utils/geo.js';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
+import VectorTransitMap from './map/VectorTransitMap';
 
 /**
  * ============================================================================
@@ -1184,7 +1185,7 @@ export default function InteractiveMap({
 
           {/* Floating Mode Switcher & Tools Bar */}
           <div className="pointer-events-auto flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-0.5">
-            {/* Render Mode Switcher: 3 Options [🚀 Smooth Vector] [📄 Official HD] [⚡ Battery Saver] */}
+            {/* Render Mode Switcher: 4 Options [🚀 Smooth Vector] [🪐 Infinite 3D] [📄 Official HD] [⚡ Battery Saver] */}
             <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0">
               <PressableScale
                 onClick={() => handleSetRenderMode('vector')}
@@ -1198,6 +1199,20 @@ export default function InteractiveMap({
                 <Layers className="w-3.5 h-3.5 text-[#FF4A1C]" />
                 <span className="hidden sm:inline">{isAr ? 'المتجهة السلسة 🚀' : 'Smooth Vector 🚀'}</span>
                 <span className="sm:hidden">{isAr ? 'متجهة' : 'Vector'}</span>
+              </PressableScale>
+
+              <PressableScale
+                onClick={() => handleSetRenderMode('infinite')}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all ${
+                  renderMode === 'infinite'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-500 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
+                }`}
+                title={isAr ? 'محرك الخريطة المتجهية اللانهائي (Infinite Canvas 3D)' : 'Infinite Canvas Vector Engine (3D Matrix)'}
+              >
+                <Cpu className={`w-3.5 h-3.5 ${renderMode === 'infinite' ? 'text-white' : 'text-blue-500'}`} />
+                <span className="hidden sm:inline">{isAr ? 'محرك 3D لانهائي' : 'Infinite 3D'}</span>
+                <span className="sm:hidden">{isAr ? 'لانهائي' : 'Infinite'}</span>
               </PressableScale>
 
               <PressableScale
@@ -1425,6 +1440,17 @@ export default function InteractiveMap({
               <span>{gpsToast}</span>
             </div>
           </div>
+        )}
+
+        {/* ================= MAP CANVAS: MODE 0: PRODUCTION INFINITE 3D VECTOR MAP ================= */}
+        {renderMode === 'infinite' && (
+          <VectorTransitMap
+            lang={lang}
+            isDarkMode={darkMode}
+            onSetOrigin={onSetOrigin}
+            onSetDestination={onSetDestination}
+            onOpenPdfMap={onOpenPdfMap}
+          />
         )}
 
         {/* ================= MAP CANVAS: MODE 1: OFFICIAL SCHEMATIC (PDF RASTER HD) ================= */}

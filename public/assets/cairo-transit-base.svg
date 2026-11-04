@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 3000" width="100%" height="100%" shape-rendering="geometricPrecision">
+  <defs>
+    <style>
+      .rail-line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .hub-node { fill: #FFFFFF; stroke: #ecc15f; stroke-width: 9; }
+      .hub-inner { fill: #ecc15f; }
+    </style>
+  </defs>
+
+  <!-- Layer: River Nile -->
+  <g id="river-nile" opacity="0.22">
+    <path d="M 1075 304 C 1125 580, 1175 860, 1225 1140 C 1275 1420, 1200 1700, 1150 1980 C 1100 2260, 1075 2540, 1075 2820 L 1225 2820 C 1225 2540, 1250 2260, 1300 1980 C 1350 1700, 1425 1420, 1375 1140 C 1325 860, 1275 580, 1225 304 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="4" />
+  </g>
+
+  <!-- Layer: Line M1 (#00518e Royal Blue) -->
+  <g id="line-m1">
+    <polyline class="rail-line" points="2300,276 2250,346 2200,416 2150,486 2100,556 2050,626 2000,696 1950,766 1900,836 1850,906 1788,990 1713,1074 1638,1158 1525,1256 1475,1326 1425,1396 1363,1522 1363,1634 1363,1718 1363,1802 1363,1886 1363,1970 1363,2054 1363,2138 1363,2222 1363,2292 1363,2362 1363,2418 1363,2474 1363,2530 1363,2586 1363,2642 1363,2698 1363,2754 1363,2810" stroke="#00518e" stroke-width="22" />
+  </g>
+
+  <!-- Layer: Line M2 (#c13038 Red) -->
+  <g id="line-m2">
+    <polyline class="rail-line" points="1200,388 1225,514 1250,640 1275,766 1300,892 1338,1018 1400,1130 1525,1256 1575,1396 1475,1494 1363,1522 1175,1578 1050,1648 925,1718 800,1816 800,1956 800,2096 800,2222 800,2348 800,2474" stroke="#c13038" stroke-width="22" />
+  </g>
+
+  <!-- Layer: Line M3 (#009f87 Emerald Green) -->
+  <g id="line-m3">
+    <polyline class="rail-line" points="2925,1032 2800,1032 2675,1032 2550,1032 2438,1032 2325,1032 2238,1088 2163,1144 2088,1200 2013,1256 1938,1312 1863,1368 1788,1424 1725,1396 1688,1326 1650,1340 1613,1354 1600,1382 1575,1396 1425,1396 1288,1396 1150,1396 1000,1396" stroke="#009f87" stroke-width="22" />
+    <polyline class="rail-line" points="1000,1396 938,1270 875,1144 813,1018 750,892 688,766 625,640" stroke="#009f87" stroke-width="22" />
+    <polyline class="rail-line" points="1000,1396 938,1494 888,1578 838,1662 813,1746 800,1816" stroke="#009f87" stroke-width="22" />
+  </g>
+
+  <!-- Layer: Line LRT (#9e1b33 Crimson) -->
+  <g id="line-lrt">
+    <polyline class="rail-line" points="2925,1032 3075,962 3213,892 3350,822 3488,752 3625,696 3650,920 3650,1144 3638,1382" stroke="#9e1b33" stroke-width="20" />
+    <polyline class="rail-line" points="3625,696 3713,556 3788,430 3850,304" stroke="#9e1b33" stroke-width="20" />
+  </g>
+
+  <!-- Layer: Line Monorail East (#009ca6 Teal) -->
+  <g id="line-monorail-east">
+    <polyline class="rail-line" points="1788,1424 1888,1522 1988,1592 2088,1662 2188,1732 2288,1802 2400,1872 2513,1906 2625,1928 2738,1942 2850,1956 2963,1956 3075,1942 3175,1914 3275,1872 3363,1816 3450,1746 3525,1662 3575,1578 3613,1508 3630,1446 3638,1382" stroke="#009ca6" stroke-width="20" />
+  </g>
+
+  <!-- Layer: Line Monorail West (#9b2521 Dark Crimson) -->
+  <g id="line-monorail-west">
+    <polyline class="rail-line" points="888,1522 775,1494 675,1424 575,1396 475,1396 388,1466 325,1592 300,1732 300,1872 300,2012 300,2152 300,2292 300,2432" stroke="#9b2521" stroke-width="20" />
+  </g>
+
+  <!-- Layer: Station Base Markers -->
+  <g id="station-markers">
+    <circle id="node-new_el_marg" cx="2300" cy="276" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-el_marg" cx="2250" cy="346" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-ezbet_el_nakhl" cx="2200" cy="416" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-ain_shams" cx="2150" cy="486" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-el_matareyya" cx="2100" cy="556" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-helmeyat_el_zaytoun" cx="2050" cy="626" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-hadayeq_el_zaytoun" cx="2000" cy="696" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-saray_el_qobba" cx="1950" cy="766" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-hammamat_el_qobba" cx="1900" cy="836" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-kobri_el_qobba" cx="1850" cy="906" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-manshiet_el_sadr" cx="1788" cy="990" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-el_demerdash" cx="1713" cy="1074" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-ghamra" cx="1638" cy="1158" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-orabi" cx="1475" cy="1326" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-saad_zaghloul" cx="1363" cy="1634" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-sayyeda_zeinab" cx="1363" cy="1718" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-malek_saleh" cx="1363" cy="1802" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-mar_girgis" cx="1363" cy="1886" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-el_zahraa" cx="1363" cy="1970" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-dar_el_salam" cx="1363" cy="2054" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-hadayeq_el_maadi" cx="1363" cy="2138" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-maadi" cx="1363" cy="2222" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-sakanat_el_maadi" cx="1363" cy="2292" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-tora_el_balad" cx="1363" cy="2362" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-kozzika" cx="1363" cy="2418" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-tora_el_asmant" cx="1363" cy="2474" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-el_maasara" cx="1363" cy="2530" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-hadayeq_helwan" cx="1363" cy="2586" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-wadi_hof" cx="1363" cy="2642" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-helwan_university" cx="1363" cy="2698" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-ain_helwan" cx="1363" cy="2754" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-helwan" cx="1363" cy="2810" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-shubra_el_kheima" cx="1200" cy="388" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-kolleyyet_el_zeraa" cx="1225" cy="514" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-el_mazallat" cx="1250" cy="640" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-khalafawy" cx="1275" cy="766" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-st_teresa" cx="1300" cy="892" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-road_el_farag" cx="1338" cy="1018" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-massara" cx="1400" cy="1130" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-mohamed_naguib" cx="1475" cy="1494" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-opera" cx="1175" cy="1578" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-dokki" cx="1050" cy="1648" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-el_bohoth" cx="925" cy="1718" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-faisal" cx="800" cy="1956" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-giza" cx="800" cy="2096" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-omm_el_masryeen" cx="800" cy="2222" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-saqyet_mekky" cx="800" cy="2348" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-el_mounib" cx="800" cy="2474" r="16" fill="#FFFFFF" stroke="#c13038" stroke-width="8" />
+    <circle id="node-el_haykestep" cx="2800" cy="1032" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-omar_ibn_el_khattab" cx="2675" cy="1032" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-qobaa" cx="2550" cy="1032" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-hesham_barakat" cx="2438" cy="1032" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-el_nozha" cx="2325" cy="1032" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-el_shams_club" cx="2238" cy="1088" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-alf_maskan" cx="2163" cy="1144" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-heliopolis" cx="2088" cy="1200" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-haroun" cx="2013" cy="1256" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-al_ahram" cx="1938" cy="1312" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-koleyet_el_banat" cx="1863" cy="1368" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-fair_zone" cx="1725" cy="1396" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-abbassiya" cx="1688" cy="1326" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-abdou_pasha" cx="1650" cy="1340" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-el_geish" cx="1613" cy="1354" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-bab_el_shaariya" cx="1600" cy="1382" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-maspero" cx="1288" cy="1396" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-safaa_hegazy" cx="1150" cy="1396" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-kit_kat" cx="1000" cy="1396" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-sudan" cx="938" cy="1270" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-imbaba" cx="875" cy="1144" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-el_bohy" cx="813" cy="1018" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-al_qawmeya" cx="750" cy="892" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-el_tawfikeya" cx="938" cy="1494" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-gamaat_el_dowal" cx="838" cy="1662" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-bulaq_el_dakrour" cx="813" cy="1746" r="16" fill="#FFFFFF" stroke="#009f87" stroke-width="8" />
+    <circle id="node-monorail_hesham_barakat" cx="1888" cy="1522" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_nouri_khattab" cx="1988" cy="1592" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_seventh_district" cx="2088" cy="1662" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_zaker_hussein" cx="2188" cy="1732" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_free_zone" cx="2288" cy="1802" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_moshir" cx="2400" cy="1872" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_cfc" cx="2513" cy="1906" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_choueifat" cx="2625" cy="1928" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_air_hospital" cx="2738" cy="1942" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_narges" cx="2850" cy="1956" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_mohamed_naguib" cx="2963" cy="1956" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_auc" cx="3075" cy="1942" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_emaar" cx="3175" cy="1914" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_fountain_sq" cx="3275" cy="1872" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_barwa" cx="3363" cy="1816" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_middle_ring" cx="3450" cy="1746" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_bin_zayed" cx="3525" cy="1662" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_regional_ring" cx="3575" cy="1578" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_massa" cx="3613" cy="1508" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_ministries" cx="3630" cy="1446" r="16" fill="#FFFFFF" stroke="#009ca6" stroke-width="8" />
+    <circle id="node-monorail_ring_road_west" cx="675" cy="1424" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_marioutia" cx="575" cy="1396" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_mansouria" cx="475" cy="1396" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_alex_desert_road" cx="388" cy="1466" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_sheikh_zayed" cx="325" cy="1592" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_mall_of_egypt" cx="300" cy="1732" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_sadat_oct" cx="300" cy="2152" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_acu" cx="300" cy="2292" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-monorail_new_october" cx="300" cy="2432" r="16" fill="#FFFFFF" stroke="#9b2521" stroke-width="8" />
+    <circle id="node-lrt_obour" cx="3075" cy="962" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_mostakbal" cx="3213" cy="892" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_shorouk" cx="3350" cy="822" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_new_heliopolis" cx="3488" cy="752" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_badr" cx="3625" cy="696" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_gardens" cx="3650" cy="920" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_airport" cx="3650" cy="1144" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_al_roubaiki" cx="3713" cy="556" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_industrial_zone" cx="3788" cy="430" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_10th_of_ramadan" cx="3850" cy="304" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-brt_2_ahmed_abdelrahim" cx="1300" cy="192" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_3_shubra_banha" cx="1475" cy="178" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_4_bahteem" cx="1675" cy="178" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_5_mostorod" cx="1875" cy="186" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_6_khosous" cx="2075" cy="206" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_8_mohamed_naguib" cx="2388" cy="472" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_9_zakah" cx="2513" cy="598" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_10_orabi" cx="2638" cy="724" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_11_salam" cx="2763" cy="864" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_13_suez_road" cx="2850" cy="1284" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_14_academy" cx="2663" cy="1564" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-brt_16_golf" cx="2250" cy="2096" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+  </g>
+
+  <!-- Layer: Interchange Hubs (#ecc15f Gold) -->
+  <g id="interchange-hubs">
+    <g id="hub-al_shohadaa">
+      <circle cx="1525" cy="1256" r="28" class="hub-node" />
+      <circle cx="1525" cy="1256" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-nasser">
+      <circle cx="1425" cy="1396" r="28" class="hub-node" />
+      <circle cx="1425" cy="1396" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-sadat">
+      <circle cx="1363" cy="1522" r="28" class="hub-node" />
+      <circle cx="1363" cy="1522" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-attaba">
+      <circle cx="1575" cy="1396" r="28" class="hub-node" />
+      <circle cx="1575" cy="1396" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-cairo_university">
+      <circle cx="800" cy="1816" r="28" class="hub-node" />
+      <circle cx="800" cy="1816" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-adly_mansour">
+      <circle cx="2925" cy="1032" r="28" class="hub-node" />
+      <circle cx="2925" cy="1032" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-stadium">
+      <circle cx="1788" cy="1424" r="28" class="hub-node" />
+      <circle cx="1788" cy="1424" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-ring_road">
+      <circle cx="688" cy="766" r="28" class="hub-node" />
+      <circle cx="688" cy="766" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-rod_el_farag_corridor">
+      <circle cx="625" cy="640" r="28" class="hub-node" />
+      <circle cx="625" cy="640" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-wadi_el_nile">
+      <circle cx="888" cy="1578" r="28" class="hub-node" />
+      <circle cx="888" cy="1578" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-city_of_arts">
+      <circle cx="3638" cy="1382" r="28" class="hub-node" />
+      <circle cx="3638" cy="1382" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-monorail_wadi_el_nile">
+      <circle cx="888" cy="1522" r="28" class="hub-node" />
+      <circle cx="888" cy="1522" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-monorail_bashtil">
+      <circle cx="775" cy="1494" r="28" class="hub-node" />
+      <circle cx="775" cy="1494" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-monorail_engineers_club">
+      <circle cx="300" cy="1872" r="28" class="hub-node" />
+      <circle cx="300" cy="1872" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-monorail_october_univ">
+      <circle cx="300" cy="2012" r="28" class="hub-node" />
+      <circle cx="300" cy="2012" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-brt_1_alex_agri">
+      <circle cx="1125" cy="220" r="28" class="hub-node" />
+      <circle cx="1125" cy="220" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-brt_7_el_marg">
+      <circle cx="2250" cy="290" r="28" class="hub-node" />
+      <circle cx="2250" cy="290" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-brt_12_adly_mansour">
+      <circle cx="2963" cy="990" r="28" class="hub-node" />
+      <circle cx="2963" cy="990" r="14" class="hub-inner" />
+    </g>
+    <g id="hub-brt_15_moshir">
+      <circle cx="2400" cy="1802" r="28" class="hub-node" />
+      <circle cx="2400" cy="1802" r="14" class="hub-inner" />
+    </g>
+  </g>
+</svg>

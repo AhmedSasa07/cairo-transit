@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "new_el_marg",
+    "name_en": "New El-Marg",
+    "name_ar": "المرج الجديدة",
+    "line": "M1",
+    "x": 2300,
+    "y": 276,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Outer North"
+  },
+  {
+    "id": "el_marg",
+    "name_en": "El-Marg",
+    "name_ar": "المرج",
+    "line": "M1",
+    "x": 2250,
+    "y": 346,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "ezbet_el_nakhl",
+    "name_en": "Ezbet El-Nakhl",
+    "name_ar": "عزبة النخل",
+    "line": "M1",
+    "x": 2200,
+    "y": 416,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "ain_shams",
+    "name_en": "Ain Shams",
+    "name_ar": "عين شمس",
+    "line": "M1",
+    "x": 2150,
+    "y": 486,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "el_matareyya",
+    "name_en": "El-Matareyya",
+    "name_ar": "المطرية",
+    "line": "M1",
+    "x": 2100,
+    "y": 556,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "helmeyat_el_zaytoun",
+    "name_en": "Helmeyat El-Zaytoun",
+    "name_ar": "حلمية الزيتون",
+    "line": "M1",
+    "x": 2050,
+    "y": 626,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "hadayeq_el_zaytoun",
+    "name_en": "Hadayeq El-Zaytoun",
+    "name_ar": "حدائق الزيتون",
+    "line": "M1",
+    "x": 2000,
+    "y": 696,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "saray_el_qobba",
+    "name_en": "Saray El-Qobba",
+    "name_ar": "سراي القبة",
+    "line": "M1",
+    "x": 1950,
+    "y": 766,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "hammamat_el_qobba",
+    "name_en": "Hammamat El-Qobba",
+    "name_ar": "حمامات القبة",
+    "line": "M1",
+    "x": 1900,
+    "y": 836,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "kobri_el_qobba",
+    "name_en": "Kobri El-Qobba",
+    "name_ar": "كوبري القبة",
+    "line": "M1",
+    "x": 1850,
+    "y": 906,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "manshiet_el_sadr",
+    "name_en": "Manshiet El-Sadr",
+    "name_ar": "منشية الصدر",
+    "line": "M1",
+    "x": 1788,
+    "y": 990,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "el_demerdash",
+    "name_en": "El-Demerdash",
+    "name_ar": "الدمرداش",
+    "line": "M1",
+    "x": 1713,
+    "y": 1074,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "ghamra",
+    "name_en": "Ghamra",
+    "name_ar": "غمرة",
+    "line": "M1",
+    "x": 1638,
+    "y": 1158,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "al_shohadaa",
+    "name_en": "Al-Shohadaa (Ramses)",
+    "name_ar": "الشهداء (رمسيس)",
+    "line": "M1",
+    "x": 1525,
+    "y": 1256,
+    "is_interchange": true,
+    "connections": [
+      "M1",
+      "M2"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "orabi",
+    "name_en": "Orabi",
+    "name_ar": "عرابي",
+    "line": "M1",
+    "x": 1475,
+    "y": 1326,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "nasser",
+    "name_en": "Nasser",
+    "name_ar": "جمال عبد الناصر",
+    "line": "M1",
+    "x": 1425,
+    "y": 1396,
+    "is_interchange": true,
+    "connections": [
+      "M1",
+      "M3"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "sadat",
+    "name_en": "Sadat (Tahrir)",
+    "name_ar": "السادات (التحرير)",
+    "line": "M1",
+    "x": 1363,
+    "y": 1522,
+    "is_interchange": true,
+    "connections": [
+      "M1",
+      "M2"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "saad_zaghloul",
+    "name_en": "Saad Zaghloul",
+    "name_ar": "سعد زغلول",
+    "line": "M1",
+    "x": 1363,
+    "y": 1634,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "sayyeda_zeinab",
+    "name_en": "Al-Sayyeda Zeinab",
+    "name_ar": "السيدة زينب",
+    "line": "M1",
+    "x": 1363,
+    "y": 1718,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "malek_saleh",
+    "name_en": "El-Malek El-Saleh",
+    "name_ar": "الملك الصالح",
+    "line": "M1",
+    "x": 1363,
+    "y": 1802,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "mar_girgis",
+    "name_en": "Mar Girgis (Coptic Cairo)",
+    "name_ar": "مار جرجس (مصر القديمة)",
+    "line": "M1",
+    "x": 1363,
+    "y": 1886,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Historical Cairo"
+  },
+  {
+    "id": "el_zahraa",
+    "name_en": "El-Zahraa",
+    "name_ar": "الزهراء",
+    "line": "M1",
+    "x": 1363,
+    "y": 1970,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "South"
+  },
+  {
+    "id": "dar_el_salam",
+    "name_en": "Dar El-Salam",
+    "name_ar": "دار السلام",
+    "line": "M1",
+    "x": 1363,
+    "y": 2054,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "South"
+  },
+  {
+    "id": "hadayeq_el_maadi",
+    "name_en": "Hadayeq El-Maadi",
+    "name_ar": "حدائق المعادي",
+    "line": "M1",
+    "x": 1363,
+    "y": 2138,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Maadi"
+  },
+  {
+    "id": "maadi",
+    "name_en": "Maadi",
+    "name_ar": "المعادي",
+    "line": "M1",
+    "x": 1363,
+    "y": 2222,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Maadi"
+  },
+  {
+    "id": "sakanat_el_maadi",
+    "name_en": "Sakanat El-Maadi",
+    "name_ar": "ثكنات المعادي",
+    "line": "M1",
+    "x": 1363,
+    "y": 2292,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Maadi"
+  },
+  {
+    "id": "tora_el_balad",
+    "name_en": "Tora El-Balad",
+    "name_ar": "طرة البلد",
+    "line": "M1",
+    "x": 1363,
+    "y": 2362,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "South"
+  },
+  {
+    "id": "kozzika",
+    "name_en": "Kozzika",
+    "name_ar": "كوتسيكا",
+    "line": "M1",
+    "x": 1363,
+    "y": 2418,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "South"
+  },
+  {
+    "id": "tora_el_asmant",
+    "name_en": "Tora El-Asmant",
+    "name_ar": "طرة الأسمنت",
+    "line": "M1",
+    "x": 1363,
+    "y": 2474,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "South"
+  },
+  {
+    "id": "el_maasara",
+    "name_en": "El-Maasara",
+    "name_ar": "المعصرة",
+    "line": "M1",
+    "x": 1363,
+    "y": 2530,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "hadayeq_helwan",
+    "name_en": "Hadayeq Helwan",
+    "name_ar": "حدائق حلوان",
+    "line": "M1",
+    "x": 1363,
+    "y": 2586,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "wadi_hof",
+    "name_en": "Wadi Hof",
+    "name_ar": "وادي حوف",
+    "line": "M1",
+    "x": 1363,
+    "y": 2642,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "helwan_university",
+    "name_en": "Helwan University",
+    "name_ar": "جامعة حلوان",
+    "line": "M1",
+    "x": 1363,
+    "y": 2698,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "ain_helwan",
+    "name_en": "Ain Helwan",
+    "name_ar": "عين حلوان",
+    "line": "M1",
+    "x": 1363,
+    "y": 2754,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "helwan",
+    "name_en": "Helwan",
+    "name_ar": "حلوان",
+    "line": "M1",
+    "x": 1363,
+    "y": 2810,
+    "is_interchange": false,
+    "connections": [
+      "M1"
+    ],
+    "zone": "Helwan Area"
+  },
+  {
+    "id": "shubra_el_kheima",
+    "name_en": "Shubra El-Kheima",
+    "name_ar": "شبرا الخيمة",
+    "line": "M2",
+    "x": 1200,
+    "y": 388,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "kolleyyet_el_zeraa",
+    "name_en": "Kolleyyet El-Zeraa",
+    "name_ar": "كلية الزراعة",
+    "line": "M2",
+    "x": 1225,
+    "y": 514,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "el_mazallat",
+    "name_en": "El-Mazallat",
+    "name_ar": "المظلات",
+    "line": "M2",
+    "x": 1250,
+    "y": 640,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "North"
+  },
+  {
+    "id": "khalafawy",
+    "name_en": "Khalafawy",
+    "name_ar": "الخلفاوي",
+    "line": "M2",
+    "x": 1275,
+    "y": 766,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Shubra"
+  },
+  {
+    "id": "st_teresa",
+    "name_en": "St. Teresa",
+    "name_ar": "سانت تريزا",
+    "line": "M2",
+    "x": 1300,
+    "y": 892,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Shubra"
+  },
+  {
+    "id": "road_el_farag",
+    "name_en": "Road El-Farag",
+    "name_ar": "روض الفرج",
+    "line": "M2",
+    "x": 1338,
+    "y": 1018,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Shubra"
+  },
+  {
+    "id": "massara",
+    "name_en": "Massara",
+    "name_ar": "مسرة",
+    "line": "M2",
+    "x": 1400,
+    "y": 1130,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Shubra"
+  },
+  {
+    "id": "attaba",
+    "name_en": "Attaba",
+    "name_ar": "العتبة",
+    "line": "M2",
+    "x": 1575,
+    "y": 1396,
+    "is_interchange": true,
+    "connections": [
+      "M2",
+      "M3"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "mohamed_naguib",
+    "name_en": "Mohamed Naguib",
+    "name_ar": "محمد نجيب",
+    "line": "M2",
+    "x": 1475,
+    "y": 1494,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Downtown"
+  },
+  {
+    "id": "opera",
+    "name_en": "Opera",
+    "name_ar": "الأوبرا",
+    "line": "M2",
+    "x": 1175,
+    "y": 1578,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Zamalek & Gezira"
+  },
+  {
+    "id": "dokki",
+    "name_en": "Dokki",
+    "name_ar": "الدقي",
+    "line": "M2",
+    "x": 1050,
+    "y": 1648,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Dokki & Mohandessin"
+  },
+  {
+    "id": "el_bohoth",
+    "name_en": "El-Bohoth",
+    "name_ar": "البحوث",
+    "line": "M2",
+    "x": 925,
+    "y": 1718,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Dokki"
+  },
+  {
+    "id": "cairo_university",
+    "name_en": "Cairo University",
+    "name_ar": "جامعة القاهرة",
+    "line": "M2",
+    "x": 800,
+    "y": 1816,
+    "is_interchange": true,
+    "connections": [
+      "M2",
+      "M3"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "faisal",
+    "name_en": "Faisal",
+    "name_ar": "فيصل",
+    "line": "M2",
+    "x": 800,
+    "y": 1956,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "giza",
+    "name_en": "Giza (Al-Ahram)",
+    "name_ar": "الجيزة (محطة قطارات الجيزة)",
+    "line": "M2",
+    "x": 800,
+    "y": 2096,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "omm_el_masryeen",
+    "name_en": "Omm El-Masryeen",
+    "name_ar": "أم المصريين",
+    "line": "M2",
+    "x": 800,
+    "y": 2222,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "saqyet_mekky",
+    "name_en": "Saqyet Mekky",
+    "name_ar": "ساقية مكي",
+    "line": "M2",
+    "x": 800,
+    "y": 2348,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Giza South"
+  },
+  {
+    "id": "el_mounib",
+    "name_en": "El-Mounib",
+    "name_ar": "المنيب",
+    "line": "M2",
+    "x": 800,
+    "y": 2474,
+    "is_interchange": false,
+    "connections": [
+      "M2"
+    ],
+    "zone": "Giza South"
+  },
+  {
+    "id": "adly_mansour",
+    "name_en": "Adly Mansour",
+    "name_ar": "عدلي منصور",
+    "line": "M3",
+    "x": 2925,
+    "y": 1032,
+    "is_interchange": true,
+    "connections": [
+      "M3",
+      "LRT"
+    ],
+    "zone": "East Hub"
+  },
+  {
+    "id": "el_haykestep",
+    "name_en": "El-Haykestep",
+    "name_ar": "الهايكستب",
+    "line": "M3",
+    "x": 2800,
+    "y": 1032,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "East"
+  },
+  {
+    "id": "omar_ibn_el_khattab",
+    "name_en": "Omar Ibn El-Khattab",
+    "name_ar": "عمر بن الخطاب",
+    "line": "M3",
+    "x": 2675,
+    "y": 1032,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "East"
+  },
+  {
+    "id": "qobaa",
+    "name_en": "Qobaa",
+    "name_ar": "قباء",
+    "line": "M3",
+    "x": 2550,
+    "y": 1032,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "East"
+  },
+  {
+    "id": "hesham_barakat",
+    "name_en": "Hesham Barakat",
+    "name_ar": "هشام بركات",
+    "line": "M3",
+    "x": 2438,
+    "y": 1032,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis East"
+  },
+  {
+    "id": "el_nozha",
+    "name_en": "El-Nozha",
+    "name_ar": "النزهة",
+    "line": "M3",
+    "x": 2325,
+    "y": 1032,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis East"
+  },
+  {
+    "id": "el_shams_club",
+    "name_en": "El-Shams Club",
+    "name_ar": "نادي الشمس",
+    "line": "M3",
+    "x": 2238,
+    "y": 1088,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis"
+  },
+  {
+    "id": "alf_maskan",
+    "name_en": "Alf Maskan",
+    "name_ar": "ألف مسكن",
+    "line": "M3",
+    "x": 2163,
+    "y": 1144,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis"
+  },
+  {
+    "id": "heliopolis",
+    "name_en": "Heliopolis",
+    "name_ar": "هيليوبوليس",
+    "line": "M3",
+    "x": 2088,
+    "y": 1200,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis"
+  },
+  {
+    "id": "haroun",
+    "name_en": "Haroun",
+    "name_ar": "هارون",
+    "line": "M3",
+    "x": 2013,
+    "y": 1256,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis"
+  },
+  {
+    "id": "al_ahram",
+    "name_en": "Al-Ahram (Korba)",
+    "name_ar": "الأهرام (الكوربة)",
+    "line": "M3",
+    "x": 1938,
+    "y": 1312,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis / Korba"
+  },
+  {
+    "id": "koleyet_el_banat",
+    "name_en": "Koleyet El-Banat",
+    "name_ar": "كلية البنات",
+    "line": "M3",
+    "x": 1863,
+    "y": 1368,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Heliopolis"
+  },
+  {
+    "id": "stadium",
+    "name_en": "Stadium (El-Estad)",
+    "name_ar": "الاستاد",
+    "line": "M3",
+    "x": 1788,
+    "y": 1424,
+    "is_interchange": true,
+    "connections": [
+      "M3",
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "fair_zone",
+    "name_en": "Exhibition Fair (Ard El-Maared)",
+    "name_ar": "أرض المعارض",
+    "line": "M3",
+    "x": 1725,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Nasr City / Abbassiya"
+  },
+  {
+    "id": "abbassiya",
+    "name_en": "Abbassiya",
+    "name_ar": "العباسية",
+    "line": "M3",
+    "x": 1688,
+    "y": 1326,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Abbassiya"
+  },
+  {
+    "id": "abdou_pasha",
+    "name_en": "Abdou Pasha",
+    "name_ar": "عبده باشا",
+    "line": "M3",
+    "x": 1650,
+    "y": 1340,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "el_geish",
+    "name_en": "El-Geish",
+    "name_ar": "الجيش",
+    "line": "M3",
+    "x": 1613,
+    "y": 1354,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Central"
+  },
+  {
+    "id": "bab_el_shaariya",
+    "name_en": "Bab El-Shaariya",
+    "name_ar": "باب الشعرية",
+    "line": "M3",
+    "x": 1600,
+    "y": 1382,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Old Cairo"
+  },
+  {
+    "id": "maspero",
+    "name_en": "Maspero",
+    "name_ar": "ماسبيرو",
+    "line": "M3",
+    "x": 1288,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Corniche / Downtown"
+  },
+  {
+    "id": "safaa_hegazy",
+    "name_en": "Safaa Hegazy (Zamalek)",
+    "name_ar": "صفاء حجازي (الزمالك)",
+    "line": "M3",
+    "x": 1150,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Zamalek"
+  },
+  {
+    "id": "kit_kat",
+    "name_en": "Kit Kat",
+    "name_ar": "الكيت كات",
+    "line": "M3",
+    "x": 1000,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Kit Kat & Agouza"
+  },
+  {
+    "id": "sudan",
+    "name_en": "Sudan",
+    "name_ar": "السودان",
+    "line": "M3",
+    "x": 938,
+    "y": 1270,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Imbaba"
+  },
+  {
+    "id": "imbaba",
+    "name_en": "Imbaba",
+    "name_ar": "إمبابة",
+    "line": "M3",
+    "x": 875,
+    "y": 1144,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Imbaba"
+  },
+  {
+    "id": "el_bohy",
+    "name_en": "El-Bohy",
+    "name_ar": "البوهي",
+    "line": "M3",
+    "x": 813,
+    "y": 1018,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Imbaba"
+  },
+  {
+    "id": "al_qawmeya",
+    "name_en": "Al-Qawmeya",
+    "name_ar": "القومية العربية",
+    "line": "M3",
+    "x": 750,
+    "y": 892,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Imbaba / Warraq"
+  },
+  {
+    "id": "ring_road",
+    "name_en": "Ring Road (El-Tariq El-Daery)",
+    "name_ar": "الطريق الدائري",
+    "line": "M3",
+    "x": 688,
+    "y": 766,
+    "is_interchange": true,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "rod_el_farag_corridor",
+    "name_en": "Rod El-Farag Corridor",
+    "name_ar": "محور روض الفرج",
+    "line": "M3",
+    "x": 625,
+    "y": 640,
+    "is_interchange": true,
+    "connections": [
+      "M3"
+    ],
+    "zone": "North West Terminal"
+  },
+  {
+    "id": "el_tawfikeya",
+    "name_en": "El-Tawfikeya",
+    "name_ar": "التوفيقية",
+    "line": "M3",
+    "x": 938,
+    "y": 1494,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Mohandessin"
+  },
+  {
+    "id": "wadi_el_nile",
+    "name_en": "Wadi El-Nile",
+    "name_ar": "وادي النيل (المهندسين)",
+    "line": "M3",
+    "x": 888,
+    "y": 1578,
+    "is_interchange": true,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Mohandessin"
+  },
+  {
+    "id": "gamaat_el_dowal",
+    "name_en": "Gamaat El-Dowal",
+    "name_ar": "جامعة الدول العربية",
+    "line": "M3",
+    "x": 838,
+    "y": 1662,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Mohandessin"
+  },
+  {
+    "id": "bulaq_el_dakrour",
+    "name_en": "Bulaq El-Dakrour",
+    "name_ar": "بولاق الدكرور",
+    "line": "M3",
+    "x": 813,
+    "y": 1746,
+    "is_interchange": false,
+    "connections": [
+      "M3"
+    ],
+    "zone": "Bulaq El-Dakrour"
+  },
+  {
+    "id": "monorail_hesham_barakat",
+    "name_en": "Hesham Barakat",
+    "name_ar": "هشام بركات",
+    "line": "MONORAIL_E",
+    "x": 1888,
+    "y": 1522,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "monorail_nouri_khattab",
+    "name_en": "Nouri Khattab",
+    "name_ar": "نوري خطاب",
+    "line": "MONORAIL_E",
+    "x": 1988,
+    "y": 1592,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "monorail_seventh_district",
+    "name_en": "Seventh District",
+    "name_ar": "الحي السابع",
+    "line": "MONORAIL_E",
+    "x": 2088,
+    "y": 1662,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "monorail_zaker_hussein",
+    "name_en": "Zaker Hussein",
+    "name_ar": "ذاكر حسين",
+    "line": "MONORAIL_E",
+    "x": 2188,
+    "y": 1732,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "monorail_free_zone",
+    "name_en": "Free Zone",
+    "name_ar": "المنطقة الحرة",
+    "line": "MONORAIL_E",
+    "x": 2288,
+    "y": 1802,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Nasr City"
+  },
+  {
+    "id": "monorail_moshir",
+    "name_en": "Marshal Tantawy",
+    "name_ar": "المشير طنطاوي",
+    "line": "MONORAIL_E",
+    "x": 2400,
+    "y": 1872,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Cairo Axis"
+  },
+  {
+    "id": "monorail_cfc",
+    "name_en": "Cairo Festival City",
+    "name_ar": "كايرو فيستيفال سيتي",
+    "line": "MONORAIL_E",
+    "x": 2513,
+    "y": 1906,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_choueifat",
+    "name_en": "El Choueifat",
+    "name_ar": "الشويفات",
+    "line": "MONORAIL_E",
+    "x": 2625,
+    "y": 1928,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_air_hospital",
+    "name_en": "Air Force Hospital",
+    "name_ar": "المستشفى الجوي",
+    "line": "MONORAIL_E",
+    "x": 2738,
+    "y": 1942,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_narges",
+    "name_en": "Al-Narges District",
+    "name_ar": "حي النرجس",
+    "line": "MONORAIL_E",
+    "x": 2850,
+    "y": 1956,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_mohamed_naguib",
+    "name_en": "Mohamed Naguib (New Cairo)",
+    "name_ar": "محمد نجيب (التجمع)",
+    "line": "MONORAIL_E",
+    "x": 2963,
+    "y": 1956,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_auc",
+    "name_en": "American University (AUC)",
+    "name_ar": "الجامعة الأمريكية (AUC)",
+    "line": "MONORAIL_E",
+    "x": 3075,
+    "y": 1942,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_emaar",
+    "name_en": "Emaar - Mivida",
+    "name_ar": "إعمار - ميفيدا",
+    "line": "MONORAIL_E",
+    "x": 3175,
+    "y": 1914,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_fountain_sq",
+    "name_en": "Al-Fountain Square",
+    "name_ar": "ميدان النافورة",
+    "line": "MONORAIL_E",
+    "x": 3275,
+    "y": 1872,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "Fifth Settlement"
+  },
+  {
+    "id": "monorail_barwa",
+    "name_en": "Al-Barwa",
+    "name_ar": "البروة",
+    "line": "MONORAIL_E",
+    "x": 3363,
+    "y": 1816,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Cairo East"
+  },
+  {
+    "id": "monorail_middle_ring",
+    "name_en": "Middle Ring Road",
+    "name_ar": "الأوسطي",
+    "line": "MONORAIL_E",
+    "x": 3450,
+    "y": 1746,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Cairo East"
+  },
+  {
+    "id": "monorail_bin_zayed",
+    "name_en": "Mohamed Bin Zayed",
+    "name_ar": "محمد بن زايد",
+    "line": "MONORAIL_E",
+    "x": 3525,
+    "y": 1662,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Administrative Capital"
+  },
+  {
+    "id": "monorail_regional_ring",
+    "name_en": "Regional Ring Road",
+    "name_ar": "الدائري الإقليمي",
+    "line": "MONORAIL_E",
+    "x": 3575,
+    "y": 1578,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Administrative Capital"
+  },
+  {
+    "id": "monorail_massa",
+    "name_en": "Al-Massa Hotel",
+    "name_ar": "فندق الماسة",
+    "line": "MONORAIL_E",
+    "x": 3613,
+    "y": 1508,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Administrative Capital"
+  },
+  {
+    "id": "monorail_ministries",
+    "name_en": "Ministries District",
+    "name_ar": "حي الوزارات",
+    "line": "MONORAIL_E",
+    "x": 3630,
+    "y": 1446,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_E"
+    ],
+    "zone": "New Administrative Capital"
+  },
+  {
+    "id": "city_of_arts",
+    "name_en": "City of Arts & Culture (New Capital)",
+    "name_ar": "مدينة الفنون والثقافة (العاصمة الإدارية)",
+    "line": "MONORAIL_E",
+    "x": 3638,
+    "y": 1382,
+    "is_interchange": true,
+    "connections": [
+      "MONORAIL_E",
+      "LRT"
+    ],
+    "zone": "New Administrative Capital"
+  },
+  {
+    "id": "monorail_wadi_el_nile",
+    "name_en": "Wadi El-Nile",
+    "name_ar": "وادي النيل",
+    "line": "MONORAIL_W",
+    "x": 888,
+    "y": 1522,
+    "is_interchange": true,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Mohandessin"
+  },
+  {
+    "id": "monorail_bashtil",
+    "name_en": "Bashtil",
+    "name_ar": "بشتيل",
+    "line": "MONORAIL_W",
+    "x": 775,
+    "y": 1494,
+    "is_interchange": true,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Bashtil / Giza"
+  },
+  {
+    "id": "monorail_ring_road_west",
+    "name_en": "Ring Road West",
+    "name_ar": "الطريق الدائري غرب",
+    "line": "MONORAIL_W",
+    "x": 675,
+    "y": 1424,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "monorail_marioutia",
+    "name_en": "El-Marioutia",
+    "name_ar": "المريوطية",
+    "line": "MONORAIL_W",
+    "x": 575,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "monorail_mansouria",
+    "name_en": "El-Mansouria",
+    "name_ar": "المنصورية",
+    "line": "MONORAIL_W",
+    "x": 475,
+    "y": 1396,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Giza"
+  },
+  {
+    "id": "monorail_alex_desert_road",
+    "name_en": "Alexandria Desert Road",
+    "name_ar": "طريق الإسكندرية الصحراوي",
+    "line": "MONORAIL_W",
+    "x": 388,
+    "y": 1466,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Sheikh Zayed Gateway"
+  },
+  {
+    "id": "monorail_sheikh_zayed",
+    "name_en": "Sheikh Zayed City",
+    "name_ar": "مدينة الشيخ زايد",
+    "line": "MONORAIL_W",
+    "x": 325,
+    "y": 1592,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "Sheikh Zayed"
+  },
+  {
+    "id": "monorail_mall_of_egypt",
+    "name_en": "Mall of Egypt",
+    "name_ar": "مول مصر",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 1732,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "6th of October"
+  },
+  {
+    "id": "monorail_engineers_club",
+    "name_en": "Engineers Syndicate Club",
+    "name_ar": "نادي نقابة المهندسين",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 1872,
+    "is_interchange": true,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "6th of October"
+  },
+  {
+    "id": "monorail_october_univ",
+    "name_en": "6th of October University",
+    "name_ar": "جامعة 6 أكتوبر",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 2012,
+    "is_interchange": true,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "6th of October Central"
+  },
+  {
+    "id": "monorail_sadat_oct",
+    "name_en": "Sadat - Central Axis",
+    "name_ar": "السادات - المحور المركزي 6 أكتوبر",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 2152,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "6th of October"
+  },
+  {
+    "id": "monorail_acu",
+    "name_en": "Ahram Canadian University",
+    "name_ar": "جامعة الأهرام الكندية",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 2292,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "6th of October"
+  },
+  {
+    "id": "monorail_new_october",
+    "name_en": "New October",
+    "name_ar": "أكتوبر الجديدة",
+    "line": "MONORAIL_W",
+    "x": 300,
+    "y": 2432,
+    "is_interchange": false,
+    "connections": [
+      "MONORAIL_W"
+    ],
+    "zone": "New October City"
+  },
+  {
+    "id": "lrt_obour",
+    "name_en": "El-Obour (LRT)",
+    "name_ar": "العبور (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3075,
+    "y": 962,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "Qalyubia / East"
+  },
+  {
+    "id": "lrt_mostakbal",
+    "name_en": "El-Mostakbal (LRT)",
+    "name_ar": "المستقبل (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3213,
+    "y": 892,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "East Suburbs"
+  },
+  {
+    "id": "lrt_shorouk",
+    "name_en": "El-Shorouk (LRT)",
+    "name_ar": "الشروق (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3350,
+    "y": 822,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "East Suburbs"
+  },
+  {
+    "id": "lrt_new_heliopolis",
+    "name_en": "New Heliopolis (LRT)",
+    "name_ar": "هليوبوليس الجديدة (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3488,
+    "y": 752,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "East Suburbs"
+  },
+  {
+    "id": "lrt_badr",
+    "name_en": "Badr (LRT Central)",
+    "name_ar": "بدر (محطة القطار الخفيف)",
+    "line": "LRT",
+    "x": 3625,
+    "y": 696,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "Badr / Suez Axis"
+  },
+  {
+    "id": "lrt_capital_gardens",
+    "name_en": "Capital Gardens (LRT)",
+    "name_ar": "حدائق العاصمة (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3650,
+    "y": 920,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "New Capital Perimeter"
+  },
+  {
+    "id": "lrt_capital_airport",
+    "name_en": "Capital Airport (LRT)",
+    "name_ar": "مطار العاصمة (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3650,
+    "y": 1144,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "New Capital Perimeter"
+  },
+  {
+    "id": "lrt_al_roubaiki",
+    "name_en": "Al-Roubaiki (LRT)",
+    "name_ar": "الروبيكي (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3713,
+    "y": 556,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "Badr / Suez Axis"
+  },
+  {
+    "id": "lrt_industrial_zone",
+    "name_en": "Industrial Zone (LRT)",
+    "name_ar": "المنطقة الصناعية (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3788,
+    "y": 430,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "10th of Ramadan Axis"
+  },
+  {
+    "id": "lrt_10th_of_ramadan",
+    "name_en": "10th of Ramadan (LRT)",
+    "name_ar": "العاشر من رمضان 1 (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3850,
+    "y": 304,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "10th of Ramadan City"
+  },
+  {
+    "id": "brt_1_alex_agri",
+    "name_en": "Alexandria Agricultural",
+    "name_ar": "الإسكندرية الزراعي",
+    "line": "M1",
+    "x": 1125,
+    "y": 220,
+    "is_interchange": true,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_2_ahmed_abdelrahim",
+    "name_en": "Col. Ahmed Abdel Rahim",
+    "name_ar": "العقيد أحمد عبد الرحيم",
+    "line": "M1",
+    "x": 1300,
+    "y": 192,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_3_shubra_banha",
+    "name_en": "Shubra - Banha",
+    "name_ar": "شبرا - بنها",
+    "line": "M1",
+    "x": 1475,
+    "y": 178,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_4_bahteem",
+    "name_en": "Bahteem",
+    "name_ar": "بهتيم",
+    "line": "M1",
+    "x": 1675,
+    "y": 178,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_5_mostorod",
+    "name_en": "Mostorod",
+    "name_ar": "مسطرد",
+    "line": "M1",
+    "x": 1875,
+    "y": 186,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_6_khosous",
+    "name_en": "Al-Khosous",
+    "name_ar": "الخصوص",
+    "line": "M1",
+    "x": 2075,
+    "y": 206,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North"
+  },
+  {
+    "id": "brt_7_el_marg",
+    "name_en": "El-Marg",
+    "name_ar": "المرج",
+    "line": "M1",
+    "x": 2250,
+    "y": 290,
+    "is_interchange": true,
+    "connections": [],
+    "zone": "Ring Road North-East"
+  },
+  {
+    "id": "brt_8_mohamed_naguib",
+    "name_en": "Mohamed Naguib (Ring Road)",
+    "name_ar": "محمد نجيب",
+    "line": "M1",
+    "x": 2388,
+    "y": 472,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road North-East"
+  },
+  {
+    "id": "brt_9_zakah",
+    "name_en": "Moassaset El-Zakah",
+    "name_ar": "مؤسسة الزكاة",
+    "line": "M1",
+    "x": 2513,
+    "y": 598,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road East"
+  },
+  {
+    "id": "brt_10_orabi",
+    "name_en": "Orabi (Ring Road)",
+    "name_ar": "عرابي",
+    "line": "M1",
+    "x": 2638,
+    "y": 724,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road East"
+  },
+  {
+    "id": "brt_11_salam",
+    "name_en": "Al-Salam",
+    "name_ar": "السلام",
+    "line": "M1",
+    "x": 2763,
+    "y": 864,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road East"
+  },
+  {
+    "id": "brt_12_adly_mansour",
+    "name_en": "Adly Mansour (BRT)",
+    "name_ar": "عدلي منصور",
+    "line": "M1",
+    "x": 2963,
+    "y": 990,
+    "is_interchange": true,
+    "connections": [],
+    "zone": "Ring Road East"
+  },
+  {
+    "id": "brt_13_suez_road",
+    "name_en": "Suez Road",
+    "name_ar": "طريق السويس",
+    "line": "M1",
+    "x": 2850,
+    "y": 1284,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road East"
+  },
+  {
+    "id": "brt_14_academy",
+    "name_en": "The Academy (Police Academy)",
+    "name_ar": "الأكاديمية",
+    "line": "M1",
+    "x": 2663,
+    "y": 1564,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "New Cairo Perimeter"
+  },
+  {
+    "id": "brt_15_moshir",
+    "name_en": "El-Moshir Axis",
+    "name_ar": "المشير",
+    "line": "M1",
+    "x": 2400,
+    "y": 1802,
+    "is_interchange": true,
+    "connections": [],
+    "zone": "New Cairo Perimeter"
+  },
+  {
+    "id": "brt_16_golf",
+    "name_en": "The Golf",
+    "name_ar": "الجولف",
+    "line": "M1",
+    "x": 2250,
+    "y": 2096,
+    "is_interchange": false,
+    "connections": [],
+    "zone": "Ring Road South-East"
+  }
+]
