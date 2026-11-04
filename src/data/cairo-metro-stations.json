@@ -1363,7 +1363,7 @@
     "name_en": "City of Arts & Culture (New Capital)",
     "name_ar": "مدينة الفنون والثقافة (العاصمة الإدارية)",
     "line": "MONORAIL_E",
-    "x": 3638,
+    "x": 3688,
     "y": 1382,
     "is_interchange": true,
     "connections": [
@@ -1598,7 +1598,7 @@
     "name_en": "Badr (LRT Central)",
     "name_ar": "بدر (محطة القطار الخفيف)",
     "line": "LRT",
-    "x": 3625,
+    "x": 3588,
     "y": 696,
     "is_interchange": false,
     "connections": [
@@ -1611,8 +1611,8 @@
     "name_en": "Capital Gardens (LRT)",
     "name_ar": "حدائق العاصمة (القطار الخفيف)",
     "line": "LRT",
-    "x": 3650,
-    "y": 920,
+    "x": 3688,
+    "y": 962,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1624,8 +1624,8 @@
     "name_en": "Capital Airport (LRT)",
     "name_ar": "مطار العاصمة (القطار الخفيف)",
     "line": "LRT",
-    "x": 3650,
-    "y": 1144,
+    "x": 3688,
+    "y": 1172,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1637,8 +1637,8 @@
     "name_en": "Al-Roubaiki (LRT)",
     "name_ar": "الروبيكي (القطار الخفيف)",
     "line": "LRT",
-    "x": 3713,
-    "y": 556,
+    "x": 3688,
+    "y": 766,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1651,7 +1651,7 @@
     "name_ar": "المنطقة الصناعية (القطار الخفيف)",
     "line": "LRT",
     "x": 3788,
-    "y": 430,
+    "y": 556,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1663,8 +1663,8 @@
     "name_en": "10th of Ramadan (LRT)",
     "name_ar": "العاشر من رمضان 1 (القطار الخفيف)",
     "line": "LRT",
-    "x": 3850,
-    "y": 304,
+    "x": 3888,
+    "y": 388,
     "is_interchange": false,
     "connections": [
       "LRT"

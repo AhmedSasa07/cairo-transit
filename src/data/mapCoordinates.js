@@ -106,15 +106,15 @@ export const MAP_STATION_COORDS = {
   lrt_mostakbal: { x: 1245, y: 290, labelPos: 'top' },
   lrt_shorouk: { x: 1300, y: 265, labelPos: 'top' },
   lrt_new_heliopolis: { x: 1355, y: 240, labelPos: 'top' },
-  lrt_badr: { x: 1410, y: 220, labelPos: 'top' },
+  lrt_badr: { x: 1395, y: 220, labelPos: 'top' },
+  lrt_al_roubaiki: { x: 1435, y: 245, labelPos: 'top' },
   // LRT Capital Branch
-  lrt_capital_gardens: { x: 1420, y: 300, labelPos: 'right' },
-  lrt_capital_airport: { x: 1420, y: 380, labelPos: 'right' },
-  city_of_arts: { x: 1415, y: 465, labelPos: 'right' }, // INTERCHANGE LRT + Monorail East
+  lrt_capital_gardens: { x: 1435, y: 315, labelPos: 'right' },
+  lrt_capital_airport: { x: 1435, y: 390, labelPos: 'right' },
+  city_of_arts: { x: 1435, y: 465, labelPos: 'right' }, // INTERCHANGE LRT + Monorail East
   // LRT 10th of Ramadan Branch
-  lrt_al_roubaiki: { x: 1445, y: 170, labelPos: 'right' },
-  lrt_industrial_zone: { x: 1475, y: 125, labelPos: 'right' },
-  lrt_10th_of_ramadan: { x: 1500, y: 80, labelPos: 'right' },
+  lrt_industrial_zone: { x: 1475, y: 170, labelPos: 'right' },
+  lrt_10th_of_ramadan: { x: 1515, y: 110, labelPos: 'right' },
 
   // ================= Monorail East (Orange #EA580C) =================
   // stadium starts at (675, 480)
@@ -206,10 +206,10 @@ export const MAP_LINES_PATHS = {
   ],
   lrt_trunk: [
     'adly_mansour', 'lrt_obour', 'lrt_mostakbal', 'lrt_shorouk', 'lrt_new_heliopolis',
-    'lrt_badr', 'lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'
+    'lrt_badr', 'lrt_al_roubaiki', 'lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'
   ],
   lrt_branch_ramadan: [
-    'lrt_badr', 'lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'
+    'lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'
   ],
   monorail_east: [
     'stadium', 'monorail_hesham_barakat', 'monorail_nouri_khattab', 'monorail_seventh_district',

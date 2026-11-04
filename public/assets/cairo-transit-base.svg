@@ -32,13 +32,13 @@
 
   <!-- Layer: Line LRT (#9e1b33 Crimson) -->
   <g id="line-lrt">
-    <polyline class="rail-line" points="2925,1032 3075,962 3213,892 3350,822 3488,752 3625,696 3650,920 3650,1144 3638,1382" stroke="#9e1b33" stroke-width="20" />
-    <polyline class="rail-line" points="3625,696 3713,556 3788,430 3850,304" stroke="#9e1b33" stroke-width="20" />
+    <polyline class="rail-line" points="2925,1032 3075,962 3213,892 3350,822 3488,752 3588,696 3688,766 3688,962 3688,1172 3688,1382" stroke="#9e1b33" stroke-width="20" />
+    <polyline class="rail-line" points="3688,766 3788,556 3888,388" stroke="#9e1b33" stroke-width="20" />
   </g>
 
   <!-- Layer: Line Monorail East (#009ca6 Teal) -->
   <g id="line-monorail-east">
-    <polyline class="rail-line" points="1788,1424 1888,1522 1988,1592 2088,1662 2188,1732 2288,1802 2400,1872 2513,1906 2625,1928 2738,1942 2850,1956 2963,1956 3075,1942 3175,1914 3275,1872 3363,1816 3450,1746 3525,1662 3575,1578 3613,1508 3630,1446 3638,1382" stroke="#009ca6" stroke-width="20" />
+    <polyline class="rail-line" points="1788,1424 1888,1522 1988,1592 2088,1662 2188,1732 2288,1802 2400,1872 2513,1906 2625,1928 2738,1942 2850,1956 2963,1956 3075,1942 3175,1914 3275,1872 3363,1816 3450,1746 3525,1662 3575,1578 3613,1508 3630,1446 3688,1382" stroke="#009ca6" stroke-width="20" />
   </g>
 
   <!-- Layer: Line Monorail West (#9b2521 Dark Crimson) -->
@@ -155,12 +155,12 @@
     <circle id="node-lrt_mostakbal" cx="3213" cy="892" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-lrt_shorouk" cx="3350" cy="822" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-lrt_new_heliopolis" cx="3488" cy="752" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_badr" cx="3625" cy="696" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_capital_gardens" cx="3650" cy="920" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_capital_airport" cx="3650" cy="1144" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_al_roubaiki" cx="3713" cy="556" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_industrial_zone" cx="3788" cy="430" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_10th_of_ramadan" cx="3850" cy="304" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_badr" cx="3588" cy="696" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_gardens" cx="3688" cy="962" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_airport" cx="3688" cy="1172" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_al_roubaiki" cx="3688" cy="766" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_industrial_zone" cx="3788" cy="556" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_10th_of_ramadan" cx="3888" cy="388" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-brt_2_ahmed_abdelrahim" cx="1300" cy="192" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
     <circle id="node-brt_3_shubra_banha" cx="1475" cy="178" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
     <circle id="node-brt_4_bahteem" cx="1675" cy="178" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
@@ -218,8 +218,8 @@
       <circle cx="888" cy="1578" r="14" class="hub-inner" />
     </g>
     <g id="hub-city_of_arts">
-      <circle cx="3638" cy="1382" r="28" class="hub-node" />
-      <circle cx="3638" cy="1382" r="14" class="hub-inner" />
+      <circle cx="3688" cy="1382" r="28" class="hub-node" />
+      <circle cx="3688" cy="1382" r="14" class="hub-inner" />
     </g>
     <g id="hub-monorail_wadi_el_nile">
       <circle cx="888" cy="1522" r="28" class="hub-node" />

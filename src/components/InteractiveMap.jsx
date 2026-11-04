@@ -46,7 +46,7 @@ import VectorTransitMap from './map/VectorTransitMap';
  * - filter: CSS filter string (e.g. 'none' or 'contrast(1.04) brightness(1.02)')
  * ============================================================================
  */
-export const MAP_OVERLAY_CONFIG = {
+const MAP_OVERLAY_CONFIG = {
   href: '/maps/cairo-network-map-2025-eon.png',
   x: 0,
   y: 0,
@@ -108,7 +108,8 @@ const PRECOMPUTED_POINTS = {
 const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
   activeLineFilter,
   isAr,
-  isBatterySaver
+  isBatterySaver,
+  showIntegratedOverlay = false
 }) {
   return (
     <>
@@ -259,8 +260,9 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         />
       )}
 
-      {/* Line Terminal Badges */}
-      <g className="select-none pointer-events-none font-bold">
+      {/* Line Terminal Badges (Suppressed when background integrated map overlay is ON to prevent label clutter) */}
+      {!showIntegratedOverlay && (
+        <g className="select-none pointer-events-none font-bold">
         {/* Line 1 Badges */}
         {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
           <>
@@ -371,6 +373,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
           </>
         )}
       </g>
+      )}
     </>
   );
 });
@@ -387,6 +390,7 @@ const StationNode = React.memo(function StationNode({
   isBatterySaver,
   isAr,
   zoomLevel = 1,
+  showIntegratedOverlay = false,
   onSelectStation
 }) {
   const isInterchange = st.isInterchange;
@@ -401,8 +405,11 @@ const StationNode = React.memo(function StationNode({
   const dynamicFontSize = Math.max(5.5, Math.min(13.5, Number((baseSize / Math.pow(z, 0.58)).toFixed(1))));
   const dynamicStrokeWidth = Math.max(1.5, Number((3.2 / Math.sqrt(z)).toFixed(1)));
 
-  // Decluttering: when zoomed far out (z < 0.85), hide non-interchange labels to keep the canvas clean
-  const shouldRenderLabel = z >= 0.85 || isInterchange || isSelected;
+  // Decluttering: when background overlay map is ON, suppress all station text labels (they are already printed in the background map),
+  // showing only the label for the actively tapped/selected station to guarantee ZERO text collision!
+  const shouldRenderLabel = showIntegratedOverlay
+    ? isSelected
+    : (z >= 0.85 || isInterchange || isSelected);
 
   const labelOffsetX = coord.labelPos === 'right' ? Math.max(8, 14 / Math.sqrt(z)) :
                        coord.labelPos === 'left' ? -Math.max(8, 14 / Math.sqrt(z)) : 0;
@@ -1524,6 +1531,7 @@ export default function InteractiveMap({
               activeLineFilter={activeLineFilter}
               isAr={isAr}
               isBatterySaver={isBatterySaver}
+              showIntegratedOverlay={showIntegratedOverlay}
             />
 
             {/* Memoized Station Nodes with zoom-rescaling labels */}
@@ -1544,6 +1552,7 @@ export default function InteractiveMap({
                   isBatterySaver={isBatterySaver}
                   isAr={isAr}
                   zoomLevel={zoom}
+                  showIntegratedOverlay={showIntegratedOverlay}
                   onSelectStation={handleSelectStation}
                 />
               );

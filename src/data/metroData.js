@@ -3016,12 +3016,12 @@ export const NETWORK_EDGES = [
   ['lrt_mostakbal', 'lrt_shorouk', 'lrt', 6.5, 4.0],
   ['lrt_shorouk', 'lrt_new_heliopolis', 'lrt', 5.5, 4.0],
   ['lrt_new_heliopolis', 'lrt_badr', 'lrt', 5.8, 4.0],
+  ['lrt_badr', 'lrt_al_roubaiki', 'lrt', 4.5, 3.0],
   // Southern Branch (to New Administrative Capital)
-  ['lrt_badr', 'lrt_capital_gardens', 'lrt', 9.5, 5.0],
+  ['lrt_al_roubaiki', 'lrt_capital_gardens', 'lrt', 5.0, 3.5],
   ['lrt_capital_gardens', 'lrt_capital_airport', 'lrt', 7.5, 4.0],
   ['lrt_capital_airport', 'city_of_arts', 'lrt', 8.5, 4.0],
   // Northern Branch (to 10th of Ramadan)
-  ['lrt_badr', 'lrt_al_roubaiki', 'lrt', 4.5, 3.0],
   ['lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt', 4.5, 4.0],
   ['lrt_industrial_zone', 'lrt_10th_of_ramadan', 'lrt', 8.5, 5.0],
 

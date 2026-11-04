@@ -6,7 +6,10 @@ import {
   Sparkles,
   ZoomIn,
   ZoomOut,
-  RotateCcw
+  RotateCcw,
+  FileText,
+  ExternalLink,
+  Eye
 } from 'lucide-react';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
@@ -25,12 +28,50 @@ export const MAP_GALLERY = [
     badgeAr: 'شبكة النقل المتكاملة',
     badgeColor: 'bg-[#2DD881]/15 text-[#2DD881] border-[#2DD881]/30',
     coverImage: '/maps/cairo-network-map-2025-eon.png',
-    pdfUrl: '/cairo-network-map-2025-eon.pdf',
+    pdfUrl: '/maps/cairo-network-map-2025-eon.pdf',
     downloadFilename: 'Cairo_Integrated_Transit_Network_2025_EON.pdf',
     descriptionEn: 'Comprehensive high-resolution regional transit map produced by Transport for Cairo. Displays all current and under-construction mass transit: Metro Lines 1-4, East & West Nile Monorails, Capital LRT, Ring Road BRT, and ENR suburban rail corridors.',
     descriptionAr: 'الخريطة الإقليمية الشاملة والمعتمدة الصادرة عن Transport for Cairo. تعرض كافة شبكات النقل الجماعي الحالية والجارية: خطوط المترو 1 إلى 4، مونوريل شرق وغرب النيل، قطار العاصمة LRT، الأتوبيس الترددي BRT على الطريق الدائري، وشبكة قطارات الضواحي.',
     lines: ['Metro 1, 2, 3, 4', 'Monorail East & West Nile', 'Capital LRT', 'Ring Road BRT', 'ENR Suburban Rail'],
     linesAr: ['مترو 1، 2، 3، 4', 'مونوريل شرق وغرب النيل', 'قطار العاصمة LRT', 'الأتوبيس الترددي BRT الدائري', 'قطارات السكك الحديدية']
+  },
+  {
+    id: 'mobility_cairo_official',
+    titleEn: 'Mobility Cairo Official Network Map (2024/2026)',
+    titleAr: 'خريطة شبكة مترو القاهرة الرسمية المعتمدة - موبيليتي كايرو',
+    sourceEn: 'Mobility Cairo / RATP Dev / NAT',
+    sourceAr: 'الهيئة القومية للأنفاق • موبيليتي كايرو (RATP Dev)',
+    year: '2024–2026',
+    category: 'official',
+    badgeEn: 'OFFICIAL MOBILITY CAIRO',
+    badgeAr: 'الخريطة الرسمية المعتمدة',
+    badgeColor: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+    coverImage: '/maps/mobility-cairo-official-network-map.png',
+    pdfUrl: '/maps/Cairo_Network_Map_V2024.05.09.pdf',
+    downloadFilename: 'Cairo_Network_Map_V2024.05.09.pdf',
+    descriptionEn: 'Official high-resolution vector network map from Mobility Cairo (RATP Dev / NAT). Complete schematic showing all lines, interchange hubs, and fare zones with vector precision.',
+    descriptionAr: 'الخريطة الرسمية المعتمدة من موبيليتي كايرو (RATP Dev / الهيئة القومية للأنفاق). بصيغة PDF المتجهة عالية الدقة تشمل كافة الخطوط ومحطات التبادل ومناطق التذاكر.',
+    lines: ['Line 1, 2, 3', 'Capital LRT', 'East Monorail'],
+    linesAr: ['الخط الأول، الثاني، الثالث', 'قطار العاصمة LRT', 'مونوريل شرق النيل']
+  },
+  {
+    id: 'mobility_cairo_line3',
+    titleEn: 'Mobility Cairo Line 3 Full Corridor Map',
+    titleAr: 'خريطة مسار الخط الثالث الكامل ومحطات التبادل',
+    sourceEn: 'Mobility Cairo / RATP Dev',
+    sourceAr: 'موبيليتي كايرو • الخط الأخضر 3',
+    year: '2024–2026',
+    category: 'corridor',
+    badgeEn: 'LINE 3 CORRIDOR',
+    badgeAr: 'مسار الخط الثالث',
+    badgeColor: 'bg-[#009f87]/15 text-[#009f87] border-[#009f87]/30',
+    coverImage: '/maps/mobility-cairo-official-network-map.png',
+    pdfUrl: '/maps/Line3_Static_Map_V2024.05.09.pdf',
+    downloadFilename: 'Line3_Static_Map_V2024.05.09.pdf',
+    descriptionEn: 'Detailed static corridor map for Cairo Metro Line 3 (Green Line) from Adly Mansour to Rod El-Farag Corridor and Cairo University.',
+    descriptionAr: 'خريطة تفصيلية لمسار الخط الثالث للمترو (الخط الأخضر 3) من محطة عدلي منصور التبادلية حتى محوري روض الفرج وجامعة القاهرة.',
+    lines: ['Line 3 Trunk & Branches (3A, 3B)'],
+    linesAr: ['الخط الثالث وتفريعاته (3A، 3B)']
   }
 ];
 
@@ -42,6 +83,9 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'greater_
   // Active selected map (Greater Cairo Integrated Transit Map)
   const [selectedMapId, setSelectedMapId] = useState(initialMapId);
   const activeMap = MAP_GALLERY.find((m) => m.id === selectedMapId || m.altId === selectedMapId) || MAP_GALLERY[0];
+
+  // View mode: 'canvas' (Smooth gesture zoom) or 'vector_pdf' (Crisp native vector PDF)
+  const [viewMode, setViewMode] = useState('canvas');
 
   // Interactive zoom & pan state
   const [zoom, setZoom] = useState(1);
@@ -234,8 +278,52 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'greater_
           </div>
         </div>
 
-        {/* Action Controls: Close */}
+        {/* Action Controls: View Mode & Close */}
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          {/* Mode Switch: Canvas vs Vector PDF */}
+          <div className="hidden sm:flex items-center bg-white/10 rounded-xl p-0.5 border border-white/15">
+            <button
+              type="button"
+              onClick={() => {
+                haptics.selection();
+                setViewMode('canvas');
+              }}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1 ${
+                viewMode === 'canvas' ? 'bg-[#FF4A1C] text-white shadow-xs' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              <Eye className="w-3.5 h-3.5" />
+              <span>{isAr ? 'عرض تفاعلي' : 'Pan/Zoom'}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                haptics.selection();
+                setViewMode('vector_pdf');
+              }}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1 ${
+                viewMode === 'vector_pdf' ? 'bg-[#FF4A1C] text-white shadow-xs' : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>{isAr ? 'ملف PDF متجه' : 'Vector PDF'}</span>
+            </button>
+          </div>
+
+          <a
+            href={activeMap.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 sm:px-3 sm:py-2 rounded-xl text-white hover:text-white bg-blue-600/30 hover:bg-blue-600/50 border border-blue-500/40 flex items-center gap-1.5 transition-colors"
+            title={isAr ? 'فتح ملف الـ PDF عالي الدقة في نافذة خارجية' : 'Open Full Vector PDF'}
+            aria-label="Open Full Vector PDF"
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span className="hidden md:inline text-xs font-space font-bold">
+              {isAr ? 'فتح PDF' : 'Open PDF'}
+            </span>
+          </a>
+
           <PressableScale
             onClick={() => {
               haptics.light();
@@ -252,128 +340,183 @@ export default function PdfMapModal({ lang, t, onClose, initialMapId = 'greater_
         </div>
       </div>
 
-      {/* Active Integrated Network Bar */}
-      <div className="px-3 sm:px-6 py-2 bg-slate-900/80 border-b border-white/10 flex items-center justify-between gap-2 flex-shrink-0">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="w-2 h-2 rounded-full bg-[#2DD881] animate-pulse flex-shrink-0" />
-          <span className="text-xs font-space font-bold text-white truncate">
-            {isAr ? activeMap.titleAr : activeMap.titleEn}
-          </span>
-          <span className="text-[10px] font-mono text-slate-400 flex-shrink-0">
-            ({activeMap.year})
-          </span>
+      {/* Map Gallery Switcher Bar */}
+      <div className="px-3 sm:px-6 py-2 bg-slate-900/90 border-b border-white/10 flex items-center justify-between gap-2 flex-shrink-0 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1.5 flex-nowrap min-w-0">
+          {MAP_GALLERY.map((map) => {
+            const isSelected = map.id === activeMap.id;
+            return (
+              <button
+                key={map.id}
+                type="button"
+                onClick={() => selectMap(map.id)}
+                className={`py-1 px-2.5 sm:px-3 rounded-xl text-xs font-bold font-space whitespace-nowrap transition-all border ${
+                  isSelected
+                    ? 'bg-[#2DD881]/20 text-[#2DD881] border-[#2DD881]/50 shadow-xs'
+                    : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                {isAr ? map.titleAr : map.titleEn}
+              </button>
+            );
+          })}
         </div>
-        <div className="text-[11px] font-mono text-slate-400 hidden md:block flex-shrink-0">
-          {isAr ? 'شبكة النقل الشاملة المعتمدة' : 'Official Regional Network'}
+        <div className="text-[11px] font-mono text-slate-400 hidden lg:block flex-shrink-0">
+          {isAr ? 'خرائط معتمدة رسمياً' : 'Official Verified Maps'}
         </div>
       </div>
 
       {/* Zoom Indicator & Quality Sub-bar */}
-      <div className="px-3.5 sm:px-6 py-1.5 bg-slate-950/80 border-b border-white/5 flex items-center justify-between text-xs text-slate-400 flex-shrink-0 font-mono gap-2 flex-wrap">
-        <div className="flex items-center gap-2 text-[11px] font-bold">
-          <span className="inline-flex items-center gap-1 text-[#2DD881]">
-            <Sparkles className="w-3 h-3" />
-            {isAr ? 'خريطة فائقة الدقة 60 FPS أوفلاين' : '100% Offline Vector HD • 60 FPS'}
-          </span>
-        </div>
+      {viewMode === 'canvas' && (
+        <div className="px-3.5 sm:px-6 py-1.5 bg-slate-950/80 border-b border-white/5 flex items-center justify-between text-xs text-slate-400 flex-shrink-0 font-mono gap-2 flex-wrap">
+          <div className="flex items-center gap-2 text-[11px] font-bold">
+            <span className="inline-flex items-center gap-1 text-[#2DD881]">
+              <Sparkles className="w-3 h-3" />
+              {isAr ? 'خريطة فائقة الدقة 60 FPS أوفلاين' : '100% Offline Vector HD • 60 FPS'}
+            </span>
+          </div>
 
-        <div className="flex items-center gap-2">
-          {zoom !== 1 && (
-            <button
-              onClick={handleReset}
-              className="text-[11px] text-[#FF4A1C] hover:underline"
-            >
-              {isAr ? 'إعادة ضبط 100%' : 'Reset to 100%'}
-            </button>
-          )}
-          <span className="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-[11px]">
-            {Math.round(zoom * 100)}%
-          </span>
+          <div className="flex items-center gap-2">
+            {zoom !== 1 && (
+              <button
+                onClick={handleReset}
+                className="text-[11px] text-[#FF4A1C] hover:underline"
+              >
+                {isAr ? 'إعادة ضبط 100%' : 'Reset to 100%'}
+              </button>
+            )}
+            <span className="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-[11px]">
+              {Math.round(zoom * 100)}%
+            </span>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Main Fullscreen Viewer Body */}
       <div className="flex-1 min-h-0 w-full h-full bg-[#060608] relative overflow-hidden flex flex-col">
-        <div
-          ref={containerRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          className="w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
-          style={{ touchAction: 'none' }}
-        >
-          {/* Subtle background radial pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
-
-          {/* High-Resolution Schematic Map Image (No max-h-[75vh] limits!) */}
+        {viewMode === 'vector_pdf' ? (
+          <div className="w-full h-full p-2 sm:p-4 flex flex-col items-center justify-center relative">
+            <object
+              data={activeMap.pdfUrl}
+              type="application/pdf"
+              className="w-full h-full rounded-2xl bg-[#0F0F13] border border-white/10 shadow-2xl"
+            >
+              {/* Fallback if embedded PDF viewer is not natively supported */}
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-center p-6 text-slate-300">
+                <FileText className="w-16 h-16 text-[#FF4A1C] animate-pulse" />
+                <div className="space-y-1.5 max-w-sm">
+                  <p className="font-space text-base font-bold text-white">
+                    {isAr ? 'ملف الـ PDF المتجه عالي الدقة' : 'Crisp Vector PDF Document'}
+                  </p>
+                  <p className="font-cairo text-xs text-slate-400">
+                    {isAr
+                      ? 'يمكنك فتح ملف الـ PDF المتجه الأصلي بدقة 100% بدون أي فقد في الجودة أو تنزيله لجهازك.'
+                      : 'You can open the official 100% vector PDF file directly with infinite zoom and sharpness.'}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 pt-2">
+                  <a
+                    href={activeMap.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg active:scale-95 transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {isAr ? 'فتح ملف PDF في القارئ' : 'Open in PDF Viewer'}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('canvas')}
+                    className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs active:scale-95 transition-all"
+                  >
+                    {isAr ? 'العودة للعرض التفاعلي' : 'Back to Interactive'}
+                  </button>
+                </div>
+              </div>
+            </object>
+          </div>
+        ) : (
           <div
-            className="transition-transform duration-75 ease-out flex items-center justify-center pointer-events-none"
-            style={{
-              transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
-              transformOrigin: 'center center',
-              willChange: 'transform'
-            }}
+            ref={containerRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+            style={{ touchAction: 'none' }}
           >
-            <img
-              key={activeMap.id}
-              src={activeMap.coverImage}
-              alt={isAr ? activeMap.titleAr : activeMap.titleEn}
-              onLoad={() => setIsImageLoaded(true)}
-              className={`max-w-none w-auto h-auto transition-opacity duration-300 ${
-                isImageLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-              draggable={false}
-            />
-          </div>
+            {/* Subtle background radial pattern */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
 
-          {/* Loading Indicator */}
-          {!isImageLoaded && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 font-mono text-xs">
-              <div className="w-8 h-8 border-2 border-[#FF4A1C] border-t-transparent rounded-full animate-spin" />
-              <span>{isAr ? 'جاري تحميل الخريطة عالية الدقة...' : 'Loading high-res map...'}</span>
+            {/* High-Resolution Schematic Map Image (No max-h-[75vh] limits!) */}
+            <div
+              className="transition-transform duration-75 ease-out flex items-center justify-center pointer-events-none"
+              style={{
+                transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
+                transformOrigin: 'center center',
+                willChange: 'transform'
+              }}
+            >
+              <img
+                key={activeMap.id}
+                src={activeMap.coverImage}
+                alt={isAr ? activeMap.titleAr : activeMap.titleEn}
+                onLoad={() => setIsImageLoaded(true)}
+                className={`max-w-none w-auto h-auto transition-opacity duration-300 ${
+                  isImageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                draggable={false}
+              />
             </div>
-          )}
 
-          {/* Floating Interactive Controls Pill */}
-          <div className="absolute bottom-5 end-5 z-20 flex items-center gap-1.5 bg-black/85 backdrop-blur-md p-1.5 rounded-2xl border border-white/20 shadow-2xl">
-            <PressableScale
-              onClick={handleZoomIn}
-              className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
-              title={isAr ? 'تكبير (+)' : 'Zoom In (+)'}
-            >
-              <ZoomIn className="w-4 h-4" />
-            </PressableScale>
-            <PressableScale
-              onClick={handleZoomOut}
-              className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
-              title={isAr ? 'تصغير (-)' : 'Zoom Out (-)'}
-            >
-              <ZoomOut className="w-4 h-4" />
-            </PressableScale>
-            <PressableScale
-              onClick={handleReset}
-              className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
-              title={isAr ? 'إعادة ضبط العرض (0)' : 'Reset View (0)'}
-            >
-              <RotateCcw className="w-4 h-4" />
-            </PressableScale>
-          </div>
+            {/* Loading Indicator */}
+            {!isImageLoaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 font-mono text-xs">
+                <div className="w-8 h-8 border-2 border-[#FF4A1C] border-t-transparent rounded-full animate-spin" />
+                <span>{isAr ? 'جاري تحميل الخريطة عالية الدقة...' : 'Loading high-res map...'}</span>
+              </div>
+            )}
 
-          {/* Gesture Hint Toast */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-            <div className="px-3.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-white/80 text-[11px] font-mono flex items-center gap-1.5 shadow-sm">
-              <span>
-                {isAr
-                  ? 'اسحب للتنقل • باعد بأصابعك للتكبير • انقر مرتين للتكبير التلقائي'
-                  : 'Drag to pan • Pinch to zoom • Double-tap to toggle zoom'}
-              </span>
+            {/* Floating Interactive Controls Pill */}
+            <div className="absolute bottom-5 end-5 z-20 flex items-center gap-1.5 bg-black/85 backdrop-blur-md p-1.5 rounded-2xl border border-white/20 shadow-2xl">
+              <PressableScale
+                onClick={handleZoomIn}
+                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
+                title={isAr ? 'تكبير (+)' : 'Zoom In (+)'}
+              >
+                <ZoomIn className="w-4 h-4" />
+              </PressableScale>
+              <PressableScale
+                onClick={handleZoomOut}
+                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
+                title={isAr ? 'تصغير (-)' : 'Zoom Out (-)'}
+              >
+                <ZoomOut className="w-4 h-4" />
+              </PressableScale>
+              <PressableScale
+                onClick={handleReset}
+                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors"
+                title={isAr ? 'إعادة ضبط العرض (0)' : 'Reset View (0)'}
+              >
+                <RotateCcw className="w-4 h-4" />
+              </PressableScale>
+            </div>
+
+            {/* Gesture Hint Toast */}
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+              <div className="px-3.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-white/80 text-[11px] font-mono flex items-center gap-1.5 shadow-sm">
+                <span>
+                  {isAr
+                    ? 'اسحب للتنقل • باعد بأصابعك للتكبير • انقر مرتين للتكبير التلقائي'
+                    : 'Drag to pan • Pinch to zoom • Double-tap to toggle zoom'}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Modal Bottom Footer */}
