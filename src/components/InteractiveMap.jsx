@@ -8,28 +8,29 @@ import {
   Route,
   Info,
   X,
-  FileText,
   Train,
   Clock,
   Sparkles,
   ChevronRight,
   Navigation,
   Search,
-  Smartphone,
   CheckCircle2,
   ExternalLink,
   Zap,
   Activity,
   Sliders,
   Check,
-  Cpu
+  Cpu,
+  Wrench,
+  Copy,
+  CheckCheck
 } from 'lucide-react';
 import { STATIONS, METRO_LINES, OPERATING_HOURS, SCHEDULE_INFO } from '../data/metroData.js';
 import { MAP_STATION_COORDS, MAP_LINES_PATHS } from '../data/mapCoordinates.js';
 import { findNearestStations, formatDistance, estimateWalkMinutes, getDistanceKm, normalizeArabic } from '../utils/geo.js';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
-import VectorTransitMap from './map/VectorTransitMap';
+import { serializeMapStationCoords, copyMapCoordsToClipboard } from '../utils/mapCoordsSerializer.js';
 
 /**
  * ============================================================================
@@ -109,8 +110,10 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
   activeLineFilter,
   isAr,
   isBatterySaver,
-  showIntegratedOverlay = false
+  showIntegratedOverlay = false,
+  linePoints
 }) {
+  const pts = linePoints || PRECOMPUTED_POINTS;
   return (
     <>
       <defs>
@@ -150,7 +153,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {/* Line 1 Polyline (#00518e Royal Blue) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
         <polyline
-          points={PRECOMPUTED_POINTS.line1}
+          points={pts.line1}
           fill="none"
           stroke="#00518e"
           strokeWidth="8.5"
@@ -162,7 +165,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {/* Line 2 Polyline (#c13038 Red) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'line2') && (
         <polyline
-          points={PRECOMPUTED_POINTS.line2}
+          points={pts.line2}
           fill="none"
           stroke="#c13038"
           strokeWidth="8.5"
@@ -175,7 +178,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {(activeLineFilter === 'all' || activeLineFilter === 'line3') && (
         <g>
           <polyline
-            points={PRECOMPUTED_POINTS.line3_trunk}
+            points={pts.line3_trunk}
             fill="none"
             stroke="#009f87"
             strokeWidth="8.5"
@@ -183,7 +186,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             strokeLinejoin="round"
           />
           <polyline
-            points={PRECOMPUTED_POINTS.line3_branch_rod}
+            points={pts.line3_branch_rod}
             fill="none"
             stroke="#009f87"
             strokeWidth="8.5"
@@ -191,7 +194,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             strokeLinejoin="round"
           />
           <polyline
-            points={PRECOMPUTED_POINTS.line3_branch_cairo_univ}
+            points={pts.line3_branch_cairo_univ}
             fill="none"
             stroke="#009f87"
             strokeWidth="8.5"
@@ -205,7 +208,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
         <g>
           <polyline
-            points={PRECOMPUTED_POINTS.lrt_trunk}
+            points={pts.lrt_trunk}
             fill="none"
             stroke="#9e1b33"
             strokeWidth="8"
@@ -213,7 +216,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
             strokeLinejoin="round"
           />
           <polyline
-            points={PRECOMPUTED_POINTS.lrt_branch_ramadan}
+            points={pts.lrt_branch_ramadan}
             fill="none"
             stroke="#9e1b33"
             strokeWidth="8"
@@ -226,7 +229,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {/* Monorail East Polyline (#009ca6 Teal) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
         <polyline
-          points={PRECOMPUTED_POINTS.monorail_east}
+          points={pts.monorail_east}
           fill="none"
           stroke="#009ca6"
           strokeWidth="8"
@@ -238,7 +241,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {/* Monorail West Polyline (#9b2521 Dark Crimson) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
         <polyline
-          points={PRECOMPUTED_POINTS.monorail_west}
+          points={pts.monorail_west}
           fill="none"
           stroke="#9b2521"
           strokeWidth="8"
@@ -250,7 +253,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
       {/* BRT Ring Road Polyline (Purple #8B5CF6) */}
       {(activeLineFilter === 'all' || activeLineFilter === 'brt') && (
         <polyline
-          points={PRECOMPUTED_POINTS.brt}
+          points={pts.brt}
           fill="none"
           stroke="#8B5CF6"
           strokeWidth="7"
@@ -391,6 +394,9 @@ const StationNode = React.memo(function StationNode({
   isAr,
   zoomLevel = 1,
   showIntegratedOverlay = false,
+  isCalibrating = false,
+  isDragging = false,
+  onPointerDown,
   onSelectStation
 }) {
   const isInterchange = st.isInterchange;
@@ -399,17 +405,15 @@ const StationNode = React.memo(function StationNode({
 
   // Responsive inverse font & stroke scaling on zoom
   const z = Math.max(0.65, Math.min(4, zoomLevel || 1));
-  const baseSize = isInterchange ? 11.5 : 9.5;
-  // Inverse scale: dynamic font size decreases slightly inside SVG as zoom increases
-  // so rendered text on screen remains comfortably between 9px and 14px instead of ballooning to 30px+
-  const dynamicFontSize = Math.max(5.5, Math.min(13.5, Number((baseSize / Math.pow(z, 0.58)).toFixed(1))));
-  const dynamicStrokeWidth = Math.max(1.5, Number((3.2 / Math.sqrt(z)).toFixed(1)));
+  const baseSize = isInterchange ? 11 : 9;
+  const dynamicFontSize = Math.max(4.5, Math.min(12, Number((baseSize / Math.pow(z, 0.75)).toFixed(1))));
+  const dynamicStrokeWidth = Math.max(1.2, Number((2.8 / Math.sqrt(z)).toFixed(1)));
 
   // Decluttering: when background overlay map is ON, suppress all station text labels (they are already printed in the background map),
   // showing only the label for the actively tapped/selected station to guarantee ZERO text collision!
-  const shouldRenderLabel = showIntegratedOverlay
+  const shouldRenderLabel = !isDragging && (showIntegratedOverlay
     ? isSelected
-    : (z >= 0.85 || isInterchange || isSelected);
+    : (z >= 0.85 || isInterchange || isSelected));
 
   const labelOffsetX = coord.labelPos === 'right' ? Math.max(8, 14 / Math.sqrt(z)) :
                        coord.labelPos === 'left' ? -Math.max(8, 14 / Math.sqrt(z)) : 0;
@@ -419,11 +423,55 @@ const StationNode = React.memo(function StationNode({
   return (
     <g
       onClick={(e) => {
+        if (isCalibrating) return;
         e.stopPropagation();
         onSelectStation(st);
       }}
-      className="cursor-pointer group"
+      className={isCalibrating ? "cursor-grab active:cursor-grabbing select-none" : "cursor-pointer group select-none"}
     >
+      {/* Draggable Calibration Handle Target */}
+      {isCalibrating && (
+        <circle
+          cx={coord.x}
+          cy={coord.y}
+          r={isDragging ? "26" : "20"}
+          fill={isDragging ? "rgba(234, 179, 8, 0.45)" : "rgba(59, 130, 246, 0.18)"}
+          stroke={isDragging ? "#EAB308" : "#3B82F6"}
+          strokeWidth={isDragging ? "3" : "1.5"}
+          strokeDasharray={isDragging ? "4 3" : "2 2"}
+          className="cursor-grab active:cursor-grabbing touch-none"
+          onPointerDown={(e) => onPointerDown?.(st.id, e)}
+        />
+      )}
+
+      {/* Floating Coordinate Pill Badge while dragging */}
+      {isDragging && (
+        <g className="pointer-events-none select-none">
+          <rect
+            x={coord.x - 42}
+            y={coord.y - 42}
+            width="84"
+            height="24"
+            rx="12"
+            fill="#0F172A"
+            stroke="#EAB308"
+            strokeWidth="2"
+            className="filter drop-shadow-md"
+          />
+          <text
+            x={coord.x}
+            y={coord.y - 26}
+            fill="#FDE047"
+            fontSize="11"
+            fontWeight="bold"
+            fontFamily="monospace"
+            textAnchor="middle"
+          >
+            {Math.round(coord.x)}, {Math.round(coord.y)}
+          </text>
+        </g>
+      )}
+
       {/* Interchange Hub Node (#ecc15f Gold / Amber) */}
       {isInterchange ? (
         <g className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]'}>
@@ -573,20 +621,217 @@ export default function InteractiveMap({
 }) {
   const isAr = lang === 'ar';
 
-  // Rendering mode state:
-  // 'vector': Option A - Smooth Vector Map (High FPS & Fast GPU transforms)
-  // 'official': Option B - HD Official Schematic Map (Official Cairo Metro Raster HD)
-  // 'battery': Option C - Low-Power / Battery Saver Mode (Ultra-lightweight, no glowing pulses or heavy shadows)
-  const [renderMode, setRenderMode] = useState(() => {
+  // Battery Saver mode (lightweight, no heavy shadows/glows)
+  const [isBatterySaver, setIsBatterySaver] = useState(() => {
     try {
-      return localStorage.getItem('metro_map_render_mode') || 'vector';
+      return localStorage.getItem('metro_map_battery_saver') === 'true';
     } catch {
-      return 'vector';
+      return false;
     }
   });
 
-  const isVector = renderMode === 'vector' || renderMode === 'battery';
-  const isBatterySaver = renderMode === 'battery';
+  const handleToggleBatterySaver = useCallback((enabled) => {
+    haptics.selection();
+    setIsBatterySaver(enabled);
+    try {
+      localStorage.setItem('metro_map_battery_saver', String(enabled));
+    } catch {}
+  }, []);
+
+  const isVector = true;
+
+  // Drag & Drop Station Calibration Studio
+  const [isCalibrating, setIsCalibrating] = useState(false);
+  const [activeDraggingStationId, setActiveDraggingStationId] = useState(null);
+  const [copiedToast, setCopiedToast] = useState(null);
+
+  // Dynamic Station Coordinates with localStorage persistence
+  const [stationCoords, setStationCoords] = useState(() => {
+    try {
+      const saved = localStorage.getItem('cairo_metro_edited_coords');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return { ...MAP_STATION_COORDS, ...parsed };
+      }
+    } catch (e) {
+      console.warn('Could not read cached station coordinates:', e);
+    }
+    return { ...MAP_STATION_COORDS };
+  });
+
+  const coordsRef = useRef(stationCoords);
+  coordsRef.current = stationCoords;
+
+  const dragOffsetRef = useRef({ dx: 0, dy: 0 });
+  const draggingIdRef = useRef(null);
+  const pendingStationCoordRef = useRef(null);
+  const stationRafRef = useRef(null);
+
+  // Computes SVG ViewBox coordinates from screen client coordinates using hardware matrix inversion
+  const getSvgPoint = useCallback((clientX, clientY) => {
+    if (!mapSurfaceRef.current) return null;
+    const ctm = mapSurfaceRef.current.getScreenCTM();
+    if (!ctm) return null;
+    const inv = ctm.inverse();
+    if (typeof DOMPoint !== 'undefined') {
+      const pt = new DOMPoint(clientX, clientY).matrixTransform(inv);
+      return { x: pt.x, y: pt.y };
+    }
+    const pt = mapSurfaceRef.current.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const res = pt.matrixTransform(inv);
+    return { x: res.x, y: res.y };
+  }, []);
+
+  // Station drag pointer handlers
+  const handleStationPointerDown = useCallback((stId, e) => {
+    if (!isCalibrating) return;
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+
+    e.stopPropagation();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+
+    const svgPoint = getSvgPoint(e.clientX, e.clientY);
+    if (!svgPoint) return;
+
+    const currentCoord = coordsRef.current[stId] || { x: 0, y: 0 };
+    dragOffsetRef.current = {
+      dx: svgPoint.x - currentCoord.x,
+      dy: svgPoint.y - currentCoord.y
+    };
+
+    draggingIdRef.current = stId;
+    setActiveDraggingStationId(stId);
+    haptics.light();
+  }, [isCalibrating, getSvgPoint]);
+
+  const handleStationPointerMove = useCallback((e) => {
+    const id = draggingIdRef.current;
+    if (!id) return;
+
+    const svgPoint = getSvgPoint(e.clientX, e.clientY);
+    if (!svgPoint) return;
+
+    const clampedX = Math.max(0, Math.min(1560, Math.round(svgPoint.x - dragOffsetRef.current.dx)));
+    const clampedY = Math.max(0, Math.min(1040, Math.round(svgPoint.y - dragOffsetRef.current.dy)));
+
+    pendingStationCoordRef.current = { id, x: clampedX, y: clampedY };
+
+    if (!stationRafRef.current) {
+      stationRafRef.current = requestAnimationFrame(() => {
+        stationRafRef.current = null;
+        if (!pendingStationCoordRef.current) return;
+        const { id: activeId, x, y } = pendingStationCoordRef.current;
+
+        coordsRef.current = {
+          ...coordsRef.current,
+          [activeId]: {
+            ...coordsRef.current[activeId],
+            x,
+            y
+          }
+        };
+        setStationCoords({ ...coordsRef.current });
+      });
+    }
+  }, [getSvgPoint]);
+
+  const handleStationPointerUp = useCallback((e) => {
+    const id = draggingIdRef.current;
+    if (!id) return;
+
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
+
+    if (stationRafRef.current) {
+      cancelAnimationFrame(stationRafRef.current);
+      stationRafRef.current = null;
+    }
+
+    try {
+      localStorage.setItem('cairo_metro_edited_coords', JSON.stringify(coordsRef.current));
+    } catch (err) {
+      console.warn('Failed to save edited coordinates to localStorage', err);
+    }
+
+    draggingIdRef.current = null;
+    setActiveDraggingStationId(null);
+    pendingStationCoordRef.current = null;
+    haptics.selection();
+  }, []);
+
+  // Copy serialized coordinates to clipboard
+  const handleCopyCoordinates = useCallback(async () => {
+    haptics.impact('MEDIUM');
+    const ok = await copyMapCoordsToClipboard(coordsRef.current);
+    if (ok) {
+      setCopiedToast(isAr ? '✓ تم نسخ الكود بالكامل للحافظة جاهزاً للّصق في mapCoordinates.js!' : '✓ Coordinates copied to clipboard ready for mapCoordinates.js!');
+      setTimeout(() => setCopiedToast(null), 3500);
+    } else {
+      setCopiedToast(isAr ? '⚠️ تعذر النسخ للحافظة تلقائياً' : '⚠️ Could not copy automatically');
+      setTimeout(() => setCopiedToast(null), 3500);
+    }
+  }, [isAr]);
+
+  // Reset coordinates back to initial defaults
+  const handleResetCoordinates = useCallback(() => {
+    haptics.impact('HEAVY');
+    try {
+      localStorage.removeItem('cairo_metro_edited_coords');
+    } catch {}
+    coordsRef.current = { ...MAP_STATION_COORDS };
+    setStationCoords({ ...MAP_STATION_COORDS });
+    setCopiedToast(isAr ? '🔄 تم استعادة الإحداثيات الافتراضية بنجاح' : '🔄 Reset to default coordinates');
+    setTimeout(() => setCopiedToast(null), 2500);
+  }, [isAr]);
+
+  // Dynamic Polylines recalculated whenever station coordinates update
+  const dynamicLinePoints = useMemo(() => ({
+    line1: (MAP_LINES_PATHS.line1 || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    line2: (MAP_LINES_PATHS.line2 || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    line3_trunk: (MAP_LINES_PATHS.line3_trunk || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    line3_branch_rod: (MAP_LINES_PATHS.line3_branch_rod || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    line3_branch_cairo_univ: (MAP_LINES_PATHS.line3_branch_cairo_univ || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    lrt_trunk: (MAP_LINES_PATHS.lrt_trunk || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    lrt_branch_ramadan: (MAP_LINES_PATHS.lrt_branch_ramadan || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    monorail_east: (MAP_LINES_PATHS.monorail_east || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    monorail_west: (MAP_LINES_PATHS.monorail_west || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' '),
+    brt: (MAP_LINES_PATHS.brt || [])
+      .map((id) => (stationCoords[id] ? `${stationCoords[id].x},${stationCoords[id].y}` : null))
+      .filter(Boolean)
+      .join(' ')
+  }), [stationCoords]);
 
   // Performance Options Modal state
   const [showPerfModal, setShowPerfModal] = useState(false);
@@ -613,7 +858,6 @@ export default function InteractiveMap({
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   // Search & Filtering state
   const [searchQuery, setSearchQuery] = useState('');
@@ -688,25 +932,14 @@ export default function InteractiveMap({
     });
   }, [fpsMode]);
 
-  // Sync transform when pan/zoom state or mode changes
+  // Sync transform when pan/zoom state changes
   useEffect(() => {
     panRef.current = pan;
     zoomRef.current = zoom;
     pendingPanRef.current = pan;
     pendingZoomRef.current = zoom;
     applyTransform(pan, zoom, !isDragging);
-  }, [pan, zoom, renderMode, applyTransform, isDragging]);
-
-  // Set render mode with local persistence
-  const handleSetRenderMode = useCallback((mode) => {
-    haptics.selection();
-    setRenderMode(mode);
-    try {
-      localStorage.setItem('metro_map_render_mode', mode);
-    } catch (err) {
-      console.warn('Could not persist render mode', err);
-    }
-  }, []);
+  }, [pan, zoom, applyTransform, isDragging]);
 
   // Dismiss GPS toast after timeout
   useEffect(() => {
@@ -769,7 +1002,7 @@ export default function InteractiveMap({
     setShowRouteCapsuleMenu(false);
     haptics.selection();
 
-    const coord = MAP_STATION_COORDS[st.id];
+    const coord = stationCoords[st.id] || MAP_STATION_COORDS[st.id];
     let targetX = 0;
     let targetY = 0;
 
@@ -778,20 +1011,10 @@ export default function InteractiveMap({
       const w = rect.width || 600;
       const h = rect.height || 540;
 
-      if (isVector) {
-        // SVG viewBox is 0 0 1560 1040, center is (780, 520)
-        const scaleFactor = Math.min(w / 1560, h / 1040);
-        targetX = -(coord ? coord.x - 780 : 0) * scaleFactor * targetZoom;
-        targetY = -(coord ? coord.y - 520 : 0) * scaleFactor * targetZoom - 35;
-      } else {
-        // Official Schematic raster image (2363 x 2363 square)
-        if (coord) {
-          const normX = (coord.x - 780) / 780;
-          const normY = (coord.y - 520) / 520;
-          targetX = -normX * (w * 0.42) * targetZoom;
-          targetY = -normY * (h * 0.42) * targetZoom - 35;
-        }
-      }
+      // SVG viewBox is 0 0 1560 1040, center is (780, 520)
+      const scaleFactor = Math.min(w / 1560, h / 1040);
+      targetX = -(coord ? coord.x - 780 : 0) * scaleFactor * targetZoom;
+      targetY = -(coord ? coord.y - 520 : 0) * scaleFactor * targetZoom - 35;
     }
 
     panRef.current = { x: targetX, y: targetY };
@@ -802,7 +1025,7 @@ export default function InteractiveMap({
     applyTransform(panRef.current, targetZoom, true);
     setZoom(targetZoom);
     setPan({ x: targetX, y: targetY });
-  }, [isVector, applyTransform]);
+  }, [stationCoords, applyTransform]);
 
   // GPS Re-Center Handler
   const handleGpsReCenter = () => {
@@ -847,6 +1070,7 @@ export default function InteractiveMap({
 
   // Hardware-accelerated Mouse Pan Handlers
   const handleMouseDown = (e) => {
+    if (draggingIdRef.current) return;
     if (e.button !== 0) return;
     isDraggingRef.current = true;
     hasDraggedRef.current = false;
@@ -896,6 +1120,7 @@ export default function InteractiveMap({
 
   // Hardware-accelerated Touch Handlers (Pan, Pinch-to-zoom, Double-tap)
   const handleTouchStart = (e) => {
+    if (draggingIdRef.current) return;
     if (e.touches.length === 1) {
       const now = Date.now();
       if (now - lastTapRef.current < 300) {
@@ -1192,68 +1417,8 @@ export default function InteractiveMap({
 
           {/* Floating Mode Switcher & Tools Bar */}
           <div className="pointer-events-auto flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-0.5">
-            {/* Render Mode Switcher: 4 Options [🚀 Smooth Vector] [🪐 Infinite 3D] [📄 Official HD] [⚡ Battery Saver] */}
-            <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0">
-              <PressableScale
-                onClick={() => handleSetRenderMode('vector')}
-                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all ${
-                  renderMode === 'vector'
-                    ? 'bg-slate-900 text-white dark:bg-[#212127] dark:text-white shadow-sm'
-                    : 'text-slate-500 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title={isAr ? 'المتجهة السلسة (أداء فائق وسرعة عالية)' : 'Smooth Vector Map (High FPS & Fast)'}
-              >
-                <Layers className="w-3.5 h-3.5 text-[#FF4A1C]" />
-                <span className="hidden sm:inline">{isAr ? 'المتجهة السلسة 🚀' : 'Smooth Vector 🚀'}</span>
-                <span className="sm:hidden">{isAr ? 'متجهة' : 'Vector'}</span>
-              </PressableScale>
-
-              <PressableScale
-                onClick={() => handleSetRenderMode('infinite')}
-                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all ${
-                  renderMode === 'infinite'
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-500 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title={isAr ? 'محرك الخريطة المتجهية اللانهائي (Infinite Canvas 3D)' : 'Infinite Canvas Vector Engine (3D Matrix)'}
-              >
-                <Cpu className={`w-3.5 h-3.5 ${renderMode === 'infinite' ? 'text-white' : 'text-blue-500'}`} />
-                <span className="hidden sm:inline">{isAr ? 'محرك 3D لانهائي' : 'Infinite 3D'}</span>
-                <span className="sm:hidden">{isAr ? 'لانهائي' : 'Infinite'}</span>
-              </PressableScale>
-
-              <PressableScale
-                onClick={() => handleSetRenderMode('official')}
-                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all ${
-                  renderMode === 'official'
-                    ? 'bg-slate-900 text-white dark:bg-[#212127] dark:text-white shadow-sm'
-                    : 'text-slate-500 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title={isAr ? 'المخطط الرسمي HD (عالي الدقة)' : 'HD Official Schematic Map'}
-              >
-                <Smartphone className="w-3.5 h-3.5 text-[#2DD881]" />
-                <span className="hidden sm:inline">{isAr ? 'المخطط الرسمي HD' : 'Official HD'}</span>
-                <span className="sm:hidden">{isAr ? 'رسمي' : 'Official'}</span>
-              </PressableScale>
-
-              <PressableScale
-                onClick={() => handleSetRenderMode('battery')}
-                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-space font-bold transition-all ${
-                  renderMode === 'battery'
-                    ? 'bg-amber-500 text-white shadow-sm'
-                    : 'text-slate-500 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title={isAr ? 'وضع توفير الطاقة والبطارية (للأجهزة الضعيفة)' : 'Battery Saver Mode (Low Power)'}
-              >
-                <Zap className={`w-3.5 h-3.5 ${renderMode === 'battery' ? 'text-white' : 'text-amber-500'}`} />
-                <span className="hidden sm:inline">{isAr ? 'توفير الطاقة ⚡' : 'Battery Saver ⚡'}</span>
-                <span className="sm:hidden">{isAr ? 'موفر' : 'Saver'}</span>
-              </PressableScale>
-            </div>
-
             {/* Vector Mode Line Filters */}
-            {isVector && (
-              <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-1 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-xl p-1 rounded-2xl border border-slate-200/90 dark:border-[#26262C] shadow-lg flex-shrink-0 overflow-x-auto no-scrollbar">
                 <PressableScale
                   onClick={() => {
                     haptics.selection();
@@ -1359,7 +1524,6 @@ export default function InteractiveMap({
                   {isAr ? 'BRT الترددي' : 'BRT'}
                 </PressableScale>
               </div>
-            )}
 
             {/* Action Controls: Integrated Overlay + FPS Switcher + Performance Modal + Official PDF Map */}
             <div className="flex items-center gap-1.5 ms-auto flex-shrink-0">
@@ -1412,6 +1576,27 @@ export default function InteractiveMap({
                 <span className="font-mono">{fpsMode} FPS</span>
               </PressableScale>
 
+              {/* Drag & Drop Station Calibration Studio Toggle */}
+              <PressableScale
+                onClick={() => {
+                  haptics.selection();
+                  setIsCalibrating((prev) => !prev);
+                }}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-2xl text-xs font-space font-bold border shadow-lg backdrop-blur-xl transition-all ${
+                  isCalibrating
+                    ? 'bg-amber-500 text-white border-amber-400 shadow-amber-500/25 ring-2 ring-amber-400/40'
+                    : 'bg-white/95 dark:bg-[#111113]/95 text-slate-700 dark:text-[#A1A1AA] border-slate-200/90 dark:border-[#26262C]'
+                }`}
+                title={isAr ? 'تفعيل وضع سحب وإفلات المحطات لمعايرتها فوق الخريطة مباشرة' : 'Toggle Drag & Drop Station Calibration Studio'}
+              >
+                <Wrench className={`w-3.5 h-3.5 ${isCalibrating ? 'text-white' : 'text-amber-500'}`} />
+                <span className="hidden md:inline">{isAr ? 'معايرة المحطات' : 'Edit Stations'}</span>
+                <span className={`text-[10px] font-mono px-1 py-0.2 rounded ${isCalibrating ? 'bg-white text-amber-800 font-bold' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                  {isCalibrating ? 'ON' : 'OFF'}
+                </span>
+              </PressableScale>
+
+              {/* Performance / Settings Modal Toggle */}
               <PressableScale
                 onClick={() => {
                   haptics.selection();
@@ -1423,21 +1608,69 @@ export default function InteractiveMap({
                 <Sliders className="w-3.5 h-3.5 text-blue-500" />
                 <span className="hidden md:inline">{isAr ? 'الضبط' : 'Settings'}</span>
               </PressableScale>
-
-              <PressableScale
-                onClick={() => {
-                  haptics.selection();
-                  onOpenPdfMap?.();
-                }}
-                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-2xl text-xs font-space font-bold bg-white/95 dark:bg-[#111113]/95 text-[#FF4A1C] border border-slate-200/90 dark:border-[#26262C] shadow-lg backdrop-blur-xl transition-colors"
-                title={isAr ? 'عرض معرض الخرائط الرسمية المتكاملة' : 'View Official Maps Gallery'}
-              >
-                <FileText className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{isAr ? 'معرض الخرائط' : 'Maps Gallery'}</span>
-              </PressableScale>
             </div>
           </div>
         </div>
+
+        {/* Calibration Studio Floating Toolbar when Active */}
+        {isCalibrating && (
+          <div className="absolute top-20 inset-x-3 sm:inset-x-auto sm:start-6 z-40 bg-slate-900/95 dark:bg-[#111113]/95 text-white backdrop-blur-xl p-3 sm:p-4 rounded-3xl border border-amber-500/40 shadow-2xl flex flex-wrap items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-200 select-none">
+            <div className="flex items-center gap-2.5">
+              <span className="w-3 h-3 rounded-full bg-amber-400 animate-ping flex-shrink-0" />
+              <div>
+                <p className="text-xs font-bold font-cairo text-amber-300">
+                  {isAr ? '🛠️ وضع معايرة وتعديل المحطات نشط' : '🛠️ Drag & Drop Calibration Studio Active'}
+                </p>
+                <p className="text-[10.5px] text-slate-300 font-mono">
+                  {activeDraggingStationId
+                    ? `${activeDraggingStationId}: (${stationCoords[activeDraggingStationId]?.x}, ${stationCoords[activeDraggingStationId]?.y})`
+                    : (isAr ? 'اسحب أي نقطة محطة وضعها فوق مكانها في الخريطة' : 'Click & drag any station dot onto the map')}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 ms-auto">
+              <button
+                type="button"
+                onClick={handleCopyCoordinates}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#2DD881] hover:bg-[#25b86e] text-slate-950 shadow-md shadow-[#2DD881]/20 active:scale-95 transition-all touch-manipulation cursor-pointer"
+                title={isAr ? 'نسخ كود mapCoordinates.js للحافظة' : 'Copy formatted mapCoordinates.js code to clipboard'}
+              >
+                <Copy className="w-3.5 h-3.5" />
+                <span>{isAr ? 'نسخ الإحداثيات' : 'Copy Coordinates'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleResetCoordinates}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700 active:scale-95 transition-all touch-manipulation cursor-pointer"
+                title={isAr ? 'إعادة ضبط للإحداثيات الأصلية' : 'Reset to default coordinates'}
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{isAr ? 'إعادة ضبط' : 'Reset'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsCalibrating(false)}
+                className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border border-slate-700 active:scale-95 transition-all cursor-pointer"
+                title={isAr ? 'إنهاء وضع التعديل' : 'Exit Calibration'}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Copy Coordinates Toast Notification */}
+        {copiedToast && (
+          <div className="fixed top-24 inset-x-4 z-50 flex justify-center pointer-events-none animate-in fade-in duration-200">
+            <div className="px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-cairo font-bold shadow-2xl border border-emerald-400/30 flex items-center gap-2">
+              <CheckCheck className="w-4 h-4 text-emerald-200 flex-shrink-0" />
+              <span>{copiedToast}</span>
+            </div>
+          </div>
+        )}
 
         {/* GPS Toast Notification */}
         {gpsToast && (
@@ -1449,123 +1682,104 @@ export default function InteractiveMap({
           </div>
         )}
 
-        {/* ================= MAP CANVAS: MODE 0: PRODUCTION INFINITE 3D VECTOR MAP ================= */}
-        {renderMode === 'infinite' && (
-          <VectorTransitMap
-            lang={lang}
-            isDarkMode={darkMode}
-            onSetOrigin={onSetOrigin}
-            onSetDestination={onSetDestination}
-            onOpenPdfMap={onOpenPdfMap}
-          />
-        )}
-
-        {/* ================= MAP CANVAS: MODE 1: OFFICIAL SCHEMATIC (PDF RASTER HD) ================= */}
-        {renderMode === 'official' && (
-          <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
-            <div
-              ref={mapSurfaceRef}
-              className="flex items-center justify-center pointer-events-none"
-              style={{
-                transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
-                transformOrigin: 'center center',
-                transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
-                willChange: 'transform',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden'
-              }}
-            >
-              <img
-                src="/cairo-metro-schematic-map.png"
-                alt="Official Cairo Metro Network Schematic Map"
-                onLoad={() => setIsImageLoaded(true)}
-                className={`max-w-none w-auto h-auto transition-opacity duration-300 ${
-                  isBatterySaver ? '' : 'shadow-2xl'
-                } ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                draggable={false}
-              />
-            </div>
-
-            {/* Loading Indicator */}
-            {!isImageLoaded && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 font-mono text-xs">
-                <div className="w-8 h-8 border-2 border-[#FF4A1C] border-t-transparent rounded-full animate-spin" />
-                <span>{isAr ? 'جاري تحميل المخطط الرسمي...' : 'Loading official schematic map...'}</span>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ================= MAP CANVAS: MODE 2 & 3: INTERACTIVE VECTOR SVG (SMOOTH & BATTERY) ================= */}
-        {isVector && (
-          <svg
-            ref={mapSurfaceRef}
-            viewBox="0 0 1560 1040"
-            className="w-full h-full"
-            style={{
-              transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
-              transformOrigin: 'center center',
-              transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
-              willChange: 'transform',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden'
-            }}
-          >
-            {/* Optional Integrated Transit Map Background Overlay with Clean Calibration Config */}
-            {showIntegratedOverlay && (
-              <image
-                href={MAP_OVERLAY_CONFIG.href}
-                x={MAP_OVERLAY_CONFIG.x}
-                y={MAP_OVERLAY_CONFIG.y}
-                width={MAP_OVERLAY_CONFIG.width}
-                height={MAP_OVERLAY_CONFIG.height}
-                preserveAspectRatio={MAP_OVERLAY_CONFIG.preserveAspectRatio}
-                opacity={MAP_OVERLAY_CONFIG.opacity}
-                style={{ filter: MAP_OVERLAY_CONFIG.filter }}
-                className="pointer-events-none select-none transition-opacity duration-300"
-              />
-            )}
-
-            {/* Memoized Static SVG Layers (River Nile, Polylines, Badges) */}
-            <StaticMapSvgLayers
-              activeLineFilter={activeLineFilter}
-              isAr={isAr}
-              isBatterySaver={isBatterySaver}
-              showIntegratedOverlay={showIntegratedOverlay}
+        {/* ================= MAP CANVAS: PURE HIGH-PERFORMANCE INTERACTIVE VECTOR SVG ================= */}
+        <svg
+          ref={mapSurfaceRef}
+          viewBox="0 0 1560 1040"
+          className="w-full h-full"
+          onPointerMove={isCalibrating ? handleStationPointerMove : undefined}
+          onPointerUp={isCalibrating ? handleStationPointerUp : undefined}
+          style={{
+            transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
+            transformOrigin: 'center center',
+            transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden'
+          }}
+        >
+          {/* Optional Integrated Transit Map Background Overlay with Clean Calibration Config */}
+          {showIntegratedOverlay && (
+            <image
+              href={MAP_OVERLAY_CONFIG.href}
+              x={MAP_OVERLAY_CONFIG.x}
+              y={MAP_OVERLAY_CONFIG.y}
+              width={MAP_OVERLAY_CONFIG.width}
+              height={MAP_OVERLAY_CONFIG.height}
+              preserveAspectRatio={MAP_OVERLAY_CONFIG.preserveAspectRatio}
+              opacity={MAP_OVERLAY_CONFIG.opacity}
+              style={{ filter: MAP_OVERLAY_CONFIG.filter }}
+              className="pointer-events-none select-none transition-opacity duration-300"
             />
+          )}
 
-            {/* Memoized Station Nodes with zoom-rescaling labels */}
-            {STATIONS.map((st) => {
-              const coord = MAP_STATION_COORDS[st.id];
-              if (!coord) return null;
+          {/* Crosshairs during active station drag in Calibration Studio */}
+          {isCalibrating && activeDraggingStationId && stationCoords[activeDraggingStationId] && (
+            <g className="pointer-events-none select-none opacity-80">
+              <line
+                x1="0"
+                y1={stationCoords[activeDraggingStationId].y}
+                x2="1560"
+                y2={stationCoords[activeDraggingStationId].y}
+                stroke="#EAB308"
+                strokeWidth="1.5"
+                strokeDasharray="6 4"
+              />
+              <line
+                x1={stationCoords[activeDraggingStationId].x}
+                y1="0"
+                x2={stationCoords[activeDraggingStationId].x}
+                y2="1040"
+                stroke="#EAB308"
+                strokeWidth="1.5"
+                strokeDasharray="6 4"
+              />
+            </g>
+          )}
 
-              if (activeLineFilter !== 'all' && !st.lines.includes(activeLineFilter)) {
-                return null;
-              }
+          {/* Dynamic SVG Layers (River Nile, Dynamic Polylines, Badges) */}
+          <StaticMapSvgLayers
+            activeLineFilter={activeLineFilter}
+            isAr={isAr}
+            isBatterySaver={isBatterySaver}
+            showIntegratedOverlay={showIntegratedOverlay}
+            linePoints={dynamicLinePoints}
+          />
 
-              return (
-                <StationNode
-                  key={st.id}
-                  st={st}
-                  coord={coord}
-                  isSelected={selectedStation?.id === st.id}
-                  isBatterySaver={isBatterySaver}
-                  isAr={isAr}
-                  zoomLevel={zoom}
-                  showIntegratedOverlay={showIntegratedOverlay}
-                  onSelectStation={handleSelectStation}
-                />
-              );
-            })}
-          </svg>
-        )}
+          {/* Memoized Station Nodes with zoom-rescaling labels & drag handles */}
+          {STATIONS.map((st) => {
+            const coord = stationCoords[st.id] || MAP_STATION_COORDS[st.id];
+            if (!coord) return null;
+
+            if (activeLineFilter !== 'all' && !st.lines.includes(activeLineFilter)) {
+              return null;
+            }
+
+            return (
+              <StationNode
+                key={st.id}
+                st={st}
+                coord={coord}
+                isSelected={selectedStation?.id === st.id}
+                isBatterySaver={isBatterySaver}
+                isAr={isAr}
+                zoomLevel={zoom}
+                showIntegratedOverlay={showIntegratedOverlay}
+                isCalibrating={isCalibrating}
+                isDragging={activeDraggingStationId === st.id}
+                onPointerDown={handleStationPointerDown}
+                onSelectStation={handleSelectStation}
+              />
+            );
+          })}
+        </svg>
 
         {/* Bottom Helper Pill */}
         <div className="absolute bottom-20 sm:bottom-22 start-3.5 sm:start-5 z-20 bg-white/95 dark:bg-[#111113]/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200/90 dark:border-[#26262C] text-[11px] font-mono font-bold text-slate-700 dark:text-[#A1A1AA] shadow-lg flex items-center gap-1.5 pointer-events-none">
           <Info className="w-3.5 h-3.5 text-[#FF4A1C]" />
           <span>
-            {renderMode === 'official'
-              ? (isAr ? 'المخطط الرسمي HD • باعد بأصابعك للتكبير' : 'Official HD Map • Pinch to zoom & pan')
+            {isCalibrating
+              ? (isAr ? '🛠️ وضع المعايرة نشط • اسحب أي محطة وضعها فوق مكانها' : '🛠️ Calibration Mode Active • Drag any station dot')
               : isBatterySaver
               ? (isAr ? `وضع توفير الطاقة مفعل (${fpsMode} FPS) • انقر على أي محطة` : `Battery Saver Mode Active (${fpsMode} FPS) • Tap station`)
               : (t.mapTab?.tapToSelect || (isAr ? `المتجهة السلسة ${fpsMode} FPS • انقر لاختيار محطة` : `Smooth ${fpsMode} FPS • Tap station`))}
@@ -1660,18 +1874,6 @@ export default function InteractiveMap({
               <RotateCcw className="w-4 h-4" />
             </PressableScale>
           </div>
-
-          {/* 4. Official Maps Gallery Button */}
-          <PressableScale
-            onClick={() => {
-              haptics.selection();
-              onOpenPdfMap?.();
-            }}
-            className="w-10 h-10 rounded-2xl bg-white dark:bg-[#17171A] text-[#FF4A1C] hover:bg-[#FF4A1C]/10 border border-slate-200/90 dark:border-[#2E2E36] shadow-xl flex items-center justify-center transition-all"
-            title={isAr ? 'عرض معرض الخرائط الرسمية' : 'View Official Maps Gallery'}
-          >
-            <FileText className="w-4 h-4 stroke-[2.2]" />
-          </PressableScale>
         </div>
       </div>
 
@@ -1731,37 +1933,8 @@ export default function InteractiveMap({
               </div>
             </div>
 
-            {/* Mode Switch & Close Buttons */}
+            {/* Close Sheet Button */}
             <div className="flex items-center gap-1.5 flex-shrink-0">
-              {renderMode === 'official' ? (
-                <PressableScale
-                  onClick={() => {
-                    haptics.selection();
-                    handleSetRenderMode('vector');
-                    focusOnStation(selectedStation, 1.9);
-                  }}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-cairo font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
-                  title={isAr ? 'عرض موقع المحطة في الخريطة المتجهة بدقة' : 'Pinpoint on Vector Map'}
-                >
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">{isAr ? 'تحديد في المتجهة' : 'Vector Pin'}</span>
-                </PressableScale>
-              ) : (
-                <PressableScale
-                  onClick={() => {
-                    haptics.selection();
-                    handleSetRenderMode('official');
-                    focusOnStation(selectedStation, 1.9);
-                  }}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-cairo font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-                  title={isAr ? 'عرض في المخطط الرسمي HD' : 'View in Official Map'}
-                >
-                  <Smartphone className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">{isAr ? 'المخطط HD' : 'HD Map'}</span>
-                </PressableScale>
-              )}
-
-              {/* Close Sheet Button */}
               <PressableScale
                 onClick={() => {
                   haptics.light();
@@ -2016,9 +2189,9 @@ export default function InteractiveMap({
 
               {/* Option A: Smooth Vector Map */}
               <div
-                onClick={() => handleSetRenderMode('vector')}
+                onClick={() => handleToggleBatterySaver(false)}
                 className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
-                  renderMode === 'vector'
+                  !isBatterySaver
                     ? 'bg-blue-500/10 border-blue-500/50 shadow-md ring-1 ring-blue-500/30'
                     : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C] hover:border-blue-400/40'
                 }`}
@@ -2043,51 +2216,18 @@ export default function InteractiveMap({
                     </div>
                   </div>
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border ${
-                    renderMode === 'vector' ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 dark:border-slate-600'
+                    !isBatterySaver ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 dark:border-slate-600'
                   }`}>
-                    {renderMode === 'vector' && <Check className="w-3.5 h-3.5 stroke-[3]" />}
-                  </div>
-                </div>
-              </div>
-
-              {/* Option B: HD Official Schematic Map */}
-              <div
-                onClick={() => handleSetRenderMode('official')}
-                className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
-                  renderMode === 'official'
-                    ? 'bg-emerald-500/10 border-emerald-500/50 shadow-md ring-1 ring-emerald-500/30'
-                    : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C] hover:border-emerald-400/40'
-                }`}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-start gap-2.5">
-                    <span className="text-xl">📄</span>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-cairo font-bold text-sm text-slate-900 dark:text-white">
-                          {isAr ? 'المخطط الرسمي HD (عالي الدقة من PDF)' : 'HD Official Schematic Map'}
-                        </span>
-                      </div>
-                      <p className="text-xs font-cairo text-slate-500 dark:text-[#8E8E93] mt-1 leading-relaxed">
-                        {isAr
-                          ? 'خريطة شبكة المترو الرسمية الصادرة عن الهيئة بدقة متناهية مع سحب وتكبير انسيابي دون أي تعليق.'
-                          : 'High-resolution official metro network schematic diagram with hardware-accelerated transforms.'}
-                      </p>
-                    </div>
-                  </div>
-                  <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border ${
-                    renderMode === 'official' ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 dark:border-slate-600'
-                  }`}>
-                    {renderMode === 'official' && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                    {!isBatterySaver && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                   </div>
                 </div>
               </div>
 
               {/* Option C: Low-Power / Battery Saver Mode */}
               <div
-                onClick={() => handleSetRenderMode('battery')}
+                onClick={() => handleToggleBatterySaver(true)}
                 className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
-                  renderMode === 'battery'
+                  isBatterySaver
                     ? 'bg-amber-500/10 border-amber-500/50 shadow-md ring-1 ring-amber-500/30'
                     : 'bg-slate-50 dark:bg-[#19191D] border-slate-200/80 dark:border-[#26262C] hover:border-amber-400/40'
                 }`}
@@ -2112,9 +2252,9 @@ export default function InteractiveMap({
                     </div>
                   </div>
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border ${
-                    renderMode === 'battery' ? 'bg-amber-500 border-amber-500 text-white' : 'border-slate-300 dark:border-slate-600'
+                    isBatterySaver ? 'bg-amber-500 border-amber-500 text-white' : 'border-slate-300 dark:border-slate-600'
                   }`}>
-                    {renderMode === 'battery' && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                    {isBatterySaver && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                   </div>
                 </div>
               </div>

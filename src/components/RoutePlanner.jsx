@@ -31,7 +31,9 @@ import {
   Building2,
   Bus,
   Trophy,
-  ExternalLink
+  ExternalLink,
+  Navigation,
+  Share2
 } from 'lucide-react';
 import { STATIONS, METRO_LINES, POPULAR_TRIPS } from '../data/metroData.js';
 import { TOP_EGYPT_PLACES, CATEGORY_METADATA } from '../data/egyptPlaces.js';
@@ -42,7 +44,6 @@ import MetroStatTile from './MetroStatTile.jsx';
 import SaveTripModal from './SaveTripModal.jsx';
 import NearMeModeModal from './NearMeModeModal.jsx';
 import { AppleAccordion, StationSwapButton } from './MotionComponents.jsx';
-import AppleCollapsibleHeader from './AppleCollapsibleHeader.jsx';
 import AppleCard from './AppleCard.jsx';
 import { haptics } from '../utils/haptics.js';
 import { APPLE_CURVES, APPLE_TIMINGS } from '../utils/motion.js';
@@ -531,20 +532,7 @@ export default function RoutePlanner({
 
   return (
     <div className="space-y-3 sm:space-y-3.5 pb-[calc(5rem+env(safe-area-inset-bottom,16px))]">
-      {/* 1. Single Sleek Apple Header (No duplicate titles or wasted space) */}
-      <AppleCollapsibleHeader
-        lang={lang}
-        t={t}
-        title={t.routePlanner?.title || (lang === 'ar' ? 'تخطيط الرحلات' : 'Plan Your Journey')}
-        isLocatingOrigin={isLocatingOrigin}
-        onQuickGps={handleQuickGpsOrigin}
-        hasActiveRoute={Boolean(activeRoute)}
-        isSaved={isCurrentTripSaved}
-        onToggleSave={handleToggleSaveTrip}
-        onShare={handleShare}
-      />
-
-      {/* 2. Primary Inset Grouped Journey Selector Card */}
+      {/* Primary Inset Grouped Journey Selector Card */}
       <AppleCard variant="primary" className="p-4 sm:p-5 space-y-3.5">
         {savedTripToast && (
           <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-[#2DD881] text-xs font-mono font-bold text-center animate-fade-in select-none">
@@ -605,9 +593,29 @@ export default function RoutePlanner({
         <div className="relative space-y-2 select-none">
           {/* FROM Station Button (Secondary Inset Layer) */}
           <div className="relative">
-            <label className={`block text-[10px] uppercase text-slate-400 dark:text-[#5B5B63] mb-1 px-1 ${lang === 'ar' ? 'font-cairo tracking-normal' : 'font-mono tracking-wider'}`}>
-              {t.routePlanner.fromLabel}
-            </label>
+            <div className="flex items-center justify-between mb-1 px-1">
+              <label className={`block text-[10px] uppercase text-slate-400 dark:text-[#5B5B63] ${lang === 'ar' ? 'font-cairo tracking-normal' : 'font-mono tracking-wider'}`}>
+                {t.routePlanner.fromLabel}
+              </label>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  haptics.light();
+                  handleQuickGpsOrigin();
+                }}
+                disabled={isLocatingOrigin}
+                className="py-0.5 px-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 transition-all flex items-center gap-1 text-[11px] font-bold active:scale-95 touch-manipulation tap-transparent"
+                title={lang === 'ar' ? 'تحديد أقرب محطة لموقعي بالـ GPS' : 'Detect Nearest Station to Me via GPS'}
+              >
+                <Navigation className={`w-3 h-3 text-emerald-600 dark:text-emerald-400 ${isLocatingOrigin ? 'animate-spin' : ''}`} />
+                <span className={lang === 'ar' ? 'font-cairo' : 'font-mono'}>
+                  {isLocatingOrigin
+                    ? (lang === 'ar' ? 'جاري التحديد...' : 'Locating...')
+                    : (lang === 'ar' ? 'أقرب محطة ليا' : 'Near Me')}
+                </span>
+              </button>
+            </div>
             <button
               onClick={() => {
                 haptics.impact('LIGHT');
@@ -846,6 +854,36 @@ export default function RoutePlanner({
                   <span>{lang === 'ar' ? `المسافة: ~${routeDistanceKm} كم` : `Distance: ~${routeDistanceKm} km`}</span>
                 </span>
               )}
+              {/* Save to Favorites Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  haptics.select();
+                  handleToggleSaveTrip();
+                }}
+                className={`p-1.5 rounded-xl border transition-all active:scale-90 touch-manipulation tap-transparent ${
+                  isCurrentTripSaved
+                    ? 'bg-amber-500/15 border-amber-500/30 text-amber-500 shadow-xs'
+                    : 'bg-black/[0.04] dark:bg-white/[0.06] border-black/[0.05] dark:border-white/[0.08] text-slate-400 hover:text-amber-500'
+                }`}
+                title={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
+                aria-label={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
+              >
+                <Star className={`w-3.5 h-3.5 ${isCurrentTripSaved ? 'fill-amber-400 text-amber-500' : 'fill-none'}`} />
+              </button>
+              {/* Share Route Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  haptics.light();
+                  handleShare();
+                }}
+                className="p-1.5 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.05] dark:border-white/[0.08] text-rose-600 dark:text-[#FF4A1C] hover:bg-rose-500/10 transition-colors active:scale-90 touch-manipulation tap-transparent"
+                title={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
+                aria-label={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
+              >
+                <Share2 className="w-3.5 h-3.5" />
+              </button>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-slate-600 dark:text-zinc-300">
                 {lang === 'ar' ? 'ملخص الرحلة' : 'Summary'}
               </span>
