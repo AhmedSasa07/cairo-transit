@@ -565,15 +565,15 @@ export default function StationDetailModal({
             </div>
             <div className="flex items-center gap-2">
               <a
-                href={`/assets/local_maps/${station.id}.png`}
+                href={`/assets/local_maps_pdf/${station.id}.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => haptics.light()}
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all text-xs font-mono flex items-center gap-1 active:scale-95"
-                title={isAr ? 'فتح الصورة بحجمها الأصلي' : 'Open Full Image'}
+                className="py-1.5 px-3 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 transition-all text-xs font-mono flex items-center gap-1.5 active:scale-95 shadow-sm"
+                title={isAr ? 'فتح ملف PDF المتجه الأصلي بدقة 100%' : 'Open 100% Vector PDF in Browser'}
               >
                 <ExternalLink className="w-4 h-4" />
-                <span className="hidden sm:inline">{isAr ? 'الأصل' : 'Full HD'}</span>
+                <span className="font-space font-bold">{isAr ? 'ملف PDF متجه' : 'Vector PDF'}</span>
               </a>
               <button
                 type="button"
@@ -589,16 +589,33 @@ export default function StationDetailModal({
             </div>
           </div>
 
-          {/* Lightbox Image Container with Touch Pan / Zoom */}
+          {/* Lightbox Vector PDF Container with Native Smooth Zoom & Image Fallback */}
           <div
-            className="flex-1 flex items-center justify-center overflow-auto p-2 touch-pinch-zoom"
+            className="flex-1 w-full h-full p-1 sm:p-2 flex flex-col items-center justify-center overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
-            <img
-              src={`/assets/local_maps/${station.id}.png`}
-              alt={`${station.nameEn} 500m Local Area Map`}
-              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10 select-none"
-            />
+            <object
+              data={`/assets/local_maps_pdf/${station.id}.pdf`}
+              type="application/pdf"
+              className="w-full h-full rounded-2xl bg-[#0E0E12] border border-white/10 shadow-2xl"
+            >
+              <div className="flex flex-col items-center justify-center h-full gap-3 text-center p-4 text-slate-300 overflow-auto">
+                <img
+                  src={`/assets/local_maps/${station.id}.png`}
+                  alt={`${station.nameEn} 500m Local Area Map`}
+                  className="max-w-full max-h-[65vh] object-contain rounded-xl shadow-2xl border border-white/10 select-none mb-2"
+                />
+                <a
+                  href={`/assets/local_maps_pdf/${station.id}.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg active:scale-95 transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  {isAr ? 'فتح ملف PDF المتجه الأصلي عالي الدقة' : 'Open Official High-Res Vector PDF'}
+                </a>
+              </div>
+            </object>
           </div>
         </div>
       )}

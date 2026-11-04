@@ -32,8 +32,8 @@
 
   <!-- Layer: Line LRT (#9e1b33 Crimson) -->
   <g id="line-lrt">
-    <polyline class="rail-line" points="2925,1032 3075,962 3213,892 3350,822 3488,752 3588,696 3688,766 3688,962 3688,1172 3688,1382" stroke="#9e1b33" stroke-width="20" />
-    <polyline class="rail-line" points="3688,766 3788,556 3888,388" stroke="#9e1b33" stroke-width="20" />
+    <polyline class="rail-line" points="2925,1032 3075,962 3213,892 3350,822 3488,752 3588,696 3688,822 3688,1018 3688,1200 3688,1382" stroke="#9e1b33" stroke-width="20" />
+    <polyline class="rail-line" points="3588,696 3713,570 3838,444" stroke="#9e1b33" stroke-width="20" />
   </g>
 
   <!-- Layer: Line Monorail East (#009ca6 Teal) -->
@@ -156,10 +156,10 @@
     <circle id="node-lrt_shorouk" cx="3350" cy="822" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-lrt_new_heliopolis" cx="3488" cy="752" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-lrt_badr" cx="3588" cy="696" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_capital_gardens" cx="3688" cy="962" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_capital_airport" cx="3688" cy="1172" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_al_roubaiki" cx="3688" cy="766" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
-    <circle id="node-lrt_industrial_zone" cx="3788" cy="556" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_gardens" cx="3688" cy="1018" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_capital_airport" cx="3688" cy="1200" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_al_roubaiki" cx="3688" cy="822" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
+    <circle id="node-lrt_industrial_zone" cx="3713" cy="570" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-lrt_10th_of_ramadan" cx="3888" cy="388" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
     <circle id="node-brt_2_ahmed_abdelrahim" cx="1300" cy="192" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
     <circle id="node-brt_3_shubra_banha" cx="1475" cy="178" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
@@ -173,6 +173,7 @@
     <circle id="node-brt_13_suez_road" cx="2850" cy="1284" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
     <circle id="node-brt_14_academy" cx="2663" cy="1564" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
     <circle id="node-brt_16_golf" cx="2250" cy="2096" r="16" fill="#FFFFFF" stroke="#00518e" stroke-width="8" />
+    <circle id="node-lrt_knowledge_city" cx="3838" cy="444" r="16" fill="#FFFFFF" stroke="#9e1b33" stroke-width="8" />
   </g>
 
   <!-- Layer: Interchange Hubs (#ecc15f Gold) -->

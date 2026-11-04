@@ -1612,7 +1612,7 @@
     "name_ar": "حدائق العاصمة (القطار الخفيف)",
     "line": "LRT",
     "x": 3688,
-    "y": 962,
+    "y": 1018,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1625,7 +1625,7 @@
     "name_ar": "مطار العاصمة (القطار الخفيف)",
     "line": "LRT",
     "x": 3688,
-    "y": 1172,
+    "y": 1200,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1638,7 +1638,7 @@
     "name_ar": "الروبيكي (القطار الخفيف)",
     "line": "LRT",
     "x": 3688,
-    "y": 766,
+    "y": 822,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1650,8 +1650,8 @@
     "name_en": "Industrial Zone (LRT)",
     "name_ar": "المنطقة الصناعية (القطار الخفيف)",
     "line": "LRT",
-    "x": 3788,
-    "y": 556,
+    "x": 3713,
+    "y": 570,
     "is_interchange": false,
     "connections": [
       "LRT"
@@ -1846,5 +1846,18 @@
     "is_interchange": false,
     "connections": [],
     "zone": "Ring Road South-East"
+  },
+  {
+    "id": "lrt_knowledge_city",
+    "name_en": "Knowledge City (LRT)",
+    "name_ar": "مدينة المعرفة (القطار الخفيف)",
+    "line": "LRT",
+    "x": 3838,
+    "y": 444,
+    "is_interchange": false,
+    "connections": [
+      "LRT"
+    ],
+    "zone": "10th of Ramadan Axis"
   }
 ]

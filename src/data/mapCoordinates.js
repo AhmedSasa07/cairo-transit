@@ -107,14 +107,14 @@ export const MAP_STATION_COORDS = {
   lrt_shorouk: { x: 1300, y: 265, labelPos: 'top' },
   lrt_new_heliopolis: { x: 1355, y: 240, labelPos: 'top' },
   lrt_badr: { x: 1395, y: 220, labelPos: 'top' },
-  lrt_al_roubaiki: { x: 1435, y: 245, labelPos: 'top' },
-  // LRT Capital Branch
-  lrt_capital_gardens: { x: 1435, y: 315, labelPos: 'right' },
-  lrt_capital_airport: { x: 1435, y: 390, labelPos: 'right' },
+  // LRT Fork 2 (Southern Branch - to New Capital)
+  lrt_al_roubaiki: { x: 1435, y: 265, labelPos: 'right' },
+  lrt_capital_gardens: { x: 1435, y: 335, labelPos: 'right' },
+  lrt_capital_airport: { x: 1435, y: 400, labelPos: 'right' },
   city_of_arts: { x: 1435, y: 465, labelPos: 'right' }, // INTERCHANGE LRT + Monorail East
-  // LRT 10th of Ramadan Branch
-  lrt_industrial_zone: { x: 1475, y: 170, labelPos: 'right' },
-  lrt_10th_of_ramadan: { x: 1515, y: 110, labelPos: 'right' },
+  // LRT Fork 1 (Northern Branch - to 10th of Ramadan / Knowledge City)
+  lrt_industrial_zone: { x: 1445, y: 175, labelPos: 'right' },
+  lrt_knowledge_city: { x: 1495, y: 130, labelPos: 'right' },
 
   // ================= Monorail East (Orange #EA580C) =================
   // stadium starts at (675, 480)
@@ -209,7 +209,7 @@ export const MAP_LINES_PATHS = {
     'lrt_badr', 'lrt_al_roubaiki', 'lrt_capital_gardens', 'lrt_capital_airport', 'city_of_arts'
   ],
   lrt_branch_ramadan: [
-    'lrt_al_roubaiki', 'lrt_industrial_zone', 'lrt_10th_of_ramadan'
+    'lrt_badr', 'lrt_industrial_zone', 'lrt_knowledge_city'
   ],
   monorail_east: [
     'stadium', 'monorail_hesham_barakat', 'monorail_nouri_khattab', 'monorail_seventh_district',

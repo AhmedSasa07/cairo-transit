@@ -2151,12 +2151,13 @@ export const TOP_EGYPT_PLACES = [
     "category": "hospital",
     "categoryAr": "مستشفى ومركز طبي",
     "categoryEn": "Hospital & Medical",
-    "nearestStationId": "adly_mansour",
-    "lat": 30.2245,
-    "lng": 31.6215,
+    "nearestStationId": "lrt_new_heliopolis",
+    "lat": 30.1775,
+    "lng": 31.6600,
     "aliases": [
       "المركز الطبي العالمي",
-      "IMC Cairo"
+      "IMC Cairo",
+      "IMC"
     ]
   },
   {
@@ -14897,6 +14898,142 @@ export const TOP_EGYPT_PLACES = [
     "lng": 31.2055,
     "aliases": [
       "مركز شباب ميت عقبة"
+    ]
+  },
+  {
+    "id": "lm_bikes_park_mostakbal",
+    "nameAr": "حديقة الدراجات - مدينة المستقبل",
+    "nameEn": "Bikes Park - Future City",
+    "category": "landmark",
+    "categoryAr": "معلم سياحي وترفيهي",
+    "categoryEn": "Landmark & Entertainment",
+    "nearestStationId": "lrt_mostakbal",
+    "lat": 30.1752,
+    "lng": 31.5431,
+    "aliases": [
+      "حديقة الدراجات",
+      "Bikes Park",
+      "Bicycle Park Mostakbal City",
+      "بارك العجل"
+    ]
+  },
+  {
+    "id": "ind_badr_city",
+    "nameAr": "منطقة بدر الصناعية - مدينة بدر",
+    "nameEn": "Badr Industrial Area",
+    "category": "government",
+    "categoryAr": "منطقة صناعية ومقر حكومي",
+    "categoryEn": "Industrial Zone & Government",
+    "nearestStationId": "lrt_badr",
+    "lat": 30.1751,
+    "lng": 31.7160,
+    "aliases": [
+      "منطقة بدر الصناعية",
+      "Badr Industrial Area",
+      "مصانع مدينة بدر",
+      "صناعية بدر"
+    ]
+  },
+  {
+    "id": "ind_10th_ramadan_city",
+    "nameAr": "مدينة العاشر من رمضان الصناعية",
+    "nameEn": "10th of Ramadan Industrial City",
+    "category": "government",
+    "categoryAr": "منطقة صناعية ومقر حكومي",
+    "categoryEn": "Industrial Zone & Government",
+    "nearestStationId": "lrt_industrial_zone",
+    "lat": 30.2040,
+    "lng": 31.7157,
+    "aliases": [
+      "مدينة العاشر من رمضان الصناعية",
+      "10th of Ramadan Industrial City",
+      "المنطقة الصناعية بالعاشر",
+      "مصانع العاشر من رمضان"
+    ]
+  },
+  {
+    "id": "uni_zagazig_national_knowledge",
+    "nameAr": "جامعة الزقازيق الأهلية - مدينة المعرفة",
+    "nameEn": "Zagazig National University - Knowledge City",
+    "category": "university",
+    "categoryAr": "جامعة وأكاديمية",
+    "categoryEn": "University & Academy",
+    "nearestStationId": "lrt_knowledge_city",
+    "lat": 30.2450,
+    "lng": 31.7300,
+    "aliases": [
+      "جامعة الزقازيق الأهلية",
+      "Zagazig National University",
+      "جامعة المعرفة",
+      "Knowledge City University"
+    ]
+  },
+  {
+    "id": "ind_robaikey_leather_city",
+    "nameAr": "مدينة الجلود بالروبيكي",
+    "nameEn": "El Robaikey Leather City",
+    "category": "government",
+    "categoryAr": "منطقة صناعية ومقر حكومي",
+    "categoryEn": "Industrial Zone & Government",
+    "nearestStationId": "lrt_al_roubaiki",
+    "lat": 30.1665,
+    "lng": 31.7525,
+    "aliases": [
+      "مدينة الجلود بالروبيكي",
+      "El Robaikey Leather City",
+      "مدينة الروبيكي",
+      "مصانع الجلود بالروبيكي"
+    ]
+  },
+  {
+    "id": "res_capital_gardens_city",
+    "nameAr": "مدينة حدائق العاصمة - مشروعات سكن لكل المصريين",
+    "nameEn": "Capital Gardens City (Housing For All Egyptians)",
+    "category": "landmark",
+    "categoryAr": "معلم ومجمع سكني",
+    "categoryEn": "Landmark & Residential",
+    "nearestStationId": "lrt_capital_gardens",
+    "lat": 30.1367,
+    "lng": 31.8068,
+    "aliases": [
+      "حدائق العاصمة",
+      "Capital Gardens",
+      "سكن لكل المصريين",
+      "مدينة حدائق العاصمة"
+    ]
+  },
+  {
+    "id": "trans_capital_intl_airport",
+    "nameAr": "مطار العاصمة الدولي - العاصمة الإدارية",
+    "nameEn": "Capital International Airport (CPH)",
+    "category": "transport",
+    "categoryAr": "محطة ومطار نقل",
+    "categoryEn": "Transport & Airport",
+    "nearestStationId": "lrt_capital_airport",
+    "lat": 30.0759,
+    "lng": 31.7825,
+    "aliases": [
+      "مطار العاصمة الدولي",
+      "Capital Airport",
+      "مطار العاصمة الإدارية",
+      "CPH Airport"
+    ]
+  },
+  {
+    "id": "lm_new_capital_opera_house",
+    "nameAr": "دار الأوبرا الجديدة - مدينة الفنون والثقافة بالعاصمة",
+    "nameEn": "New Opera House - Arts & Culture City (New Capital)",
+    "category": "landmark",
+    "categoryAr": "معلم سياحي وثقافي",
+    "categoryEn": "Landmark & Cultural",
+    "nearestStationId": "city_of_arts",
+    "lat": 30.0215,
+    "lng": 31.7450,
+    "aliases": [
+      "دار الأوبرا الجديدة بالعاصمة",
+      "New Opera House",
+      "أوبرا العاصمة الإدارية",
+      "مدينة الفنون والثقافة"
     ]
   }
 ];
