@@ -1,0 +1,7565 @@
+{
+  "metadata": {
+    "title": "The Great Cairo Transportation Network — Cleaned Dataset for Antigravity IDE",
+    "sourceFile": "The Great Cairo Transportation.kml",
+    "totalUniqueStations": 152,
+    "totalMicrobusTerminals": 21,
+    "totalTransferCorridors": 8,
+    "svgCanvasViewBox": {
+      "width": 1560,
+      "height": 1040,
+      "paddingX": 70,
+      "paddingY": 55
+    },
+    "gpsBoundingBox": {
+      "minLat": 29.848978,
+      "maxLat": 30.230717,
+      "minLng": 31.077342,
+      "maxLng": 31.806751
+    }
+  },
+  "lines": {
+    "line1": {
+      "id": "line1",
+      "nameAr": "الخط الأول للمترو (حلوان - المرج الجديدة)",
+      "nameEn": "Metro Line 1 (Helwan - New El-Marg)",
+      "color": "#00518e",
+      "stationCount": 35
+    },
+    "line2": {
+      "id": "line2",
+      "nameAr": "الخط الثاني للمترو (شبرا الخيمة - المنيب)",
+      "nameEn": "Metro Line 2 (Shubra El-Kheima - El-Mounib)",
+      "color": "#c13038",
+      "stationCount": 20
+    },
+    "line3": {
+      "id": "line3",
+      "nameAr": "الخط الثالث للمترو (عدلي منصور - روض الفرج / جامعة القاهرة)",
+      "nameEn": "Metro Line 3 (Adly Mansour - Rod El-Farag / Cairo Univ)",
+      "color": "#009f87",
+      "stationCount": 34
+    },
+    "brt": {
+      "id": "brt",
+      "nameAr": "الأتوبيس الترددي السريع (BRT الطريق الدائري)",
+      "nameEn": "BRT Ring Road",
+      "color": "#8B5CF6",
+      "stationCount": 32
+    },
+    "monorail_east": {
+      "id": "monorail_east",
+      "nameAr": "مونوريل شرق النيل (الاستاد - مدينة العدالة)",
+      "nameEn": "East Nile Monorail (Stadium - Justice City)",
+      "color": "#009ca6",
+      "stationCount": 22
+    },
+    "lrt": {
+      "id": "lrt",
+      "nameAr": "القطار الكهربائي الخفيف LRT (عدلي منصور - العاصمة / مدينة المعرفة)",
+      "nameEn": "LRT Capital Train",
+      "color": "#9e1b33",
+      "stationCount": 14
+    }
+  },
+  "MAP_LINES_PATHS": {
+    "line1": [
+      "new_el_marg",
+      "el_marg",
+      "ezbet_el_nakhl",
+      "ain_shams",
+      "el_matareya",
+      "helmeyet_el_zaitoun",
+      "hadayeq_el_zaitoun",
+      "saray_el_qobba",
+      "hammamat_el_qobba",
+      "kobri_el_qobba",
+      "mansheyet_el_sadr",
+      "el_demerdash",
+      "ghamra",
+      "al_shohadaa",
+      "ahmed_orabi",
+      "gamal_abdel_nasser",
+      "sadat",
+      "saad_zaghloul",
+      "al_sayeda_zeinab",
+      "el_malek_el_saleh",
+      "mar_girgis",
+      "el_zahraa",
+      "dar_el_salam",
+      "hadayeq_el_maadi",
+      "maadi",
+      "thakanat_el_maadi",
+      "tora_el_balad",
+      "kozzika",
+      "tora_el_asmant",
+      "el_maasara",
+      "hadayeq_helwan",
+      "wadi_hof",
+      "helwan_university",
+      "ain_helwan",
+      "helwan"
+    ],
+    "line2": [
+      "shubra_el_kheima",
+      "kolleyet_el_zeraa",
+      "el_mazallat",
+      "el_khalafawy",
+      "st_teresa",
+      "rod_el_farag",
+      "massara",
+      "al_shohadaa",
+      "attaba",
+      "mohamed_naguib",
+      "sadat",
+      "opera",
+      "dokki",
+      "el_bohooth",
+      "cairo_university",
+      "faisal",
+      "giza",
+      "omm_el_masryeen",
+      "sakiat_mekky",
+      "el_mounib"
+    ],
+    "line3_trunk": [
+      "adly_mansour",
+      "el_haykestep",
+      "omar_ibn_el_khattab",
+      "qubaa",
+      "hesham_barakat",
+      "el_nozha",
+      "nadi_el_shams",
+      "alf_maskan",
+      "heliopolis",
+      "haroun",
+      "al_ahram",
+      "kolleyet_el_banat",
+      "stadium",
+      "fair_zone",
+      "abbassia",
+      "abdou_pasha",
+      "el_geish",
+      "bab_el_shaariya",
+      "attaba",
+      "gamal_abdel_nasser",
+      "maspero",
+      "safaa_hegazy",
+      "kit_kat"
+    ],
+    "line3_branch_rod": [
+      "kit_kat",
+      "sudan",
+      "imbaba",
+      "el_bohy",
+      "el_qawmia",
+      "ring_road",
+      "rod_el_farag_corr"
+    ],
+    "line3_branch_cairo_univ": [
+      "kit_kat",
+      "el_tawfikia",
+      "wadi_el_nil",
+      "gamaet_el_dowal",
+      "boulak_el_dakrour",
+      "cairo_university"
+    ],
+    "brt": [
+      "brt_alex_agri",
+      "brt_ahmed_abdel_rahim",
+      "brt_shubra_banha",
+      "brt_bahtim",
+      "brt_mostorod",
+      "brt_el_khosous",
+      "brt_el_marg",
+      "brt_mohamed_naguib",
+      "brt_moassaset_el_zakah",
+      "brt_ibrahim_orabi",
+      "brt_el_salam",
+      "brt_adly_mansour",
+      "brt_suez_road",
+      "brt_police_academy",
+      "brt_moshir_tantawy",
+      "brt_el_golf",
+      "brt_sokhna_road",
+      "brt_maadi_ring",
+      "brt_zahraa_el_maadi",
+      "brt_mokattam",
+      "brt_autostrad",
+      "brt_algeria_axis",
+      "brt_el_imamain",
+      "brt_el_zahraa",
+      "brt_bahr_el_aazam",
+      "brt_omrania",
+      "brt_talbia",
+      "brt_mariouteya",
+      "brt_mansoureya",
+      "brt_sun_capital",
+      "brt_zewail",
+      "brt_grand_egyptian_museum"
+    ],
+    "monorail_east": [
+      "mono_stadium",
+      "mono_hesham_barakat",
+      "mono_al_azhar_univ",
+      "mono_seventh_district",
+      "mono_moshir_ahmed_ismail",
+      "mono_jehan_el_sadat",
+      "mono_moshir_tantawy",
+      "mono_one_ninety",
+      "mono_air_force_hospital",
+      "mono_el_narges",
+      "mono_investors",
+      "mono_el_lotus",
+      "mono_golden_square",
+      "mono_beit_el_watan",
+      "mono_al_fattah_al_aleem",
+      "mono_r1",
+      "mono_r2",
+      "mono_cbd",
+      "mono_arts_culture_city",
+      "mono_governmental_district",
+      "mono_misr_mosque",
+      "mono_justice_city"
+    ],
+    "lrt_trunk": [
+      "lrt_adly_mansour",
+      "lrt_el_obour",
+      "lrt_el_mostakbal",
+      "lrt_el_shorouk",
+      "lrt_new_heliopolis",
+      "lrt_badr",
+      "lrt_el_robiki",
+      "lrt_capital_gardens",
+      "lrt_capital_airport",
+      "lrt_arts_culture_city",
+      "lrt_nativity_cathedral",
+      "lrt_octagon"
+    ],
+    "lrt_branch_ramadan": [
+      "lrt_badr",
+      "lrt_industrial_zone",
+      "lrt_knowledge_city"
+    ]
+  },
+  "STATIONS": [
+    {
+      "id": "new_el_marg",
+      "nameAr": "المرج الجديدة",
+      "nameEn": "New El-Marg",
+      "rawKmlName": "المرج الجديدة",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.163649,
+      "lng": 31.338364,
+      "svgX": 578.2,
+      "svgY": 218.4,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": true,
+      "notes": "Northern terminus of Metro Line 1; pedestrian transfer to BRT El-Marg & El-Marg Microbus Terminal"
+    },
+    {
+      "id": "el_marg",
+      "nameAr": "المرج",
+      "nameEn": "El-Marg",
+      "rawKmlName": "المرج",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.152071,
+      "lng": 31.335695,
+      "svgX": 573.0,
+      "svgY": 246.6,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "ezbet_el_nakhl",
+      "nameAr": "عزبة النخل",
+      "nameEn": "Ezbet El-Nakhl",
+      "rawKmlName": "عزبة النخل",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.139372,
+      "lng": 31.324395,
+      "svgX": 551.0,
+      "svgY": 277.5,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "ain_shams",
+      "nameAr": "عين شمس",
+      "nameEn": "Ain Shams",
+      "rawKmlName": "عين شمس",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.13103,
+      "lng": 31.319074,
+      "svgX": 540.6,
+      "svgY": 297.9,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_matareya",
+      "nameAr": "المطرية",
+      "nameEn": "El-Matareya",
+      "rawKmlName": "المطرية",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.121367,
+      "lng": 31.313785,
+      "svgX": 530.3,
+      "svgY": 321.4,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "helmeyet_el_zaitoun",
+      "nameAr": "حلمية الزيتون",
+      "nameEn": "Helmeyet El-Zaitoun",
+      "rawKmlName": "حلمية الزيتون",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.113862,
+      "lng": 31.314041,
+      "svgX": 530.8,
+      "svgY": 339.7,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "hadayeq_el_zaitoun",
+      "nameAr": "حدائق الزيتون",
+      "nameEn": "Hadayeq El-Zaitoun",
+      "rawKmlName": "حدائق الزيتون",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.105574,
+      "lng": 31.310075,
+      "svgX": 523.1,
+      "svgY": 359.9,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "saray_el_qobba",
+      "nameAr": "سراي القبة",
+      "nameEn": "Saray El-Qobba",
+      "rawKmlName": "سراى القبة",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.0976,
+      "lng": 31.304506,
+      "svgX": 512.2,
+      "svgY": 379.3,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "hammamat_el_qobba",
+      "nameAr": "حمامات القبة",
+      "nameEn": "Hammamat El-Qobba",
+      "rawKmlName": "حمامات القبة",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.091166,
+      "lng": 31.298867,
+      "svgX": 501.3,
+      "svgY": 395.0,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "kobri_el_qobba",
+      "nameAr": "كوبري القبة",
+      "nameEn": "Kobri El-Qobba",
+      "rawKmlName": "كوبرى القية",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.087216,
+      "lng": 31.294118,
+      "svgX": 492.0,
+      "svgY": 404.6,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": "Fixed KML typo: 'كوبرى القية' -> 'كوبري القبة'"
+    },
+    {
+      "id": "mansheyet_el_sadr",
+      "nameAr": "منشية الصدر",
+      "nameEn": "Mansheyet El-Sadr",
+      "rawKmlName": "منشية الصدر",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.082435,
+      "lng": 31.288067,
+      "svgX": 480.2,
+      "svgY": 416.2,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_demerdash",
+      "nameAr": "الدمرداش",
+      "nameEn": "El-Demerdash",
+      "rawKmlName": "الدمرداش",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.07731,
+      "lng": 31.277814,
+      "svgX": 460.3,
+      "svgY": 428.7,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "ghamra",
+      "nameAr": "غمرة",
+      "nameEn": "Ghamra",
+      "rawKmlName": "غمرة",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.069037,
+      "lng": 31.264662,
+      "svgX": 434.7,
+      "svgY": 448.9,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "al_shohadaa",
+      "nameAr": "الشهداء",
+      "nameEn": "Al-Shohadaa (Ramses)",
+      "rawKmlName": "الشهداء",
+      "kmlFolder": "Metro/محطات تبادلية",
+      "lat": 30.061075,
+      "lng": 31.246058,
+      "svgX": 398.5,
+      "svgY": 468.3,
+      "lines": [
+        "line1",
+        "line2"
+      ],
+      "isInterchange": true,
+      "notes": "Alias: رمسيس (Ramses) | Interchange between Metro Line 1 & Line 2 | Adjacent to New Ramses (Sabtiya) Terminal"
+    },
+    {
+      "id": "ahmed_orabi",
+      "nameAr": "أحمد عرابي",
+      "nameEn": "Ahmed Orabi",
+      "rawKmlName": "احمد عرابى",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.056694,
+      "lng": 31.242038,
+      "svgX": 390.6,
+      "svgY": 479.0,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "gamal_abdel_nasser",
+      "nameAr": "جمال عبدالناصر",
+      "nameEn": "Gamal Abdel Nasser",
+      "rawKmlName": "جمال عبدالناصر",
+      "kmlFolder": "Metro/محطات تبادلية",
+      "lat": 30.0535,
+      "lng": 31.238733,
+      "svgX": 384.2,
+      "svgY": 486.7,
+      "lines": [
+        "line1",
+        "line3"
+      ],
+      "isInterchange": true,
+      "notes": "Interchange between Metro Line 1 & Line 3"
+    },
+    {
+      "id": "sadat",
+      "nameAr": "السادات",
+      "nameEn": "Sadat (Tahrir)",
+      "rawKmlName": "السادات",
+      "kmlFolder": "Metro/محطات تبادلية",
+      "lat": 30.044136,
+      "lng": 31.234424,
+      "svgX": 375.8,
+      "svgY": 509.6,
+      "lines": [
+        "line1",
+        "line2"
+      ],
+      "isInterchange": true,
+      "notes": "Alias: التحرير (Tahrir) | Interchange between Metro Line 1 & Line 2 | Near Abdel Moneim Riad Terminal"
+    },
+    {
+      "id": "saad_zaghloul",
+      "nameAr": "سعد زغلول",
+      "nameEn": "Saad Zaghloul",
+      "rawKmlName": "سعد زغلول",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.037028,
+      "lng": 31.238339,
+      "svgX": 383.4,
+      "svgY": 526.9,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "al_sayeda_zeinab",
+      "nameAr": "السيدة زينب",
+      "nameEn": "Al-Sayeda Zeinab",
+      "rawKmlName": "السيدة زينب",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.029308,
+      "lng": 31.235393,
+      "svgX": 377.7,
+      "svgY": 545.7,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_malek_el_saleh",
+      "nameAr": "الملك الصالح",
+      "nameEn": "El-Malek El-Saleh",
+      "rawKmlName": "الملك الصالح",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.017685,
+      "lng": 31.231173,
+      "svgX": 369.5,
+      "svgY": 574.0,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "mar_girgis",
+      "nameAr": "مار جرجس",
+      "nameEn": "Mar Girgis",
+      "rawKmlName": "مار جرجس",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 30.006109,
+      "lng": 31.229631,
+      "svgX": 366.5,
+      "svgY": 602.2,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_zahraa",
+      "nameAr": "الزهراء",
+      "nameEn": "El-Zahraa",
+      "rawKmlName": "الزهراء",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.995482,
+      "lng": 31.231177,
+      "svgX": 369.5,
+      "svgY": 628.1,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": true,
+      "notes": "Transfer corridor to BRT El-Zahraa station (~520m)"
+    },
+    {
+      "id": "dar_el_salam",
+      "nameAr": "دار السلام",
+      "nameEn": "Dar El-Salam",
+      "rawKmlName": "دار السلام",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.982066,
+      "lng": 31.242175,
+      "svgX": 390.9,
+      "svgY": 660.8,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "hadayeq_el_maadi",
+      "nameAr": "حدائق المعادي",
+      "nameEn": "Hadayeq El-Maadi",
+      "rawKmlName": "حدائق المعادي",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.970233,
+      "lng": 31.250569,
+      "svgX": 407.2,
+      "svgY": 689.6,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "maadi",
+      "nameAr": "المعادي",
+      "nameEn": "Maadi",
+      "rawKmlName": "المعادى",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.960303,
+      "lng": 31.257775,
+      "svgX": 421.3,
+      "svgY": 713.8,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "thakanat_el_maadi",
+      "nameAr": "ثكنات المعادي",
+      "nameEn": "Thakanat El-Maadi",
+      "rawKmlName": "ثكنات المعادي",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.953321,
+      "lng": 31.262949,
+      "svgX": 431.3,
+      "svgY": 730.8,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "tora_el_balad",
+      "nameAr": "طرة البلد",
+      "nameEn": "Tora El-Balad",
+      "rawKmlName": "طرة البلد",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.946785,
+      "lng": 31.273012,
+      "svgX": 450.9,
+      "svgY": 746.7,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "kozzika",
+      "nameAr": "كوتسكا",
+      "nameEn": "Kozzika",
+      "rawKmlName": "كوتسكا",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.936305,
+      "lng": 31.281779,
+      "svgX": 468.0,
+      "svgY": 772.3,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "tora_el_asmant",
+      "nameAr": "طرة الأسمنت",
+      "nameEn": "Tora El-Asmant",
+      "rawKmlName": "طرة الاسمنت",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.926002,
+      "lng": 31.287554,
+      "svgX": 479.2,
+      "svgY": 797.4,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_maasara",
+      "nameAr": "المعصرة",
+      "nameEn": "El-Maasara",
+      "rawKmlName": "المعصرة",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.906117,
+      "lng": 31.29954,
+      "svgX": 502.6,
+      "svgY": 845.8,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "hadayeq_helwan",
+      "nameAr": "حدائق حلوان",
+      "nameEn": "Hadayeq Helwan",
+      "rawKmlName": "حدائق حلوان",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.897172,
+      "lng": 31.303995,
+      "svgX": 511.2,
+      "svgY": 867.6,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "wadi_hof",
+      "nameAr": "وادي حوف",
+      "nameEn": "Wadi Hof",
+      "rawKmlName": "وادى حوف",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.879127,
+      "lng": 31.313582,
+      "svgX": 529.9,
+      "svgY": 911.6,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "helwan_university",
+      "nameAr": "جامعة حلوان",
+      "nameEn": "Helwan University",
+      "rawKmlName": "جامعة حلوان",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.869468,
+      "lng": 31.320021,
+      "svgX": 542.4,
+      "svgY": 935.1,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "ain_helwan",
+      "nameAr": "عين حلوان",
+      "nameEn": "Ain Helwan",
+      "rawKmlName": "عين حلوان",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.86261,
+      "lng": 31.324843,
+      "svgX": 551.8,
+      "svgY": 951.8,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": "Adjacent to Ain Helwan Regional Microbus Terminal"
+    },
+    {
+      "id": "helwan",
+      "nameAr": "حلوان",
+      "nameEn": "Helwan",
+      "rawKmlName": "حلوان",
+      "kmlFolder": "Metro/الخط الاول",
+      "lat": 29.848978,
+      "lng": 31.33428,
+      "svgX": 570.2,
+      "svgY": 985.0,
+      "lines": [
+        "line1"
+      ],
+      "isInterchange": false,
+      "notes": "Southern terminus of Metro Line 1"
+    },
+    {
+      "id": "shubra_el_kheima",
+      "nameAr": "شبرا الخيمة",
+      "nameEn": "Shubra El-Kheima",
+      "rawKmlName": "شبرا الخيمة",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.124115,
+      "lng": 31.243394,
+      "svgX": 393.3,
+      "svgY": 314.7,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": true,
+      "notes": "Northern terminus of Metro Line 2 (Fixed KML note that mistakenly said Line 1) | Adjacent to El-Moassasa Terminal & transfer link to BRT Alex Agri Rd"
+    },
+    {
+      "id": "kolleyet_el_zeraa",
+      "nameAr": "كلية الزراعة",
+      "nameEn": "Kolleyet El-Zeraa",
+      "rawKmlName": "كلية الزراعة",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.113779,
+      "lng": 31.248685,
+      "svgX": 403.6,
+      "svgY": 339.9,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_mazallat",
+      "nameAr": "المظلات",
+      "nameEn": "El-Mazallat",
+      "rawKmlName": "المظلات",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.104462,
+      "lng": 31.2463,
+      "svgX": 398.9,
+      "svgY": 362.6,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": "Near Abboud Regional Terminal"
+    },
+    {
+      "id": "el_khalafawy",
+      "nameAr": "الخلفاوي",
+      "nameEn": "El-Khalafawy",
+      "rawKmlName": "الخلفاوى",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.097853,
+      "lng": 31.24537,
+      "svgX": 397.1,
+      "svgY": 378.7,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "st_teresa",
+      "nameAr": "سانت تريزا",
+      "nameEn": "St. Teresa",
+      "rawKmlName": "سانت تريزا",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.088037,
+      "lng": 31.245582,
+      "svgX": 397.5,
+      "svgY": 402.6,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "rod_el_farag",
+      "nameAr": "روض الفرج",
+      "nameEn": "Rod El-Farag",
+      "rawKmlName": "روض الفرج",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.08089,
+      "lng": 31.245586,
+      "svgX": 397.5,
+      "svgY": 420.0,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "massara",
+      "nameAr": "مسرة",
+      "nameEn": "Massara",
+      "rawKmlName": "مسرة",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.071068,
+      "lng": 31.245088,
+      "svgX": 396.6,
+      "svgY": 443.9,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "attaba",
+      "nameAr": "العتبة",
+      "nameEn": "Attaba",
+      "rawKmlName": "العتبه",
+      "kmlFolder": "Metro/محطات تبادلية",
+      "lat": 30.052399,
+      "lng": 31.246875,
+      "svgX": 400.0,
+      "svgY": 489.4,
+      "lines": [
+        "line2",
+        "line3"
+      ],
+      "isInterchange": true,
+      "notes": "Interchange between Metro Line 2 & Line 3 | Outside station: El-Hussein microbus stop"
+    },
+    {
+      "id": "mohamed_naguib",
+      "nameAr": "محمد نجيب",
+      "nameEn": "Mohamed Naguib",
+      "rawKmlName": "محمد نجيب",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.04533,
+      "lng": 31.244156,
+      "svgX": 394.8,
+      "svgY": 506.6,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": "Downtown Cairo (distinct from BRT Mohamed Naguib station)"
+    },
+    {
+      "id": "opera",
+      "nameAr": "الأوبرا",
+      "nameEn": "Opera",
+      "rawKmlName": "الأوبرا",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.041986,
+      "lng": 31.224951,
+      "svgX": 357.4,
+      "svgY": 514.8,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "dokki",
+      "nameAr": "الدقي",
+      "nameEn": "Dokki",
+      "rawKmlName": "الدقى",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.038431,
+      "lng": 31.212223,
+      "svgX": 332.6,
+      "svgY": 523.5,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_bohooth",
+      "nameAr": "البحوث",
+      "nameEn": "El-Bohooth",
+      "rawKmlName": "البحوث",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.035783,
+      "lng": 31.200205,
+      "svgX": 309.2,
+      "svgY": 529.9,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "cairo_university",
+      "nameAr": "جامعة القاهرة",
+      "nameEn": "Cairo University",
+      "rawKmlName": "جامعة القاهرة",
+      "kmlFolder": "Metro/محطات تبادلية",
+      "lat": 30.026041,
+      "lng": 31.201151,
+      "svgX": 311.0,
+      "svgY": 553.6,
+      "lines": [
+        "line2",
+        "line3"
+      ],
+      "isInterchange": true,
+      "notes": "Interchange between Metro Line 2 & Line 3 (Southern Branch Terminus) | Southwestern terminus of Metro Line 3; interchange with Metro Line 2"
+    },
+    {
+      "id": "faisal",
+      "nameAr": "فيصل",
+      "nameEn": "Faisal",
+      "rawKmlName": "فيصل",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.017434,
+      "lng": 31.203873,
+      "svgX": 316.3,
+      "svgY": 574.6,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "giza",
+      "nameAr": "الجيزة",
+      "nameEn": "Giza",
+      "rawKmlName": "الجيزة",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.00928,
+      "lng": 31.207865,
+      "svgX": 324.1,
+      "svgY": 594.5,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "omm_el_masryeen",
+      "nameAr": "أم المصريين",
+      "nameEn": "Omm El-Masryeen",
+      "rawKmlName": "ام المصريين",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 30.005391,
+      "lng": 31.207995,
+      "svgX": 324.4,
+      "svgY": 603.9,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "sakiat_mekky",
+      "nameAr": "ساقية مكي",
+      "nameEn": "Sakiat Mekky",
+      "rawKmlName": "ساقية مكى",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 29.995553,
+      "lng": 31.20862,
+      "svgX": 325.6,
+      "svgY": 627.9,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_mounib",
+      "nameAr": "المنيب",
+      "nameEn": "El-Mounib",
+      "rawKmlName": "المنيب",
+      "kmlFolder": "Metro/الخط الثانى",
+      "lat": 29.981094,
+      "lng": 31.212325,
+      "svgX": 332.8,
+      "svgY": 663.1,
+      "lines": [
+        "line2"
+      ],
+      "isInterchange": true,
+      "notes": "Southern terminus of Metro Line 2 | Transfer to BRT El-Bahr El-Aazam & El-Mounib Terminal"
+    },
+    {
+      "id": "adly_mansour",
+      "nameAr": "عدلي منصور",
+      "nameEn": "Adly Mansour",
+      "rawKmlName": "عدلى منصور",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.146806,
+      "lng": 31.421102,
+      "svgX": 739.2,
+      "svgY": 259.4,
+      "lines": [
+        "line3",
+        "lrt",
+        "brt"
+      ],
+      "isInterchange": true,
+      "notes": "Eastern Super-Hub: Interchange between Metro Line 3, LRT Capital Train, BRT Ring Road & El-Salam Terminal"
+    },
+    {
+      "id": "el_haykestep",
+      "nameAr": "الهايكستب",
+      "nameEn": "El-Haykestep",
+      "rawKmlName": "الهايكستب",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.143798,
+      "lng": 31.404931,
+      "svgX": 707.7,
+      "svgY": 266.8,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "omar_ibn_el_khattab",
+      "nameAr": "عمر بن الخطاب",
+      "nameEn": "Omar Ibn El-Khattab",
+      "rawKmlName": "عمر بن الخطاب",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.14037,
+      "lng": 31.394543,
+      "svgX": 687.5,
+      "svgY": 275.1,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "qubaa",
+      "nameAr": "قباء",
+      "nameEn": "Qubaa",
+      "rawKmlName": "قباء",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.134686,
+      "lng": 31.38413,
+      "svgX": 667.2,
+      "svgY": 289.0,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "hesham_barakat",
+      "nameAr": "هشام بركات",
+      "nameEn": "Hesham Barakat (Nozha)",
+      "rawKmlName": "هشام بركات",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.130972,
+      "lng": 31.373172,
+      "svgX": 645.9,
+      "svgY": 298.0,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": "Metro Line 3 station in El-Nozha (distinct from East Nile Monorail Hesham Barakat in Nasr City)"
+    },
+    {
+      "id": "el_nozha",
+      "nameAr": "النزهة",
+      "nameEn": "El-Nozha",
+      "rawKmlName": "النزهة",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.128085,
+      "lng": 31.360522,
+      "svgX": 621.3,
+      "svgY": 305.0,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "nadi_el_shams",
+      "nameAr": "نادي الشمس",
+      "nameEn": "Nadi El-Shams",
+      "rawKmlName": "نادى الشمس",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.125472,
+      "lng": 31.348868,
+      "svgX": 598.6,
+      "svgY": 311.4,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "alf_maskan",
+      "nameAr": "ألف مسكن",
+      "nameEn": "Alf Maskan",
+      "rawKmlName": "الف مسكن",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.119008,
+      "lng": 31.340188,
+      "svgX": 581.7,
+      "svgY": 327.1,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": "Adjacent to Alf Maskan Microbus Terminal"
+    },
+    {
+      "id": "heliopolis",
+      "nameAr": "هليوبوليس",
+      "nameEn": "Heliopolis",
+      "rawKmlName": "هيلوبوليس",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.10843,
+      "lng": 31.338296,
+      "svgX": 578.0,
+      "svgY": 352.9,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": "Fixed KML typo: 'هيلوبوليس' -> 'هليوبوليس'"
+    },
+    {
+      "id": "haroun",
+      "nameAr": "هارون",
+      "nameEn": "Haroun",
+      "rawKmlName": "هارون",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.101386,
+      "lng": 31.332977,
+      "svgX": 567.7,
+      "svgY": 370.1,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "al_ahram",
+      "nameAr": "الأهرام",
+      "nameEn": "Al-Ahram",
+      "rawKmlName": "الأهرام",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.091736,
+      "lng": 31.326316,
+      "svgX": 554.7,
+      "svgY": 393.6,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "kolleyet_el_banat",
+      "nameAr": "كلية البنات",
+      "nameEn": "Kolleyet El-Banat",
+      "rawKmlName": "كلية البنات",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.084067,
+      "lng": 31.329017,
+      "svgX": 560.0,
+      "svgY": 412.3,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "stadium",
+      "nameAr": "الاستاد",
+      "nameEn": "Stadium",
+      "rawKmlName": "الاستاد",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.072924,
+      "lng": 31.317119,
+      "svgX": 536.8,
+      "svgY": 439.4,
+      "lines": [
+        "line3",
+        "monorail_east"
+      ],
+      "isInterchange": true,
+      "notes": "Interchange with East Nile Monorail Stadium Station"
+    },
+    {
+      "id": "fair_zone",
+      "nameAr": "أرض المعارض",
+      "nameEn": "Fair Zone (Ard El-Maared)",
+      "rawKmlName": "أرض المعارض",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.073268,
+      "lng": 31.30097,
+      "svgX": 505.4,
+      "svgY": 438.6,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "abbassia",
+      "nameAr": "العباسية",
+      "nameEn": "Abbassia",
+      "rawKmlName": "العباسية",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.072012,
+      "lng": 31.283365,
+      "svgX": 471.1,
+      "svgY": 441.6,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "abdou_pasha",
+      "nameAr": "عبده باشا",
+      "nameEn": "Abdou Pasha",
+      "rawKmlName": "عبده باشا",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.064794,
+      "lng": 31.27475,
+      "svgX": 454.3,
+      "svgY": 459.2,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_geish",
+      "nameAr": "الجيش",
+      "nameEn": "El-Geish",
+      "rawKmlName": "الجيش",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.061782,
+      "lng": 31.266864,
+      "svgX": 439.0,
+      "svgY": 466.6,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "bab_el_shaariya",
+      "nameAr": "باب الشعرية",
+      "nameEn": "Bab El-Shaariya",
+      "rawKmlName": "باب الشعرية",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.05416,
+      "lng": 31.255875,
+      "svgX": 417.6,
+      "svgY": 485.1,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "maspero",
+      "nameAr": "ماسبيرو",
+      "nameEn": "Maspero",
+      "rawKmlName": "ماسبيرو",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.055741,
+      "lng": 31.2321,
+      "svgX": 371.3,
+      "svgY": 481.3,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "safaa_hegazy",
+      "nameAr": "صفاء حجازي",
+      "nameEn": "Safaa Hegazy (Zamalek)",
+      "rawKmlName": "صفاء حجازي",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.062303,
+      "lng": 31.223287,
+      "svgX": 354.1,
+      "svgY": 465.3,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "kit_kat",
+      "nameAr": "الكيت كات",
+      "nameEn": "Kit Kat",
+      "rawKmlName": "الكيت كات",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.066535,
+      "lng": 31.212894,
+      "svgX": 333.9,
+      "svgY": 455.0,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": true,
+      "notes": "Line 3 Western Bifurcation Hub (splits into Rod El-Farag Axis branch & Cairo University branch)"
+    },
+    {
+      "id": "sudan",
+      "nameAr": "السودان",
+      "nameEn": "Sudan",
+      "rawKmlName": "السودان",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.070091,
+      "lng": 31.204759,
+      "svgX": 318.1,
+      "svgY": 446.3,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "imbaba",
+      "nameAr": "إمبابة",
+      "nameEn": "Imbaba",
+      "rawKmlName": "إمبابة",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.076094,
+      "lng": 31.207506,
+      "svgX": 323.4,
+      "svgY": 431.7,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_bohy",
+      "nameAr": "البوهي",
+      "nameEn": "El-Bohy",
+      "rawKmlName": "البوهى",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.082256,
+      "lng": 31.210548,
+      "svgX": 329.3,
+      "svgY": 416.7,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "el_qawmia",
+      "nameAr": "القومية",
+      "nameEn": "El-Qawmia",
+      "rawKmlName": "القومية",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.093238,
+      "lng": 31.208949,
+      "svgX": 326.2,
+      "svgY": 389.9,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "ring_road",
+      "nameAr": "الطريق الدائري (دائري القومية)",
+      "nameEn": "Ring Road (Dairi El-Qawmia)",
+      "rawKmlName": "دائرى القومية",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.096438,
+      "lng": 31.19958,
+      "svgX": 308.0,
+      "svgY": 382.1,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": "Located on the Ring Road; transfers to Ring Road microbuses"
+    },
+    {
+      "id": "rod_el_farag_corr",
+      "nameAr": "محور روض الفرج",
+      "nameEn": "Rod El-Farag Corridor",
+      "rawKmlName": "محور روض الفرج",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.102044,
+      "lng": 31.184399,
+      "svgX": 278.4,
+      "svgY": 368.5,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": "Northwestern terminus of Metro Line 3"
+    },
+    {
+      "id": "el_tawfikia",
+      "nameAr": "التوفيقية",
+      "nameEn": "El-Tawfikia",
+      "rawKmlName": "التوفيقية",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.065098,
+      "lng": 31.20239,
+      "svgX": 313.4,
+      "svgY": 458.5,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "wadi_el_nil",
+      "nameAr": "وادي النيل",
+      "nameEn": "Wadi El-Nil",
+      "rawKmlName": "وادى النيل",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.057102,
+      "lng": 31.201192,
+      "svgX": 311.1,
+      "svgY": 478.0,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "gamaet_el_dowal",
+      "nameAr": "جامعة الدول",
+      "nameEn": "Gamaet El-Dowal",
+      "rawKmlName": "جامعة الدول",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.050189,
+      "lng": 31.198954,
+      "svgX": 306.8,
+      "svgY": 494.8,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "boulak_el_dakrour",
+      "nameAr": "بولاق الدكرور",
+      "nameEn": "Boulak El-Dakrour",
+      "rawKmlName": "بولاق الدكرور",
+      "kmlFolder": "Metro/الخط الثالث",
+      "lat": 30.037604,
+      "lng": 31.195486,
+      "svgX": 300.0,
+      "svgY": 525.5,
+      "lines": [
+        "line3"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_alex_agri",
+      "nameAr": "الإسكندرية الزراعي",
+      "nameEn": "Alexandria Agricultural Rd",
+      "rawKmlName": "الاسكندرية الزراعى",
+      "kmlFolder": "BRT",
+      "lat": 30.149113,
+      "lng": 31.229049,
+      "svgX": 365.3,
+      "svgY": 253.8,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": true,
+      "notes": "Alias: شبرا الخيمة | Transfer corridor to Shubra El-Kheima (Line 2) & El-Moassasa Terminal"
+    },
+    {
+      "id": "brt_ahmed_abdel_rahim",
+      "nameAr": "العقيد أحمد عبدالرحيم",
+      "nameEn": "Col. Ahmed Abdel Rahim (El-Sharqawiya)",
+      "rawKmlName": "العقيد احمد عبدالرحيم",
+      "kmlFolder": "BRT",
+      "lat": 30.149833,
+      "lng": 31.240305,
+      "svgX": 387.3,
+      "svgY": 252.1,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: الشرقاوية (El-Sharqawiya)"
+    },
+    {
+      "id": "brt_shubra_banha",
+      "nameAr": "شبرا بنها",
+      "nameEn": "Shubra-Banha Freeway",
+      "rawKmlName": "شبرا بنها",
+      "kmlFolder": "BRT",
+      "lat": 30.149667,
+      "lng": 31.252578,
+      "svgX": 411.1,
+      "svgY": 252.5,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_bahtim",
+      "nameAr": "بهتيم",
+      "nameEn": "Bahtim",
+      "rawKmlName": "بهتيم",
+      "kmlFolder": "BRT",
+      "lat": 30.15634,
+      "lng": 31.278699,
+      "svgX": 462.0,
+      "svgY": 236.2,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_mostorod",
+      "nameAr": "مسطرد",
+      "nameEn": "Mostorod",
+      "rawKmlName": "مسطرد",
+      "kmlFolder": "BRT",
+      "lat": 30.164072,
+      "lng": 31.301918,
+      "svgX": 507.2,
+      "svgY": 217.4,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_el_khosous",
+      "nameAr": "الخصوص",
+      "nameEn": "El-Khosous",
+      "rawKmlName": "الخصوص",
+      "kmlFolder": "BRT",
+      "lat": 30.163328,
+      "lng": 31.323138,
+      "svgX": 548.5,
+      "svgY": 219.2,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_el_marg",
+      "nameAr": "المرج (BRT)",
+      "nameEn": "El-Marg (BRT)",
+      "rawKmlName": "المرج",
+      "kmlFolder": "BRT",
+      "lat": 30.163468,
+      "lng": 31.3415,
+      "svgX": 584.3,
+      "svgY": 218.8,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": true,
+      "notes": "Direct transfer to New El-Marg (Metro Line 1) & El-Marg Regional Terminal"
+    },
+    {
+      "id": "brt_mohamed_naguib",
+      "nameAr": "محمد نجيب (القلج)",
+      "nameEn": "Mohamed Naguib (El-Qalg)",
+      "rawKmlName": "محمد نجيب",
+      "kmlFolder": "BRT",
+      "lat": 30.165653,
+      "lng": 31.358373,
+      "svgX": 617.1,
+      "svgY": 213.5,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: القلج (El-Qalg) | Distinct from Metro Line 2 Mohamed Naguib"
+    },
+    {
+      "id": "brt_moassaset_el_zakah",
+      "nameAr": "مؤسسة الزكاة",
+      "nameEn": "Moassaset El-Zakah",
+      "rawKmlName": "مؤسسة الزكاة",
+      "kmlFolder": "BRT",
+      "lat": 30.165886,
+      "lng": 31.38274,
+      "svgX": 664.5,
+      "svgY": 212.9,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_ibrahim_orabi",
+      "nameAr": "الفريق إبراهيم عرابي",
+      "nameEn": "Lt. Gen. Ibrahim Orabi",
+      "rawKmlName": "الفريق ابراهيم عرابي",
+      "kmlFolder": "BRT",
+      "lat": 30.158535,
+      "lng": 31.404782,
+      "svgX": 707.5,
+      "svgY": 230.9,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_el_salam",
+      "nameAr": "السلام",
+      "nameEn": "El-Salam",
+      "rawKmlName": "السلام",
+      "kmlFolder": "BRT",
+      "lat": 30.154896,
+      "lng": 31.409229,
+      "svgX": 716.1,
+      "svgY": 239.7,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Adjacent to El-Salam Regional Terminal"
+    },
+    {
+      "id": "brt_adly_mansour",
+      "nameAr": "عدلي منصور (BRT)",
+      "nameEn": "Adly Mansour (BRT)",
+      "rawKmlName": "عدلى منصور",
+      "kmlFolder": "BRT",
+      "lat": 30.148095,
+      "lng": 31.42001,
+      "svgX": 737.1,
+      "svgY": 256.3,
+      "lines": [
+        "brt",
+        "line3",
+        "lrt"
+      ],
+      "isInterchange": true,
+      "notes": "Direct transfer to Adly Mansour Metro Line 3 & LRT Hub"
+    },
+    {
+      "id": "brt_suez_road",
+      "nameAr": "طريق السويس",
+      "nameEn": "Suez Road",
+      "rawKmlName": "طريق السويس",
+      "kmlFolder": "BRT",
+      "lat": 30.079521,
+      "lng": 31.435471,
+      "svgX": 767.2,
+      "svgY": 423.3,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_police_academy",
+      "nameAr": "أكاديمية الشرطة",
+      "nameEn": "Police Academy",
+      "rawKmlName": "أكاديمية الشرطة",
+      "kmlFolder": "BRT",
+      "lat": 30.05546,
+      "lng": 31.412417,
+      "svgX": 722.3,
+      "svgY": 482.0,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_moshir_tantawy",
+      "nameAr": "المشير طنطاوي (BRT)",
+      "nameEn": "El-Moshir Tantawy (BRT)",
+      "rawKmlName": "المشير طنطاوى",
+      "kmlFolder": "BRT",
+      "lat": 30.014449,
+      "lng": 31.400644,
+      "svgX": 699.4,
+      "svgY": 581.9,
+      "lines": [
+        "brt",
+        "monorail_east"
+      ],
+      "isInterchange": true,
+      "notes": "Transfer to East Nile Monorail One Ninety (وان ناينتي) station"
+    },
+    {
+      "id": "brt_el_golf",
+      "nameAr": "الجولف (مدخل التجمع)",
+      "nameEn": "El-Golf (New Cairo Entrance)",
+      "rawKmlName": "الجولف",
+      "kmlFolder": "BRT",
+      "lat": 30.001623,
+      "lng": 31.396872,
+      "svgX": 692.1,
+      "svgY": 613.1,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: مدخل التجمع (Fifth Settlement Entrance)"
+    },
+    {
+      "id": "brt_sokhna_road",
+      "nameAr": "طريق السخنة",
+      "nameEn": "Sokhna Road",
+      "rawKmlName": "طريق السخنة",
+      "kmlFolder": "BRT",
+      "lat": 29.978503,
+      "lng": 31.358772,
+      "svgX": 617.9,
+      "svgY": 669.4,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_maadi_ring",
+      "nameAr": "المعادي (الدائري)",
+      "nameEn": "Maadi (Ring Road)",
+      "rawKmlName": "المعادي",
+      "kmlFolder": "BRT",
+      "lat": 29.982008,
+      "lng": 31.338451,
+      "svgX": 578.3,
+      "svgY": 660.9,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "On Ring Road East (distinct from Metro Line 1 Maadi)"
+    },
+    {
+      "id": "brt_zahraa_el_maadi",
+      "nameAr": "زهراء المعادي",
+      "nameEn": "Zahraa El-Maadi",
+      "rawKmlName": "زهراء المعادي",
+      "kmlFolder": "BRT",
+      "lat": 29.984244,
+      "lng": 31.321771,
+      "svgX": 545.8,
+      "svgY": 655.5,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_mokattam",
+      "nameAr": "المقطم",
+      "nameEn": "Mokattam",
+      "rawKmlName": "المقطم",
+      "kmlFolder": "BRT",
+      "lat": 29.986966,
+      "lng": 31.308457,
+      "svgX": 519.9,
+      "svgY": 648.8,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_autostrad",
+      "nameAr": "الأوتوستراد",
+      "nameEn": "Autostrad",
+      "rawKmlName": "الاوتوستراد",
+      "kmlFolder": "BRT",
+      "lat": 29.992339,
+      "lng": 31.291512,
+      "svgX": 486.9,
+      "svgY": 635.7,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_algeria_axis",
+      "nameAr": "محور الجزائر",
+      "nameEn": "Algeria Axis (Mehwar El-Gazaer)",
+      "rawKmlName": "محور الجزائر",
+      "kmlFolder": "BRT",
+      "lat": 29.990443,
+      "lng": 31.270778,
+      "svgX": 446.6,
+      "svgY": 640.4,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_el_imamain",
+      "nameAr": "الإمامين",
+      "nameEn": "El-Imamain",
+      "rawKmlName": "الإمامين",
+      "kmlFolder": "BRT",
+      "lat": 29.991779,
+      "lng": 31.251518,
+      "svgX": 409.1,
+      "svgY": 637.1,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_el_zahraa",
+      "nameAr": "الزهراء (BRT)",
+      "nameEn": "El-Zahraa (BRT)",
+      "rawKmlName": "الزهراء",
+      "kmlFolder": "BRT",
+      "lat": 29.990821,
+      "lng": 31.231612,
+      "svgX": 370.3,
+      "svgY": 639.4,
+      "lines": [
+        "brt",
+        "line1"
+      ],
+      "isInterchange": true,
+      "notes": "Transfer corridor to Metro Line 1 El-Zahraa station"
+    },
+    {
+      "id": "brt_bahr_el_aazam",
+      "nameAr": "البحر الأعظم",
+      "nameEn": "El-Bahr El-Aazam",
+      "rawKmlName": "البحر الاعظم",
+      "kmlFolder": "BRT",
+      "lat": 29.986588,
+      "lng": 31.214457,
+      "svgX": 336.9,
+      "svgY": 649.8,
+      "lines": [
+        "brt",
+        "line2"
+      ],
+      "isInterchange": true,
+      "notes": "Transfer corridor to Metro Line 2 El-Mounib station & El-Mounib Terminal"
+    },
+    {
+      "id": "brt_omrania",
+      "nameAr": "العمرانية",
+      "nameEn": "Omrania",
+      "rawKmlName": "العمرانية",
+      "kmlFolder": "BRT",
+      "lat": 29.984613,
+      "lng": 31.203906,
+      "svgX": 316.4,
+      "svgY": 654.6,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_talbia",
+      "nameAr": "الطالبية",
+      "nameEn": "Talbia",
+      "rawKmlName": "الطالبية",
+      "kmlFolder": "BRT",
+      "lat": 29.986874,
+      "lng": 31.188886,
+      "svgX": 287.2,
+      "svgY": 649.1,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_mariouteya",
+      "nameAr": "المريوطية",
+      "nameEn": "Mariouteya",
+      "rawKmlName": "المريوطية",
+      "kmlFolder": "BRT",
+      "lat": 29.97566,
+      "lng": 31.17347,
+      "svgX": 257.1,
+      "svgY": 676.4,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_mansoureya",
+      "nameAr": "المنصورية",
+      "nameEn": "Mansoureya",
+      "rawKmlName": "المنصورية",
+      "kmlFolder": "BRT",
+      "lat": 29.955045,
+      "lng": 31.154175,
+      "svgX": 219.6,
+      "svgY": 726.6,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": ""
+    },
+    {
+      "id": "brt_sun_capital",
+      "nameAr": "صن كابيتال (تقاطع الفيوم)",
+      "nameEn": "Sun Capital (Fayoum Intersection)",
+      "rawKmlName": "صن كابيتال",
+      "kmlFolder": "BRT",
+      "lat": 29.946856,
+      "lng": 31.099644,
+      "svgX": 113.4,
+      "svgY": 746.5,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: تقاطع الفيوم (Fayoum Road Intersection)"
+    },
+    {
+      "id": "brt_zewail",
+      "nameAr": "زويل (مدخل حدائق أكتوبر)",
+      "nameEn": "Zewail (Hadayeq October Entrance)",
+      "rawKmlName": "زويل",
+      "kmlFolder": "BRT",
+      "lat": 29.956366,
+      "lng": 31.077342,
+      "svgX": 70.0,
+      "svgY": 723.4,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: مدخل حدائق أكتوبر"
+    },
+    {
+      "id": "brt_grand_egyptian_museum",
+      "nameAr": "المتحف المصري الكبير (إسكندرية الصحراوي)",
+      "nameEn": "Grand Egyptian Museum (Alex Desert Rd)",
+      "rawKmlName": "المتحف المصري الكبير",
+      "kmlFolder": "BRT",
+      "lat": 29.998362,
+      "lng": 31.116733,
+      "svgX": 146.7,
+      "svgY": 621.1,
+      "lines": [
+        "brt"
+      ],
+      "isInterchange": false,
+      "notes": "Alias: إسكندرية الصحراوي"
+    },
+    {
+      "id": "mono_stadium",
+      "nameAr": "الاستاد (مونوريل)",
+      "nameEn": "Stadium (Monorail)",
+      "rawKmlName": "الاستاد",
+      "kmlFolder": "Monorail",
+      "lat": 30.071668,
+      "lng": 31.317629,
+      "svgX": 537.8,
+      "svgY": 442.5,
+      "lines": [
+        "monorail_east",
+        "line3"
+      ],
+      "isInterchange": true,
+      "notes": "Zone: مدينة نصر (Nasr City) | Western terminus of East Nile Monorail; transfers to Metro Line 3 Stadium station (Fixed KML note that mistakenly said Line 1)"
+    },
+    {
+      "id": "mono_hesham_barakat",
+      "nameAr": "هشام بركات (مونوريل)",
+      "nameEn": "Hesham Barakat (Monorail - Nasr City)",
+      "rawKmlName": "هشام بركات",
+      "kmlFolder": "Monorail",
+      "lat": 30.063448,
+      "lng": 31.32192,
+      "svgX": 546.1,
+      "svgY": 462.5,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City) | Distinct from Metro Line 3 Hesham Barakat"
+    },
+    {
+      "id": "mono_al_azhar_univ",
+      "nameAr": "جامعة الأزهر",
+      "nameEn": "Al-Azhar University",
+      "rawKmlName": "جامعة الازهر",
+      "kmlFolder": "Monorail",
+      "lat": 30.053708,
+      "lng": 31.324851,
+      "svgX": 551.8,
+      "svgY": 486.2,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City)"
+    },
+    {
+      "id": "mono_seventh_district",
+      "nameAr": "الحي السابع",
+      "nameEn": "Seventh District (El-Hay El-Sabea)",
+      "rawKmlName": "الحي السابع",
+      "kmlFolder": "Monorail",
+      "lat": 30.043785,
+      "lng": 31.330911,
+      "svgX": 563.6,
+      "svgY": 510.4,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City)"
+    },
+    {
+      "id": "mono_moshir_ahmed_ismail",
+      "nameAr": "المشير أحمد إسماعيل",
+      "nameEn": "El-Moshir Ahmed Ismail",
+      "rawKmlName": "المشير احمد اسماعيل",
+      "kmlFolder": "Monorail",
+      "lat": 30.045455,
+      "lng": 31.346416,
+      "svgX": 593.8,
+      "svgY": 506.3,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City)"
+    },
+    {
+      "id": "mono_jehan_el_sadat",
+      "nameAr": "جيهان السادات",
+      "nameEn": "Jehan El-Sadat",
+      "rawKmlName": "جيهان السادات",
+      "kmlFolder": "Monorail",
+      "lat": 30.039174,
+      "lng": 31.355614,
+      "svgX": 611.7,
+      "svgY": 521.6,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City)"
+    },
+    {
+      "id": "mono_moshir_tantawy",
+      "nameAr": "المشير طنطاوي (مونوريل)",
+      "nameEn": "El-Moshir Tantawy (Monorail)",
+      "rawKmlName": "المشير طنطاوى",
+      "kmlFolder": "Monorail",
+      "lat": 30.019143,
+      "lng": 31.383404,
+      "svgX": 665.8,
+      "svgY": 570.4,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: مدينة نصر (Nasr City)"
+    },
+    {
+      "id": "mono_one_ninety",
+      "nameAr": "وان ناينتي (One Ninety)",
+      "nameEn": "One Ninety",
+      "rawKmlName": "وان ناينتي",
+      "kmlFolder": "Monorail",
+      "lat": 30.01617,
+      "lng": 31.408885,
+      "svgX": 715.4,
+      "svgY": 577.7,
+      "lines": [
+        "monorail_east",
+        "brt"
+      ],
+      "isInterchange": true,
+      "notes": "Zone: مدينة نصر / التجمع | Transfer corridor to BRT El-Moshir Tantawy station"
+    },
+    {
+      "id": "mono_air_force_hospital",
+      "nameAr": "المستشفى الجوي",
+      "nameEn": "Air Force Specialized Hospital",
+      "rawKmlName": "المستشفى الجوي",
+      "kmlFolder": "Monorail",
+      "lat": 30.016214,
+      "lng": 31.433871,
+      "svgX": 764.1,
+      "svgY": 577.6,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_el_narges",
+      "nameAr": "النرجس",
+      "nameEn": "El-Narges",
+      "rawKmlName": "النرجس",
+      "kmlFolder": "Monorail",
+      "lat": 30.025472,
+      "lng": 31.459948,
+      "svgX": 814.9,
+      "svgY": 555.0,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_investors",
+      "nameAr": "المستثمرين",
+      "nameEn": "Investors (El-Mostathmereen)",
+      "rawKmlName": "المستثمرين",
+      "kmlFolder": "Monorail",
+      "lat": 30.025356,
+      "lng": 31.490791,
+      "svgX": 874.9,
+      "svgY": 555.3,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_el_lotus",
+      "nameAr": "اللوتس",
+      "nameEn": "El-Lotus",
+      "rawKmlName": "اللوتس",
+      "kmlFolder": "Monorail",
+      "lat": 30.013264,
+      "lng": 31.519601,
+      "svgX": 931.0,
+      "svgY": 584.8,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_golden_square",
+      "nameAr": "جولدن سكوير",
+      "nameEn": "Golden Square",
+      "rawKmlName": "جولدن سكوير",
+      "kmlFolder": "Monorail",
+      "lat": 30.027008,
+      "lng": 31.53315,
+      "svgX": 957.4,
+      "svgY": 551.3,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_beit_el_watan",
+      "nameAr": "بيت الوطن",
+      "nameEn": "Beit El-Watan",
+      "rawKmlName": "بيت الوطن",
+      "kmlFolder": "Monorail",
+      "lat": 30.026916,
+      "lng": 31.560449,
+      "svgX": 1010.5,
+      "svgY": 551.5,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: القاهرة الجديدة (New Cairo)"
+    },
+    {
+      "id": "mono_al_fattah_al_aleem",
+      "nameAr": "مسجد الفتاح العليم",
+      "nameEn": "Al-Fattah Al-Aleem Mosque",
+      "rawKmlName": "مسجد الفتاح العليم",
+      "kmlFolder": "Monorail",
+      "lat": 30.024855,
+      "lng": 31.598867,
+      "svgX": 1085.3,
+      "svgY": 556.5,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital)"
+    },
+    {
+      "id": "mono_r1",
+      "nameAr": "حي R1",
+      "nameEn": "R1 Residential District",
+      "rawKmlName": "R1 حى",
+      "kmlFolder": "Monorail",
+      "lat": 30.017019,
+      "lng": 31.630982,
+      "svgX": 1147.8,
+      "svgY": 575.6,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital) | Fixed KML word order 'R1 حى' -> 'حي R1'"
+    },
+    {
+      "id": "mono_r2",
+      "nameAr": "حي R2",
+      "nameEn": "R2 Residential District",
+      "rawKmlName": "R2 حى",
+      "kmlFolder": "Monorail",
+      "lat": 30.018323,
+      "lng": 31.663286,
+      "svgX": 1210.7,
+      "svgY": 572.4,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital) | Fixed KML word order 'R2 حى' -> 'حي R2'"
+    },
+    {
+      "id": "mono_cbd",
+      "nameAr": "حي المال والأعمال",
+      "nameEn": "Central Business District (CBD)",
+      "rawKmlName": "حي المال و الاعمال",
+      "kmlFolder": "Monorail",
+      "lat": 30.017384,
+      "lng": 31.689075,
+      "svgX": 1260.9,
+      "svgY": 574.7,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital)"
+    },
+    {
+      "id": "mono_arts_culture_city",
+      "nameAr": "مدينة الفنون والثقافة (مونوريل)",
+      "nameEn": "City of Arts & Culture (Monorail)",
+      "rawKmlName": "مدينة الفنون و الثقافة",
+      "kmlFolder": "Monorail",
+      "lat": 30.008115,
+      "lng": 31.725483,
+      "svgX": 1331.8,
+      "svgY": 597.3,
+      "lines": [
+        "monorail_east",
+        "lrt"
+      ],
+      "isInterchange": true,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital) | Interchange with LRT City of Arts & Culture"
+    },
+    {
+      "id": "mono_governmental_district",
+      "nameAr": "الحي الحكومي",
+      "nameEn": "Governmental District",
+      "rawKmlName": "الحي الحكومي",
+      "kmlFolder": "Monorail",
+      "lat": 30.007999,
+      "lng": 31.744729,
+      "svgX": 1369.3,
+      "svgY": 597.6,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital)"
+    },
+    {
+      "id": "mono_misr_mosque",
+      "nameAr": "مسجد مصر الكبير",
+      "nameEn": "Grand Mosque of Egypt (Masjid Misr)",
+      "rawKmlName": "مسجد مصر الكبير",
+      "kmlFolder": "Monorail",
+      "lat": 29.995315,
+      "lng": 31.750083,
+      "svgX": 1379.7,
+      "svgY": 628.5,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital)"
+    },
+    {
+      "id": "mono_justice_city",
+      "nameAr": "مدينة العدالة",
+      "nameEn": "Justice City (Madinet El-Adala)",
+      "rawKmlName": "مدينة العدالة",
+      "kmlFolder": "Monorail",
+      "lat": 30.005924,
+      "lng": 31.769901,
+      "svgX": 1418.3,
+      "svgY": 602.6,
+      "lines": [
+        "monorail_east"
+      ],
+      "isInterchange": false,
+      "notes": "Zone: العاصمة الإدارية الجديدة (New Capital) | Eastern terminus of East Nile Monorail"
+    },
+    {
+      "id": "lrt_adly_mansour",
+      "nameAr": "عدلي منصور (LRT)",
+      "nameEn": "Adly Mansour (LRT)",
+      "rawKmlName": "عدلى منصور",
+      "kmlFolder": "LRT",
+      "lat": 30.146319,
+      "lng": 31.421306,
+      "svgX": 739.6,
+      "svgY": 260.6,
+      "lines": [
+        "lrt",
+        "line3",
+        "brt"
+      ],
+      "isInterchange": true,
+      "notes": "Western terminus of LRT; transfers to Metro Line 3 & BRT Ring Road"
+    },
+    {
+      "id": "lrt_el_obour",
+      "nameAr": "العبور",
+      "nameEn": "El-Obour",
+      "rawKmlName": "العبور",
+      "kmlFolder": "LRT",
+      "lat": 30.162862,
+      "lng": 31.481653,
+      "svgX": 857.1,
+      "svgY": 220.3,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Trunk"
+    },
+    {
+      "id": "lrt_el_mostakbal",
+      "nameAr": "المستقبل",
+      "nameEn": "El-Mostakbal",
+      "rawKmlName": "المستقبل",
+      "kmlFolder": "LRT",
+      "lat": 30.173147,
+      "lng": 31.554127,
+      "svgX": 998.2,
+      "svgY": 195.3,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Trunk"
+    },
+    {
+      "id": "lrt_el_shorouk",
+      "nameAr": "الشروق",
+      "nameEn": "El-Shorouk",
+      "rawKmlName": "الشروق",
+      "kmlFolder": "LRT",
+      "lat": 30.179581,
+      "lng": 31.605859,
+      "svgX": 1098.9,
+      "svgY": 179.6,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Trunk"
+    },
+    {
+      "id": "lrt_new_heliopolis",
+      "nameAr": "هليوبوليس الجديدة",
+      "nameEn": "New Heliopolis",
+      "rawKmlName": "هليوبوليس الجديدة",
+      "kmlFolder": "LRT",
+      "lat": 30.184081,
+      "lng": 31.65264,
+      "svgX": 1190.0,
+      "svgY": 168.6,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Trunk"
+    },
+    {
+      "id": "lrt_badr",
+      "nameAr": "بدر",
+      "nameEn": "Badr",
+      "rawKmlName": "بدر",
+      "kmlFolder": "LRT",
+      "lat": 30.175219,
+      "lng": 31.715979,
+      "svgX": 1313.3,
+      "svgY": 190.2,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": true,
+      "notes": "LRT Bifurcation Hub (splits North to Knowledge City / 10th of Ramadan & South to New Capital)"
+    },
+    {
+      "id": "lrt_industrial_zone",
+      "nameAr": "المنطقة الصناعية",
+      "nameEn": "Industrial Zone",
+      "rawKmlName": "المنطقة الصناعية",
+      "kmlFolder": "LRT",
+      "lat": 30.204058,
+      "lng": 31.7154,
+      "svgX": 1312.2,
+      "svgY": 119.9,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "North Branch (10th of Ramadan / Knowledge City)"
+    },
+    {
+      "id": "lrt_knowledge_city",
+      "nameAr": "مدينة المعرفة",
+      "nameEn": "Knowledge City (Madinet El-Maarefa)",
+      "rawKmlName": "مدينة المعرفة",
+      "kmlFolder": "LRT",
+      "lat": 30.230717,
+      "lng": 31.691426,
+      "svgX": 1265.5,
+      "svgY": 55.0,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Northern Branch Terminus"
+    },
+    {
+      "id": "lrt_el_robiki",
+      "nameAr": "الروبيكي",
+      "nameEn": "El-Robiki",
+      "rawKmlName": "الروبيكي",
+      "kmlFolder": "LRT",
+      "lat": 30.166572,
+      "lng": 31.752414,
+      "svgX": 1384.2,
+      "svgY": 211.3,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "South-East Branch (New Capital)"
+    },
+    {
+      "id": "lrt_capital_gardens",
+      "nameAr": "حدائق العاصمة",
+      "nameEn": "Capital Gardens (Hadayeq El-Asima)",
+      "rawKmlName": "حدائق العاصمة",
+      "kmlFolder": "LRT",
+      "lat": 30.136762,
+      "lng": 31.806751,
+      "svgX": 1490.0,
+      "svgY": 283.9,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "South-East Branch (New Capital)"
+    },
+    {
+      "id": "lrt_capital_airport",
+      "nameAr": "مطار العاصمة",
+      "nameEn": "Capital International Airport",
+      "rawKmlName": "مطار العاصمة",
+      "kmlFolder": "LRT",
+      "lat": 30.075976,
+      "lng": 31.782387,
+      "svgX": 1442.6,
+      "svgY": 432.0,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "South-East Branch (New Capital)"
+    },
+    {
+      "id": "lrt_arts_culture_city",
+      "nameAr": "مدينة الفنون والثقافة (LRT)",
+      "nameEn": "City of Arts & Culture (LRT)",
+      "rawKmlName": "مدينة الفنون و الثقافة",
+      "kmlFolder": "LRT",
+      "lat": 30.013802,
+      "lng": 31.724905,
+      "svgX": 1330.7,
+      "svgY": 583.5,
+      "lines": [
+        "lrt",
+        "monorail_east"
+      ],
+      "isInterchange": true,
+      "notes": "South-East Branch (New Capital) | Interchange with East Nile Monorail"
+    },
+    {
+      "id": "lrt_nativity_cathedral",
+      "nameAr": "كاتدرائية الميلاد",
+      "nameEn": "Cathedral of the Nativity",
+      "rawKmlName": "كاتدرائية الميلاد",
+      "kmlFolder": "LRT",
+      "lat": 29.979404,
+      "lng": 31.715645,
+      "svgX": 1312.6,
+      "svgY": 667.3,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "South-East Branch (New Capital)"
+    },
+    {
+      "id": "lrt_octagon",
+      "nameAr": "القيادة الاستراتيجية (الأوكتاجون)",
+      "nameEn": "Strategic Command (The Octagon)",
+      "rawKmlName": "القيادة الاستراتيجية (الاوكتاجون)",
+      "kmlFolder": "LRT",
+      "lat": 29.958748,
+      "lng": 31.687186,
+      "svgX": 1257.2,
+      "svgY": 717.6,
+      "lines": [
+        "lrt"
+      ],
+      "isInterchange": false,
+      "notes": "Southern Terminus of LRT New Capital Branch"
+    }
+  ],
+  "MAP_STATION_COORDS": {
+    "new_el_marg": {
+      "x": 578.2,
+      "y": 218.4,
+      "lat": 30.163649,
+      "lng": 31.338364
+    },
+    "el_marg": {
+      "x": 573.0,
+      "y": 246.6,
+      "lat": 30.152071,
+      "lng": 31.335695
+    },
+    "ezbet_el_nakhl": {
+      "x": 551.0,
+      "y": 277.5,
+      "lat": 30.139372,
+      "lng": 31.324395
+    },
+    "ain_shams": {
+      "x": 540.6,
+      "y": 297.9,
+      "lat": 30.13103,
+      "lng": 31.319074
+    },
+    "el_matareya": {
+      "x": 530.3,
+      "y": 321.4,
+      "lat": 30.121367,
+      "lng": 31.313785
+    },
+    "helmeyet_el_zaitoun": {
+      "x": 530.8,
+      "y": 339.7,
+      "lat": 30.113862,
+      "lng": 31.314041
+    },
+    "hadayeq_el_zaitoun": {
+      "x": 523.1,
+      "y": 359.9,
+      "lat": 30.105574,
+      "lng": 31.310075
+    },
+    "saray_el_qobba": {
+      "x": 512.2,
+      "y": 379.3,
+      "lat": 30.0976,
+      "lng": 31.304506
+    },
+    "hammamat_el_qobba": {
+      "x": 501.3,
+      "y": 395.0,
+      "lat": 30.091166,
+      "lng": 31.298867
+    },
+    "kobri_el_qobba": {
+      "x": 492.0,
+      "y": 404.6,
+      "lat": 30.087216,
+      "lng": 31.294118
+    },
+    "mansheyet_el_sadr": {
+      "x": 480.2,
+      "y": 416.2,
+      "lat": 30.082435,
+      "lng": 31.288067
+    },
+    "el_demerdash": {
+      "x": 460.3,
+      "y": 428.7,
+      "lat": 30.07731,
+      "lng": 31.277814
+    },
+    "ghamra": {
+      "x": 434.7,
+      "y": 448.9,
+      "lat": 30.069037,
+      "lng": 31.264662
+    },
+    "al_shohadaa": {
+      "x": 398.5,
+      "y": 468.3,
+      "lat": 30.061075,
+      "lng": 31.246058
+    },
+    "ahmed_orabi": {
+      "x": 390.6,
+      "y": 479.0,
+      "lat": 30.056694,
+      "lng": 31.242038
+    },
+    "gamal_abdel_nasser": {
+      "x": 384.2,
+      "y": 486.7,
+      "lat": 30.0535,
+      "lng": 31.238733
+    },
+    "sadat": {
+      "x": 375.8,
+      "y": 509.6,
+      "lat": 30.044136,
+      "lng": 31.234424
+    },
+    "saad_zaghloul": {
+      "x": 383.4,
+      "y": 526.9,
+      "lat": 30.037028,
+      "lng": 31.238339
+    },
+    "al_sayeda_zeinab": {
+      "x": 377.7,
+      "y": 545.7,
+      "lat": 30.029308,
+      "lng": 31.235393
+    },
+    "el_malek_el_saleh": {
+      "x": 369.5,
+      "y": 574.0,
+      "lat": 30.017685,
+      "lng": 31.231173
+    },
+    "mar_girgis": {
+      "x": 366.5,
+      "y": 602.2,
+      "lat": 30.006109,
+      "lng": 31.229631
+    },
+    "el_zahraa": {
+      "x": 369.5,
+      "y": 628.1,
+      "lat": 29.995482,
+      "lng": 31.231177
+    },
+    "dar_el_salam": {
+      "x": 390.9,
+      "y": 660.8,
+      "lat": 29.982066,
+      "lng": 31.242175
+    },
+    "hadayeq_el_maadi": {
+      "x": 407.2,
+      "y": 689.6,
+      "lat": 29.970233,
+      "lng": 31.250569
+    },
+    "maadi": {
+      "x": 421.3,
+      "y": 713.8,
+      "lat": 29.960303,
+      "lng": 31.257775
+    },
+    "thakanat_el_maadi": {
+      "x": 431.3,
+      "y": 730.8,
+      "lat": 29.953321,
+      "lng": 31.262949
+    },
+    "tora_el_balad": {
+      "x": 450.9,
+      "y": 746.7,
+      "lat": 29.946785,
+      "lng": 31.273012
+    },
+    "kozzika": {
+      "x": 468.0,
+      "y": 772.3,
+      "lat": 29.936305,
+      "lng": 31.281779
+    },
+    "tora_el_asmant": {
+      "x": 479.2,
+      "y": 797.4,
+      "lat": 29.926002,
+      "lng": 31.287554
+    },
+    "el_maasara": {
+      "x": 502.6,
+      "y": 845.8,
+      "lat": 29.906117,
+      "lng": 31.29954
+    },
+    "hadayeq_helwan": {
+      "x": 511.2,
+      "y": 867.6,
+      "lat": 29.897172,
+      "lng": 31.303995
+    },
+    "wadi_hof": {
+      "x": 529.9,
+      "y": 911.6,
+      "lat": 29.879127,
+      "lng": 31.313582
+    },
+    "helwan_university": {
+      "x": 542.4,
+      "y": 935.1,
+      "lat": 29.869468,
+      "lng": 31.320021
+    },
+    "ain_helwan": {
+      "x": 551.8,
+      "y": 951.8,
+      "lat": 29.86261,
+      "lng": 31.324843
+    },
+    "helwan": {
+      "x": 570.2,
+      "y": 985.0,
+      "lat": 29.848978,
+      "lng": 31.33428
+    },
+    "shubra_el_kheima": {
+      "x": 393.3,
+      "y": 314.7,
+      "lat": 30.124115,
+      "lng": 31.243394
+    },
+    "kolleyet_el_zeraa": {
+      "x": 403.6,
+      "y": 339.9,
+      "lat": 30.113779,
+      "lng": 31.248685
+    },
+    "el_mazallat": {
+      "x": 398.9,
+      "y": 362.6,
+      "lat": 30.104462,
+      "lng": 31.2463
+    },
+    "el_khalafawy": {
+      "x": 397.1,
+      "y": 378.7,
+      "lat": 30.097853,
+      "lng": 31.24537
+    },
+    "st_teresa": {
+      "x": 397.5,
+      "y": 402.6,
+      "lat": 30.088037,
+      "lng": 31.245582
+    },
+    "rod_el_farag": {
+      "x": 397.5,
+      "y": 420.0,
+      "lat": 30.08089,
+      "lng": 31.245586
+    },
+    "massara": {
+      "x": 396.6,
+      "y": 443.9,
+      "lat": 30.071068,
+      "lng": 31.245088
+    },
+    "attaba": {
+      "x": 400.0,
+      "y": 489.4,
+      "lat": 30.052399,
+      "lng": 31.246875
+    },
+    "mohamed_naguib": {
+      "x": 394.8,
+      "y": 506.6,
+      "lat": 30.04533,
+      "lng": 31.244156
+    },
+    "opera": {
+      "x": 357.4,
+      "y": 514.8,
+      "lat": 30.041986,
+      "lng": 31.224951
+    },
+    "dokki": {
+      "x": 332.6,
+      "y": 523.5,
+      "lat": 30.038431,
+      "lng": 31.212223
+    },
+    "el_bohooth": {
+      "x": 309.2,
+      "y": 529.9,
+      "lat": 30.035783,
+      "lng": 31.200205
+    },
+    "cairo_university": {
+      "x": 311.0,
+      "y": 553.6,
+      "lat": 30.026041,
+      "lng": 31.201151
+    },
+    "faisal": {
+      "x": 316.3,
+      "y": 574.6,
+      "lat": 30.017434,
+      "lng": 31.203873
+    },
+    "giza": {
+      "x": 324.1,
+      "y": 594.5,
+      "lat": 30.00928,
+      "lng": 31.207865
+    },
+    "omm_el_masryeen": {
+      "x": 324.4,
+      "y": 603.9,
+      "lat": 30.005391,
+      "lng": 31.207995
+    },
+    "sakiat_mekky": {
+      "x": 325.6,
+      "y": 627.9,
+      "lat": 29.995553,
+      "lng": 31.20862
+    },
+    "el_mounib": {
+      "x": 332.8,
+      "y": 663.1,
+      "lat": 29.981094,
+      "lng": 31.212325
+    },
+    "adly_mansour": {
+      "x": 739.2,
+      "y": 259.4,
+      "lat": 30.146806,
+      "lng": 31.421102
+    },
+    "el_haykestep": {
+      "x": 707.7,
+      "y": 266.8,
+      "lat": 30.143798,
+      "lng": 31.404931
+    },
+    "omar_ibn_el_khattab": {
+      "x": 687.5,
+      "y": 275.1,
+      "lat": 30.14037,
+      "lng": 31.394543
+    },
+    "qubaa": {
+      "x": 667.2,
+      "y": 289.0,
+      "lat": 30.134686,
+      "lng": 31.38413
+    },
+    "hesham_barakat": {
+      "x": 645.9,
+      "y": 298.0,
+      "lat": 30.130972,
+      "lng": 31.373172
+    },
+    "el_nozha": {
+      "x": 621.3,
+      "y": 305.0,
+      "lat": 30.128085,
+      "lng": 31.360522
+    },
+    "nadi_el_shams": {
+      "x": 598.6,
+      "y": 311.4,
+      "lat": 30.125472,
+      "lng": 31.348868
+    },
+    "alf_maskan": {
+      "x": 581.7,
+      "y": 327.1,
+      "lat": 30.119008,
+      "lng": 31.340188
+    },
+    "heliopolis": {
+      "x": 578.0,
+      "y": 352.9,
+      "lat": 30.10843,
+      "lng": 31.338296
+    },
+    "haroun": {
+      "x": 567.7,
+      "y": 370.1,
+      "lat": 30.101386,
+      "lng": 31.332977
+    },
+    "al_ahram": {
+      "x": 554.7,
+      "y": 393.6,
+      "lat": 30.091736,
+      "lng": 31.326316
+    },
+    "kolleyet_el_banat": {
+      "x": 560.0,
+      "y": 412.3,
+      "lat": 30.084067,
+      "lng": 31.329017
+    },
+    "stadium": {
+      "x": 536.8,
+      "y": 439.4,
+      "lat": 30.072924,
+      "lng": 31.317119
+    },
+    "fair_zone": {
+      "x": 505.4,
+      "y": 438.6,
+      "lat": 30.073268,
+      "lng": 31.30097
+    },
+    "abbassia": {
+      "x": 471.1,
+      "y": 441.6,
+      "lat": 30.072012,
+      "lng": 31.283365
+    },
+    "abdou_pasha": {
+      "x": 454.3,
+      "y": 459.2,
+      "lat": 30.064794,
+      "lng": 31.27475
+    },
+    "el_geish": {
+      "x": 439.0,
+      "y": 466.6,
+      "lat": 30.061782,
+      "lng": 31.266864
+    },
+    "bab_el_shaariya": {
+      "x": 417.6,
+      "y": 485.1,
+      "lat": 30.05416,
+      "lng": 31.255875
+    },
+    "maspero": {
+      "x": 371.3,
+      "y": 481.3,
+      "lat": 30.055741,
+      "lng": 31.2321
+    },
+    "safaa_hegazy": {
+      "x": 354.1,
+      "y": 465.3,
+      "lat": 30.062303,
+      "lng": 31.223287
+    },
+    "kit_kat": {
+      "x": 333.9,
+      "y": 455.0,
+      "lat": 30.066535,
+      "lng": 31.212894
+    },
+    "sudan": {
+      "x": 318.1,
+      "y": 446.3,
+      "lat": 30.070091,
+      "lng": 31.204759
+    },
+    "imbaba": {
+      "x": 323.4,
+      "y": 431.7,
+      "lat": 30.076094,
+      "lng": 31.207506
+    },
+    "el_bohy": {
+      "x": 329.3,
+      "y": 416.7,
+      "lat": 30.082256,
+      "lng": 31.210548
+    },
+    "el_qawmia": {
+      "x": 326.2,
+      "y": 389.9,
+      "lat": 30.093238,
+      "lng": 31.208949
+    },
+    "ring_road": {
+      "x": 308.0,
+      "y": 382.1,
+      "lat": 30.096438,
+      "lng": 31.19958
+    },
+    "rod_el_farag_corr": {
+      "x": 278.4,
+      "y": 368.5,
+      "lat": 30.102044,
+      "lng": 31.184399
+    },
+    "el_tawfikia": {
+      "x": 313.4,
+      "y": 458.5,
+      "lat": 30.065098,
+      "lng": 31.20239
+    },
+    "wadi_el_nil": {
+      "x": 311.1,
+      "y": 478.0,
+      "lat": 30.057102,
+      "lng": 31.201192
+    },
+    "gamaet_el_dowal": {
+      "x": 306.8,
+      "y": 494.8,
+      "lat": 30.050189,
+      "lng": 31.198954
+    },
+    "boulak_el_dakrour": {
+      "x": 300.0,
+      "y": 525.5,
+      "lat": 30.037604,
+      "lng": 31.195486
+    },
+    "brt_alex_agri": {
+      "x": 365.3,
+      "y": 253.8,
+      "lat": 30.149113,
+      "lng": 31.229049
+    },
+    "brt_ahmed_abdel_rahim": {
+      "x": 387.3,
+      "y": 252.1,
+      "lat": 30.149833,
+      "lng": 31.240305
+    },
+    "brt_shubra_banha": {
+      "x": 411.1,
+      "y": 252.5,
+      "lat": 30.149667,
+      "lng": 31.252578
+    },
+    "brt_bahtim": {
+      "x": 462.0,
+      "y": 236.2,
+      "lat": 30.15634,
+      "lng": 31.278699
+    },
+    "brt_mostorod": {
+      "x": 507.2,
+      "y": 217.4,
+      "lat": 30.164072,
+      "lng": 31.301918
+    },
+    "brt_el_khosous": {
+      "x": 548.5,
+      "y": 219.2,
+      "lat": 30.163328,
+      "lng": 31.323138
+    },
+    "brt_el_marg": {
+      "x": 584.3,
+      "y": 218.8,
+      "lat": 30.163468,
+      "lng": 31.3415
+    },
+    "brt_mohamed_naguib": {
+      "x": 617.1,
+      "y": 213.5,
+      "lat": 30.165653,
+      "lng": 31.358373
+    },
+    "brt_moassaset_el_zakah": {
+      "x": 664.5,
+      "y": 212.9,
+      "lat": 30.165886,
+      "lng": 31.38274
+    },
+    "brt_ibrahim_orabi": {
+      "x": 707.5,
+      "y": 230.9,
+      "lat": 30.158535,
+      "lng": 31.404782
+    },
+    "brt_el_salam": {
+      "x": 716.1,
+      "y": 239.7,
+      "lat": 30.154896,
+      "lng": 31.409229
+    },
+    "brt_adly_mansour": {
+      "x": 737.1,
+      "y": 256.3,
+      "lat": 30.148095,
+      "lng": 31.42001
+    },
+    "brt_suez_road": {
+      "x": 767.2,
+      "y": 423.3,
+      "lat": 30.079521,
+      "lng": 31.435471
+    },
+    "brt_police_academy": {
+      "x": 722.3,
+      "y": 482.0,
+      "lat": 30.05546,
+      "lng": 31.412417
+    },
+    "brt_moshir_tantawy": {
+      "x": 699.4,
+      "y": 581.9,
+      "lat": 30.014449,
+      "lng": 31.400644
+    },
+    "brt_el_golf": {
+      "x": 692.1,
+      "y": 613.1,
+      "lat": 30.001623,
+      "lng": 31.396872
+    },
+    "brt_sokhna_road": {
+      "x": 617.9,
+      "y": 669.4,
+      "lat": 29.978503,
+      "lng": 31.358772
+    },
+    "brt_maadi_ring": {
+      "x": 578.3,
+      "y": 660.9,
+      "lat": 29.982008,
+      "lng": 31.338451
+    },
+    "brt_zahraa_el_maadi": {
+      "x": 545.8,
+      "y": 655.5,
+      "lat": 29.984244,
+      "lng": 31.321771
+    },
+    "brt_mokattam": {
+      "x": 519.9,
+      "y": 648.8,
+      "lat": 29.986966,
+      "lng": 31.308457
+    },
+    "brt_autostrad": {
+      "x": 486.9,
+      "y": 635.7,
+      "lat": 29.992339,
+      "lng": 31.291512
+    },
+    "brt_algeria_axis": {
+      "x": 446.6,
+      "y": 640.4,
+      "lat": 29.990443,
+      "lng": 31.270778
+    },
+    "brt_el_imamain": {
+      "x": 409.1,
+      "y": 637.1,
+      "lat": 29.991779,
+      "lng": 31.251518
+    },
+    "brt_el_zahraa": {
+      "x": 370.3,
+      "y": 639.4,
+      "lat": 29.990821,
+      "lng": 31.231612
+    },
+    "brt_bahr_el_aazam": {
+      "x": 336.9,
+      "y": 649.8,
+      "lat": 29.986588,
+      "lng": 31.214457
+    },
+    "brt_omrania": {
+      "x": 316.4,
+      "y": 654.6,
+      "lat": 29.984613,
+      "lng": 31.203906
+    },
+    "brt_talbia": {
+      "x": 287.2,
+      "y": 649.1,
+      "lat": 29.986874,
+      "lng": 31.188886
+    },
+    "brt_mariouteya": {
+      "x": 257.1,
+      "y": 676.4,
+      "lat": 29.97566,
+      "lng": 31.17347
+    },
+    "brt_mansoureya": {
+      "x": 219.6,
+      "y": 726.6,
+      "lat": 29.955045,
+      "lng": 31.154175
+    },
+    "brt_sun_capital": {
+      "x": 113.4,
+      "y": 746.5,
+      "lat": 29.946856,
+      "lng": 31.099644
+    },
+    "brt_zewail": {
+      "x": 70.0,
+      "y": 723.4,
+      "lat": 29.956366,
+      "lng": 31.077342
+    },
+    "brt_grand_egyptian_museum": {
+      "x": 146.7,
+      "y": 621.1,
+      "lat": 29.998362,
+      "lng": 31.116733
+    },
+    "mono_stadium": {
+      "x": 537.8,
+      "y": 442.5,
+      "lat": 30.071668,
+      "lng": 31.317629
+    },
+    "mono_hesham_barakat": {
+      "x": 546.1,
+      "y": 462.5,
+      "lat": 30.063448,
+      "lng": 31.32192
+    },
+    "mono_al_azhar_univ": {
+      "x": 551.8,
+      "y": 486.2,
+      "lat": 30.053708,
+      "lng": 31.324851
+    },
+    "mono_seventh_district": {
+      "x": 563.6,
+      "y": 510.4,
+      "lat": 30.043785,
+      "lng": 31.330911
+    },
+    "mono_moshir_ahmed_ismail": {
+      "x": 593.8,
+      "y": 506.3,
+      "lat": 30.045455,
+      "lng": 31.346416
+    },
+    "mono_jehan_el_sadat": {
+      "x": 611.7,
+      "y": 521.6,
+      "lat": 30.039174,
+      "lng": 31.355614
+    },
+    "mono_moshir_tantawy": {
+      "x": 665.8,
+      "y": 570.4,
+      "lat": 30.019143,
+      "lng": 31.383404
+    },
+    "mono_one_ninety": {
+      "x": 715.4,
+      "y": 577.7,
+      "lat": 30.01617,
+      "lng": 31.408885
+    },
+    "mono_air_force_hospital": {
+      "x": 764.1,
+      "y": 577.6,
+      "lat": 30.016214,
+      "lng": 31.433871
+    },
+    "mono_el_narges": {
+      "x": 814.9,
+      "y": 555.0,
+      "lat": 30.025472,
+      "lng": 31.459948
+    },
+    "mono_investors": {
+      "x": 874.9,
+      "y": 555.3,
+      "lat": 30.025356,
+      "lng": 31.490791
+    },
+    "mono_el_lotus": {
+      "x": 931.0,
+      "y": 584.8,
+      "lat": 30.013264,
+      "lng": 31.519601
+    },
+    "mono_golden_square": {
+      "x": 957.4,
+      "y": 551.3,
+      "lat": 30.027008,
+      "lng": 31.53315
+    },
+    "mono_beit_el_watan": {
+      "x": 1010.5,
+      "y": 551.5,
+      "lat": 30.026916,
+      "lng": 31.560449
+    },
+    "mono_al_fattah_al_aleem": {
+      "x": 1085.3,
+      "y": 556.5,
+      "lat": 30.024855,
+      "lng": 31.598867
+    },
+    "mono_r1": {
+      "x": 1147.8,
+      "y": 575.6,
+      "lat": 30.017019,
+      "lng": 31.630982
+    },
+    "mono_r2": {
+      "x": 1210.7,
+      "y": 572.4,
+      "lat": 30.018323,
+      "lng": 31.663286
+    },
+    "mono_cbd": {
+      "x": 1260.9,
+      "y": 574.7,
+      "lat": 30.017384,
+      "lng": 31.689075
+    },
+    "mono_arts_culture_city": {
+      "x": 1331.8,
+      "y": 597.3,
+      "lat": 30.008115,
+      "lng": 31.725483
+    },
+    "mono_governmental_district": {
+      "x": 1369.3,
+      "y": 597.6,
+      "lat": 30.007999,
+      "lng": 31.744729
+    },
+    "mono_misr_mosque": {
+      "x": 1379.7,
+      "y": 628.5,
+      "lat": 29.995315,
+      "lng": 31.750083
+    },
+    "mono_justice_city": {
+      "x": 1418.3,
+      "y": 602.6,
+      "lat": 30.005924,
+      "lng": 31.769901
+    },
+    "lrt_adly_mansour": {
+      "x": 739.6,
+      "y": 260.6,
+      "lat": 30.146319,
+      "lng": 31.421306
+    },
+    "lrt_el_obour": {
+      "x": 857.1,
+      "y": 220.3,
+      "lat": 30.162862,
+      "lng": 31.481653
+    },
+    "lrt_el_mostakbal": {
+      "x": 998.2,
+      "y": 195.3,
+      "lat": 30.173147,
+      "lng": 31.554127
+    },
+    "lrt_el_shorouk": {
+      "x": 1098.9,
+      "y": 179.6,
+      "lat": 30.179581,
+      "lng": 31.605859
+    },
+    "lrt_new_heliopolis": {
+      "x": 1190.0,
+      "y": 168.6,
+      "lat": 30.184081,
+      "lng": 31.65264
+    },
+    "lrt_badr": {
+      "x": 1313.3,
+      "y": 190.2,
+      "lat": 30.175219,
+      "lng": 31.715979
+    },
+    "lrt_industrial_zone": {
+      "x": 1312.2,
+      "y": 119.9,
+      "lat": 30.204058,
+      "lng": 31.7154
+    },
+    "lrt_knowledge_city": {
+      "x": 1265.5,
+      "y": 55.0,
+      "lat": 30.230717,
+      "lng": 31.691426
+    },
+    "lrt_el_robiki": {
+      "x": 1384.2,
+      "y": 211.3,
+      "lat": 30.166572,
+      "lng": 31.752414
+    },
+    "lrt_capital_gardens": {
+      "x": 1490.0,
+      "y": 283.9,
+      "lat": 30.136762,
+      "lng": 31.806751
+    },
+    "lrt_capital_airport": {
+      "x": 1442.6,
+      "y": 432.0,
+      "lat": 30.075976,
+      "lng": 31.782387
+    },
+    "lrt_arts_culture_city": {
+      "x": 1330.7,
+      "y": 583.5,
+      "lat": 30.013802,
+      "lng": 31.724905
+    },
+    "lrt_nativity_cathedral": {
+      "x": 1312.6,
+      "y": 667.3,
+      "lat": 29.979404,
+      "lng": 31.715645
+    },
+    "lrt_octagon": {
+      "x": 1257.2,
+      "y": 717.6,
+      "lat": 29.958748,
+      "lng": 31.687186
+    }
+  },
+  "TRANSFER_CORRIDORS": [
+    {
+      "id": "xfer_adly_mansour",
+      "kmlName": "BRT - Metro - LRT",
+      "hubNameAr": "محور عدلي منصور التبادلي المتكامل",
+      "hubNameEn": "Adly Mansour Super-Hub",
+      "modes": [
+        "line3",
+        "lrt",
+        "brt"
+      ],
+      "fromStationId": "brt_adly_mansour",
+      "toStationId": "adly_mansour",
+      "alsoConnects": [
+        "lrt_adly_mansour",
+        "term_el_salam"
+      ],
+      "distanceMeters": 178,
+      "notes": "Connects Metro Line 3 Terminus, LRT Capital Train Terminus, BRT Adly Mansour, and El-Salam Terminal"
+    },
+    {
+      "id": "xfer_moshir_one_ninety",
+      "kmlName": "BRT - Monorail",
+      "hubNameAr": "تبادلية المشير طنطاوي (BRT) ↔ وان ناينتي (مونوريل)",
+      "hubNameEn": "El-Moshir Tantawy (BRT) ↔ One Ninety (Monorail)",
+      "modes": [
+        "brt",
+        "monorail_east"
+      ],
+      "fromStationId": "mono_one_ninety",
+      "toStationId": "brt_moshir_tantawy",
+      "alsoConnects": [],
+      "distanceMeters": 816,
+      "notes": "Connects East Nile Monorail (One Ninety station) with Ring Road BRT (El-Moshir Tantawy station)"
+    },
+    {
+      "id": "xfer_stadium",
+      "kmlName": "Metro - Monorail",
+      "hubNameAr": "تبادلية الاستاد (الخط الثالث للمترو ↔ مونوريل شرق النيل)",
+      "hubNameEn": "Stadium Transfer (Metro Line 3 ↔ East Nile Monorail)",
+      "modes": [
+        "line3",
+        "monorail_east"
+      ],
+      "fromStationId": "mono_stadium",
+      "toStationId": "stadium",
+      "alsoConnects": [],
+      "distanceMeters": 148,
+      "notes": "Connects Metro Line 3 Stadium station with East Nile Monorail western terminus"
+    },
+    {
+      "id": "xfer_arts_culture_city",
+      "kmlName": "LRT - Monorail",
+      "hubNameAr": "تبادلية مدينة الفنون والثقافة (LRT ↔ مونوريل العاصمة)",
+      "hubNameEn": "City of Arts & Culture Transfer (LRT ↔ East Nile Monorail)",
+      "modes": [
+        "lrt",
+        "monorail_east"
+      ],
+      "fromStationId": "mono_arts_culture_city",
+      "toStationId": "lrt_arts_culture_city",
+      "alsoConnects": [],
+      "distanceMeters": 635,
+      "notes": "Major New Administrative Capital transfer between LRT and East Nile Monorail"
+    },
+    {
+      "id": "xfer_alex_agri_shubra",
+      "kmlName": "BRT - Metro (Shubra / Alex Agri Rd)",
+      "hubNameAr": "تبادلية الإسكندرية الزراعي (BRT) ↔ شبرا الخيمة / المؤسسة (الخط الثاني)",
+      "hubNameEn": "Alexandria Agricultural Rd (BRT) ↔ Shubra El-Kheima (Metro Line 2)",
+      "modes": [
+        "brt",
+        "line2"
+      ],
+      "fromStationId": "brt_alex_agri",
+      "toStationId": "shubra_el_kheima",
+      "alsoConnects": [
+        "term_el_moassasa_main",
+        "term_moassasa_bus_microbus"
+      ],
+      "distanceMeters": 3103,
+      "notes": "Corridor along Agricultural Road linking Ring Road BRT Alex Agri station with Shubra El-Kheima Metro Line 2 & El-Moassasa Terminal"
+    },
+    {
+      "id": "xfer_el_marg",
+      "kmlName": "BRT - Metro (El-Marg)",
+      "hubNameAr": "تبادلية المرج الجديدة (الخط الأول) ↔ المرج (BRT)",
+      "hubNameEn": "New El-Marg (Metro Line 1) ↔ El-Marg (BRT)",
+      "modes": [
+        "brt",
+        "line1"
+      ],
+      "fromStationId": "brt_el_marg",
+      "toStationId": "new_el_marg",
+      "alsoConnects": [
+        "term_el_marg"
+      ],
+      "distanceMeters": 302,
+      "notes": "Direct pedestrian transfer (~300m) between Metro Line 1 New El-Marg, BRT El-Marg, and El-Marg Regional Terminal"
+    },
+    {
+      "id": "xfer_el_zahraa",
+      "kmlName": "BRT - Metro (El-Zahraa)",
+      "hubNameAr": "تبادلية الزهراء (الخط الأول) ↔ الزهراء (BRT)",
+      "hubNameEn": "El-Zahraa (Metro Line 1) ↔ El-Zahraa (BRT)",
+      "modes": [
+        "brt",
+        "line1"
+      ],
+      "fromStationId": "brt_el_zahraa",
+      "toStationId": "el_zahraa",
+      "alsoConnects": [],
+      "distanceMeters": 520,
+      "notes": "Transfer corridor (~520m) linking Metro Line 1 El-Zahraa with Ring Road BRT El-Zahraa"
+    },
+    {
+      "id": "xfer_el_mounib_bahr_aazam",
+      "kmlName": "BRT - Metro (El-Mounib / Bahr El-Aazam)",
+      "hubNameAr": "تبادلية المنيب (الخط الثاني) ↔ البحر الأعظم (BRT)",
+      "hubNameEn": "El-Mounib (Metro Line 2) ↔ El-Bahr El-Aazam (BRT)",
+      "modes": [
+        "brt",
+        "line2"
+      ],
+      "fromStationId": "brt_bahr_el_aazam",
+      "toStationId": "el_mounib",
+      "alsoConnects": [
+        "term_el_mounib"
+      ],
+      "distanceMeters": 644,
+      "notes": "Transfer corridor (~645m) linking Metro Line 2 El-Mounib terminus, Ring Road BRT El-Bahr El-Aazam, and El-Mounib Terminal"
+    }
+  ],
+  "MICROBUS_TERMINALS": [
+    {
+      "id": "term_abboud",
+      "nameAr": "موقف عبود",
+      "nameEn": "Abboud Regional Terminal",
+      "geomType": "Polygon (26 vertices)",
+      "lat": 30.105348,
+      "lng": 31.254831,
+      "nearestTransit": "Metro Line 2: المظلات (El-Mazallat) / كلية الزراعة (Kolleyet El-Zeraa)",
+      "routesSummaryAr": "الفيوم (الفيوم، يوسف الصديق) | الإسكندرية (عادي، مكيف) | دمياط (دمياط، دمياط الجديدة، رأس البر) | الغربية (طنطا، السنطة، كفر الزيات، المحلة، زفتى) | الوجه القبلي (بني سويف، الواسطى، المنيا، أسيوط، سوهاج، الوادي الجديد) | المنوفية (شبين الكوم، تلا، الشهداء، منوف، قويسنا، بركة السبع) | كفر الشيخ (كفر الشيخ، قلين، الحامول، بيلا، بلطيم، دسوق، فوه، مطوبس) | الدقهلية (المنصورة، دكرنس، السنبلاوين، شربين، المنزلة، منية النصر، بلقاس، ميت غمر، جمصة) | البحيرة (دمنهور، أبو المطامير، الدلنجات، شبراخيت، إيتاي البارود، مديرية التحرير، مدينة بدر، كوم حمادة، رشيد، كفر الدوار) | الشرقية (الزقازيق، أبو حماد، منيا القمح، بلبيس، ديرب نجم، فاقوس، أبو كبير، ههيا، كفر صقر، الإبراهيمية، الحسينية، أولاد صقر)"
+    },
+    {
+      "id": "term_el_salam",
+      "nameAr": "موقف السلام",
+      "nameEn": "El-Salam Regional Terminal",
+      "geomType": "Polygon (5 vertices)",
+      "lat": 30.153215,
+      "lng": 31.408364,
+      "nearestTransit": "BRT: السلام (El-Salam) & Adly Mansour Super-Hub (Metro Line 3 / LRT / BRT)",
+      "routesSummaryAr": "الجيزة (الهرم، أكتوبر) | الإسكندرية (عادي، مكيف) | الوجه القبلي (بني سويف، الفيوم) | دمياط (دمياط، دمياط الجديدة، رأس البر) | المنوفية (شبين الكوم، قويسنا، بركة السبع، السادات) | كفر الشيخ (كفر الشيخ، الرياض، فوه، مطوبس) | البحيرة (دمنهور، أبو حمص، حوش عيسى، كفر الدوار) | القليوبية (بنها، كفر شكر، المؤسسة، الشباب والعبور، العبور الجديدة) | المدن الجديدة (بدر، المستقبل، الشروق، العاصمة الإدارية، التجمع الخامس، مدينتي، الرحاب، الحي العاشر) | الدقهلية (المنصورة، السنبلاوين، أجا، المنزلة، دكرنس، منية النصر، ميت غمر، شربين) | الغربية (العاشر من رمضان، الصالحية الجديدة، طنطا، المحلة، سمنود، زفتى، السنطة، بسيون) | الشرقية (الزقازيق، فاقوس، الحسينية، أبو كبير، كفر صقر، أولاد صقر، ديرب نجم، الإبراهيمية، القرين، بلبيس، أبو حماد، ههيا)"
+    },
+    {
+      "id": "term_el_marg",
+      "nameAr": "موقف المرج",
+      "nameEn": "El-Marg Regional Terminal",
+      "geomType": "Polygon (45 vertices)",
+      "lat": 30.164039,
+      "lng": 31.340099,
+      "nearestTransit": "Metro Line 1: المرج الجديدة (New El-Marg) & BRT: المرج (El-Marg)",
+      "routesSummaryAr": "القليوبية (بنها) | كفر الشيخ | دمياط (دمياط الجديدة) | الإسكندرية (عادي، مكيف) | الغربية (طنطا، المحلة) | مطروح (العلمين عادي ومكيف) | بورسعيد (بيجو، ميكروباص) | الجيزة (أكتوبر الحصري، أكتوبر السوق القديم، الهرم) | الدقهلية (المنصورة، المنصورة الجديدة، شربين) | شمال سيناء (العريش بيجو وميكروباص، رفح) | السويس (بيجو، ميكروباص، بورتو السخنة) | الشرقية (العاشر من رمضان، فاقوس، بلبيس، الزقازيق، ديرب نجم) | جنوب سيناء (الطور، نويبع، رأس سدر، طابا، دهب) | الإسماعيلية (بيجو، ميكروباص، فايد، القصاصين، القنطرة، التل الكبير) | القاهرة الكبرى والمدن الجديدة (العاصمة الإدارية، مدينة بدر، عبود، الزاوية، مسطرد، دائري، عزبة مترو) | الوجه القبلي (أسيوط، سوهاج، الفيوم، إبشواي، قنا، ملوي، المنيا، أبو قرقاص، بني سويف، الواسطى، يوسف الصديق، الوادي الجديد)"
+    },
+    {
+      "id": "term_ain_helwan",
+      "nameAr": "موقف عين حلوان",
+      "nameEn": "Ain Helwan Regional Terminal",
+      "geomType": "Polygon (9 vertices)",
+      "lat": 29.863385,
+      "lng": 31.32384,
+      "nearestTransit": "Metro Line 1: عين حلوان (Ain Helwan)",
+      "routesSummaryAr": "الإسكندرية | كفر الشيخ | الشرقية (الزقازيق) | القليوبية (المؤسسة، القناطر) | الغربية (طنطا، المحلة) | المدن الجديدة (بدر، أكتوبر، العبور) | الجيزة (الصف، أطفيح، البرميل) | الوجه القبلي (بني سويف، الواسطى، المنيا، أسيوط، سوهاج، قنا، الوادي الجديد) | الفيوم (إبشواي، طامية، سنورس، يوسف الصديق، سنهور)"
+    },
+    {
+      "id": "term_new_ramses_sabtiya",
+      "nameAr": "موقف رمسيس الجديد (السبتية)",
+      "nameEn": "New Ramses (El-Sabtiya) Multi-Story Terminal",
+      "geomType": "Polygon (8 vertices)",
+      "lat": 30.061644,
+      "lng": 31.244144,
+      "nearestTransit": "Metro Line 1 & 2: الشهداء (Al-Shohadaa / Ramses)",
+      "routesSummaryAr": "الدور الأول (داخلي وأكتوبر وحلوان): مدينة نصر ومصر الجديدة (أول عباس، أول مكرم، الحي السادس، الحي السابع، الحي العاشر) | الجيزة وأكتوبر (شارع الهرم، الهرم دائري، الحصري، دريم لاند/مول مصر، سادس محور) | شمال الجيزة وإمبابة (إمبابة، البصراوي، الوراق، سيما، وحدة) | جنوب القاهرة والجيزة (حلوان، المنيب) || الدور الثاني (الأقاليم والشرق): وجه بحري (الإسكندرية، المنصورة، المحلة، طنطا) | المواقف الرئيسية (عبود، المؤسسة، السلام/النهضة) | شرق القاهرة (التجمع الخامس، عين شمس، مساكن عين شمس) | وسط وجنوب القاهرة (باب الشعرية، الدويقة، منشية ناصر، السيدة عائشة، المقطم)"
+    },
+    {
+      "id": "term_abdel_moneim_riad",
+      "nameAr": "موقف عبدالمنعم رياض (التحرير)",
+      "nameEn": "Abdel Moneim Riad (Tahrir) Terminal",
+      "geomType": "Polygon (6 vertices)",
+      "lat": 30.049699,
+      "lng": 31.231793,
+      "nearestTransit": "Metro Line 1 & 2: السادات (Sadat) & Metro Line 3: ماسبيرو (Maspero)",
+      "routesSummaryAr": "القليوبية (المؤسسة، القناطر الدائري، القناطر محور) | الجيزة (فيصل، الوراق، البوهي، إمبابة، 6 أكتوبر، الدقي/صفط اللبن)"
+    },
+    {
+      "id": "term_el_qanater_main",
+      "nameAr": "موقف القناطر",
+      "nameEn": "El-Qanater El-Khayreya Main Terminal",
+      "geomType": "Polygon (18 vertices)",
+      "lat": 30.194401,
+      "lng": 31.132852,
+      "nearestTransit": "Feeds Metro Line 2: شبرا الخيمة (Shubra El-Kheima)",
+      "routesSummaryAr": "الموقف الرئيسي بالقناطر الخيرية"
+    },
+    {
+      "id": "term_el_qanater_moassasa",
+      "nameAr": "موقف القناطر - المؤسسة",
+      "nameEn": "El-Qanater to El-Moassasa Stop",
+      "geomType": "Point",
+      "lat": 30.194978,
+      "lng": 31.132855,
+      "nearestTransit": "Connects to Metro Line 2: شبرا الخيمة (Shubra El-Kheima)",
+      "routesSummaryAr": "القناطر الخيرية ➔ المؤسسة شبرا الخيمة"
+    },
+    {
+      "id": "term_el_qanater_shashaa",
+      "nameAr": "موقف القناطر شعشاع",
+      "nameEn": "El-Qanater Shashaa Stop",
+      "geomType": "Point",
+      "lat": 30.193571,
+      "lng": 31.132893,
+      "nearestTransit": "El-Qanater Hub",
+      "routesSummaryAr": "عربيات تكمل للكوادي، أو عربيات لسنتريس ومن أبو يوسف تكمل لشعشاع"
+    },
+    {
+      "id": "term_dairi_basus",
+      "nameAr": "موقف دائري باسوس",
+      "nameEn": "Basus Ring Road Terminal",
+      "geomType": "Polygon (12 vertices)",
+      "lat": 30.145129,
+      "lng": 31.211799,
+      "nearestTransit": "Near BRT: الإسكندرية الزراعي (Alexandria Agricultural Rd)",
+      "routesSummaryAr": "موقف دائري باسوس على الطريق الدائري"
+    },
+    {
+      "id": "term_basus_santris",
+      "nameAr": "موقف باسوس سنتريس",
+      "nameEn": "Basus - Santris Stop",
+      "geomType": "Point",
+      "lat": 30.145099,
+      "lng": 31.211736,
+      "nearestTransit": "Basus Ring Road",
+      "routesSummaryAr": "باسوس ➔ أبو يوسف ➔ سنتريس (وأحياناً تحت الدائري عربيات لشعشاع)"
+    },
+    {
+      "id": "term_shashaa_vans",
+      "nameAr": "عربيات شعشاع (باسوس)",
+      "nameEn": "Shashaa Vans Stop (Basus Ring Road)",
+      "geomType": "Point",
+      "lat": 30.145293,
+      "lng": 31.211626,
+      "nearestTransit": "Basus Ring Road",
+      "routesSummaryAr": "عربيات لشعشاع نازلة من الدائري وتمر هنا، أو عربيات للقناطر"
+    },
+    {
+      "id": "term_el_moassasa_main",
+      "nameAr": "موقف المؤسسة",
+      "nameEn": "El-Moassasa Main Terminal (Shubra El-Kheima)",
+      "geomType": "Polygon (38 vertices)",
+      "lat": 30.121446,
+      "lng": 31.245066,
+      "nearestTransit": "Metro Line 2: شبرا الخيمة (Shubra El-Kheima) & BRT: الإسكندرية الزراعي",
+      "routesSummaryAr": "موقف المؤسسة بشبرا الخيمة بجوار محطة مترو شبرا الخيمة"
+    },
+    {
+      "id": "term_moassasa_qanater_vans",
+      "nameAr": "عربيات مؤسسة قناطر",
+      "nameEn": "El-Moassasa to El-Qanater Vans",
+      "geomType": "Point",
+      "lat": 30.123644,
+      "lng": 31.24331,
+      "nearestTransit": "Metro Line 2: شبرا الخيمة (Shubra El-Kheima)",
+      "routesSummaryAr": "خط المؤسسة (شبرا الخيمة) ➔ القناطر الخيرية"
+    },
+    {
+      "id": "term_moassasa_bus_microbus",
+      "nameAr": "موقف المؤسسة أتوبيس وميكروباص",
+      "nameEn": "El-Moassasa Bus & Microbus Terminal",
+      "geomType": "Polygon (7 vertices)",
+      "lat": 30.123255,
+      "lng": 31.241902,
+      "nearestTransit": "Metro Line 2: شبرا الخيمة (Shubra El-Kheima)",
+      "routesSummaryAr": "موقف أتوبيسات وميكروباصات المؤسسة"
+    },
+    {
+      "id": "term_alf_maskan",
+      "nameAr": "موقف ألف مسكن",
+      "nameEn": "Alf Maskan Terminal",
+      "geomType": "Polygon (5 vertices)",
+      "lat": 30.120619,
+      "lng": 31.342512,
+      "nearestTransit": "Metro Line 3: ألف مسكن (Alf Maskan)",
+      "routesSummaryAr": "موقف ألف مسكن بجوار محطة مترو ألف مسكن (الخط الثالث)"
+    },
+    {
+      "id": "term_el_mounib",
+      "nameAr": "موقف المنيب",
+      "nameEn": "El-Mounib Regional & Giza Terminal",
+      "geomType": "Polygon (26 vertices)",
+      "lat": 29.984276,
+      "lng": 31.212711,
+      "nearestTransit": "Metro Line 2: المنيب (El-Mounib) & BRT: البحر الأعظم (El-Bahr El-Aazam)",
+      "routesSummaryAr": "موقف المنيب الرئيسي (الجيزة والوجه القبلي والفيوم وأكتوبر)"
+    },
+    {
+      "id": "term_desert_rd_stairs_1",
+      "nameAr": "سلم الصحراوي الأول (القرية الذكية)",
+      "nameEn": "First Cairo-Alex Desert Rd Stairs (Smart Village)",
+      "geomType": "Point",
+      "lat": 30.047698,
+      "lng": 31.053401,
+      "nearestTransit": "West Cairo / 26th of July Corridor",
+      "routesSummaryAr": "تنزل السلم تلاقي موقف لعربيات القرية الذكية"
+    },
+    {
+      "id": "term_desert_rd_stairs_poly",
+      "nameAr": "موقف سلم الصحراوي قرية",
+      "nameEn": "Desert Road Stairs Smart Village Microbus Zone",
+      "geomType": "Polygon (10 vertices)",
+      "lat": 30.047703,
+      "lng": 31.052838,
+      "nearestTransit": "Adjacent to First Desert Rd Stairs (Smart Village)",
+      "routesSummaryAr": "نطاق موقف عربيات القرية الذكية عند سلم الصحراوي"
+    },
+    {
+      "id": "term_qawmia_smart_village",
+      "nameAr": "موقف قرية دائري (ك28)",
+      "nameEn": "Smart Village Ring Road / K28 Stop",
+      "geomType": "Point",
+      "lat": 30.064058,
+      "lng": 31.024507,
+      "nearestTransit": "Connects to Metro Line 3: الطريق الدائري (دائري القومية)",
+      "routesSummaryAr": "خط القرية الذكية (الكيلو 28) ➔ دائري القومية (الخط الثالث للمترو)"
+    },
+    {
+      "id": "term_k28_poly",
+      "nameAr": "موقف ك28",
+      "nameEn": "K28 (Kilometer 28) Terminal Zone",
+      "geomType": "Polygon (8 vertices)",
+      "lat": 30.064057,
+      "lng": 31.024573,
+      "nearestTransit": "Adjacent to Smart Village / Cairo-Alex Desert Road K28",
+      "routesSummaryAr": "منطقة موقف الكيلو 28 بطريق مصر الإسكندرية الصحراوي"
+    }
+  ],
+  "TRACK_POLYLINES_GPS": {
+    "line1": [
+      {
+        "lat": 30.163642,
+        "lng": 31.338367
+      },
+      {
+        "lat": 30.152073,
+        "lng": 31.335693
+      },
+      {
+        "lat": 30.147688,
+        "lng": 31.334333
+      },
+      {
+        "lat": 30.139371,
+        "lng": 31.324394
+      },
+      {
+        "lat": 30.135386,
+        "lng": 31.321343
+      },
+      {
+        "lat": 30.131013,
+        "lng": 31.319088
+      },
+      {
+        "lat": 30.121366,
+        "lng": 31.313775
+      },
+      {
+        "lat": 30.118542,
+        "lng": 31.31334
+      },
+      {
+        "lat": 30.113866,
+        "lng": 31.314041
+      },
+      {
+        "lat": 30.109934,
+        "lng": 31.313291
+      },
+      {
+        "lat": 30.105568,
+        "lng": 31.310077
+      },
+      {
+        "lat": 30.100873,
+        "lng": 31.30607
+      },
+      {
+        "lat": 30.097604,
+        "lng": 31.304506
+      },
+      {
+        "lat": 30.09406,
+        "lng": 31.301847
+      },
+      {
+        "lat": 30.091124,
+        "lng": 31.298957
+      },
+      {
+        "lat": 30.087196,
+        "lng": 31.294139
+      },
+      {
+        "lat": 30.082433,
+        "lng": 31.28807
+      },
+      {
+        "lat": 30.080951,
+        "lng": 31.286194
+      },
+      {
+        "lat": 30.079096,
+        "lng": 31.281981
+      },
+      {
+        "lat": 30.077314,
+        "lng": 31.277808
+      },
+      {
+        "lat": 30.076351,
+        "lng": 31.275668
+      },
+      {
+        "lat": 30.075341,
+        "lng": 31.273631
+      },
+      {
+        "lat": 30.073724,
+        "lng": 31.271321
+      },
+      {
+        "lat": 30.071887,
+        "lng": 31.269425
+      },
+      {
+        "lat": 30.070299,
+        "lng": 31.267139
+      },
+      {
+        "lat": 30.069007,
+        "lng": 31.264657
+      },
+      {
+        "lat": 30.065183,
+        "lng": 31.255268
+      },
+      {
+        "lat": 30.063305,
+        "lng": 31.250594
+      },
+      {
+        "lat": 30.061029,
+        "lng": 31.246069
+      },
+      {
+        "lat": 30.05669,
+        "lng": 31.242041
+      },
+      {
+        "lat": 30.0535,
+        "lng": 31.238733
+      },
+      {
+        "lat": 30.044134,
+        "lng": 31.234424
+      },
+      {
+        "lat": 30.037022,
+        "lng": 31.238339
+      },
+      {
+        "lat": 30.034115,
+        "lng": 31.2374
+      },
+      {
+        "lat": 30.03116,
+        "lng": 31.236687
+      },
+      {
+        "lat": 30.030147,
+        "lng": 31.236158
+      },
+      {
+        "lat": 30.029311,
+        "lng": 31.235391
+      },
+      {
+        "lat": 30.028072,
+        "lng": 31.234307
+      },
+      {
+        "lat": 30.026757,
+        "lng": 31.233424
+      },
+      {
+        "lat": 30.022234,
+        "lng": 31.232579
+      },
+      {
+        "lat": 30.017684,
+        "lng": 31.231172
+      },
+      {
+        "lat": 30.013098,
+        "lng": 31.229923
+      },
+      {
+        "lat": 30.011361,
+        "lng": 31.229917
+      },
+      {
+        "lat": 30.009586,
+        "lng": 31.230082
+      },
+      {
+        "lat": 30.009161,
+        "lng": 31.230099
+      },
+      {
+        "lat": 30.00873,
+        "lng": 31.230074
+      },
+      {
+        "lat": 30.008066,
+        "lng": 31.229988
+      },
+      {
+        "lat": 30.00742,
+        "lng": 31.22982
+      },
+      {
+        "lat": 30.006767,
+        "lng": 31.22968
+      },
+      {
+        "lat": 30.006105,
+        "lng": 31.22956
+      },
+      {
+        "lat": 30.000822,
+        "lng": 31.228759
+      },
+      {
+        "lat": 29.999042,
+        "lng": 31.228972
+      },
+      {
+        "lat": 29.997254,
+        "lng": 31.229839
+      },
+      {
+        "lat": 29.995509,
+        "lng": 31.231266
+      },
+      {
+        "lat": 29.991307,
+        "lng": 31.235243
+      },
+      {
+        "lat": 29.986061,
+        "lng": 31.239103
+      },
+      {
+        "lat": 29.984023,
+        "lng": 31.240561
+      },
+      {
+        "lat": 29.982066,
+        "lng": 31.242177
+      },
+      {
+        "lat": 29.976141,
+        "lng": 31.246264
+      },
+      {
+        "lat": 29.970233,
+        "lng": 31.250565
+      },
+      {
+        "lat": 29.960304,
+        "lng": 31.25777
+      },
+      {
+        "lat": 29.953321,
+        "lng": 31.262951
+      },
+      {
+        "lat": 29.951408,
+        "lng": 31.26522
+      },
+      {
+        "lat": 29.949772,
+        "lng": 31.267781
+      },
+      {
+        "lat": 29.946784,
+        "lng": 31.273011
+      },
+      {
+        "lat": 29.945506,
+        "lng": 31.274942
+      },
+      {
+        "lat": 29.944036,
+        "lng": 31.27666
+      },
+      {
+        "lat": 29.942292,
+        "lng": 31.278059
+      },
+      {
+        "lat": 29.940499,
+        "lng": 31.279245
+      },
+      {
+        "lat": 29.938207,
+        "lng": 31.280496
+      },
+      {
+        "lat": 29.936216,
+        "lng": 31.281657
+      },
+      {
+        "lat": 29.926003,
+        "lng": 31.287555
+      },
+      {
+        "lat": 29.922624,
+        "lng": 31.290213
+      },
+      {
+        "lat": 29.921301,
+        "lng": 31.291802
+      },
+      {
+        "lat": 29.919617,
+        "lng": 31.293178
+      },
+      {
+        "lat": 29.906116,
+        "lng": 31.299542
+      },
+      {
+        "lat": 29.897169,
+        "lng": 31.303992
+      },
+      {
+        "lat": 29.888034,
+        "lng": 31.308675
+      },
+      {
+        "lat": 29.879127,
+        "lng": 31.313583
+      },
+      {
+        "lat": 29.876576,
+        "lng": 31.314948
+      },
+      {
+        "lat": 29.87425,
+        "lng": 31.31653
+      },
+      {
+        "lat": 29.869462,
+        "lng": 31.320017
+      },
+      {
+        "lat": 29.862675,
+        "lng": 31.324969
+      },
+      {
+        "lat": 29.855965,
+        "lng": 31.32982
+      },
+      {
+        "lat": 29.854926,
+        "lng": 31.330853
+      },
+      {
+        "lat": 29.852726,
+        "lng": 31.333068
+      },
+      {
+        "lat": 29.851188,
+        "lng": 31.334072
+      },
+      {
+        "lat": 29.848982,
+        "lng": 31.334272
+      }
+    ],
+    "line2": [
+      {
+        "lat": 30.124094,
+        "lng": 31.243405
+      },
+      {
+        "lat": 30.113767,
+        "lng": 31.248694
+      },
+      {
+        "lat": 30.104458,
+        "lng": 31.246299
+      },
+      {
+        "lat": 30.097841,
+        "lng": 31.245378
+      },
+      {
+        "lat": 30.088029,
+        "lng": 31.245586
+      },
+      {
+        "lat": 30.08089,
+        "lng": 31.245607
+      },
+      {
+        "lat": 30.071065,
+        "lng": 31.245091
+      },
+      {
+        "lat": 30.061051,
+        "lng": 31.246073
+      },
+      {
+        "lat": 30.052389,
+        "lng": 31.246877
+      },
+      {
+        "lat": 30.046862,
+        "lng": 31.24631
+      },
+      {
+        "lat": 30.045989,
+        "lng": 31.245887
+      },
+      {
+        "lat": 30.045591,
+        "lng": 31.245301
+      },
+      {
+        "lat": 30.045328,
+        "lng": 31.244156
+      },
+      {
+        "lat": 30.044134,
+        "lng": 31.234427
+      },
+      {
+        "lat": 30.041987,
+        "lng": 31.224954
+      },
+      {
+        "lat": 30.038429,
+        "lng": 31.212224
+      },
+      {
+        "lat": 30.03578,
+        "lng": 31.200207
+      },
+      {
+        "lat": 30.035161,
+        "lng": 31.199153
+      },
+      {
+        "lat": 30.034507,
+        "lng": 31.198875
+      },
+      {
+        "lat": 30.030639,
+        "lng": 31.199752
+      },
+      {
+        "lat": 30.026038,
+        "lng": 31.20115
+      },
+      {
+        "lat": 30.017437,
+        "lng": 31.203867
+      },
+      {
+        "lat": 30.015909,
+        "lng": 31.204594
+      },
+      {
+        "lat": 30.014255,
+        "lng": 31.205095
+      },
+      {
+        "lat": 30.011808,
+        "lng": 31.206454
+      },
+      {
+        "lat": 30.010593,
+        "lng": 31.207175
+      },
+      {
+        "lat": 30.009279,
+        "lng": 31.207583
+      },
+      {
+        "lat": 30.008781,
+        "lng": 31.207702
+      },
+      {
+        "lat": 30.008211,
+        "lng": 31.207871
+      },
+      {
+        "lat": 30.007341,
+        "lng": 31.207965
+      },
+      {
+        "lat": 30.005389,
+        "lng": 31.207994
+      },
+      {
+        "lat": 30.002411,
+        "lng": 31.208086
+      },
+      {
+        "lat": 30.001636,
+        "lng": 31.208151
+      },
+      {
+        "lat": 30.000496,
+        "lng": 31.208464
+      },
+      {
+        "lat": 29.998066,
+        "lng": 31.208552
+      },
+      {
+        "lat": 29.995556,
+        "lng": 31.208615
+      },
+      {
+        "lat": 29.987714,
+        "lng": 31.20903
+      },
+      {
+        "lat": 29.986773,
+        "lng": 31.209195
+      },
+      {
+        "lat": 29.985186,
+        "lng": 31.209677
+      },
+      {
+        "lat": 29.983624,
+        "lng": 31.210352
+      },
+      {
+        "lat": 29.982266,
+        "lng": 31.211174
+      },
+      {
+        "lat": 29.981031,
+        "lng": 31.212138
+      }
+    ],
+    "line3_main": [
+      {
+        "lat": 30.102047,
+        "lng": 31.184223
+      },
+      {
+        "lat": 30.099575,
+        "lng": 31.183981
+      },
+      {
+        "lat": 30.098493,
+        "lng": 31.18449
+      },
+      {
+        "lat": 30.097978,
+        "lng": 31.185583
+      },
+      {
+        "lat": 30.098204,
+        "lng": 31.193756
+      },
+      {
+        "lat": 30.096424,
+        "lng": 31.199596
+      },
+      {
+        "lat": 30.093234,
+        "lng": 31.208959
+      },
+      {
+        "lat": 30.092737,
+        "lng": 31.210382
+      },
+      {
+        "lat": 30.092337,
+        "lng": 31.211774
+      },
+      {
+        "lat": 30.092125,
+        "lng": 31.212241
+      },
+      {
+        "lat": 30.091801,
+        "lng": 31.212667
+      },
+      {
+        "lat": 30.091248,
+        "lng": 31.213024
+      },
+      {
+        "lat": 30.090735,
+        "lng": 31.213154
+      },
+      {
+        "lat": 30.090103,
+        "lng": 31.21306
+      },
+      {
+        "lat": 30.086196,
+        "lng": 31.211763
+      },
+      {
+        "lat": 30.082263,
+        "lng": 31.210546
+      },
+      {
+        "lat": 30.081091,
+        "lng": 31.210185
+      },
+      {
+        "lat": 30.07967,
+        "lng": 31.209785
+      },
+      {
+        "lat": 30.077073,
+        "lng": 31.208968
+      },
+      {
+        "lat": 30.076772,
+        "lng": 31.208788
+      },
+      {
+        "lat": 30.076518,
+        "lng": 31.208546
+      },
+      {
+        "lat": 30.076218,
+        "lng": 31.20814
+      },
+      {
+        "lat": 30.075949,
+        "lng": 31.20759
+      },
+      {
+        "lat": 30.073862,
+        "lng": 31.203626
+      },
+      {
+        "lat": 30.073257,
+        "lng": 31.2028
+      },
+      {
+        "lat": 30.07285,
+        "lng": 31.202026
+      },
+      {
+        "lat": 30.072318,
+        "lng": 31.20132
+      },
+      {
+        "lat": 30.072012,
+        "lng": 31.200962
+      },
+      {
+        "lat": 30.071785,
+        "lng": 31.200838
+      },
+      {
+        "lat": 30.071504,
+        "lng": 31.200902
+      },
+      {
+        "lat": 30.070074,
+        "lng": 31.204767
+      },
+      {
+        "lat": 30.066536,
+        "lng": 31.212893
+      },
+      {
+        "lat": 30.062308,
+        "lng": 31.223284
+      },
+      {
+        "lat": 30.055749,
+        "lng": 31.232096
+      },
+      {
+        "lat": 30.053501,
+        "lng": 31.238733
+      },
+      {
+        "lat": 30.052399,
+        "lng": 31.246877
+      },
+      {
+        "lat": 30.054163,
+        "lng": 31.255874
+      },
+      {
+        "lat": 30.061778,
+        "lng": 31.266866
+      },
+      {
+        "lat": 30.064795,
+        "lng": 31.274753
+      },
+      {
+        "lat": 30.072011,
+        "lng": 31.283365
+      },
+      {
+        "lat": 30.073265,
+        "lng": 31.300971
+      },
+      {
+        "lat": 30.07292,
+        "lng": 31.317125
+      },
+      {
+        "lat": 30.084063,
+        "lng": 31.329015
+      },
+      {
+        "lat": 30.091738,
+        "lng": 31.326314
+      },
+      {
+        "lat": 30.101389,
+        "lng": 31.332971
+      },
+      {
+        "lat": 30.10843,
+        "lng": 31.338296
+      },
+      {
+        "lat": 30.119014,
+        "lng": 31.340185
+      },
+      {
+        "lat": 30.120344,
+        "lng": 31.34147
+      },
+      {
+        "lat": 30.121533,
+        "lng": 31.342934
+      },
+      {
+        "lat": 30.12547,
+        "lng": 31.348869
+      },
+      {
+        "lat": 30.126759,
+        "lng": 31.353222
+      },
+      {
+        "lat": 30.128037,
+        "lng": 31.360532
+      },
+      {
+        "lat": 30.128569,
+        "lng": 31.363829
+      },
+      {
+        "lat": 30.128664,
+        "lng": 31.365572
+      },
+      {
+        "lat": 30.128963,
+        "lng": 31.367165
+      },
+      {
+        "lat": 30.130923,
+        "lng": 31.37321
+      },
+      {
+        "lat": 30.134684,
+        "lng": 31.384159
+      },
+      {
+        "lat": 30.135125,
+        "lng": 31.385327
+      },
+      {
+        "lat": 30.135644,
+        "lng": 31.386367
+      },
+      {
+        "lat": 30.138685,
+        "lng": 31.390147
+      },
+      {
+        "lat": 30.139418,
+        "lng": 31.391303
+      },
+      {
+        "lat": 30.14036,
+        "lng": 31.394549
+      },
+      {
+        "lat": 30.14179,
+        "lng": 31.39956
+      },
+      {
+        "lat": 30.142534,
+        "lng": 31.400939
+      },
+      {
+        "lat": 30.142837,
+        "lng": 31.4017
+      },
+      {
+        "lat": 30.143808,
+        "lng": 31.404982
+      },
+      {
+        "lat": 30.145454,
+        "lng": 31.41046
+      },
+      {
+        "lat": 30.145728,
+        "lng": 31.411851
+      },
+      {
+        "lat": 30.145856,
+        "lng": 31.414325
+      },
+      {
+        "lat": 30.146501,
+        "lng": 31.416936
+      },
+      {
+        "lat": 30.146693,
+        "lng": 31.417893
+      },
+      {
+        "lat": 30.146792,
+        "lng": 31.419512
+      },
+      {
+        "lat": 30.146898,
+        "lng": 31.421072
+      }
+    ],
+    "line3_cairo_univ_branch": [
+      {
+        "lat": 30.026019,
+        "lng": 31.201026
+      },
+      {
+        "lat": 30.027497,
+        "lng": 31.20054
+      },
+      {
+        "lat": 30.028209,
+        "lng": 31.200261
+      },
+      {
+        "lat": 30.028871,
+        "lng": 31.199874
+      },
+      {
+        "lat": 30.030886,
+        "lng": 31.198759
+      },
+      {
+        "lat": 30.032122,
+        "lng": 31.19795
+      },
+      {
+        "lat": 30.032873,
+        "lng": 31.197524
+      },
+      {
+        "lat": 30.035264,
+        "lng": 31.196463
+      },
+      {
+        "lat": 30.036476,
+        "lng": 31.196009
+      },
+      {
+        "lat": 30.037689,
+        "lng": 31.195441
+      },
+      {
+        "lat": 30.041935,
+        "lng": 31.193195
+      },
+      {
+        "lat": 30.043007,
+        "lng": 31.192906
+      },
+      {
+        "lat": 30.043871,
+        "lng": 31.193047
+      },
+      {
+        "lat": 30.050188,
+        "lng": 31.198955
+      },
+      {
+        "lat": 30.053619,
+        "lng": 31.201622
+      },
+      {
+        "lat": 30.057104,
+        "lng": 31.201192
+      },
+      {
+        "lat": 30.065098,
+        "lng": 31.20239
+      },
+      {
+        "lat": 30.066536,
+        "lng": 31.212894
+      }
+    ],
+    "brt": [
+      {
+        "lat": 30.149125,
+        "lng": 31.229043
+      },
+      {
+        "lat": 30.149829,
+        "lng": 31.240292
+      },
+      {
+        "lat": 30.149667,
+        "lng": 31.252578
+      },
+      {
+        "lat": 30.149504,
+        "lng": 31.259273
+      },
+      {
+        "lat": 30.149747,
+        "lng": 31.262644
+      },
+      {
+        "lat": 30.150447,
+        "lng": 31.265554
+      },
+      {
+        "lat": 30.151652,
+        "lng": 31.269099
+      },
+      {
+        "lat": 30.153268,
+        "lng": 31.272376
+      },
+      {
+        "lat": 30.156338,
+        "lng": 31.278685
+      },
+      {
+        "lat": 30.159029,
+        "lng": 31.284328
+      },
+      {
+        "lat": 30.160516,
+        "lng": 31.286703
+      },
+      {
+        "lat": 30.164472,
+        "lng": 31.291026
+      },
+      {
+        "lat": 30.165382,
+        "lng": 31.293073
+      },
+      {
+        "lat": 30.16566,
+        "lng": 31.295199
+      },
+      {
+        "lat": 30.165498,
+        "lng": 31.297874
+      },
+      {
+        "lat": 30.164074,
+        "lng": 31.301919
+      },
+      {
+        "lat": 30.162753,
+        "lng": 31.305857
+      },
+      {
+        "lat": 30.1635,
+        "lng": 31.316919
+      },
+      {
+        "lat": 30.163326,
+        "lng": 31.323131
+      },
+      {
+        "lat": 30.162967,
+        "lng": 31.332098
+      },
+      {
+        "lat": 30.163476,
+        "lng": 31.341491
+      },
+      {
+        "lat": 30.165653,
+        "lng": 31.358374
+      },
+      {
+        "lat": 30.166332,
+        "lng": 31.363319
+      },
+      {
+        "lat": 30.166787,
+        "lng": 31.368518
+      },
+      {
+        "lat": 30.166812,
+        "lng": 31.372085
+      },
+      {
+        "lat": 30.166664,
+        "lng": 31.375672
+      },
+      {
+        "lat": 30.166396,
+        "lng": 31.379116
+      },
+      {
+        "lat": 30.165887,
+        "lng": 31.382734
+      },
+      {
+        "lat": 30.165215,
+        "lng": 31.386225
+      },
+      {
+        "lat": 30.164356,
+        "lng": 31.389565
+      },
+      {
+        "lat": 30.163418,
+        "lng": 31.392871
+      },
+      {
+        "lat": 30.162198,
+        "lng": 31.396125
+      },
+      {
+        "lat": 30.161299,
+        "lng": 31.398248
+      },
+      {
+        "lat": 30.160867,
+        "lng": 31.39931
+      },
+      {
+        "lat": 30.16046,
+        "lng": 31.400484
+      },
+      {
+        "lat": 30.159706,
+        "lng": 31.402738
+      },
+      {
+        "lat": 30.159217,
+        "lng": 31.40374
+      },
+      {
+        "lat": 30.158546,
+        "lng": 31.404775
+      },
+      {
+        "lat": 30.156691,
+        "lng": 31.40693
+      },
+      {
+        "lat": 30.155762,
+        "lng": 31.408017
+      },
+      {
+        "lat": 30.154898,
+        "lng": 31.40923
+      },
+      {
+        "lat": 30.151384,
+        "lng": 31.414345
+      },
+      {
+        "lat": 30.148098,
+        "lng": 31.420014
+      },
+      {
+        "lat": 30.147858,
+        "lng": 31.422878
+      },
+      {
+        "lat": 30.14826,
+        "lng": 31.424477
+      },
+      {
+        "lat": 30.148945,
+        "lng": 31.426095
+      },
+      {
+        "lat": 30.149455,
+        "lng": 31.42758
+      },
+      {
+        "lat": 30.14966,
+        "lng": 31.42929
+      },
+      {
+        "lat": 30.14938,
+        "lng": 31.431512
+      },
+      {
+        "lat": 30.147857,
+        "lng": 31.434006
+      },
+      {
+        "lat": 30.141946,
+        "lng": 31.437081
+      },
+      {
+        "lat": 30.138769,
+        "lng": 31.437883
+      },
+      {
+        "lat": 30.138038,
+        "lng": 31.438263
+      },
+      {
+        "lat": 30.137321,
+        "lng": 31.438723
+      },
+      {
+        "lat": 30.136618,
+        "lng": 31.439312
+      },
+      {
+        "lat": 30.135913,
+        "lng": 31.440033
+      },
+      {
+        "lat": 30.13563,
+        "lng": 31.440407
+      },
+      {
+        "lat": 30.135355,
+        "lng": 31.440823
+      },
+      {
+        "lat": 30.134893,
+        "lng": 31.441721
+      },
+      {
+        "lat": 30.134573,
+        "lng": 31.442601
+      },
+      {
+        "lat": 30.134436,
+        "lng": 31.44322
+      },
+      {
+        "lat": 30.134349,
+        "lng": 31.443835
+      },
+      {
+        "lat": 30.134286,
+        "lng": 31.450498
+      },
+      {
+        "lat": 30.134257,
+        "lng": 31.455086
+      },
+      {
+        "lat": 30.134215,
+        "lng": 31.457249
+      },
+      {
+        "lat": 30.133892,
+        "lng": 31.458954
+      },
+      {
+        "lat": 30.133613,
+        "lng": 31.45976
+      },
+      {
+        "lat": 30.133297,
+        "lng": 31.460545
+      },
+      {
+        "lat": 30.132703,
+        "lng": 31.461604
+      },
+      {
+        "lat": 30.131979,
+        "lng": 31.462548
+      },
+      {
+        "lat": 30.130929,
+        "lng": 31.463546
+      },
+      {
+        "lat": 30.129813,
+        "lng": 31.464273
+      },
+      {
+        "lat": 30.128534,
+        "lng": 31.464811
+      },
+      {
+        "lat": 30.127228,
+        "lng": 31.46505
+      },
+      {
+        "lat": 30.126533,
+        "lng": 31.465068
+      },
+      {
+        "lat": 30.125811,
+        "lng": 31.465025
+      },
+      {
+        "lat": 30.124499,
+        "lng": 31.464741
+      },
+      {
+        "lat": 30.123714,
+        "lng": 31.464405
+      },
+      {
+        "lat": 30.123062,
+        "lng": 31.464056
+      },
+      {
+        "lat": 30.121729,
+        "lng": 31.463147
+      },
+      {
+        "lat": 30.119073,
+        "lng": 31.461208
+      },
+      {
+        "lat": 30.116278,
+        "lng": 31.459161
+      },
+      {
+        "lat": 30.114645,
+        "lng": 31.457945
+      },
+      {
+        "lat": 30.11395,
+        "lng": 31.457419
+      },
+      {
+        "lat": 30.113432,
+        "lng": 31.457032
+      },
+      {
+        "lat": 30.107935,
+        "lng": 31.452978
+      },
+      {
+        "lat": 30.105182,
+        "lng": 31.450957
+      },
+      {
+        "lat": 30.103748,
+        "lng": 31.449912
+      },
+      {
+        "lat": 30.102419,
+        "lng": 31.448914
+      },
+      {
+        "lat": 30.096937,
+        "lng": 31.444866
+      },
+      {
+        "lat": 30.0942,
+        "lng": 31.442859
+      },
+      {
+        "lat": 30.092665,
+        "lng": 31.441723
+      },
+      {
+        "lat": 30.091479,
+        "lng": 31.440827
+      },
+      {
+        "lat": 30.090071,
+        "lng": 31.439774
+      },
+      {
+        "lat": 30.08864,
+        "lng": 31.438753
+      },
+      {
+        "lat": 30.087939,
+        "lng": 31.438276
+      },
+      {
+        "lat": 30.087244,
+        "lng": 31.437876
+      },
+      {
+        "lat": 30.086496,
+        "lng": 31.437523
+      },
+      {
+        "lat": 30.085716,
+        "lng": 31.437236
+      },
+      {
+        "lat": 30.082615,
+        "lng": 31.43637
+      },
+      {
+        "lat": 30.081062,
+        "lng": 31.435945
+      },
+      {
+        "lat": 30.080309,
+        "lng": 31.43574
+      },
+      {
+        "lat": 30.079517,
+        "lng": 31.435462
+      },
+      {
+        "lat": 30.0782,
+        "lng": 31.434846
+      },
+      {
+        "lat": 30.076942,
+        "lng": 31.434145
+      },
+      {
+        "lat": 30.075648,
+        "lng": 31.433295
+      },
+      {
+        "lat": 30.074413,
+        "lng": 31.432339
+      },
+      {
+        "lat": 30.069428,
+        "lng": 31.427142
+      },
+      {
+        "lat": 30.068258,
+        "lng": 31.42572
+      },
+      {
+        "lat": 30.067174,
+        "lng": 31.42417
+      },
+      {
+        "lat": 30.065039,
+        "lng": 31.421105
+      },
+      {
+        "lat": 30.063925,
+        "lng": 31.419764
+      },
+      {
+        "lat": 30.063346,
+        "lng": 31.419181
+      },
+      {
+        "lat": 30.062757,
+        "lng": 31.418626
+      },
+      {
+        "lat": 30.060282,
+        "lng": 31.416522
+      },
+      {
+        "lat": 30.055407,
+        "lng": 31.412437
+      },
+      {
+        "lat": 30.050988,
+        "lng": 31.408676
+      },
+      {
+        "lat": 30.04821,
+        "lng": 31.406642
+      },
+      {
+        "lat": 30.046673,
+        "lng": 31.405812
+      },
+      {
+        "lat": 30.045183,
+        "lng": 31.405262
+      },
+      {
+        "lat": 30.029833,
+        "lng": 31.402733
+      },
+      {
+        "lat": 30.022143,
+        "lng": 31.40169
+      },
+      {
+        "lat": 30.014452,
+        "lng": 31.400646
+      },
+      {
+        "lat": 30.010357,
+        "lng": 31.40004
+      },
+      {
+        "lat": 30.0083,
+        "lng": 31.399736
+      },
+      {
+        "lat": 30.006301,
+        "lng": 31.399213
+      },
+      {
+        "lat": 30.003887,
+        "lng": 31.398211
+      },
+      {
+        "lat": 30.001622,
+        "lng": 31.396876
+      },
+      {
+        "lat": 30.000451,
+        "lng": 31.395882
+      },
+      {
+        "lat": 29.999312,
+        "lng": 31.394807
+      },
+      {
+        "lat": 29.998223,
+        "lng": 31.393595
+      },
+      {
+        "lat": 29.997259,
+        "lng": 31.392316
+      },
+      {
+        "lat": 29.996413,
+        "lng": 31.391037
+      },
+      {
+        "lat": 29.995656,
+        "lng": 31.389663
+      },
+      {
+        "lat": 29.99444,
+        "lng": 31.386686
+      },
+      {
+        "lat": 29.992216,
+        "lng": 31.38074
+      },
+      {
+        "lat": 29.989956,
+        "lng": 31.374626
+      },
+      {
+        "lat": 29.988759,
+        "lng": 31.371445
+      },
+      {
+        "lat": 29.987353,
+        "lng": 31.368985
+      },
+      {
+        "lat": 29.984628,
+        "lng": 31.366748
+      },
+      {
+        "lat": 29.981761,
+        "lng": 31.365049
+      },
+      {
+        "lat": 29.980574,
+        "lng": 31.363844
+      },
+      {
+        "lat": 29.979618,
+        "lng": 31.362447
+      },
+      {
+        "lat": 29.978942,
+        "lng": 31.360691
+      },
+      {
+        "lat": 29.97869,
+        "lng": 31.359741
+      },
+      {
+        "lat": 29.978507,
+        "lng": 31.358768
+      },
+      {
+        "lat": 29.978456,
+        "lng": 31.357375
+      },
+      {
+        "lat": 29.978546,
+        "lng": 31.355969
+      },
+      {
+        "lat": 29.978852,
+        "lng": 31.354644
+      },
+      {
+        "lat": 29.979252,
+        "lng": 31.353339
+      },
+      {
+        "lat": 29.980096,
+        "lng": 31.350807
+      },
+      {
+        "lat": 29.980817,
+        "lng": 31.348226
+      },
+      {
+        "lat": 29.982007,
+        "lng": 31.338448
+      },
+      {
+        "lat": 29.983065,
+        "lng": 31.330083
+      },
+      {
+        "lat": 29.983563,
+        "lng": 31.325877
+      },
+      {
+        "lat": 29.984008,
+        "lng": 31.323562
+      },
+      {
+        "lat": 29.984169,
+        "lng": 31.322614
+      },
+      {
+        "lat": 29.984251,
+        "lng": 31.321765
+      },
+      {
+        "lat": 29.984308,
+        "lng": 31.320582
+      },
+      {
+        "lat": 29.984285,
+        "lng": 31.319414
+      },
+      {
+        "lat": 29.984221,
+        "lng": 31.317067
+      },
+      {
+        "lat": 29.98438,
+        "lng": 31.31585
+      },
+      {
+        "lat": 29.984711,
+        "lng": 31.314733
+      },
+      {
+        "lat": 29.985525,
+        "lng": 31.312627
+      },
+      {
+        "lat": 29.986975,
+        "lng": 31.308455
+      },
+      {
+        "lat": 29.988863,
+        "lng": 31.300589
+      },
+      {
+        "lat": 29.992344,
+        "lng": 31.291512
+      },
+      {
+        "lat": 29.992592,
+        "lng": 31.290533
+      },
+      {
+        "lat": 29.992721,
+        "lng": 31.289584
+      },
+      {
+        "lat": 29.992782,
+        "lng": 31.288629
+      },
+      {
+        "lat": 29.992768,
+        "lng": 31.287689
+      },
+      {
+        "lat": 29.992586,
+        "lng": 31.286587
+      },
+      {
+        "lat": 29.992336,
+        "lng": 31.285567
+      },
+      {
+        "lat": 29.991813,
+        "lng": 31.28349
+      },
+      {
+        "lat": 29.991486,
+        "lng": 31.281784
+      },
+      {
+        "lat": 29.991243,
+        "lng": 31.280033
+      },
+      {
+        "lat": 29.99052,
+        "lng": 31.274614
+      },
+      {
+        "lat": 29.990443,
+        "lng": 31.272703
+      },
+      {
+        "lat": 29.990443,
+        "lng": 31.270781
+      },
+      {
+        "lat": 29.990294,
+        "lng": 31.266088
+      },
+      {
+        "lat": 29.989857,
+        "lng": 31.261035
+      },
+      {
+        "lat": 29.989877,
+        "lng": 31.260128
+      },
+      {
+        "lat": 29.98995,
+        "lng": 31.259193
+      },
+      {
+        "lat": 29.990633,
+        "lng": 31.256262
+      },
+      {
+        "lat": 29.991772,
+        "lng": 31.25153
+      },
+      {
+        "lat": 29.992417,
+        "lng": 31.248441
+      },
+      {
+        "lat": 29.9926,
+        "lng": 31.246902
+      },
+      {
+        "lat": 29.992711,
+        "lng": 31.24539
+      },
+      {
+        "lat": 29.992771,
+        "lng": 31.243607
+      },
+      {
+        "lat": 29.992737,
+        "lng": 31.241969
+      },
+      {
+        "lat": 29.992531,
+        "lng": 31.240148
+      },
+      {
+        "lat": 29.992312,
+        "lng": 31.238478
+      },
+      {
+        "lat": 29.992052,
+        "lng": 31.236513
+      },
+      {
+        "lat": 29.991908,
+        "lng": 31.235632
+      },
+      {
+        "lat": 29.991309,
+        "lng": 31.233358
+      },
+      {
+        "lat": 29.990826,
+        "lng": 31.231614
+      },
+      {
+        "lat": 29.989583,
+        "lng": 31.227141
+      },
+      {
+        "lat": 29.988359,
+        "lng": 31.222882
+      },
+      {
+        "lat": 29.986932,
+        "lng": 31.217937
+      },
+      {
+        "lat": 29.986616,
+        "lng": 31.216125
+      },
+      {
+        "lat": 29.986589,
+        "lng": 31.214459
+      },
+      {
+        "lat": 29.986656,
+        "lng": 31.212696
+      },
+      {
+        "lat": 29.986636,
+        "lng": 31.211107
+      },
+      {
+        "lat": 29.986461,
+        "lng": 31.210114
+      },
+      {
+        "lat": 29.986227,
+        "lng": 31.209335
+      },
+      {
+        "lat": 29.985668,
+        "lng": 31.207585
+      },
+      {
+        "lat": 29.98472,
+        "lng": 31.204702
+      },
+      {
+        "lat": 29.98461,
+        "lng": 31.203907
+      },
+      {
+        "lat": 29.984478,
+        "lng": 31.202989
+      },
+      {
+        "lat": 29.984465,
+        "lng": 31.202112
+      },
+      {
+        "lat": 29.984508,
+        "lng": 31.201108
+      },
+      {
+        "lat": 29.984623,
+        "lng": 31.20021
+      },
+      {
+        "lat": 29.985064,
+        "lng": 31.198328
+      },
+      {
+        "lat": 29.985749,
+        "lng": 31.196681
+      },
+      {
+        "lat": 29.986435,
+        "lng": 31.194881
+      },
+      {
+        "lat": 29.986901,
+        "lng": 31.193264
+      },
+      {
+        "lat": 29.987062,
+        "lng": 31.19165
+      },
+      {
+        "lat": 29.987057,
+        "lng": 31.190063
+      },
+      {
+        "lat": 29.986878,
+        "lng": 31.188879
+      },
+      {
+        "lat": 29.985699,
+        "lng": 31.184218
+      },
+      {
+        "lat": 29.985431,
+        "lng": 31.18322
+      },
+      {
+        "lat": 29.985109,
+        "lng": 31.182269
+      },
+      {
+        "lat": 29.984736,
+        "lng": 31.181408
+      },
+      {
+        "lat": 29.984296,
+        "lng": 31.180639
+      },
+      {
+        "lat": 29.983658,
+        "lng": 31.179717
+      },
+      {
+        "lat": 29.983215,
+        "lng": 31.179168
+      },
+      {
+        "lat": 29.982733,
+        "lng": 31.178704
+      },
+      {
+        "lat": 29.980956,
+        "lng": 31.177278
+      },
+      {
+        "lat": 29.979197,
+        "lng": 31.176054
+      },
+      {
+        "lat": 29.977419,
+        "lng": 31.174753
+      },
+      {
+        "lat": 29.976357,
+        "lng": 31.173824
+      },
+      {
+        "lat": 29.975666,
+        "lng": 31.173459
+      },
+      {
+        "lat": 29.966859,
+        "lng": 31.167449
+      },
+      {
+        "lat": 29.962452,
+        "lng": 31.164263
+      },
+      {
+        "lat": 29.960261,
+        "lng": 31.162747
+      },
+      {
+        "lat": 29.95829,
+        "lng": 31.160713
+      },
+      {
+        "lat": 29.957239,
+        "lng": 31.159297
+      },
+      {
+        "lat": 29.956382,
+        "lng": 31.157685
+      },
+      {
+        "lat": 29.955639,
+        "lng": 31.155988
+      },
+      {
+        "lat": 29.955047,
+        "lng": 31.154184
+      },
+      {
+        "lat": 29.953382,
+        "lng": 31.148733
+      },
+      {
+        "lat": 29.952966,
+        "lng": 31.147221
+      },
+      {
+        "lat": 29.952509,
+        "lng": 31.145798
+      },
+      {
+        "lat": 29.951855,
+        "lng": 31.144475
+      },
+      {
+        "lat": 29.951173,
+        "lng": 31.143495
+      },
+      {
+        "lat": 29.950519,
+        "lng": 31.142696
+      },
+      {
+        "lat": 29.949809,
+        "lng": 31.142042
+      },
+      {
+        "lat": 29.948512,
+        "lng": 31.141092
+      },
+      {
+        "lat": 29.947199,
+        "lng": 31.140214
+      },
+      {
+        "lat": 29.94613,
+        "lng": 31.139398
+      },
+      {
+        "lat": 29.94512,
+        "lng": 31.138406
+      },
+      {
+        "lat": 29.944132,
+        "lng": 31.13715
+      },
+      {
+        "lat": 29.943259,
+        "lng": 31.135674
+      },
+      {
+        "lat": 29.942705,
+        "lng": 31.134466
+      },
+      {
+        "lat": 29.942245,
+        "lng": 31.133181
+      },
+      {
+        "lat": 29.941886,
+        "lng": 31.131889
+      },
+      {
+        "lat": 29.941681,
+        "lng": 31.13048
+      },
+      {
+        "lat": 29.941572,
+        "lng": 31.128071
+      },
+      {
+        "lat": 29.941822,
+        "lng": 31.125866
+      },
+      {
+        "lat": 29.9422,
+        "lng": 31.124235
+      },
+      {
+        "lat": 29.942684,
+        "lng": 31.122952
+      },
+      {
+        "lat": 29.943757,
+        "lng": 31.120049
+      },
+      {
+        "lat": 29.94493,
+        "lng": 31.116839
+      },
+      {
+        "lat": 29.945724,
+        "lng": 31.114309
+      },
+      {
+        "lat": 29.945796,
+        "lng": 31.112019
+      },
+      {
+        "lat": 29.945523,
+        "lng": 31.110398
+      },
+      {
+        "lat": 29.945175,
+        "lng": 31.108957
+      },
+      {
+        "lat": 29.944839,
+        "lng": 31.107613
+      },
+      {
+        "lat": 29.944795,
+        "lng": 31.106251
+      },
+      {
+        "lat": 29.945017,
+        "lng": 31.104525
+      },
+      {
+        "lat": 29.945536,
+        "lng": 31.102931
+      },
+      {
+        "lat": 29.946855,
+        "lng": 31.099638
+      },
+      {
+        "lat": 29.951517,
+        "lng": 31.088416
+      },
+      {
+        "lat": 29.953851,
+        "lng": 31.082726
+      },
+      {
+        "lat": 29.954569,
+        "lng": 31.080984
+      },
+      {
+        "lat": 29.955135,
+        "lng": 31.080041
+      },
+      {
+        "lat": 29.955842,
+        "lng": 31.078633
+      },
+      {
+        "lat": 29.956371,
+        "lng": 31.077338
+      },
+      {
+        "lat": 29.957357,
+        "lng": 31.074921
+      },
+      {
+        "lat": 29.95782,
+        "lng": 31.073721
+      },
+      {
+        "lat": 29.958164,
+        "lng": 31.07237
+      },
+      {
+        "lat": 29.958372,
+        "lng": 31.068793
+      },
+      {
+        "lat": 29.958938,
+        "lng": 31.067669
+      },
+      {
+        "lat": 29.960395,
+        "lng": 31.067171
+      },
+      {
+        "lat": 29.961934,
+        "lng": 31.066971
+      },
+      {
+        "lat": 29.96413,
+        "lng": 31.066661
+      },
+      {
+        "lat": 29.964959,
+        "lng": 31.066684
+      },
+      {
+        "lat": 29.965789,
+        "lng": 31.066889
+      },
+      {
+        "lat": 29.96654,
+        "lng": 31.067278
+      },
+      {
+        "lat": 29.967097,
+        "lng": 31.067715
+      },
+      {
+        "lat": 29.967648,
+        "lng": 31.068316
+      },
+      {
+        "lat": 29.97059,
+        "lng": 31.072883
+      },
+      {
+        "lat": 29.971678,
+        "lng": 31.074303
+      },
+      {
+        "lat": 29.973204,
+        "lng": 31.075586
+      },
+      {
+        "lat": 29.977901,
+        "lng": 31.078059
+      },
+      {
+        "lat": 29.984331,
+        "lng": 31.081476
+      },
+      {
+        "lat": 29.990726,
+        "lng": 31.084847
+      },
+      {
+        "lat": 29.997075,
+        "lng": 31.088387
+      },
+      {
+        "lat": 29.998079,
+        "lng": 31.089638
+      },
+      {
+        "lat": 29.998697,
+        "lng": 31.091257
+      },
+      {
+        "lat": 29.99886,
+        "lng": 31.092551
+      },
+      {
+        "lat": 29.998838,
+        "lng": 31.093998
+      },
+      {
+        "lat": 29.998468,
+        "lng": 31.101112
+      },
+      {
+        "lat": 29.998347,
+        "lng": 31.101875
+      },
+      {
+        "lat": 29.99814,
+        "lng": 31.102655
+      },
+      {
+        "lat": 29.997365,
+        "lng": 31.104569
+      },
+      {
+        "lat": 29.995877,
+        "lng": 31.107835
+      },
+      {
+        "lat": 29.995642,
+        "lng": 31.108617
+      },
+      {
+        "lat": 29.995546,
+        "lng": 31.109582
+      },
+      {
+        "lat": 29.995854,
+        "lng": 31.111144
+      },
+      {
+        "lat": 29.997121,
+        "lng": 31.11347
+      },
+      {
+        "lat": 29.997612,
+        "lng": 31.115327
+      },
+      {
+        "lat": 29.998364,
+        "lng": 31.116721
+      }
+    ],
+    "monorail_east": [
+      {
+        "lat": 30.071663,
+        "lng": 31.317629
+      },
+      {
+        "lat": 30.069772,
+        "lng": 31.318951
+      },
+      {
+        "lat": 30.069354,
+        "lng": 31.319152
+      },
+      {
+        "lat": 30.068161,
+        "lng": 31.319592
+      },
+      {
+        "lat": 30.066532,
+        "lng": 31.320155
+      },
+      {
+        "lat": 30.065903,
+        "lng": 31.320432
+      },
+      {
+        "lat": 30.064963,
+        "lng": 31.32097
+      },
+      {
+        "lat": 30.063432,
+        "lng": 31.321889
+      },
+      {
+        "lat": 30.061806,
+        "lng": 31.322817
+      },
+      {
+        "lat": 30.060786,
+        "lng": 31.323423
+      },
+      {
+        "lat": 30.060159,
+        "lng": 31.32371
+      },
+      {
+        "lat": 30.059732,
+        "lng": 31.323855
+      },
+      {
+        "lat": 30.059261,
+        "lng": 31.323949
+      },
+      {
+        "lat": 30.056961,
+        "lng": 31.324295
+      },
+      {
+        "lat": 30.053754,
+        "lng": 31.324847
+      },
+      {
+        "lat": 30.052923,
+        "lng": 31.324944
+      },
+      {
+        "lat": 30.052718,
+        "lng": 31.324947
+      },
+      {
+        "lat": 30.052529,
+        "lng": 31.324887
+      },
+      {
+        "lat": 30.052362,
+        "lng": 31.324776
+      },
+      {
+        "lat": 30.052218,
+        "lng": 31.32461
+      },
+      {
+        "lat": 30.052112,
+        "lng": 31.324425
+      },
+      {
+        "lat": 30.051908,
+        "lng": 31.323667
+      },
+      {
+        "lat": 30.051599,
+        "lng": 31.322723
+      },
+      {
+        "lat": 30.051142,
+        "lng": 31.32133
+      },
+      {
+        "lat": 30.051005,
+        "lng": 31.321031
+      },
+      {
+        "lat": 30.050847,
+        "lng": 31.320873
+      },
+      {
+        "lat": 30.050656,
+        "lng": 31.320767
+      },
+      {
+        "lat": 30.050378,
+        "lng": 31.320754
+      },
+      {
+        "lat": 30.04899,
+        "lng": 31.321381
+      },
+      {
+        "lat": 30.048718,
+        "lng": 31.321565
+      },
+      {
+        "lat": 30.048457,
+        "lng": 31.321777
+      },
+      {
+        "lat": 30.045971,
+        "lng": 31.32421
+      },
+      {
+        "lat": 30.043572,
+        "lng": 31.326536
+      },
+      {
+        "lat": 30.043471,
+        "lng": 31.32673
+      },
+      {
+        "lat": 30.043395,
+        "lng": 31.32695
+      },
+      {
+        "lat": 30.043428,
+        "lng": 31.327452
+      },
+      {
+        "lat": 30.043802,
+        "lng": 31.330963
+      },
+      {
+        "lat": 30.044244,
+        "lng": 31.334794
+      },
+      {
+        "lat": 30.044649,
+        "lng": 31.338615
+      },
+      {
+        "lat": 30.045473,
+        "lng": 31.346378
+      },
+      {
+        "lat": 30.045666,
+        "lng": 31.348211
+      },
+      {
+        "lat": 30.045884,
+        "lng": 31.35009
+      },
+      {
+        "lat": 30.04627,
+        "lng": 31.353803
+      },
+      {
+        "lat": 30.046175,
+        "lng": 31.354172
+      },
+      {
+        "lat": 30.045324,
+        "lng": 31.355186
+      },
+      {
+        "lat": 30.04468,
+        "lng": 31.355913
+      },
+      {
+        "lat": 30.044451,
+        "lng": 31.356045
+      },
+      {
+        "lat": 30.044226,
+        "lng": 31.356111
+      },
+      {
+        "lat": 30.044007,
+        "lng": 31.356089
+      },
+      {
+        "lat": 30.04183,
+        "lng": 31.355887
+      },
+      {
+        "lat": 30.039192,
+        "lng": 31.355593
+      },
+      {
+        "lat": 30.037445,
+        "lng": 31.355367
+      },
+      {
+        "lat": 30.035702,
+        "lng": 31.355149
+      },
+      {
+        "lat": 30.032219,
+        "lng": 31.354719
+      },
+      {
+        "lat": 30.028837,
+        "lng": 31.354276
+      },
+      {
+        "lat": 30.026976,
+        "lng": 31.354064
+      },
+      {
+        "lat": 30.026112,
+        "lng": 31.353967
+      },
+      {
+        "lat": 30.025679,
+        "lng": 31.353929
+      },
+      {
+        "lat": 30.02525,
+        "lng": 31.353937
+      },
+      {
+        "lat": 30.024806,
+        "lng": 31.354088
+      },
+      {
+        "lat": 30.024408,
+        "lng": 31.354342
+      },
+      {
+        "lat": 30.024213,
+        "lng": 31.354574
+      },
+      {
+        "lat": 30.024036,
+        "lng": 31.354839
+      },
+      {
+        "lat": 30.023894,
+        "lng": 31.355144
+      },
+      {
+        "lat": 30.023795,
+        "lng": 31.355475
+      },
+      {
+        "lat": 30.023758,
+        "lng": 31.355795
+      },
+      {
+        "lat": 30.023755,
+        "lng": 31.356122
+      },
+      {
+        "lat": 30.023898,
+        "lng": 31.356785
+      },
+      {
+        "lat": 30.02425,
+        "lng": 31.358019
+      },
+      {
+        "lat": 30.024585,
+        "lng": 31.359598
+      },
+      {
+        "lat": 30.024705,
+        "lng": 31.360563
+      },
+      {
+        "lat": 30.024704,
+        "lng": 31.361111
+      },
+      {
+        "lat": 30.024637,
+        "lng": 31.361658
+      },
+      {
+        "lat": 30.024221,
+        "lng": 31.363417
+      },
+      {
+        "lat": 30.023434,
+        "lng": 31.366501
+      },
+      {
+        "lat": 30.02194,
+        "lng": 31.372401
+      },
+      {
+        "lat": 30.021233,
+        "lng": 31.375142
+      },
+      {
+        "lat": 30.020542,
+        "lng": 31.377908
+      },
+      {
+        "lat": 30.01913,
+        "lng": 31.383428
+      },
+      {
+        "lat": 30.017639,
+        "lng": 31.389402
+      },
+      {
+        "lat": 30.016872,
+        "lng": 31.392379
+      },
+      {
+        "lat": 30.016178,
+        "lng": 31.395387
+      },
+      {
+        "lat": 30.016144,
+        "lng": 31.396211
+      },
+      {
+        "lat": 30.016149,
+        "lng": 31.397061
+      },
+      {
+        "lat": 30.016157,
+        "lng": 31.398788
+      },
+      {
+        "lat": 30.016177,
+        "lng": 31.402218
+      },
+      {
+        "lat": 30.016251,
+        "lng": 31.405638
+      },
+      {
+        "lat": 30.016183,
+        "lng": 31.409041
+      },
+      {
+        "lat": 30.016216,
+        "lng": 31.411378
+      },
+      {
+        "lat": 30.016218,
+        "lng": 31.411908
+      },
+      {
+        "lat": 30.016181,
+        "lng": 31.412438
+      },
+      {
+        "lat": 30.016125,
+        "lng": 31.413038
+      },
+      {
+        "lat": 30.016103,
+        "lng": 31.413617
+      },
+      {
+        "lat": 30.016121,
+        "lng": 31.415203
+      },
+      {
+        "lat": 30.016091,
+        "lng": 31.41652
+      },
+      {
+        "lat": 30.016207,
+        "lng": 31.41787
+      },
+      {
+        "lat": 30.016222,
+        "lng": 31.421378
+      },
+      {
+        "lat": 30.016224,
+        "lng": 31.422918
+      },
+      {
+        "lat": 30.016224,
+        "lng": 31.424514
+      },
+      {
+        "lat": 30.016215,
+        "lng": 31.427611
+      },
+      {
+        "lat": 30.01623,
+        "lng": 31.429185
+      },
+      {
+        "lat": 30.01615,
+        "lng": 31.430706
+      },
+      {
+        "lat": 30.016255,
+        "lng": 31.431466
+      },
+      {
+        "lat": 30.016225,
+        "lng": 31.433802
+      },
+      {
+        "lat": 30.016309,
+        "lng": 31.445497
+      },
+      {
+        "lat": 30.016543,
+        "lng": 31.446104
+      },
+      {
+        "lat": 30.016918,
+        "lng": 31.446614
+      },
+      {
+        "lat": 30.017797,
+        "lng": 31.447638
+      },
+      {
+        "lat": 30.019421,
+        "lng": 31.449486
+      },
+      {
+        "lat": 30.022448,
+        "lng": 31.452969
+      },
+      {
+        "lat": 30.024601,
+        "lng": 31.455512
+      },
+      {
+        "lat": 30.025152,
+        "lng": 31.456705
+      },
+      {
+        "lat": 30.025337,
+        "lng": 31.45738
+      },
+      {
+        "lat": 30.025444,
+        "lng": 31.458167
+      },
+      {
+        "lat": 30.025464,
+        "lng": 31.460143
+      },
+      {
+        "lat": 30.025325,
+        "lng": 31.48687
+      },
+      {
+        "lat": 30.025327,
+        "lng": 31.491676
+      },
+      {
+        "lat": 30.025252,
+        "lng": 31.49781
+      },
+      {
+        "lat": 30.024976,
+        "lng": 31.499067
+      },
+      {
+        "lat": 30.024412,
+        "lng": 31.500534
+      },
+      {
+        "lat": 30.022998,
+        "lng": 31.503862
+      },
+      {
+        "lat": 30.020191,
+        "lng": 31.50945
+      },
+      {
+        "lat": 30.013253,
+        "lng": 31.519603
+      },
+      {
+        "lat": 30.011585,
+        "lng": 31.521624
+      },
+      {
+        "lat": 30.011344,
+        "lng": 31.521992
+      },
+      {
+        "lat": 30.011342,
+        "lng": 31.522417
+      },
+      {
+        "lat": 30.011369,
+        "lng": 31.522675
+      },
+      {
+        "lat": 30.011468,
+        "lng": 31.522919
+      },
+      {
+        "lat": 30.011654,
+        "lng": 31.523189
+      },
+      {
+        "lat": 30.012599,
+        "lng": 31.523883
+      },
+      {
+        "lat": 30.014319,
+        "lng": 31.525118
+      },
+      {
+        "lat": 30.01644,
+        "lng": 31.526409
+      },
+      {
+        "lat": 30.019378,
+        "lng": 31.527705
+      },
+      {
+        "lat": 30.022872,
+        "lng": 31.528645
+      },
+      {
+        "lat": 30.025798,
+        "lng": 31.529045
+      },
+      {
+        "lat": 30.026354,
+        "lng": 31.529162
+      },
+      {
+        "lat": 30.026809,
+        "lng": 31.529505
+      },
+      {
+        "lat": 30.026961,
+        "lng": 31.530179
+      },
+      {
+        "lat": 30.027007,
+        "lng": 31.53313
+      },
+      {
+        "lat": 30.026918,
+        "lng": 31.560331
+      },
+      {
+        "lat": 30.026837,
+        "lng": 31.570553
+      },
+      {
+        "lat": 30.026821,
+        "lng": 31.573303
+      },
+      {
+        "lat": 30.026821,
+        "lng": 31.578892
+      },
+      {
+        "lat": 30.026761,
+        "lng": 31.582669
+      },
+      {
+        "lat": 30.026541,
+        "lng": 31.584086
+      },
+      {
+        "lat": 30.026302,
+        "lng": 31.584961
+      },
+      {
+        "lat": 30.026028,
+        "lng": 31.585743
+      },
+      {
+        "lat": 30.025719,
+        "lng": 31.586483
+      },
+      {
+        "lat": 30.02537,
+        "lng": 31.587173
+      },
+      {
+        "lat": 30.024586,
+        "lng": 31.588568
+      },
+      {
+        "lat": 30.023804,
+        "lng": 31.589955
+      },
+      {
+        "lat": 30.022265,
+        "lng": 31.59272
+      },
+      {
+        "lat": 30.021635,
+        "lng": 31.593799
+      },
+      {
+        "lat": 30.021397,
+        "lng": 31.594306
+      },
+      {
+        "lat": 30.021191,
+        "lng": 31.594849
+      },
+      {
+        "lat": 30.02111,
+        "lng": 31.59539
+      },
+      {
+        "lat": 30.02117,
+        "lng": 31.595892
+      },
+      {
+        "lat": 30.021322,
+        "lng": 31.596336
+      },
+      {
+        "lat": 30.02155,
+        "lng": 31.596756
+      },
+      {
+        "lat": 30.022204,
+        "lng": 31.597298
+      },
+      {
+        "lat": 30.022887,
+        "lng": 31.597791
+      },
+      {
+        "lat": 30.023934,
+        "lng": 31.598396
+      },
+      {
+        "lat": 30.024984,
+        "lng": 31.598931
+      },
+      {
+        "lat": 30.025898,
+        "lng": 31.599446
+      },
+      {
+        "lat": 30.026361,
+        "lng": 31.599705
+      },
+      {
+        "lat": 30.026736,
+        "lng": 31.600029
+      },
+      {
+        "lat": 30.027088,
+        "lng": 31.600338
+      },
+      {
+        "lat": 30.02824,
+        "lng": 31.60158
+      },
+      {
+        "lat": 30.029053,
+        "lng": 31.602636
+      },
+      {
+        "lat": 30.029205,
+        "lng": 31.603106
+      },
+      {
+        "lat": 30.02927,
+        "lng": 31.603534
+      },
+      {
+        "lat": 30.029259,
+        "lng": 31.604028
+      },
+      {
+        "lat": 30.029137,
+        "lng": 31.604518
+      },
+      {
+        "lat": 30.028946,
+        "lng": 31.604882
+      },
+      {
+        "lat": 30.028699,
+        "lng": 31.605233
+      },
+      {
+        "lat": 30.026909,
+        "lng": 31.607441
+      },
+      {
+        "lat": 30.026052,
+        "lng": 31.60869
+      },
+      {
+        "lat": 30.025183,
+        "lng": 31.609964
+      },
+      {
+        "lat": 30.024153,
+        "lng": 31.611576
+      },
+      {
+        "lat": 30.023196,
+        "lng": 31.613242
+      },
+      {
+        "lat": 30.022318,
+        "lng": 31.614885
+      },
+      {
+        "lat": 30.021511,
+        "lng": 31.616615
+      },
+      {
+        "lat": 30.02053,
+        "lng": 31.618753
+      },
+      {
+        "lat": 30.020027,
+        "lng": 31.619877
+      },
+      {
+        "lat": 30.019547,
+        "lng": 31.621168
+      },
+      {
+        "lat": 30.018929,
+        "lng": 31.622934
+      },
+      {
+        "lat": 30.018303,
+        "lng": 31.625
+      },
+      {
+        "lat": 30.017613,
+        "lng": 31.627639
+      },
+      {
+        "lat": 30.017014,
+        "lng": 31.631034
+      },
+      {
+        "lat": 30.016649,
+        "lng": 31.632926
+      },
+      {
+        "lat": 30.016281,
+        "lng": 31.635733
+      },
+      {
+        "lat": 30.016131,
+        "lng": 31.638028
+      },
+      {
+        "lat": 30.01609,
+        "lng": 31.641436
+      },
+      {
+        "lat": 30.01613,
+        "lng": 31.643064
+      },
+      {
+        "lat": 30.016489,
+        "lng": 31.64712
+      },
+      {
+        "lat": 30.017378,
+        "lng": 31.655221
+      },
+      {
+        "lat": 30.018328,
+        "lng": 31.663309
+      },
+      {
+        "lat": 30.019027,
+        "lng": 31.670334
+      },
+      {
+        "lat": 30.019358,
+        "lng": 31.672732
+      },
+      {
+        "lat": 30.019486,
+        "lng": 31.675011
+      },
+      {
+        "lat": 30.019507,
+        "lng": 31.677389
+      },
+      {
+        "lat": 30.019363,
+        "lng": 31.680117
+      },
+      {
+        "lat": 30.018865,
+        "lng": 31.683472
+      },
+      {
+        "lat": 30.01823,
+        "lng": 31.686221
+      },
+      {
+        "lat": 30.017365,
+        "lng": 31.689118
+      },
+      {
+        "lat": 30.01642,
+        "lng": 31.691652
+      },
+      {
+        "lat": 30.015844,
+        "lng": 31.693365
+      },
+      {
+        "lat": 30.014971,
+        "lng": 31.696691
+      },
+      {
+        "lat": 30.014088,
+        "lng": 31.700607
+      },
+      {
+        "lat": 30.013693,
+        "lng": 31.702928
+      },
+      {
+        "lat": 30.013533,
+        "lng": 31.704205
+      },
+      {
+        "lat": 30.013299,
+        "lng": 31.705249
+      },
+      {
+        "lat": 30.012994,
+        "lng": 31.706039
+      },
+      {
+        "lat": 30.010705,
+        "lng": 31.710108
+      },
+      {
+        "lat": 30.008503,
+        "lng": 31.714018
+      },
+      {
+        "lat": 30.008189,
+        "lng": 31.715088
+      },
+      {
+        "lat": 30.008104,
+        "lng": 31.715984
+      },
+      {
+        "lat": 30.008046,
+        "lng": 31.720012
+      },
+      {
+        "lat": 30.008069,
+        "lng": 31.72486
+      },
+      {
+        "lat": 30.008066,
+        "lng": 31.744821
+      },
+      {
+        "lat": 30.007577,
+        "lng": 31.746665
+      },
+      {
+        "lat": 30.002708,
+        "lng": 31.746781
+      },
+      {
+        "lat": 29.99884,
+        "lng": 31.747777
+      },
+      {
+        "lat": 29.995295,
+        "lng": 31.750147
+      },
+      {
+        "lat": 29.993806,
+        "lng": 31.752071
+      },
+      {
+        "lat": 30.005902,
+        "lng": 31.769922
+      }
+    ],
+    "lrt_knowledge_city_branch": [
+      {
+        "lat": 30.175212,
+        "lng": 31.715979
+      },
+      {
+        "lat": 30.173778,
+        "lng": 31.721752
+      },
+      {
+        "lat": 30.174248,
+        "lng": 31.724243
+      },
+      {
+        "lat": 30.176201,
+        "lng": 31.726418
+      },
+      {
+        "lat": 30.179362,
+        "lng": 31.728029
+      },
+      {
+        "lat": 30.181769,
+        "lng": 31.730849
+      },
+      {
+        "lat": 30.183944,
+        "lng": 31.73192
+      },
+      {
+        "lat": 30.18529,
+        "lng": 31.731944
+      },
+      {
+        "lat": 30.186599,
+        "lng": 31.731508
+      },
+      {
+        "lat": 30.195489,
+        "lng": 31.723753
+      },
+      {
+        "lat": 30.201191,
+        "lng": 31.718689
+      },
+      {
+        "lat": 30.204012,
+        "lng": 31.715411
+      },
+      {
+        "lat": 30.20928,
+        "lng": 31.709941
+      },
+      {
+        "lat": 30.220247,
+        "lng": 31.700128
+      },
+      {
+        "lat": 30.224906,
+        "lng": 31.696643
+      },
+      {
+        "lat": 30.230713,
+        "lng": 31.691433
+      }
+    ],
+    "lrt_main": [
+      {
+        "lat": 30.146329,
+        "lng": 31.421363
+      },
+      {
+        "lat": 30.162861,
+        "lng": 31.481652
+      },
+      {
+        "lat": 30.164901,
+        "lng": 31.490925
+      },
+      {
+        "lat": 30.166083,
+        "lng": 31.499114
+      },
+      {
+        "lat": 30.173147,
+        "lng": 31.55412
+      },
+      {
+        "lat": 30.179555,
+        "lng": 31.605867
+      },
+      {
+        "lat": 30.182372,
+        "lng": 31.629487
+      },
+      {
+        "lat": 30.183745,
+        "lng": 31.641252
+      },
+      {
+        "lat": 30.184124,
+        "lng": 31.647409
+      },
+      {
+        "lat": 30.184094,
+        "lng": 31.652655
+      },
+      {
+        "lat": 30.179906,
+        "lng": 31.684437
+      },
+      {
+        "lat": 30.178012,
+        "lng": 31.700435
+      },
+      {
+        "lat": 30.175211,
+        "lng": 31.715977
+      },
+      {
+        "lat": 30.170838,
+        "lng": 31.733589
+      },
+      {
+        "lat": 30.166545,
+        "lng": 31.752444
+      },
+      {
+        "lat": 30.165955,
+        "lng": 31.755368
+      },
+      {
+        "lat": 30.166009,
+        "lng": 31.758402
+      },
+      {
+        "lat": 30.169835,
+        "lng": 31.772443
+      },
+      {
+        "lat": 30.169635,
+        "lng": 31.776036
+      },
+      {
+        "lat": 30.168836,
+        "lng": 31.779501
+      },
+      {
+        "lat": 30.167084,
+        "lng": 31.786412
+      },
+      {
+        "lat": 30.166872,
+        "lng": 31.794806
+      },
+      {
+        "lat": 30.164127,
+        "lng": 31.800216
+      },
+      {
+        "lat": 30.158401,
+        "lng": 31.803951
+      },
+      {
+        "lat": 30.152194,
+        "lng": 31.80564
+      },
+      {
+        "lat": 30.144297,
+        "lng": 31.806875
+      },
+      {
+        "lat": 30.136722,
+        "lng": 31.806704
+      },
+      {
+        "lat": 30.116108,
+        "lng": 31.805024
+      },
+      {
+        "lat": 30.112203,
+        "lng": 31.803418
+      },
+      {
+        "lat": 30.1069,
+        "lng": 31.803771
+      },
+      {
+        "lat": 30.097386,
+        "lng": 31.802518
+      },
+      {
+        "lat": 30.088008,
+        "lng": 31.799974
+      },
+      {
+        "lat": 30.08269,
+        "lng": 31.79574
+      },
+      {
+        "lat": 30.075969,
+        "lng": 31.78237
+      },
+      {
+        "lat": 30.053836,
+        "lng": 31.739131
+      },
+      {
+        "lat": 30.04879,
+        "lng": 31.733178
+      },
+      {
+        "lat": 30.042654,
+        "lng": 31.728222
+      },
+      {
+        "lat": 30.035329,
+        "lng": 31.72496
+      },
+      {
+        "lat": 30.029728,
+        "lng": 31.722733
+      },
+      {
+        "lat": 30.027892,
+        "lng": 31.722484
+      },
+      {
+        "lat": 30.026101,
+        "lng": 31.722825
+      },
+      {
+        "lat": 30.022304,
+        "lng": 31.724695
+      },
+      {
+        "lat": 30.018168,
+        "lng": 31.725014
+      },
+      {
+        "lat": 30.013736,
+        "lng": 31.724916
+      },
+      {
+        "lat": 30.011355,
+        "lng": 31.724951
+      },
+      {
+        "lat": 30.009754,
+        "lng": 31.725755
+      },
+      {
+        "lat": 30.007839,
+        "lng": 31.729776
+      },
+      {
+        "lat": 30.006669,
+        "lng": 31.731663
+      },
+      {
+        "lat": 30.005299,
+        "lng": 31.732836
+      },
+      {
+        "lat": 30.003704,
+        "lng": 31.733067
+      },
+      {
+        "lat": 30.002516,
+        "lng": 31.732805
+      },
+      {
+        "lat": 30.00143,
+        "lng": 31.731989
+      },
+      {
+        "lat": 29.999485,
+        "lng": 31.729516
+      },
+      {
+        "lat": 29.997561,
+        "lng": 31.728187
+      },
+      {
+        "lat": 29.995274,
+        "lng": 31.727358
+      },
+      {
+        "lat": 29.990086,
+        "lng": 31.72535
+      },
+      {
+        "lat": 29.985409,
+        "lng": 31.722265
+      },
+      {
+        "lat": 29.982283,
+        "lng": 31.719323
+      },
+      {
+        "lat": 29.979392,
+        "lng": 31.715683
+      },
+      {
+        "lat": 29.977334,
+        "lng": 31.71315
+      },
+      {
+        "lat": 29.975438,
+        "lng": 31.710836
+      },
+      {
+        "lat": 29.971721,
+        "lng": 31.706012
+      },
+      {
+        "lat": 29.970976,
+        "lng": 31.704764
+      },
+      {
+        "lat": 29.97036,
+        "lng": 31.703258
+      },
+      {
+        "lat": 29.969843,
+        "lng": 31.701255
+      },
+      {
+        "lat": 29.969335,
+        "lng": 31.697753
+      },
+      {
+        "lat": 29.969,
+        "lng": 31.695249
+      },
+      {
+        "lat": 29.968674,
+        "lng": 31.694014
+      },
+      {
+        "lat": 29.968183,
+        "lng": 31.692819
+      },
+      {
+        "lat": 29.967412,
+        "lng": 31.691385
+      },
+      {
+        "lat": 29.966406,
+        "lng": 31.690204
+      },
+      {
+        "lat": 29.965498,
+        "lng": 31.68933
+      },
+      {
+        "lat": 29.964524,
+        "lng": 31.688627
+      },
+      {
+        "lat": 29.962912,
+        "lng": 31.687835
+      },
+      {
+        "lat": 29.958718,
+        "lng": 31.687193
+      }
+    ],
+    "transfer_corridors": [
+      {
+        "name": "BRT - Metro - LRT",
+        "points": [
+          {
+            "lat": 30.148103,
+            "lng": 31.419995
+          },
+          {
+            "lat": 30.147018,
+            "lng": 31.419983
+          },
+          {
+            "lat": 30.146751,
+            "lng": 31.420061
+          },
+          {
+            "lat": 30.146814,
+            "lng": 31.421069
+          }
+        ]
+      },
+      {
+        "name": "BRT - Monorail",
+        "points": [
+          {
+            "lat": 30.01619,
+            "lng": 31.408222
+          },
+          {
+            "lat": 30.015943,
+            "lng": 31.400816
+          },
+          {
+            "lat": 30.014598,
+            "lng": 31.400639
+          }
+        ]
+      },
+      {
+        "name": "Metro - Monorail",
+        "points": [
+          {
+            "lat": 30.071732,
+            "lng": 31.317573
+          },
+          {
+            "lat": 30.072793,
+            "lng": 31.316782
+          },
+          {
+            "lat": 30.072905,
+            "lng": 31.317072
+          }
+        ]
+      },
+      {
+        "name": "LRT - Monorail",
+        "points": [
+          {
+            "lat": 30.008083,
+            "lng": 31.725414
+          },
+          {
+            "lat": 30.008606,
+            "lng": 31.725444
+          },
+          {
+            "lat": 30.008614,
+            "lng": 31.724823
+          },
+          {
+            "lat": 30.013725,
+            "lng": 31.724904
+          }
+        ]
+      },
+      {
+        "name": "BRT - Metro",
+        "points": [
+          {
+            "lat": 30.149198,
+            "lng": 31.229729
+          },
+          {
+            "lat": 30.149206,
+            "lng": 31.229906
+          },
+          {
+            "lat": 30.142436,
+            "lng": 31.231243
+          },
+          {
+            "lat": 30.139077,
+            "lng": 31.232083
+          },
+          {
+            "lat": 30.135882,
+            "lng": 31.233453
+          },
+          {
+            "lat": 30.122369,
+            "lng": 31.244616
+          }
+        ]
+      },
+      {
+        "name": "BRT - Metro",
+        "points": [
+          {
+            "lat": 30.163512,
+            "lng": 31.341494
+          },
+          {
+            "lat": 30.163792,
+            "lng": 31.341485
+          },
+          {
+            "lat": 30.163954,
+            "lng": 31.340899
+          },
+          {
+            "lat": 30.163669,
+            "lng": 31.338374
+          }
+        ]
+      },
+      {
+        "name": "BRT - Metro",
+        "points": [
+          {
+            "lat": 29.990905,
+            "lng": 31.231877
+          },
+          {
+            "lat": 29.991341,
+            "lng": 31.233456
+          },
+          {
+            "lat": 29.993329,
+            "lng": 31.232407
+          },
+          {
+            "lat": 29.995159,
+            "lng": 31.230873
+          },
+          {
+            "lat": 29.995322,
+            "lng": 31.231024
+          },
+          {
+            "lat": 29.995435,
+            "lng": 31.231155
+          }
+        ]
+      },
+      {
+        "name": "BRT - Metro",
+        "points": [
+          {
+            "lat": 29.98659,
+            "lng": 31.214355
+          },
+          {
+            "lat": 29.986226,
+            "lng": 31.213793
+          },
+          {
+            "lat": 29.98333,
+            "lng": 31.212209
+          },
+          {
+            "lat": 29.981939,
+            "lng": 31.212104
+          },
+          {
+            "lat": 29.981304,
+            "lng": 31.212582
+          },
+          {
+            "lat": 29.981111,
+            "lng": 31.212291
+          }
+        ]
+      }
+    ]
+  }
+}

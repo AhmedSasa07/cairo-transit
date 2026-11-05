@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Clock,
   Moon,
@@ -7,17 +7,31 @@ import {
   AlertCircle,
   Calendar,
   CheckCircle2,
-  Train
+  Train,
+  Hourglass
 } from 'lucide-react';
 import { SCHEDULE_INFO, METRO_LINES } from '../data/metroData.js';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
+import { useSheetDragToDismiss } from '../utils/motion.js';
+import { LINE_HEADWAY_INFO, getServiceCountdownState } from '../utils/schedule.js';
 
 export default function OperatingHoursModal({ lang, t, onClose }) {
   const [activeTab, setActiveTab] = useState('regular'); // 'regular' or 'ramadan'
+  const [countdownState, setCountdownState] = useState(() => getServiceCountdownState(new Date(), activeTab === 'ramadan'));
+
+  const { handlers: dragHandlers, sheetStyle } = useSheetDragToDismiss({ onClose });
 
   const isAr = lang === 'ar';
   const schedule = SCHEDULE_INFO[activeTab];
+
+  // Update countdown every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdownState(getServiceCountdownState(new Date(), activeTab === 'ramadan'));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [activeTab]);
 
   return (
     <div
@@ -25,11 +39,17 @@ export default function OperatingHoursModal({ lang, t, onClose }) {
       onClick={onClose}
     >
       <div
+        style={sheetStyle}
         className="w-full max-w-lg bg-white dark:bg-[#111113] rounded-t-[32px] sm:rounded-[28px] max-h-[90vh] flex flex-col shadow-2xl border-t sm:border border-slate-200 dark:border-[#26262C] animate-in slide-in-from-bottom duration-300 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Ischys Sheet Grab Bar */}
-        <div className="w-10 h-1 bg-slate-300 dark:bg-[#26262C] rounded-full mx-auto my-2.5 flex-shrink-0" />
+        {/* Ischys Sheet Grab Bar (Draggable to dismiss) */}
+        <div
+          {...dragHandlers}
+          className="w-full py-2.5 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none sm:hidden flex-shrink-0"
+        >
+          <div className="w-10 h-1.5 bg-slate-300 dark:bg-[#26262C] rounded-full" />
+        </div>
 
         {/* Header */}
         <div className="px-5 py-3.5 border-b border-slate-100 dark:border-[#1D1D22] flex items-center justify-between bg-slate-50/50 dark:bg-[#111113] flex-shrink-0">
@@ -87,6 +107,28 @@ export default function OperatingHoursModal({ lang, t, onClose }) {
 
         {/* Timetable Content */}
         <div className="overflow-y-auto p-5 space-y-4 text-start">
+          {/* Live Service Countdown Indicator (During First 2h Morning or Last 2h Night) */}
+          {(countdownState.isNight || countdownState.isMorning) && (
+            <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-between gap-3 text-amber-700 dark:text-amber-300">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <Hourglass className="w-5 h-5 text-amber-500 flex-shrink-0 animate-pulse" />
+                <div className="min-w-0">
+                  <p className="text-xs font-bold font-cairo">
+                    {isAr
+                      ? (countdownState.isNight ? 'العد التنازلي لآخر قطارات الليلة:' : 'بداية تشغيل الصباح الباكر:')
+                      : (countdownState.isNight ? 'Last Trains Departure Countdown:' : 'Early Morning Service Countdown:')}
+                  </p>
+                  <p className="text-[11px] text-amber-600/90 dark:text-amber-400 font-cairo truncate">
+                    {isAr ? 'احرص على الوصول للرصيف قبل موعد المغادرة' : 'Ensure you reach platforms before closing'}
+                  </p>
+                </div>
+              </div>
+              <div className="px-3 py-1.5 rounded-xl bg-amber-500/20 font-mono font-bold text-sm text-amber-800 dark:text-amber-200 flex-shrink-0">
+                {countdownState.countdownFormatted}
+              </div>
+            </div>
+          )}
+
           {activeTab === 'ramadan' && (
             <div className="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/25 text-xs text-purple-700 dark:text-purple-300 font-mono leading-relaxed">
               {isAr ? SCHEDULE_INFO.ramadan.notesAr : SCHEDULE_INFO.ramadan.notesEn}
@@ -143,17 +185,33 @@ export default function OperatingHoursModal({ lang, t, onClose }) {
             </div>
           </div>
 
-          {/* Headway Frequency */}
-          <div className="bg-slate-50 dark:bg-[#17171A] p-4 rounded-2xl border border-slate-200/60 dark:border-[#26262C] space-y-1.5">
+          {/* Line-by-Line Realistic Headway Frequencies */}
+          <div className="bg-slate-50 dark:bg-[#17171A] p-4 rounded-2xl border border-slate-200/60 dark:border-[#26262C] space-y-2">
             <h4 className={`text-[10px] font-bold ${isAr ? 'font-cairo tracking-normal text-slate-600 dark:text-[#A1A1AA]' : 'font-mono uppercase tracking-[0.14em] text-slate-500 dark:text-[#71717A]'}`}>
-              {t.timetable.headwayTitle}
+              {isAr ? 'زمن التقاطر وتردد القطارات حسب الخط:' : 'HEADWAY FREQUENCY PER LINE:'}
             </h4>
-            <p className="text-xs font-mono text-slate-600 dark:text-[#D4D4D8]">
-              • {isAr ? SCHEDULE_INFO.regular.headwayRushHourAr : `Rush Hours: ${SCHEDULE_INFO.regular.headwayRushHour}`}
-            </p>
-            <p className="text-xs font-mono text-slate-600 dark:text-[#D4D4D8]">
-              • {isAr ? SCHEDULE_INFO.regular.headwayRegularAr : `Regular Hours: ${SCHEDULE_INFO.regular.headwayRegular}`}
-            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              {Object.entries(LINE_HEADWAY_INFO).map(([key, info]) => {
+                const line = METRO_LINES[key];
+                return (
+                  <div
+                    key={key}
+                    className="p-2.5 rounded-xl bg-white dark:bg-[#111113] border border-slate-200/40 dark:border-[#26262C] space-y-1"
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: line?.color || '#00518E' }} />
+                      <span className="font-bold text-slate-900 dark:text-white truncate font-cairo">
+                        {isAr ? info.nameAr : info.nameEn}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-[#A1A1AA] pt-0.5 font-cairo">
+                      <span>☀️ {isAr ? info.daytimeAr : info.daytime}</span>
+                      <span>🌙 {isAr ? info.lateNightAr : info.lateNight}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 

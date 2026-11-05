@@ -12,8 +12,11 @@ import { getDistanceKm } from './geo.js';
 export const stationMap = new Map();
 STATIONS.forEach(st => stationMap.set(st.id, st));
 
-// Build graph helper based on mode inclusion
-export function buildGraph(includeOtherModes = true) {
+// Modern 100% Air-Conditioned fleet line IDs (Line 3, Monorail East/West, LRT, BRT)
+export const AC_LINE_IDS = new Set(['line3', 'monorail_east', 'monorail_west', 'lrt', 'brt']);
+
+// Build graph helper based on mode inclusion and optional AC filter
+export function buildGraph(includeOtherModes = true, acOnly = false) {
   const graph = new Map();
   STATIONS.forEach(st => graph.set(st.id, []));
 
@@ -21,6 +24,9 @@ export function buildGraph(includeOtherModes = true) {
     const [u, v, line, val1, val2] = edge;
     const lineMode = METRO_LINES[line]?.mode || 'metro';
     if (!includeOtherModes && lineMode !== 'metro') {
+      return;
+    }
+    if (acOnly && !AC_LINE_IDS.has(line)) {
       return;
     }
     const stU = stationMap.get(u);
@@ -573,8 +579,8 @@ function processPath(result, originId, destinationId, type) {
 // Find multiple alternative routes between origin and destination
 export function findMultipleRoutes(originId, destinationId, options = {}) {
   const normalizedOptions = typeof options === 'string' ? { transitMode: options } : options;
-  const { includeOtherModes = false, transitMode = 'metro' } = normalizedOptions;
-  const isMixedRequested = transitMode === 'mixed' || transitMode === 'all' || includeOtherModes === true;
+  const { includeOtherModes = false, transitMode = 'metro', acOnly = false } = normalizedOptions;
+  const isMixedRequested = transitMode === 'mixed' || transitMode === 'all' || includeOtherModes === true || acOnly;
 
   if (!originId || !destinationId) return [];
   if (originId === destinationId) {
@@ -600,8 +606,29 @@ export function findMultipleRoutes(originId, destinationId, options = {}) {
 
   let rawCandidates = [];
   let isAutoSwitched = false;
+  let isAcFallback = false;
 
-  if (!isMixedRequested) {
+  if (acOnly) {
+    // Air-Conditioned only network (M3, Monorail East/West, LRT, BRT)
+    const acGraph = buildGraph(true, true);
+    const rCheapest = searchDijkstra(originId, destinationId, acGraph, 'cheapest');
+    const rFewestTransfers = searchDijkstra(originId, destinationId, acGraph, 'fewest_transfers');
+    const rFastest = searchDijkstra(originId, destinationId, acGraph, 'fastest');
+    rawCandidates = [rCheapest, rFewestTransfers, rFastest].filter(Boolean);
+
+    if (rawCandidates.length > 0) {
+      rawCandidates.forEach(r => { r.isAcOnly = true; });
+    } else {
+      // Station not reachable purely on AC lines (e.g. M1 or M2 station), fallback to standard network
+      const altCheapest = searchDijkstra(originId, destinationId, multiModalGraph, 'cheapest');
+      const altTransfers = searchDijkstra(originId, destinationId, multiModalGraph, 'fewest_transfers');
+      const altFastest = searchDijkstra(originId, destinationId, multiModalGraph, 'fastest');
+      rawCandidates = [altCheapest, altTransfers, altFastest].filter(Boolean);
+      rawCandidates.forEach(r => { r.isAcFallback = true; });
+      isAcFallback = true;
+      isAutoSwitched = true;
+    }
+  } else if (!isMixedRequested) {
     // Pure Metro Only mode
     const rCheapest = searchDijkstra(originId, destinationId, metroGraph, 'cheapest');
     const rFewestTransfers = searchDijkstra(originId, destinationId, metroGraph, 'fewest_transfers');
@@ -662,6 +689,8 @@ export function findMultipleRoutes(originId, destinationId, options = {}) {
   return uniqueRoutes.map((route, idx) => {
     route.autoSwitched = isAutoSwitched;
     const isPureMetro = route.legs.every(l => (l.lineInfo?.mode || 'metro') === 'metro');
+    const isAllAc = route.legs.length > 0 && route.legs.every(l => AC_LINE_IDS.has(l.lineId));
+    route.isAirConditioned = isAllAc;
 
     if (route.travelTimeMins === minTime) {
       route.labelEn = isPureMetro ? 'Shortest Metro Route' : 'Fastest Route';

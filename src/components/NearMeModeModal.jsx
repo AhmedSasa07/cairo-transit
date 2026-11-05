@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Navigation, Sparkles, Shuffle } from 'lucide-react';
 import { haptics } from '../utils/haptics.js';
 import TransitModeIcon from './TransitModeIcon.jsx';
+import { useSheetDragToDismiss } from '../utils/motion.js';
 
 export default function NearMeModeModal({
   lang = 'ar',
@@ -12,6 +13,7 @@ export default function NearMeModeModal({
 }) {
   const isAr = lang === 'ar';
   const ChevronIcon = isAr ? ChevronLeft : ChevronRight;
+  const { handlers: dragHandlers, sheetStyle } = useSheetDragToDismiss({ onClose });
 
   useEffect(() => {
     if (!isOpen) return;
@@ -108,13 +110,19 @@ export default function NearMeModeModal({
       aria-labelledby="nearme-modal-title"
     >
       <div
+        style={sheetStyle}
         className={`w-full max-w-md bg-white dark:bg-[#18181B] rounded-t-[28px] sm:rounded-3xl shadow-2xl border border-slate-200 dark:border-[#2A2A32] overflow-hidden flex flex-col max-h-[90vh] animate-in slide-in-from-bottom duration-300 pb-[env(safe-area-inset-bottom,0px)] select-none ${
           isAr ? 'font-cairo' : 'font-space'
         }`}
         dir={isAr ? 'rtl' : 'ltr'}
       >
-        {/* Mobile Pull Handle */}
-        <div className="w-12 h-1.5 bg-slate-300 dark:bg-[#2A2A32] rounded-full mx-auto my-2.5 sm:hidden flex-shrink-0 touch-none select-none" />
+        {/* Mobile Pull Handle (Draggable down to dismiss) */}
+        <div
+          {...dragHandlers}
+          className="w-full py-2.5 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none sm:hidden flex-shrink-0"
+        >
+          <div className="w-12 h-1.5 bg-slate-300 dark:bg-[#2A2A32] rounded-full" />
+        </div>
 
         {/* Modal Header */}
         <div className="flex items-start justify-between px-5 pt-3 pb-3 border-b border-slate-100 dark:border-[#26262C] flex-shrink-0 select-none">

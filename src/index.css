@@ -109,6 +109,9 @@ html:not(.dark) .bg-white.rounded-2xl {
   paint-order: stroke fill;
   stroke-linejoin: round;
   stroke-linecap: round;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 .dark {

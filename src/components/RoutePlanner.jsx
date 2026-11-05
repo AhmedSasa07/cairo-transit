@@ -43,12 +43,11 @@ import ShareTripModal from './ShareTripModal.jsx';
 import MetroStatTile from './MetroStatTile.jsx';
 import SaveTripModal from './SaveTripModal.jsx';
 import NearMeModeModal from './NearMeModeModal.jsx';
-import AppleCollapsibleHeader from './AppleCollapsibleHeader.jsx';
 import TransitModeIcon from './TransitModeIcon.jsx';
 import { AppleAccordion, StationSwapButton } from './MotionComponents.jsx';
 import AppleCard from './AppleCard.jsx';
 import { haptics } from '../utils/haptics.js';
-import { APPLE_CURVES, APPLE_TIMINGS } from '../utils/motion.js';
+import { APPLE_CURVES, APPLE_TIMINGS, useSheetDragToDismiss } from '../utils/motion.js';
 import {
   WORST_CASE_FROM_STATION,
   WORST_CASE_TO_STATION,
@@ -213,6 +212,21 @@ export default function RoutePlanner({
     return saved !== null ? Number(saved) : 0;
   });
   const [transitMode, setTransitMode] = useState('metro'); // 'metro' (Single transit mode) vs 'mixed' (Multi-modal)
+  const [selectedModeId, setSelectedModeId] = useState('metro'); // 'metro', 'monorail', 'lrt', 'brt', 'all'
+  const [acOnly, setAcOnly] = useState(false); // Air-conditioned trains only (M3, Monorail, LRT, BRT)
+  const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
+  const modeDropdownRef = useRef(null);
+
+  // Close transit mode dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (modeDropdownRef.current && !modeDropdownRef.current.contains(e.target)) {
+        setIsModeDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Dev Break-UI Resilience Test State (Swaps realistic worst-case values at data boundary)
   const [devMode, setDevMode] = useState(() => {
@@ -289,7 +303,7 @@ export default function RoutePlanner({
   // Reset selected route index when origin or destination changes
   useEffect(() => {
     setSelectedRouteIndex(0);
-  }, [fromStationId, toStationId, transitMode, devMode]);
+  }, [fromStationId, toStationId, transitMode, acOnly, devMode]);
 
   // Effective Stations based on Dev Mode
   const fromStation = useMemo(() => {
@@ -315,8 +329,8 @@ export default function RoutePlanner({
     if (devMode === 'worst_case') return WORST_CASE_ROUTES;
     if (devMode === 'multi_xfer') return [WORST_CASE_ROUTES[0]];
     if (!fromStationId || !toStationId || fromStationId === toStationId) return [];
-    return findMultipleRoutes(fromStationId, toStationId, { transitMode });
-  }, [devMode, fromStationId, toStationId, transitMode]);
+    return findMultipleRoutes(fromStationId, toStationId, { transitMode, acOnly });
+  }, [devMode, fromStationId, toStationId, transitMode, acOnly]);
 
   const activeRoute = routes[selectedRouteIndex] || routes[0] || null;
 
@@ -535,64 +549,140 @@ export default function RoutePlanner({
 
   return (
     <div className="space-y-3 sm:space-y-3.5 pb-[calc(5rem+env(safe-area-inset-bottom,16px))]">
-      {/* 1. Sleek Compact Header (Matches Screenshot 1 - Plan Your Journey + Near Me + Star + Share with NO subtitle) */}
-      <AppleCollapsibleHeader
-        lang={lang}
-        t={t}
-        title={t.routePlanner?.title || (lang === 'ar' ? 'تخطيط الرحلات' : 'Plan Your Journey')}
-        isLocatingOrigin={isLocatingOrigin}
-        onQuickGps={handleQuickGpsOrigin}
-        hasActiveRoute={Boolean(activeRoute)}
-        isSaved={isCurrentTripSaved}
-        onToggleSave={handleToggleSaveTrip}
-        onShare={handleShare}
-      />
-
-      {/* 2. Primary Inset Grouped Journey Selector Card */}
+      {/* Primary Inset Grouped Journey Selector Card */}
       <AppleCard variant="primary" className="p-4 sm:p-5 space-y-3.5">
-        {savedTripToast && (
-          <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-[#2DD881] text-xs font-mono font-bold text-center animate-fade-in select-none">
-            {savedTripToast}
-          </div>
-        )}
-
-        {/* 2x2 Transit Mode Selection Grid (Official Vector/PNG Logos) */}
-        <div className="grid grid-cols-2 gap-2 select-none">
-          {[
-            { id: 'metro', labelAr: 'مترو', labelEn: 'Metro', mode: 'metro' },
-            { id: 'monorail', labelAr: 'مونوريل', labelEn: 'Monorail', mode: 'mixed' },
-            { id: 'lrt', labelAr: 'قطار LRT', labelEn: 'LRT Train', mode: 'mixed' },
-            { id: 'brt', labelAr: 'ترددي BRT', labelEn: 'BRT Bus', mode: 'mixed' },
-          ].map((item) => {
-            const isSelected = (item.id === 'metro' && transitMode === 'metro') || (item.id !== 'metro' && transitMode === 'mixed');
-            return (
+        {/* Top Control Bar: Transit Mode Logo Dropdown + AC Toggle + Near Me + Favorite Star + Share */}
+        <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-black/[0.04] dark:border-white/[0.06] select-none">
+          {/* Left/Start: Mode Dropdown (Logos only) + AC Only Toggle */}
+          <div className="flex items-center gap-1.5 min-w-0">
+            {/* Transit Mode Dropdown with Logos Only */}
+            <div className="relative" ref={modeDropdownRef}>
               <button
-                key={item.id}
                 type="button"
                 onClick={() => {
                   haptics.select();
-                  setTransitMode(item.mode);
+                  setIsModeDropdownOpen(prev => !prev);
                 }}
-                className={`py-2.5 px-3 rounded-[20px] border font-bold text-xs sm:text-sm flex items-center justify-between select-none touch-manipulation tap-transparent active:scale-95 transition-all duration-120 ${
-                  isSelected
-                    ? 'bg-blue-600 text-white border-blue-500 shadow-[0_4px_16px_rgba(37,99,235,0.3),inset_0_1px_0_0_rgba(255,255,255,0.3)]'
-                    : 'bg-black/[0.03] dark:bg-white/[0.04] border-black/[0.04] dark:border-white/[0.06] text-slate-700 dark:text-zinc-300 hover:bg-black/[0.05] dark:hover:bg-white/[0.07]'
-                }`}
+                className="h-9 px-2 rounded-xl bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] flex items-center gap-1 active:scale-95 transition-all touch-manipulation tap-transparent shadow-2xs"
+                title={lang === 'ar' ? 'وسيلة النقل (لوجو فقط)' : 'Transit Mode (Logos only)'}
+                aria-label="Transit Mode"
               >
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                    <TransitModeIcon mode={item.id} size="sm" className="w-4 h-4 object-contain" />
-                  </span>
-                  <span className={`truncate ${lang === 'ar' ? 'font-cairo' : 'font-space'}`}>
-                    {lang === 'ar' ? item.labelAr : item.labelEn}
-                  </span>
-                </div>
-                {isSelected && (
-                  <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />
-                )}
+                <span className="w-5 h-5 flex items-center justify-center">
+                  <TransitModeIcon mode={selectedModeId} size="sm" className="w-5 h-5 object-contain" />
+                </span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isModeDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-            );
-          })}
+
+              {/* Dropdown Menu Options (Logos Only, No Text) */}
+              {isModeDropdownOpen && (
+                <div className="absolute top-full mt-1.5 start-0 z-50 p-1.5 rounded-2xl bg-white dark:bg-[#18181B] border border-slate-200 dark:border-[#26262C] shadow-xl flex items-center gap-1 animate-scale-in">
+                  {[
+                    { id: 'metro', mode: 'metro', title: 'مترو الأنفاق' },
+                    { id: 'monorail', mode: 'mixed', title: 'مونوريل' },
+                    { id: 'lrt', mode: 'mixed', title: 'قطار LRT' },
+                    { id: 'brt', mode: 'mixed', title: 'أتوبيس ترددي BRT' },
+                    { id: 'all', mode: 'mixed', title: 'كل الوسائط' },
+                  ].map((item) => {
+                    const isSelected = selectedModeId === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          haptics.select();
+                          setSelectedModeId(item.id);
+                          setTransitMode(item.mode);
+                          setIsModeDropdownOpen(false);
+                        }}
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center p-1.5 transition-all active:scale-90 ${
+                          isSelected
+                            ? 'bg-blue-600/15 border border-blue-500/30 ring-1 ring-blue-500/40 shadow-xs'
+                            : 'hover:bg-black/[0.05] dark:hover:bg-white/[0.06] opacity-75 hover:opacity-100'
+                        }`}
+                        title={item.title}
+                      >
+                        <TransitModeIcon mode={item.id} size="sm" className="w-5 h-5 object-contain" />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* AC-Only Filter Toggle with Snowflake */}
+            <button
+              type="button"
+              onClick={() => {
+                haptics.selection();
+                setAcOnly(prev => !prev);
+              }}
+              className={`h-9 px-2.5 rounded-xl border flex items-center gap-1.5 text-xs font-bold transition-all active:scale-95 touch-manipulation tap-transparent shadow-2xs ${
+                acOnly
+                  ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-600 dark:text-cyan-300'
+                  : 'bg-black/[0.03] dark:bg-white/[0.05] border-black/[0.06] dark:border-white/[0.08] text-slate-400 hover:text-cyan-500'
+              }`}
+              title={lang === 'ar' ? 'قطارات مكيفة فقط (خط 3، مونوريل، LRT، BRT)' : 'Air-Conditioned Trains Only (M3, Monorail, LRT, BRT)'}
+            >
+              <span className="text-sm">❄️</span>
+              <span className={`text-[11px] font-bold ${lang === 'ar' ? 'font-cairo' : 'font-mono'}`}>
+                {lang === 'ar' ? 'مكيف' : 'AC'}
+              </span>
+            </button>
+          </div>
+
+          {/* Right/End: Near Me GPS + Favorite Star + Share Trip */}
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            {/* Near Me GPS Button */}
+            <button
+              type="button"
+              onClick={() => {
+                haptics.light();
+                handleQuickGpsOrigin();
+              }}
+              disabled={isLocatingOrigin}
+              className="h-9 px-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-700 dark:text-[#2DD881] border border-emerald-500/20 flex items-center gap-1.5 text-xs font-bold active:scale-95 transition-all shadow-2xs touch-manipulation tap-transparent"
+              title={lang === 'ar' ? 'تحديد أقرب محطة بالـ GPS' : 'Detect Nearest Station via GPS'}
+            >
+              <Navigation className={`w-3.5 h-3.5 text-emerald-600 dark:text-[#2DD881] ${isLocatingOrigin ? 'animate-spin' : ''}`} />
+              <span className={`text-[11px] ${lang === 'ar' ? 'font-cairo' : 'font-mono'}`}>
+                {isLocatingOrigin
+                  ? (lang === 'ar' ? 'جاري...' : 'Locating...')
+                  : (lang === 'ar' ? 'أقرب محطة' : 'Near Me')}
+              </span>
+            </button>
+
+            {/* Favorite Star Button */}
+            <button
+              type="button"
+              onClick={() => {
+                haptics.select();
+                handleToggleSaveTrip();
+              }}
+              className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all active:scale-90 touch-manipulation tap-transparent shadow-2xs ${
+                isCurrentTripSaved
+                  ? 'bg-amber-500/15 border-amber-500/30 text-amber-500'
+                  : 'bg-black/[0.03] dark:bg-white/[0.05] border-black/[0.06] dark:border-white/[0.08] text-slate-400 hover:text-amber-500'
+              }`}
+              title={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
+              aria-label={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
+            >
+              <Star className={`w-4 h-4 ${isCurrentTripSaved ? 'fill-amber-400 text-amber-500' : 'fill-none'}`} />
+            </button>
+
+            {/* Share Trip Button */}
+            <button
+              type="button"
+              onClick={() => {
+                haptics.light();
+                handleShare();
+              }}
+              className="w-9 h-9 rounded-xl bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] text-rose-600 dark:text-[#FF4A1C] hover:bg-rose-500/10 flex items-center justify-center transition-all active:scale-90 touch-manipulation tap-transparent shadow-2xs"
+              title={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
+              aria-label={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Auto-Switched Notice if station is outside pure metro */}
@@ -839,53 +929,18 @@ export default function RoutePlanner({
 
       {/* 1. Trip Description (Plain-language overview - First thing directly under From-To card) */}
       {activeRoute && fromStationId !== toStationId && tripDescription && (
-        <AppleCard variant="primary" className="p-4 sm:p-5 rounded-[22px] space-y-2">
+        <AppleCard variant="primary" className="p-4 sm:p-5 rounded-[22px] space-y-2.5">
           <div className="flex items-center justify-between select-none">
-            <p className="text-[10px] uppercase font-bold text-slate-400 dark:text-zinc-500 tracking-wider flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+            <p className="text-[11px] uppercase font-bold text-slate-500 dark:text-zinc-400 tracking-wider flex items-center gap-1.5 font-cairo">
+              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse flex-shrink-0" />
               <span>{lang === 'ar' ? 'تفاصيل مشوارك:' : 'Trip Description:'}</span>
             </p>
-            <div className="flex items-center gap-1.5">
-              {routeDistanceKm != null && (
-                <span className="text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 text-blue-700 dark:text-blue-300 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-blue-500 flex-shrink-0" />
-                  <span>{lang === 'ar' ? `المسافة: ~${routeDistanceKm} كم` : `Distance: ~${routeDistanceKm} km`}</span>
-                </span>
-              )}
-              {/* Save to Favorites Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  haptics.select();
-                  handleToggleSaveTrip();
-                }}
-                className={`p-1.5 rounded-xl border transition-all active:scale-90 touch-manipulation tap-transparent ${
-                  isCurrentTripSaved
-                    ? 'bg-amber-500/15 border-amber-500/30 text-amber-500 shadow-xs'
-                    : 'bg-black/[0.04] dark:bg-white/[0.06] border-black/[0.05] dark:border-white/[0.08] text-slate-400 hover:text-amber-500'
-                }`}
-                title={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
-                aria-label={t?.routePlanner?.saveTripTooltip || (lang === 'ar' ? 'حفظ في المفضلة' : 'Save to favorites')}
-              >
-                <Star className={`w-3.5 h-3.5 ${isCurrentTripSaved ? 'fill-amber-400 text-amber-500' : 'fill-none'}`} />
-              </button>
-              {/* Share Route Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  haptics.light();
-                  handleShare();
-                }}
-                className="p-1.5 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.05] dark:border-white/[0.08] text-rose-600 dark:text-[#FF4A1C] hover:bg-rose-500/10 transition-colors active:scale-90 touch-manipulation tap-transparent"
-                title={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
-                aria-label={t?.routePlanner?.shareRoute || (lang === 'ar' ? 'مشاركة تفاصيل الرحلة' : 'Share route details')}
-              >
-                <Share2 className="w-3.5 h-3.5" />
-              </button>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-slate-600 dark:text-zinc-300">
-                {lang === 'ar' ? 'ملخص الرحلة' : 'Summary'}
+            {routeDistanceKm != null && (
+              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 text-blue-700 dark:text-blue-300 flex items-center gap-1 font-cairo">
+                <MapPin className="w-3 h-3 text-blue-500 flex-shrink-0" />
+                <span>{lang === 'ar' ? `المسافة: ~${routeDistanceKm} كم` : `Distance: ~${routeDistanceKm} km`}</span>
               </span>
-            </div>
+            )}
           </div>
           <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 leading-relaxed font-cairo break-words [overflow-wrap:anywhere]">
             {tripDescription}
@@ -944,8 +999,8 @@ export default function RoutePlanner({
       {/* 3. Active Route Details */}
       {activeRoute && fromStationId !== toStationId && (
         <div className="space-y-4">
-          {/* Summary Stat Cards: Time, Stations, Transfers, Distance & Dynamic Ticket Price */}
-          <div className={`grid gap-2 ${routeDistanceKm != null ? 'grid-cols-2 sm:grid-cols-5' : 'grid-cols-2 sm:grid-cols-4'}`}>
+          {/* Summary Stat Cards: 4 squares next to each other in exact order: Time - Stations - Transfers - Price */}
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
             {/* 1. Time */}
             <MetroStatTile
               label={lang === 'ar' ? 'الوقت' : 'TIME'}
@@ -954,15 +1009,15 @@ export default function RoutePlanner({
               tone="accent"
             />
 
-            {/* 2. Stations */}
+            {/* 2. Stations (No 'stn' / 'محطة' suffix as requested) */}
             <MetroStatTile
               label={lang === 'ar' ? 'المحطات' : 'STATIONS'}
               value={activeRoute.stationCount}
-              unit={lang === 'ar' ? 'محطة' : 'STN'}
+              unit={null}
               tone="default"
             />
 
-            {/* 3. Transfers (Human-understandable terminology instead of technical XFER) */}
+            {/* 3. Transfers */}
             <MetroStatTile
               label={lang === 'ar' ? 'التحويلات' : 'TRANSFERS'}
               value={transferDisplay}
@@ -970,21 +1025,9 @@ export default function RoutePlanner({
               tone={activeRoute.transfersCount === 0 ? 'success' : 'amber'}
             />
 
-            {/* 4. Distance */}
-            {routeDistanceKm != null && (
-              <MetroStatTile
-                label={lang === 'ar' ? 'المسافة' : 'DISTANCE'}
-                value={`~${routeDistanceKm}`}
-                unit={lang === 'ar' ? 'كم' : 'KM'}
-                tone="blue"
-              />
-            )}
-
-            {/* 5. Dynamic Ticket Price Card */}
+            {/* 4. Price Card with Enlarged Physical Ticket Image */}
             <div
-              className={`flex flex-col justify-between gap-1 p-2 sm:p-2.5 rounded-2xl border-2 apple-card-interactive active:scale-[0.97] transition-[border-color,background-color] duration-150 relative overflow-hidden min-h-[76px] sm:min-h-[82px] ${
-                routeDistanceKm != null ? 'col-span-2 sm:col-span-1' : ''
-              } ${priceTheme.border} ${priceTheme.bg}`}
+              className={`flex flex-col justify-between p-2 sm:p-2.5 rounded-2xl border-2 apple-card-interactive active:scale-[0.97] transition-[border-color,background-color] duration-150 relative overflow-hidden min-h-[76px] sm:min-h-[82px] ${priceTheme.border} ${priceTheme.bg}`}
             >
               {/* Eyebrow Label with Ticket Icon */}
               <div className="flex items-center justify-between gap-1">
@@ -993,34 +1036,49 @@ export default function RoutePlanner({
                     lang === 'ar' ? 'font-cairo tracking-normal' : 'font-mono uppercase tracking-[0.8px]'
                   }`}
                 >
-                  {lang === 'ar' ? 'سعر التذكرة' : 'PRICE'}
+                  {lang === 'ar' ? 'السعر' : 'PRICE'}
                 </span>
                 <Ticket className={`w-3.5 h-3.5 ${priceTheme.text} flex-shrink-0 opacity-80`} />
               </div>
 
               {/* Price Value + Currency Unit */}
               <div className="flex items-baseline gap-1 my-auto">
-                <span className={`text-lg sm:text-2xl font-black font-space rtl:font-cairo tracking-tight rtl:tracking-normal tabular-nums leading-none ${priceTheme.text}`}>
+                <span className={`text-base sm:text-xl font-black font-space rtl:font-cairo tracking-tight rtl:tracking-normal tabular-nums leading-none ${priceTheme.text}`}>
                   {activeRoute.fareDetails.totalCost}
                 </span>
-                <span className="text-[10px] sm:text-xs font-semibold font-cairo text-slate-600 dark:text-[#97979E] flex-shrink-0 self-baseline whitespace-nowrap">
-                  {lang === 'ar' ? 'جنيه' : 'EGP'}
+                <span className="text-[9.5px] sm:text-xs font-semibold font-cairo text-slate-600 dark:text-[#97979E] flex-shrink-0 self-baseline whitespace-nowrap">
+                  {lang === 'ar' ? 'ج.م' : 'LE'}
                 </span>
               </div>
 
-              {/* Dynamic Ticket Badge with Physical Ticket Image */}
+              {/* Dynamic Ticket Badge with Enlarged Physical Ticket Image */}
               <div className="mt-0.5 overflow-hidden flex items-center gap-1.5">
                 {priceTheme.ticketImage && (
                   <img
                     src={priceTheme.ticketImage}
                     alt={priceTheme.badgeLabel}
-                    className="w-5 h-3.5 object-contain rounded-xs shadow-2xs flex-shrink-0"
+                    className="w-7 h-4.5 sm:w-8 sm:h-5 object-contain rounded-xs shadow-xs flex-shrink-0"
                   />
                 )}
-                <span className={`inline-block truncate max-w-full text-[8.5px] sm:text-[9.5px] font-bold px-1.5 py-0.5 rounded-md leading-none shadow-2xs ${priceTheme.badgeBg}`}>
+                <span className={`inline-block truncate max-w-full text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded-md leading-none shadow-2xs ${priceTheme.badgeBg}`}>
                   {priceTheme.badgeLabel}
                 </span>
               </div>
+            </div>
+          </div>
+
+          {/* Round-Trip Commuter Advisory Card */}
+          <div className="p-3 rounded-2xl bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 flex items-start gap-2.5 text-xs text-blue-950 dark:text-blue-200 select-none">
+            <span className="text-sm flex-shrink-0 mt-0.5">💡</span>
+            <div className="min-w-0 flex-1">
+              <p className="font-bold font-cairo text-xs text-blue-900 dark:text-blue-200">
+                {lang === 'ar' ? 'نصيحة للمشوار (ذهاب وعودة):' : 'Round-Trip Commuter Advice:'}
+              </p>
+              <p className="text-[11px] text-blue-800/90 dark:text-blue-300 font-cairo mt-0.5 leading-relaxed">
+                {lang === 'ar'
+                  ? `لتوفير وقت الانتظار، اشترِ تذكرتين معاً الآن من شباك التذاكر (${(activeRoute.fareDetails.totalCost || 0) * 2} ج.م للذهاب والعودة) عشان متقفش في طابور محطة الرجوع.`
+                  : `Skip the return line: buy 2 tickets upfront (${(activeRoute.fareDetails.totalCost || 0) * 2} EGP) at your departure station so you have your return ticket ready.`}
+              </p>
             </div>
           </div>
 
@@ -1748,6 +1806,7 @@ function StationSearchPickerModal({
   nearestGpsStation,
   t
 }) {
+  const { handlers: sheetDragHandlers, sheetStyle } = useSheetDragToDismiss({ onClose });
   const [activeLineFilter, setActiveLineFilter] = useState('all'); // 'all', 'line1', 'line2', 'line3', 'interchange', 'monorail_east', 'lrt', 'brt'
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('all'); // 'all', 'university', 'hospital', 'mall', 'landmark', 'government', 'transport', 'sports'
   const [constructionWarning, setConstructionWarning] = useState(null);
@@ -1827,11 +1886,17 @@ function StationSearchPickerModal({
       onClick={onClose}
     >
       <div
+        style={sheetStyle}
         className="w-full max-w-lg bg-white dark:bg-[#111113] rounded-none sm:rounded-[24px] h-[100dvh] sm:h-[640px] max-h-[100dvh] flex flex-col shadow-2xl border-0 sm:border border-slate-200 dark:border-[#26262C] apple-sheet-enter overflow-hidden pt-[env(safe-area-inset-top,12px)] select-none"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Apple Grab Handle */}
-        <div className="w-10 h-1.5 bg-slate-300 dark:bg-[#2A2A32] rounded-full mx-auto my-2 flex-shrink-0 touch-none select-none sm:hidden" />
+        {/* Apple Grab Handle (Draggable down to dismiss) */}
+        <div
+          {...sheetDragHandlers}
+          className="w-full py-2.5 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none sm:hidden flex-shrink-0"
+        >
+          <div className="w-10 h-1.5 bg-slate-300 dark:bg-[#2A2A32] rounded-full" />
+        </div>
 
         {/* Header */}
         <div className="px-4 py-2.5 sm:py-3 border-b border-slate-100 dark:border-[#1D1D22] flex items-center justify-between bg-slate-50 dark:bg-[#111113] flex-shrink-0 select-none">

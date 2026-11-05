@@ -161,50 +161,49 @@ export default function NetworkGuide({
           </div>
         </div>
 
-        {/* Key Metrics Grid Using MetroStatTile */}
-        <div className="grid grid-cols-3 gap-2">
-          <MetroStatTile
-            label={isAr ? 'المحطات' : 'STATIONS'}
-            value={selectedLine.totalStations}
-            unit={isAr ? 'محطة' : 'st'}
-            tone="default"
-          />
-          <MetroStatTile
-            label={isAr ? 'الطول' : 'LENGTH'}
-            value={selectedLine.lengthKm}
-            unit={isAr ? 'كم' : 'km'}
-            tone="default"
-          />
-          <MetroStatTile
-            label={isAr ? 'الافتتاح' : 'OPENED'}
-            value={selectedLine.openedYear}
-            tone="default"
-          />
-        </div>
-
-        {/* Terminals & Endpoints with Destination-Aware Direction Arrow */}
-        <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#17171A] border border-slate-200/60 dark:border-[#26262C] flex items-center justify-between text-xs font-bold text-slate-800 dark:text-slate-200">
-          <div className="min-w-0">
-            <p className={`text-[10px] uppercase text-slate-400 dark:text-[#71717A] ${isAr ? 'font-cairo tracking-normal font-semibold' : 'font-mono tracking-wider'}`}>
-              {isAr ? 'البداية' : 'START'}
-            </p>
-            <p className={`text-slate-900 dark:text-white mt-0.5 font-bold truncate ${isAr ? 'font-cairo' : 'font-space'}`}>
-              {isAr ? selectedLine.terminalsAr[0] : selectedLine.terminalsEn[0]}
-            </p>
+        {/* Number of Stations & Start/End Terminals Side by Side (Length and Opened Removed) */}
+        <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#17171A] border border-slate-200/60 dark:border-[#26262C] flex items-center justify-between gap-3 text-xs">
+          {/* Station Count Pill */}
+          <div className="flex items-center gap-2.5 flex-shrink-0 pe-3.5 border-e border-slate-200 dark:border-[#26262C]">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm text-white shadow-xs"
+              style={{ backgroundColor: selectedLine.color }}
+            >
+              {selectedLine.totalStations}
+            </div>
+            <div>
+              <p className={`text-[10px] text-slate-400 dark:text-[#71717A] uppercase font-semibold ${isAr ? 'font-cairo' : 'font-mono'}`}>
+                {isAr ? 'المحطات' : 'STATIONS'}
+              </p>
+              <p className={`text-xs font-bold text-slate-800 dark:text-slate-200 ${isAr ? 'font-cairo' : 'font-space'}`}>
+                {selectedLine.totalStations} {isAr ? 'محطة' : 'stns'}
+              </p>
+            </div>
           </div>
 
-          {/* Direction Arrow pointing towards destination terminal in both LTR and RTL */}
-          <div className="w-8 h-8 rounded-full bg-[#FF4A1C]/10 border border-[#FF4A1C]/25 flex items-center justify-center text-[#FF4A1C] shadow-sm flex-shrink-0 mx-2">
-            <ArrowRight className="w-4 h-4 stroke-[2.5] rtl:rotate-180" />
-          </div>
+          {/* Start and End Terminals with Direction Arrow */}
+          <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
+            <div className="min-w-0 flex-1">
+              <p className={`text-[9.5px] uppercase text-slate-400 dark:text-[#71717A] ${isAr ? 'font-cairo tracking-normal font-semibold' : 'font-mono tracking-wider'}`}>
+                {isAr ? 'البداية' : 'START'}
+              </p>
+              <p className={`text-xs text-slate-900 dark:text-white mt-0.5 font-bold truncate ${isAr ? 'font-cairo' : 'font-space'}`}>
+                {isAr ? selectedLine.terminalsAr[0] : selectedLine.terminalsEn[0]}
+              </p>
+            </div>
 
-          <div className="text-end min-w-0">
-            <p className={`text-[10px] uppercase text-slate-400 dark:text-[#71717A] ${isAr ? 'font-cairo tracking-normal font-semibold' : 'font-mono tracking-wider'}`}>
-              {isAr ? 'النهاية' : 'END'}
-            </p>
-            <p className={`text-slate-900 dark:text-white mt-0.5 font-bold truncate ${isAr ? 'font-cairo' : 'font-space'}`}>
-              {isAr ? selectedLine.terminalsAr[1] : selectedLine.terminalsEn[1]}
-            </p>
+            <div className="w-7 h-7 rounded-full bg-[#FF4A1C]/10 border border-[#FF4A1C]/25 flex items-center justify-center text-[#FF4A1C] shadow-sm flex-shrink-0 mx-1">
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5] rtl:rotate-180" />
+            </div>
+
+            <div className="text-end min-w-0 flex-1">
+              <p className={`text-[9.5px] uppercase text-slate-400 dark:text-[#71717A] ${isAr ? 'font-cairo tracking-normal font-semibold' : 'font-mono tracking-wider'}`}>
+                {isAr ? 'النهاية' : 'END'}
+              </p>
+              <p className={`text-xs text-slate-900 dark:text-white mt-0.5 font-bold truncate ${isAr ? 'font-cairo' : 'font-space'}`}>
+                {isAr ? selectedLine.terminalsAr[1] : selectedLine.terminalsEn[1]}
+              </p>
+            </div>
           </div>
         </div>
       </div>

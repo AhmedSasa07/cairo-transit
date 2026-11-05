@@ -26,6 +26,7 @@ import { isStationAccessible } from '../utils/a11y.js';
 import PressableScale from './PressableScale.jsx';
 import TransitModeIcon from './TransitModeIcon.jsx';
 import { haptics } from '../utils/haptics.js';
+import { useSheetDragToDismiss } from '../utils/motion.js';
 
 // Crisp Google Maps Official Pin Logo
 function GoogleMapsLogo({ className = 'w-5 h-5' }) {
@@ -171,17 +172,25 @@ export default function StationDetailModal({
     return results.sort((a, b) => a.distMeters - b.distMeters);
   }, [station]);
 
+  const { handlers: dragHandlers, sheetStyle } = useSheetDragToDismiss({ onClose });
+
   return (
     <div
       className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in"
       onClick={onClose}
     >
       <div
+        style={sheetStyle}
         className="w-full max-w-lg bg-white dark:bg-[#111113] rounded-t-[32px] sm:rounded-[28px] max-h-[90vh] flex flex-col shadow-2xl border-t sm:border border-slate-200 dark:border-[#26262C] animate-in slide-in-from-bottom duration-300 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Sheet Grab Handle */}
-        <div className="w-10 h-1 bg-slate-300 dark:bg-[#26262C] rounded-full mx-auto my-2.5 flex-shrink-0" />
+        {/* Sheet Grab Handle (Draggable down to dismiss) */}
+        <div
+          {...dragHandlers}
+          className="w-full py-2.5 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none sm:hidden flex-shrink-0"
+        >
+          <div className="w-10 h-1.5 bg-slate-300 dark:bg-[#26262C] rounded-full" />
+        </div>
 
         {/* Modal Header */}
         <div className="px-5 py-3.5 border-b border-slate-100 dark:border-[#1D1D22] flex items-center justify-between bg-slate-50/50 dark:bg-[#111113] flex-shrink-0">

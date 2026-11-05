@@ -59,6 +59,39 @@ const MAP_OVERLAY_CONFIG = {
   filter: 'contrast(1.05) brightness(1.02)'
 };
 
+/**
+ * Official Transit Line Logos for Station Dots
+ */
+const STATION_LINE_LOGOS = {
+  line1: '/assets/logos/M1.svg',
+  line2: '/assets/logos/M2.svg',
+  line3: '/assets/logos/M3.svg',
+  lrt: '/assets/logos/LRT.svg',
+  monorail_east: '/assets/logos/east_monorail.svg',
+  monorail_west: '/assets/logos/westmonorail.png',
+  brt: '/assets/logos/Cairo_Bus_Rapid_Transit_logo.png'
+};
+
+/**
+ * Terminal Station Line Badges (Styled matching user-uploaded M1 • Helwan stadium pill)
+ * Positioned snugly adjacent to terminal stations
+ */
+const TERMINAL_PILLS_CONFIG = [
+  { lineId: 'line1', stationId: 'new_el_marg', badgeTextEn: 'M1 • New El-Marg', badgeTextAr: 'M1 • المرج الجديدة', color: '#00518e', offsetX: 86, offsetY: 0, width: 126, height: 26 },
+  { lineId: 'line1', stationId: 'helwan', badgeTextEn: 'M1 • Helwan', badgeTextAr: 'M1 • حلوان', color: '#00518e', offsetX: 0, offsetY: 30, width: 104, height: 26 },
+  { lineId: 'line2', stationId: 'shubra_el_kheima', badgeTextEn: 'M2 • Shubra', badgeTextAr: 'M2 • شبرا الخيمة', color: '#c13038', offsetX: -82, offsetY: 0, width: 110, height: 26 },
+  { lineId: 'line2', stationId: 'el_mounib', badgeTextEn: 'M2 • El-Mounib', badgeTextAr: 'M2 • المنيب', color: '#c13038', offsetX: -82, offsetY: 0, width: 114, height: 26 },
+  { lineId: 'line3', stationId: 'adly_mansour', badgeTextEn: 'M3 • Adly Mansour', badgeTextAr: 'M3 • عدلي منصور', color: '#009f87', offsetX: 88, offsetY: -22, width: 132, height: 26 },
+  { lineId: 'line3', stationId: 'rod_el_farag_corridor', badgeTextEn: 'M3 • Rod El-Farag', badgeTextAr: 'M3 • روض الفرج', color: '#009f87', offsetX: -88, offsetY: 0, width: 128, height: 26 },
+  { lineId: 'line3', stationId: 'cairo_university', badgeTextEn: 'M3 • Cairo Univ', badgeTextAr: 'M3 • جامعة القاهرة', color: '#009f87', offsetX: -84, offsetY: 22, width: 122, height: 26 },
+  { lineId: 'lrt', stationId: 'lrt_knowledge_city', badgeTextEn: 'LRT • Knowledge City', badgeTextAr: 'LRT • مدينة المعرفة', color: '#9e1b33', offsetX: 90, offsetY: 0, width: 142, height: 26 },
+  { lineId: 'lrt', stationId: 'city_of_arts', badgeTextEn: 'LRT • City of Arts', badgeTextAr: 'LRT • مدينة الفنون', color: '#ecc15f', textColor: '#0F172A', offsetX: 0, offsetY: 30, width: 132, height: 26 },
+  { lineId: 'monorail_east', stationId: 'stadium', badgeTextEn: 'Mono East • Stadium', badgeTextAr: 'مونوريل • الاستاد', color: '#009ca6', offsetX: 0, offsetY: -28, width: 138, height: 26 },
+  { lineId: 'monorail_east', stationId: 'justice_city', badgeTextEn: 'Mono • Justice City', badgeTextAr: 'مونوريل • مدينة العدالة', color: '#009ca6', offsetX: 86, offsetY: 0, width: 140, height: 26 },
+  { lineId: 'monorail_west', stationId: 'monorail_new_october', badgeTextEn: 'Mono West • 6th Oct', badgeTextAr: 'مونوريل • 6 أكتوبر', color: '#9b2521', offsetX: 0, offsetY: -28, width: 138, height: 26 },
+  { lineId: 'brt', stationId: 'brt_1_alex_agri', badgeTextEn: 'BRT • Alex Agri', badgeTextAr: 'BRT • الإسكندرية الزراعي', color: '#8B5CF6', offsetX: 0, offsetY: -28, width: 126, height: 26 }
+];
+
 // Precomputed SVG polyline points string for high-speed zero-overhead rendering
 const PRECOMPUTED_POINTS = {
   line1: (MAP_LINES_PATHS.line1 || [])
@@ -264,128 +297,7 @@ const StaticMapSvgLayers = React.memo(function StaticMapSvgLayers({
         />
       )}
 
-      {/* Line Terminal Badges (Suppressed when background integrated map overlay is ON to prevent label clutter) */}
-      {!showIntegratedOverlay && (
-        <g className="select-none pointer-events-none font-bold">
-        {/* Line 1 Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'line1') && (
-          <>
-            <g transform="translate(880, 36)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#00518e" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الأول • المرج الجديدة' : 'M1 • New El-Marg'}
-              </text>
-            </g>
-            <g transform="translate(505, 1008)">
-              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#00518e" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الأول • حلوان' : 'M1 • Helwan'}
-              </text>
-            </g>
-          </>
-        )}
-
-        {/* Line 2 Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'line2') && (
-          <>
-            <g transform="translate(440, 76)">
-              <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#c13038" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الثانى • شبرا الخيمة' : 'M2 • Shubra'}
-              </text>
-            </g>
-            <g transform="translate(280, 892)">
-              <rect x="-55" y="-13" width="110" height="26" rx="13" fill="#c13038" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الثانى • المنيب' : 'M2 • El-Mounib'}
-              </text>
-            </g>
-          </>
-        )}
-
-        {/* Line 3 Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'line3') && (
-          <>
-            <g transform="translate(1125, 304)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009f87" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الثالث • عدلي منصور' : 'M3 • Adly Mansour'}
-              </text>
-            </g>
-            <g transform="translate(205, 166)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009f87" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'الخط الثالث • روض الفرج' : 'M3 • Rod El-Farag'}
-              </text>
-            </g>
-          </>
-        )}
-
-        {/* LRT Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'lrt') && (
-          <>
-            <g transform="translate(1420, 110)">
-              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#9e1b33" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'LRT • مدينة المعرفة' : 'LRT • Knowledge City'}
-              </text>
-            </g>
-            <g transform="translate(1463, 655)">
-              <rect x="-70" y="-13" width="140" height="26" rx="13" fill="#ecc15f" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#1E293B" fontSize="10" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'تبادل • مدينة الفنون' : 'Hub • City of Arts'}
-              </text>
-            </g>
-          </>
-        )}
-
-        {/* Monorail East Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'monorail_east') && (
-          <>
-            <g transform="translate(715, 480)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'مونوريل شرق • الاستاد' : 'Mono East • Stadium'}
-              </text>
-            </g>
-            <g transform="translate(1520, 580)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#009ca6" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'مونوريل • مدينة العدالة' : 'Mono • Justice City'}
-              </text>
-            </g>
-          </>
-        )}
-
-        {/* Monorail West Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'monorail_west') && (
-          <g transform="translate(80, 875)">
-            <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#9b2521" stroke="#FFFFFF" strokeWidth="2" />
-            <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-              {isAr ? 'مونوريل غرب • 6 أكتوبر' : 'Mono West • 6th Oct'}
-            </text>
-          </g>
-        )}
-
-        {/* BRT Badges */}
-        {(activeLineFilter === 'all' || activeLineFilter === 'brt') && (
-          <>
-            <g transform="translate(410, 18)">
-              <rect x="-65" y="-13" width="130" height="26" rx="13" fill="#8B5CF6" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'BRT • الإسكندرية الزراعي' : 'BRT • Alex Agri'}
-              </text>
-            </g>
-            <g transform="translate(860, 755)">
-              <rect x="-60" y="-13" width="120" height="26" rx="13" fill="#8B5CF6" stroke="#FFFFFF" strokeWidth="2" />
-              <text x="0" y="4" textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold" fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}>
-                {isAr ? 'BRT • الجولف' : 'BRT • The Golf'}
-              </text>
-            </g>
-          </>
-        )}
-      </g>
-      )}
+      {/* Note: Dynamic Line Terminal Stadium Pills are now rendered snugly adjacent to actual terminal coordinates */}
     </>
   );
 });
@@ -411,12 +323,26 @@ const StationNode = React.memo(function StationNode({
   const isInterchange = st.isInterchange;
   const primaryLine = st.lines[0];
   const color = isInterchange ? '#ecc15f' : METRO_LINES[primaryLine]?.color || '#00518e';
+  const logoSrc = STATION_LINE_LOGOS[primaryLine];
 
-  // Responsive inverse font & stroke scaling on zoom
+  // Responsive inverse font & station dot scaling on zoom (dots shrink as zoom increases)
   const z = Math.max(0.65, Math.min(4, zoomLevel || 1));
+  const scaleFactor = 1 / Math.pow(z, 0.65);
+
   const baseSize = isInterchange ? 11 : 9;
   const dynamicFontSize = Math.max(4.5, Math.min(12, Number((baseSize / Math.pow(z, 0.75)).toFixed(1))));
-  const dynamicStrokeWidth = Math.max(1.2, Number((2.8 / Math.sqrt(z)).toFixed(1)));
+  const dynamicStrokeWidth = Math.max(0.8, Number((1.5 / Math.sqrt(z)).toFixed(1)));
+
+  // Scaled dimensions for station dots and logos
+  const baseR = isSelected ? 12.5 : 10;
+  const nodeR = Math.max(5.5, Number((baseR * scaleFactor).toFixed(1)));
+  const hubOuterR = Math.max(7.5, Number(((isSelected ? 15 : 12.5) * scaleFactor).toFixed(1)));
+  const hubInnerR = Math.max(3.5, Number((hubOuterR * 0.48).toFixed(1)));
+  const nodeBorderWidth = Math.max(1.2, Number((2.4 / Math.sqrt(z)).toFixed(1)));
+  const hubBorderWidth = Math.max(1.6, Number((3.2 / Math.sqrt(z)).toFixed(1)));
+
+  const logoW = Math.max(7, Number((nodeR * 1.55).toFixed(1)));
+  const logoH = Math.max(6, Number((nodeR * 1.15).toFixed(1)));
 
   // Decluttering: when background overlay map is ON, suppress all station text labels (they are already printed in the background map),
   // showing only the label for the actively tapped/selected station to guarantee ZERO text collision!
@@ -424,10 +350,11 @@ const StationNode = React.memo(function StationNode({
     ? isSelected
     : (z >= 0.85 || isInterchange || isSelected));
 
-  const labelOffsetX = coord.labelPos === 'right' ? Math.max(8, 14 / Math.sqrt(z)) :
-                       coord.labelPos === 'left' ? -Math.max(8, 14 / Math.sqrt(z)) : 0;
-  const labelOffsetY = coord.labelPos === 'top' ? -Math.max(8, 12 / Math.sqrt(z)) :
-                       coord.labelPos === 'bottom' ? Math.max(10, 16 / Math.sqrt(z)) : 4;
+  const labelDist = (isInterchange ? hubOuterR : nodeR) + Math.max(3, 5 / Math.sqrt(z));
+  const labelOffsetX = coord.labelPos === 'right' ? labelDist :
+                       coord.labelPos === 'left' ? -labelDist : 0;
+  const labelOffsetY = coord.labelPos === 'top' ? -labelDist :
+                       coord.labelPos === 'bottom' ? labelDist + 2 : 3.5;
 
   return (
     <g
@@ -481,48 +408,53 @@ const StationNode = React.memo(function StationNode({
         </g>
       )}
 
-      {/* Interchange Hub Node (#ecc15f Gold / Amber) */}
+      {/* Interchange Hub Node (#ecc15f Gold / Amber) with dynamic zoom scaling */}
       {isInterchange ? (
-        <g className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]'}>
+        <g shapeRendering="geometricPrecision" className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]'}>
           <circle
             cx={coord.x}
             cy={coord.y}
-            r="12.5"
+            r={hubOuterR}
             fill="#FFFFFF"
             stroke="#ecc15f"
-            strokeWidth="3.5"
+            strokeWidth={hubBorderWidth}
           />
           <circle
             cx={coord.x}
             cy={coord.y}
-            r="6"
+            r={hubInnerR}
             fill="#ecc15f"
           />
         </g>
       ) : (
-        <g className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]'}>
+        /* Regular Station Node with Official Line Logo Badge */
+        <g shapeRendering="geometricPrecision" className={isBatterySaver ? '' : 'filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]'}>
           <circle
             cx={coord.x}
             cy={coord.y}
-            r={isSelected ? '9.5' : '7'}
+            r={nodeR}
             fill="#FFFFFF"
-            stroke={color}
-            strokeWidth={isSelected ? '4' : '3.5'}
+            stroke={isSelected ? '#38BDF8' : color}
+            strokeWidth={nodeBorderWidth}
           />
-          <circle
-            cx={coord.x}
-            cy={coord.y}
-            r={isSelected ? '9.5' : '7'}
-            fill="none"
-            stroke="rgba(255,255,255,0.4)"
-            strokeWidth="0.8"
-          />
-          <circle
-            cx={coord.x}
-            cy={coord.y}
-            r={isSelected ? '3' : '2'}
-            fill={color}
-          />
+          {logoSrc ? (
+            <image
+              href={logoSrc}
+              x={coord.x - logoW / 2}
+              y={coord.y - logoH / 2}
+              width={logoW}
+              height={logoH}
+              preserveAspectRatio="xMidYMid meet"
+              className="pointer-events-none select-none"
+            />
+          ) : (
+            <circle
+              cx={coord.x}
+              cy={coord.y}
+              r={Math.max(2, nodeR * 0.4)}
+              fill={color}
+            />
+          )}
         </g>
       )}
 
@@ -607,6 +539,7 @@ const StationNode = React.memo(function StationNode({
           strokeLinejoin="round"
           strokeLinecap="round"
           paintOrder="stroke fill"
+          textRendering="geometricPrecision"
           className="select-none pointer-events-none station-map-label"
           fontSize={dynamicFontSize}
           fontWeight={isInterchange || isSelected ? '900' : '700'}
@@ -1709,10 +1642,10 @@ export default function InteractiveMap({
             transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
             transformOrigin: 'center center',
             transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
-            willChange: 'transform',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden'
+            willChange: isDragging ? 'transform' : 'auto'
           }}
+          textRendering="geometricPrecision"
+          shapeRendering="geometricPrecision"
         >
           {/* Optional Integrated Transit Map Background Overlay with Clean Calibration Config */}
           {showIntegratedOverlay && (
@@ -1786,6 +1719,50 @@ export default function InteractiveMap({
                 onPointerDown={handleStationPointerDown}
                 onSelectStation={handleSelectStation}
               />
+            );
+          })}
+
+          {/* Sleek Line Terminal Stadium Badges anchored directly beside terminal stations */}
+          {!showIntegratedOverlay && TERMINAL_PILLS_CONFIG.map((pill) => {
+            if (activeLineFilter !== 'all' && activeLineFilter !== pill.lineId) return null;
+            const stCoord = stationCoords[pill.stationId] || MAP_STATION_COORDS[pill.stationId];
+            if (!stCoord) return null;
+
+            const pillZ = Math.max(0.65, Math.min(4, zoom));
+            const pillScale = Math.max(0.75, Number((1 / Math.pow(pillZ, 0.4)).toFixed(2)));
+            const px = stCoord.x + pill.offsetX;
+            const py = stCoord.y + pill.offsetY;
+
+            return (
+              <g
+                key={`pill-${pill.lineId}-${pill.stationId}`}
+                transform={`translate(${px}, ${py}) scale(${pillScale})`}
+                className="select-none pointer-events-none"
+                shapeRendering="geometricPrecision"
+              >
+                <rect
+                  x={-pill.width / 2}
+                  y={-pill.height / 2}
+                  width={pill.width}
+                  height={pill.height}
+                  rx={pill.height / 2}
+                  fill={pill.color}
+                  stroke="#FFFFFF"
+                  strokeWidth="2.5"
+                />
+                <text
+                  x="0"
+                  y="4.5"
+                  textAnchor="middle"
+                  fill={pill.textColor || '#FFFFFF'}
+                  fontSize="11"
+                  fontWeight="900"
+                  fontFamily={isAr ? "'Cairo', sans-serif" : "'Space Grotesk', sans-serif"}
+                  textRendering="geometricPrecision"
+                >
+                  {isAr ? pill.badgeTextAr : pill.badgeTextEn}
+                </text>
+              </g>
             );
           })}
         </svg>

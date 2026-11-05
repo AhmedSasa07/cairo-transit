@@ -13,6 +13,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
 import { getTripDescription, getCleanLineName, getCleanDirectionName } from '../utils/routing.js';
+import { useSheetDragToDismiss } from '../utils/motion.js';
 
 export default function ShareTripModal({ route, lang, t, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -21,36 +22,38 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
   const [imageUrl, setImageUrl] = useState(null);
   const canvasRef = useRef(null);
 
+  const { handlers: dragHandlers, sheetStyle } = useSheetDragToDismiss({ onClose });
+
   const isAr = lang === 'ar';
   const originName = isAr ? route.origin.nameAr : route.origin.nameEn;
   const destName = isAr ? route.destination.nameAr : route.destination.nameEn;
 
-  // Build the complete formatted WhatsApp / Text message (NO ASTERISKS)
+  // Build the complete formatted WhatsApp / Text message (NO EMOJIS, NO ASTERISKS)
   const buildTextMessage = () => {
     const desc = getTripDescription(route, lang);
     const lines = [];
 
     lines.push(isAr
-      ? `🚇 خط سير المترو من ${originName} إلى ${destName}`
-      : `🚇 Metro Route: ${originName} to ${destName}`);
+      ? `خط سير الرحلة: من ${originName} إلى ${destName}`
+      : `Transit Route: ${originName} to ${destName}`);
     lines.push('');
-    lines.push(isAr ? 'تفاصيل مشوارك:' : 'Trip Description:');
+    lines.push(isAr ? 'تفاصيل المشوار:' : 'Trip Description:');
     lines.push(desc);
     lines.push('');
     lines.push(isAr
-      ? `⏱️ الوقت التقريبي: حوالي ${route.travelTimeMins} دقيقة`
-      : `⏱️ Estimated Time: ~${route.travelTimeMins} mins`);
+      ? `الوقت المتوقع: ~${route.travelTimeMins} دقيقة`
+      : `Estimated Time: ~${route.travelTimeMins} mins`);
     lines.push(isAr
-      ? `🚉 عدد المحطات: ${route.stationCount} محطة`
-      : `🚉 Stations: ${route.stationCount} stations`);
+      ? `عدد المحطات: ${route.stationCount}`
+      : `Stations: ${route.stationCount}`);
     lines.push(isAr
-      ? `💰 سعر التذكرة: ${route.fareDetails.totalCost} جنيه ${route.ticketTier ? `(تذكرة ${route.ticketTier.ticketColorAr} 🎫)` : ''}`
-      : `💰 Ticket Price: ${route.fareDetails.totalCost} EGP ${route.ticketTier ? `(${route.ticketTier.ticketColorEn} Ticket 🎫)` : ''}`);
+      ? `سعر التذكرة: ${route.fareDetails.totalCost} جنيه ${route.ticketTier ? `(${route.ticketTier.ticketColorAr})` : ''}`
+      : `Ticket Price: ${route.fareDetails.totalCost} EGP ${route.ticketTier ? `(${route.ticketTier.ticketColorEn})` : ''}`);
     lines.push(isAr
-      ? `🔄 التحويلات: ${route.transfersCount === 0 ? 'مباشر بدون أي تبديل' : `${route.transfersCount} تحويلة`}`
-      : `🔄 Transfers: ${route.transfersCount === 0 ? 'Direct (No Transfers)' : `${route.transfersCount} transfer(s)`}`);
+      ? `التحويلات: ${route.transfersCount === 0 ? 'مباشر بدون تبديل' : `${route.transfersCount} تحويلة`}`
+      : `Transfers: ${route.transfersCount === 0 ? 'Direct (No Transfers)' : `${route.transfersCount} transfer(s)`}`);
     lines.push('');
-    lines.push(isAr ? '📱 تطبيق دليل مترو مصر (Egy Metro Guide)' : '📱 Egy Metro Guide App');
+    lines.push(isAr ? 'دليل مترو مصر (Egy Metro Guide)' : 'Egy Metro Guide');
 
     return lines.join('\n').replace(/\*/g, '');
   };
@@ -256,7 +259,7 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 20px "Space Grotesk", "Cairo", sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText(isAr ? '📋 مسار الرحلة والتبديل:' : '📋 ROUTE INSTRUCTIONS & TRANSFERS:', 70, timelineY + 42);
+    ctx.fillText(isAr ? 'مسار الرحلة والتبديل:' : 'ROUTE INSTRUCTIONS & TRANSFERS:', 70, timelineY + 42);
 
     let curY = timelineY + 86;
     route.legs.forEach((leg, lIdx) => {
@@ -305,7 +308,7 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
     ctx.fill();
     ctx.fillStyle = '#2DD881';
     ctx.font = '900 19px "Space Grotesk", "Cairo", sans-serif';
-    ctx.fillText(isAr ? `🏁 الوصول إلى محطة: ${destName}` : `🏁 Arrive at: ${destName}`, 95, curY);
+    ctx.fillText(isAr ? `الوصول إلى محطة: ${destName}` : `Arrive at: ${destName}`, 95, curY);
 
     // Footer
     ctx.fillStyle = '#71717A';
@@ -444,11 +447,17 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
       onClick={onClose}
     >
       <div
+        style={sheetStyle}
         className="bg-white dark:bg-[#111113] w-full max-w-lg max-h-[92vh] rounded-t-[32px] sm:rounded-[28px] shadow-2xl border-t sm:border border-slate-200 dark:border-[#26262C] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Grab Bar */}
-        <div className="w-10 h-1 bg-slate-300 dark:bg-[#26262C] rounded-full mx-auto my-2.5 flex-shrink-0" />
+        {/* Grab Bar (Draggable down to dismiss) */}
+        <div
+          {...dragHandlers}
+          className="w-full py-2.5 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none sm:hidden flex-shrink-0"
+        >
+          <div className="w-10 h-1.5 bg-slate-300 dark:bg-[#26262C] rounded-full" />
+        </div>
 
         {/* Modal Header */}
         <div className="px-5 py-3.5 border-b border-slate-200 dark:border-[#1D1D22] flex items-center justify-between bg-slate-50/50 dark:bg-[#111113] flex-shrink-0">
