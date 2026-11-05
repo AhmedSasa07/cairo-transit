@@ -5,7 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>Egy Metro Guide</string>
+	<string>Egy Metro Guide</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Egy Metro Guide needs location access to find your nearest transit station and plan routes. / يحتاج التطبيق إلى إذن الوصول للموقع لتحديد أقرب محطة مترو وتخطيط رحلتك.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

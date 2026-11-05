@@ -7,9 +7,7 @@ import {
   Check,
   MessageSquare
 } from 'lucide-react';
-import { Capacitor } from '@capacitor/core';
-import { Share } from '@capacitor/share';
-import { Filesystem, Directory } from '@capacitor/filesystem';
+import { safeShare, safeSaveFile, isNativePlatform } from '../utils/native.js';
 import PressableScale from './PressableScale.jsx';
 import { haptics } from '../utils/haptics.js';
 import { getTripDescription, getCleanLineName, getCleanDirectionName } from '../utils/routing.js';
@@ -348,45 +346,35 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
     try {
       const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
       const base64Data = dataUrl.split(',')[1];
+      const fileName = `Metro_Trip_${Date.now()}.jpg`;
 
-      if (Capacitor.isNativePlatform()) {
-        const fileName = `Metro_Trip_${Date.now()}.jpg`;
-        await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Documents,
-          recursive: true
-        });
+      const result = await safeSaveFile({
+        fileName,
+        base64Data,
+        mimeType: 'image/jpeg'
+      });
+
+      if (result.success) {
         setSaveSuccess(true);
         haptics.success();
         setTimeout(() => setSaveSuccess(false), 3000);
       } else {
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = `Metro_Trip_${originName}_to_${destName}.jpg`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setSaveSuccess(true);
-        haptics.success();
-        setTimeout(() => setSaveSuccess(false), 3000);
+        // Fallback to cache and share sheet
+        const cacheResult = await safeSaveFile({
+          fileName,
+          base64Data,
+          useCache: true
+        });
+        if (cacheResult.success) {
+          await safeShare({
+            title: `Metro Trip: ${originName} to ${destName}`,
+            url: cacheResult.uri,
+            dialogTitle: isAr ? 'حفظ أو مشاركة الصورة' : 'Save or Share Image'
+          });
+        }
       }
     } catch (err) {
-      console.warn('Direct save error, falling back to share', err);
-      try {
-        const base64Data = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
-        const fileName = `Metro_Trip_${Date.now()}.jpg`;
-        const cacheFile = await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Cache
-        });
-        await Share.share({
-          title: `Metro Trip: ${originName} to ${destName}`,
-          url: cacheFile.uri,
-          dialogTitle: isAr ? 'حفظ أو مشاركة الصورة' : 'Save or Share Image'
-        });
-      } catch (_) {}
+      console.warn('Save image error:', err);
     }
   };
 
@@ -396,44 +384,34 @@ export default function ShareTripModal({ route, lang, t, onClose }) {
     const canvas = canvasRef.current;
 
     try {
-      if (Capacitor.isNativePlatform() && canvas) {
-        // Native Android: Write small JPEG to cache and trigger Android system chooser
+      let fileUri = null;
+      if (isNativePlatform() && canvas) {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
         const base64Data = dataUrl.split(',')[1];
         const fileName = `metro_trip_${Date.now()}.jpg`;
-
-        const fileResult = await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Cache
+        const cacheResult = await safeSaveFile({
+          fileName,
+          base64Data,
+          useCache: true
         });
-
-        await Share.share({
-          title: `دليل مترو مصر: ${originName} ➔ ${destName}`,
-          text: textMessage,
-          url: fileResult.uri,
-          dialogTitle: isAr ? 'مشاركة بطاقة ومسار الرحلة (تيليجرام / واتساب / ماسنجر)' : 'Share Trip Card & Directions'
-        });
-        haptics.success();
-        return;
+        if (cacheResult.success) {
+          fileUri = cacheResult.uri;
+        }
       }
 
-      // Web platform share
-      if (imageBlob && navigator.canShare && navigator.canShare({ files: [new File([imageBlob], 'trip.jpg', { type: 'image/jpeg' })] })) {
-        const file = new File([imageBlob], `Metro_Trip_${originName}_to_${destName}.jpg`, { type: 'image/jpeg' });
-        await navigator.share({
-          title: `دليل مترو مصر: ${originName} ➔ ${destName}`,
-          text: textMessage,
-          files: [file]
-        });
+      const files = imageBlob ? [new File([imageBlob], `Metro_Trip_${originName}_to_${destName}.jpg`, { type: 'image/jpeg' })] : [];
+
+      const shareRes = await safeShare({
+        title: `دليل مترو مصر: ${originName} ➔ ${destName}`,
+        text: textMessage,
+        url: fileUri,
+        files,
+        dialogTitle: isAr ? 'مشاركة بطاقة ومسار الرحلة (تيليجرام / واتساب / ماسنجر)' : 'Share Trip Card & Directions'
+      });
+
+      if (shareRes.success) {
         haptics.success();
-      } else if (navigator.share) {
-        await navigator.share({
-          title: `دليل مترو مصر: ${originName} ➔ ${destName}`,
-          text: textMessage
-        });
-        haptics.success();
-      } else {
+      } else if (!shareRes.cancelled) {
         handleOpenWhatsApp();
       }
     } catch (err) {

@@ -1,19 +1,31 @@
 {
   "short_name": "EgyMetro",
   "name": "Egy Metro Guide - دليل مترو القاهرة",
+  "description": "Navigate Cairo’s metro system with confidence - Offline Route Finder, Ticket Fares, Stations and Live Line Overviews",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0F172A",
+  "background_color": "#0F172A",
   "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
     {
       "src": "/logo.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
-  ],
-  "start_url": "/",
-  "background_color": "#0F172A",
-  "theme_color": "#C8102E",
-  "display": "standalone",
-  "orientation": "portrait",
-  "scope": "/",
-  "description": "Navigate Cairo’s metro system with confidence - Offline Route Finder, Ticket Fares, Stations and Live Line Overviews"
+  ]
 }

@@ -1,0 +1,60 @@
+name: Build iOS (Unsigned IPA)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Web Production Assets
+        run: npm run build
+
+      - name: Sync Capacitor iOS
+        run: npx cap sync ios
+
+      - name: Build iOS App with Xcode
+        working-directory: ios/App
+        run: |
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package Unsigned IPA (Payload)
+        working-directory: ios/App
+        run: |
+          mkdir -p Payload
+          # Copy compiled App.app bundle into Payload directory
+          if [ -d "build/Build/Products/Release-iphoneos/App.app" ]; then
+            cp -r "build/Build/Products/Release-iphoneos/App.app" Payload/
+          else
+            cp -r build/Build/Products/*-iphoneos/App.app Payload/
+          fi
+          # Create compressed unsigned IPA archive
+          zip -qr App-unsigned.ipa Payload
+          ls -lh App-unsigned.ipa
+
+      - name: Upload Unsigned IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EgyMetro-iOS-Unsigned-IPA
+          path: ios/App/App-unsigned.ipa
+          retention-days: 14

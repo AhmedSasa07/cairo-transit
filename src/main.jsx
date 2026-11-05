@@ -54,3 +54,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ErrorBoundary>
   </React.StrictMode>
 );
+
+// Register offline PWA service worker
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((reg) => reg.update())
+      .catch((err) => console.warn('[PWA] ServiceWorker registration failed:', err));
+  });
+}
